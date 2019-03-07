@@ -1,9 +1,12 @@
-# Collaborative annotation of historical images
+# PRO B-13 : Évolution d’automates pour le traitement de séquences génomiques
 
-PRO B-13 Évolution d’automates pour le traitement de séquences génomiques
+Outil pour traiter les informations génomiques de différents organismes, issues de bases de données publiques. L’outil sera basée, d’un côté, sur l’analyse des séquences par des automates (machines à états) et, d’un autre, sur l’utilisation d’un algorithme évolutionniste (une technique d'apprentissage automatique) pour la construction automatique desdits automates.
 
-This software was developed as semester project (PRO) at HEIG-VD,
-academic year 2018/19.
+Une bonne partie du comportement des êtres vivantes est définie par son génome (ADN) et par les protéines qui en découlent. L’analyse des informations contenues dans le génome d’un organisme facilite la compréhension de nombreux phénomènes. Ces informations génomiques sont représentées en forme de (longues) séquences de caractères. Que ce soit de l’ADN, dont les séquences sont composées par un alphabet de 4 lettres (A,C,G,T), ou des protéines représentées par un alphabet de 20 lettres.
+
+Une forme de parcourir et traiter de telles séquences (par exemple pour y trouver des sous-séquences particulières) est d’utiliser des automates finis. Néanmoins, la conception des automates adéquats pour une analyse particulier étant très complexe, on propose d’utiliser une technique d’apprentissage automatique à ce fin: un algorithme évolutionniste simple.
+
+L’outil développé devra permettre à un utilisateur d’appliquer la méthode décrite ci-dessus à une collection de séquences fournie.
 
 Development team:
 
@@ -17,33 +20,12 @@ Development team:
 
 ## Dependencies
 
-This software requires Java 8 or above and the following libraries:
-
-* Lorem v. 4.3
-* Ipsum v. 48.3.p1
-* Dolor v. 22-3
 
 ## Build and install
 
-1. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-   nisi ut aliquip ex ea commodo consequat.
-
-2. Duis aute irure dolor in reprehenderit in voluptate velit esse
-   cillum dolore eu fugiat nulla pariatur.
-
-3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-   officia deserunt mollit anim id est laborum.
 
 ## Run
 
-1. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-   nisi ut aliquip ex ea commodo consequat.
-
-2. Duis aute irure dolor in reprehenderit in voluptate velit esse
-   cillum dolore eu fugiat nulla pariatur.
-
-3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-   officia deserunt mollit anim id est laborum.
 
 ## Documentation
 
