@@ -7,13 +7,13 @@ academic year 2018/19.
 
 Development team:
 
-| Name                                 | Email                        | Github   |
-|--------------------------------------|------------------------------|----------|
-| Bonjour Mickael                      | mickael.bonjour@heig-vd.ch   | liskbas  |
-| Mettler Samuel                       | samuel.mettler@heig-vd.ch    | perwol   |
-| Pantic Nemanja                       | nemanja.pantic@heig-vd.ch    | chaunlep |
-| Seville Nathan                       | nathan.seville@heig-vd.ch    | tomphan  |
-| Simeonovic David                     | david.simeonovic@heig-vd.ch  | kwenaw   |
+| Name                                 | Email                        | Github            |
+|--------------------------------------|------------------------------|-------------------|
+| Bonjour Mickael                      | mickael.bonjour@heig-vd.ch   | mbonjour          |
+| Mettler Samuel                       | samuel.mettler@heig-vd.ch    | SamuelMettler     |
+| Pantic Nemanja                       | nemanja.pantic@heig-vd.ch    | panticne          |
+| Seville Nathan                       | nathan.seville@heig-vd.ch    | nathanseville     |
+| Simeonovic David                     | david.simeonovic@heig-vd.ch  | IxSysTech         |
 
 ## Dependencies
 
