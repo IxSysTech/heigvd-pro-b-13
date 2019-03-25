@@ -1,4 +1,5 @@
 QT -= gui
+QT += scxml
 
 CONFIG += c++11 console
 CONFIG -= app_bundle
@@ -16,8 +17,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp \
     statetest.cpp \
-    emitteracgt.cpp
+    emitteracgt.cpp \
+    handler.cpp \
+    megamachine.cpp
 
 HEADERS += \
     statetest.h \
-    emitteracgt.h
+    emitteracgt.h \
+    handler.h \
+    megamachine.h
+
+STATECHARTS += \
+    test.scxml
