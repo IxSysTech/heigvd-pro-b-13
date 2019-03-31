@@ -10,6 +10,11 @@ class MegaMachine : public QObject
 public:
     explicit MegaMachine(const QString *filename, QObject *parent = nullptr);
     QScxmlStateMachine *machine;
+public slots:
+    void readA();
+    void readC();
+    void readG();
+    void readT();
 };
 
 #endif // MEGAMACHINE_H
