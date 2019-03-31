@@ -4,9 +4,12 @@
 int main(int argc, char *argv[])
 {
     //QCoreApplication a(argc, argv);
+        QTextStream out(stdout, QIODevice::WriteOnly);
 
-        QString filename = "../StateMachines/machine.scxml";
+        QString filename = "./machine.scxml";
         MegaMachine megamachine(&filename);
+
+        out << "oo";
 
         return 0;
 
