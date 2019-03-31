@@ -4,6 +4,7 @@
 #include "emitteracgt.h"
 #include "handler.h"
 #include "megamachine.h"
+#include <iostream>
 
 using namespace std;
 
@@ -22,6 +23,8 @@ int main(int argc, char *argv[])
     */
     char* testSeq = "ACTGACTACGTACTG";
     EmitterACGT *theEmitter = new EmitterACGT(testSeq);
-    MegaMachine *theMachine = new MegaMachine("test.xml");
+    QString fileName = "test.scxml";
+    MegaMachine *theMachine = new MegaMachine(&fileName);
+    cout << theMachine->machine->isRunning() << endl;
     theEmitter->beginAnalysis();
 }

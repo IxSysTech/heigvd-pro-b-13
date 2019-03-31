@@ -1,7 +1,10 @@
 #include "megamachine.h"
 
-MegaMachine::MegaMachine(QString filenmae, QObject *parent) : QObject(parent)
+MegaMachine::MegaMachine(QString *filename, QObject *parent) : QObject(parent)
 {
-    auto *stateMachine = QScxmlStateMachine::fromFile(filenmae);
-    stateMachine->start();
+    this->machine = QScxmlStateMachine::fromFile(*filename);
+    this->machine->init();
+    std::cout << this->machine->isRunning() << std::endl;
+    this->machine->start();
+    std::cout << this->machine->isRunning() << std::endl;
 }
