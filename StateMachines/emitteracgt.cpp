@@ -1,9 +1,6 @@
 #include "emitteracgt.h"
 
-emitterACGT::emitterACGT(QString sequence, QObject *parent) : sequence(sequence),QObject(parent)
-{
-
-}
+emitterACGT::emitterACGT(QString sequence, QObject *parent) : sequence(sequence),QObject(parent){}
 
 void emitterACGT::beginAnalysis(){
     for(QChar c : this->sequence){

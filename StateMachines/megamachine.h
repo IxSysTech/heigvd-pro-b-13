@@ -3,6 +3,7 @@
 #include <QScxmlStateMachine>
 #include <QIODevice>
 #include <QTextStream>
+#include <iostream>
 
 class MegaMachine : public QObject
 {

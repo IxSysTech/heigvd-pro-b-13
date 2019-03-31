@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0" binding="early" name="test" qt:editorversion="4.3.1" xmlns:qt="http://www.qt.io/2015/02/scxml-ext">
+<scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0" binding="early" xmlns:qt="http://www.qt.io/2015/02/scxml-ext" name="test" qt:editorversion="4.3.1">
     <state id="Init">
-        <qt:editorinfo geometry="172.31;152.94;-60;-50;120;100" scenegeometry="172.31;152.94;112.31;102.94;120;100"/>
+        <qt:editorinfo scenegeometry="184.55;291.60;29.49;241.60;215.06;100" geometry="184.55;291.60;-155.06;-50;215.06;100"/>
         <transition type="external" event="readA" target="s1"/>
         <transition type="external" event="readG" target="s4">
             <qt:editorinfo movePoint="26.50;12.24" endTargetFactors="26.01;14.84"/>
         </transition>
-        <transition type="external" event="readA" target="s3">
+        <transition type="external" event="readA" target="s3" cond="readA()">
             <qt:editorinfo movePoint="-86.66;-42.82" endTargetFactors="11;68.46"/>
         </transition>
         <transition type="external" event="readT" target="s2">
-            <qt:editorinfo movePoint="11.22;11.22" localGeometry="295.05;127.83" endTargetFactors="11.44;61.42"/>
+            <qt:editorinfo movePoint="11.22;11.22" endTargetFactors="11.44;61.42"/>
         </transition>
     </state>
     <state id="s1">
-        <qt:editorinfo geometry="484.30;170.27;-60;-50;120;100" scenegeometry="484.30;170.27;424.30;120.27;120;100"/>
+        <qt:editorinfo scenegeometry="484.30;170.27;424.30;120.27;120;100" geometry="484.30;170.27;-60;-50;120;100"/>
         <transition type="external" event="readG" target="s2">
             <qt:editorinfo movePoint="-16.31;31.61"/>
         </transition>
@@ -27,7 +27,7 @@
         </transition>
     </state>
     <state id="s2">
-        <qt:editorinfo geometry="927.82;278.35;-155.06;-50;215.06;100" scenegeometry="927.82;278.35;772.76;228.35;215.06;100"/>
+        <qt:editorinfo scenegeometry="927.82;278.35;772.76;228.35;215.06;100" geometry="927.82;278.35;-155.06;-50;215.06;100"/>
         <transition type="external" event="readT" target="s3">
             <qt:editorinfo movePoint="-30.59;-5.10"/>
         </transition>
@@ -42,7 +42,7 @@
         </transition>
     </state>
     <state id="s3">
-        <qt:editorinfo geometry="991.04;571.98;-155.06;-50;215.06;100" scenegeometry="991.04;571.98;835.98;521.98;215.06;100"/>
+        <qt:editorinfo scenegeometry="991.04;571.98;835.98;521.98;215.06;100" geometry="991.04;571.98;-155.06;-50;215.06;100"/>
         <transition type="external" event="readC" target="s4">
             <qt:editorinfo movePoint="38.74;7.14"/>
         </transition>
@@ -55,7 +55,7 @@
         </transition>
     </state>
     <state id="s4">
-        <qt:editorinfo geometry="598.50;759.59;-60;-50;120;100" scenegeometry="598.50;759.59;538.50;709.59;120;100"/>
+        <qt:editorinfo scenegeometry="598.50;759.59;538.50;709.59;120;100" geometry="598.50;759.59;-60;-50;120;100"/>
         <transition type="external" event="readG" target="s5"/>
         <transition type="external" event="readA" target="s3">
             <qt:editorinfo endTargetFactors="9.23;16.61"/>
@@ -68,7 +68,7 @@
         </transition>
     </state>
     <state id="s5">
-        <qt:editorinfo geometry="203.92;741.24;-60;-50;120;100" scenegeometry="203.92;741.24;143.92;691.24;120;100"/>
+        <qt:editorinfo scenegeometry="203.92;741.24;143.92;691.24;120;100" geometry="203.92;741.24;-60;-50;120;100"/>
         <transition type="external" event="readT" target="Final_2"/>
         <transition type="external" event="readA" target="s1">
             <qt:editorinfo movePoint="-38.74;47.92" endTargetFactors="23.76;69.34"/>
@@ -81,6 +81,6 @@
         </transition>
     </state>
     <final id="Final_2">
-        <qt:editorinfo geometry="87.69;491.44;-20;-20;40;40" scenegeometry="87.69;491.44;67.69;471.44;40;40"/>
+        <qt:editorinfo scenegeometry="87.69;491.44;67.69;471.44;40;40" geometry="87.69;491.44;-20;-20;40;40"/>
     </final>
 </scxml>
