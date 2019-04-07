@@ -1,47 +1,35 @@
 #include "megamachine.h"
 
-MegaMachine::MegaMachine(const QString *filename, QObject *parent) : QObject(parent)
+MegaMachine::MegaMachine(QObject *parent) : QObject(parent)
 {
     QTextStream errs(stderr, QIODevice::WriteOnly);
     QTextStream out(stdout, QIODevice::WriteOnly);
 
-    this->machine = QScxmlStateMachine::fromFile(*filename);
-    if (!machine->parseErrors().isEmpty()) {
-        const auto errors = machine->parseErrors();
-        for (const QScxmlError &error : errors) {
-            errs << error.toString();
-        }
+    machine = new QStateMachine();
+
+    for(int i = 0; i < 4; ++i) {
+        states.push_back(new QState());
     }
 
-    machine->connectToState("Init", [](bool active) {
-        QTextStream out(stdout, QIODevice::WriteOnly);
-        out << (active ? "entered" : "exited") << "the s1 state";});
-    machine->connectToState("s1", [](bool active) {
-        QTextStream out(stdout, QIODevice::WriteOnly);
-        out << (active ? "s2" : "exited") << "the s1 state";});
-    machine->connectToState("s3", [](bool active) {
-        QTextStream out(stdout, QIODevice::WriteOnly);
-        out << (active ? "entered" : "exited") << "the s1 state";});
-    machine->connectToState("s4", [](bool active) {
-        QTextStream out(stdout, QIODevice::WriteOnly);
-        out << (active ? "entered" : "exited") << "the s1 state";});
+    for(QState* state : states) {
+        state->addTransition(this, SIGNAL(A()), states.at(1));
+        machine->addState(state);
+    }
 
-    bool initOk = machine->init();
-    if (!initOk)
-        errs << "Erreur Init" << endl;
+    machine->setInitialState(states.at(0));
     machine->start();
 }
 
 void MegaMachine::readA(){
-    this->machine->submitEvent("readA");
+    emit A();
 }
 void MegaMachine::readC(){
-    this->machine->submitEvent("readC");
+    emit C();
 }
 void MegaMachine::readG(){
-    this->machine->submitEvent("readG");
+    emit G();
 }
 void MegaMachine::readT(){
-    this->machine->submitEvent("readT");
+    emit T();
 }
 

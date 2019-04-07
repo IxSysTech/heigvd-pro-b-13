@@ -1,4 +1,5 @@
 #include <QCoreApplication>
+#include <QScxmlTableData>
 #include "megamachine.h"
 #include "emitteracgt.h"
 
@@ -7,14 +8,11 @@ int main(int argc, char *argv[])
         // QCoreApplication a(argc, argv);
         QTextStream out(stdout, QIODevice::WriteOnly);
 
-        QString filename = "./machine.scxml";
-        MegaMachine megamachine(&filename);
+        //QString filename = "./machine.scxml";
+        MegaMachine megamachine;
 
-        QStringList test = megamachine.machine->activeStateNames();
-        for(QString temp : test){
-            out << temp;
-        }
         out << megamachine.machine->isRunning() << endl;
+        out << endl;
 
         QString sequence = "ACGTAGCTTTCAAAGCTAGCATGGCA";
         emitterACGT emitter(sequence);

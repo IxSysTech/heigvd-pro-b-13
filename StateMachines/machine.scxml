@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0" binding="early" xmlns:qt="http://www.qt.io/2015/02/scxml-ext" name="test" qt:editorversion="4.3.1">
+<scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0" binding="early" xmlns:qt="http://www.qt.io/2015/02/scxml-ext" name="machine" qt:editorversion="4.8.2" initial="Init">
     <state id="Init">
-        <qt:editorinfo scenegeometry="184.55;291.60;29.49;241.60;215.06;100" geometry="184.55;291.60;-155.06;-50;215.06;100"/>
+        <qt:editorinfo scenegeometry="184.55;269.25;74.50;204.59;120;100" geometry="184.55;269.25;-110.05;-64.66;120;100"/>
         <transition type="external" event="readA" target="s1"/>
         <transition type="external" event="readG" target="s4">
-            <qt:editorinfo movePoint="26.50;12.24" endTargetFactors="26.01;14.84"/>
+            <qt:editorinfo endTargetFactors="26.01;14.84" movePoint="26.50;12.24"/>
         </transition>
         <transition type="external" event="readA" target="s3" cond="readA()">
-            <qt:editorinfo movePoint="-86.66;-42.82" endTargetFactors="11;68.46"/>
+            <qt:editorinfo endTargetFactors="11;68.46" movePoint="-86.66;-42.82"/>
         </transition>
         <transition type="external" event="readT" target="s2">
-            <qt:editorinfo movePoint="11.22;11.22" endTargetFactors="11.44;61.42"/>
+            <qt:editorinfo endTargetFactors="11.44;61.42" movePoint="11.22;11.22"/>
         </transition>
     </state>
     <state id="s1">
@@ -19,7 +19,7 @@
             <qt:editorinfo movePoint="-16.31;31.61"/>
         </transition>
         <transition type="external" event="readC" target="Init">
-            <qt:editorinfo movePoint="18.35;16.31" startTargetFactors="11.03;22.99" endTargetFactors="86.76;34.76"/>
+            <qt:editorinfo endTargetFactors="86.76;34.76" startTargetFactors="11.03;22.99" movePoint="18.35;16.31"/>
         </transition>
         <transition type="external" event="readT" target="s4"/>
         <transition type="external" event="readC" target="s3">
@@ -32,14 +32,12 @@
             <qt:editorinfo movePoint="-30.59;-5.10"/>
         </transition>
         <transition type="external" event="readA" target="s1">
-            <qt:editorinfo movePoint="81.57;-2.04" startTargetFactors="8.22;14.74" endTargetFactors="85.99;51.76"/>
+            <qt:editorinfo endTargetFactors="85.99;51.76" startTargetFactors="8.22;14.74" movePoint="81.57;-2.04"/>
         </transition>
         <transition type="external" event="readC" target="s5">
             <qt:editorinfo endTargetFactors="80.74;35.06"/>
         </transition>
-        <transition type="internal" event="readG" target="s2">
-            <qt:editorinfo endTargetFactors="85.24;18.36"/>
-        </transition>
+        <transition type="internal" event="readG" target="s2"/>
     </state>
     <state id="s3">
         <qt:editorinfo scenegeometry="991.04;571.98;835.98;521.98;215.06;100" geometry="991.04;571.98;-155.06;-50;215.06;100"/>
@@ -48,7 +46,7 @@
         </transition>
         <transition type="external" event="readA" target="s3"/>
         <transition type="external" event="readG" target="s2">
-            <qt:editorinfo movePoint="59.14;20.39" endTargetFactors="84.25;70.21"/>
+            <qt:editorinfo endTargetFactors="84.25;70.21" movePoint="59.14;20.39"/>
         </transition>
         <transition type="external" event="readT" target="s1">
             <qt:editorinfo endTargetFactors="85.24;67.58"/>
@@ -61,26 +59,26 @@
             <qt:editorinfo endTargetFactors="9.23;16.61"/>
         </transition>
         <transition type="external" event="readC" target="s1">
-            <qt:editorinfo movePoint="23.45;-44.86" startTargetFactors="72.47;9.48" endTargetFactors="68.75;84.28"/>
+            <qt:editorinfo endTargetFactors="68.75;84.28" startTargetFactors="72.47;9.48" movePoint="23.45;-44.86"/>
         </transition>
         <transition type="external" event="readT" target="Init">
-            <qt:editorinfo movePoint="-84.63;-88.70" startTargetFactors="14.91;20.69" endTargetFactors="26.01;83.40"/>
+            <qt:editorinfo endTargetFactors="26.01;83.40" startTargetFactors="14.91;20.69" movePoint="-84.63;-88.70"/>
         </transition>
     </state>
     <state id="s5">
         <qt:editorinfo scenegeometry="203.92;741.24;143.92;691.24;120;100" geometry="203.92;741.24;-60;-50;120;100"/>
-        <transition type="external" event="readT" target="Final_2"/>
+        <transition type="external" event="readT" target="Final"/>
         <transition type="external" event="readA" target="s1">
-            <qt:editorinfo movePoint="-38.74;47.92" endTargetFactors="23.76;69.34"/>
+            <qt:editorinfo endTargetFactors="23.76;69.34" movePoint="-38.74;47.92"/>
         </transition>
         <transition type="external" event="readC" target="s4">
-            <qt:editorinfo startTargetFactors="89.71;71.68" endTargetFactors="8.76;70.22"/>
+            <qt:editorinfo endTargetFactors="8.76;70.22" startTargetFactors="89.71;71.68"/>
         </transition>
         <transition type="external" event="readG" target="s2">
             <qt:editorinfo endTargetFactors="13.21;58.79"/>
         </transition>
     </state>
-    <final id="Final_2">
+    <final id="Final">
         <qt:editorinfo scenegeometry="87.69;491.44;67.69;471.44;40;40" geometry="87.69;491.44;-20;-20;40;40"/>
     </final>
 </scxml>

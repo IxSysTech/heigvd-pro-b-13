@@ -30,5 +30,4 @@ HEADERS += \
     emitteracgt.h
 
 STATECHARTS += \
-    machine.scxml \
-    testLights.scxml
+    machine.scxml
