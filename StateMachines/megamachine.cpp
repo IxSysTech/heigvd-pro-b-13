@@ -1,38 +1,30 @@
 #include "megamachine.h"
 
-void MegaMachine::buildStateMachine()
+void MegaMachine::buildStateMachine(int nbStates)
 {
-    QState *s1 = new QState(&machine);
-    QState *s2 = new QState(&machine);
-    QState *s3 = new QState(&machine);
+    for(int i = 0; i < nbStates; ++i){
+        states.push_back(new QState(&machine));
+    }
+    srand(time(NULL));
+    for(QState *state : states){
+        state->addTransition(this, SIGNAL(A()), states.at(rand() % nbStates));
+        state->addTransition(this, SIGNAL(C()), states.at(rand() % nbStates));
+        state->addTransition(this, SIGNAL(G()), states.at(rand() % nbStates));
+        state->addTransition(this, SIGNAL(T()), states.at(rand() % nbStates));
+    }
 
-    s1->addTransition(this, SIGNAL(A()), s2);
-    s1->addTransition(this, SIGNAL(C()), s1);
-    s1->addTransition(this, SIGNAL(G()), s3);
-    s1->addTransition(this, SIGNAL(T()), s2);
+    connect(states.at(0), &QState::entered, this, &MegaMachine::runS1);
+    connect(states.at(1), &QState::entered, this, &MegaMachine::runS2);
+    connect(states.at(2), &QState::entered, this, &MegaMachine::runS3);
 
-    s2->addTransition(this, SIGNAL(A()), s1);
-    s2->addTransition(this, SIGNAL(C()), s3);
-    s2->addTransition(this, SIGNAL(G()), s2);
-    s2->addTransition(this, SIGNAL(T()), s3);
-
-    s3->addTransition(this, SIGNAL(A()), s2);
-    s3->addTransition(this, SIGNAL(C()), s3);
-    s3->addTransition(this, SIGNAL(G()), s1);
-    s3->addTransition(this, SIGNAL(T()), s2);
-
-    connect(s1, &QState::entered, this, &MegaMachine::runS1);
-    connect(s2, &QState::entered, this, &MegaMachine::runS2);
-    connect(s3, &QState::entered, this, &MegaMachine::runS3);
-
-    machine.setInitialState(s1);
+    machine.setInitialState(states.at(0));
 
     machine.start();
 }
 
-MegaMachine::MegaMachine(QObject *parent) : QObject(parent)
+MegaMachine::MegaMachine(int nbStates, QObject *parent) : QObject(parent)
 {
-    buildStateMachine();
+    buildStateMachine(nbStates);
 }
 
 void MegaMachine::runS1()
