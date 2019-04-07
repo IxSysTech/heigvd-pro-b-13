@@ -7,10 +7,10 @@ class emitterACGT : public QObject
 {
     Q_OBJECT
 public:
-    explicit emitterACGT(QString sequence, QObject *parent = nullptr);
+    explicit emitterACGT(const std::string &sequence, QObject *parent = nullptr);
     void beginAnalysis();
 private:
-    QString sequence;
+    std::string sequence;
 signals:
     void readA();
     void readC();

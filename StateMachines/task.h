@@ -12,22 +12,16 @@ public:
     explicit Task(QObject *parent = 0);
 
 signals:
-    void A();
-    void C();
-    void G();
-    void T();
+    void readA();
+    void readC();
+    void readG();
+    void readT();
     void finished();
-
-private:
-    void buildStateMachine();
-    QStateMachine machine;
 
 public slots:
     void run();
-    void runS1();
-    void runS2();
-    void runS3();
-    void debugSlot();
+private:
+    MegaMachine *machine;
 };
 
 #endif // TASK_H

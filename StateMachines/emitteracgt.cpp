@@ -1,11 +1,11 @@
 #include "emitteracgt.h"
 
-emitterACGT::emitterACGT(QString sequence, QObject *parent) : sequence(sequence),QObject(parent){}
+emitterACGT::emitterACGT(const std::string &sequence, QObject *parent) : QObject(parent), sequence(sequence){}
 
 void emitterACGT::beginAnalysis(){
-    for(QChar c : this->sequence){
-        char temp = (char) c.toLatin1();
-        switch(temp){
+    size_t lengthStr = this->sequence.length();
+    for(size_t i = 0; i < lengthStr; ++i){
+        switch(sequence[i]){
         case 'A':
             emit readA();
             break;
