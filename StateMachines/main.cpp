@@ -1,33 +1,21 @@
 #include <QCoreApplication>
-#include <QScxmlTableData>
-#include "megamachine.h"
-#include "emitteracgt.h"
+#include <QTimer>
+#include "task.h"
 
 int main(int argc, char *argv[])
 {
-        // QCoreApplication a(argc, argv);
-        QTextStream out(stdout, QIODevice::WriteOnly);
+    QCoreApplication a(argc, argv);
 
-        //QString filename = "./machine.scxml";
-        MegaMachine megamachine;
+    // Task parented to the application so that it
+    // will be deleted by the application.
+    Task *task = new Task(&a);
 
-        out << megamachine.machine->isRunning() << endl;
-        out << endl;
+    // This will cause the application to exit when
+    // the task signals finished.
+    QObject::connect(task, SIGNAL(finished()), &a, SLOT(quit()));
 
-        QString sequence = "ACGTAGCTTTCAAAGCTAGCATGGCA";
-        emitterACGT emitter(sequence);
+    // This will run the task from the application event loop.
+    QTimer::singleShot(0, task, SLOT(run()));
 
-        QObject::connect(&emitter,SIGNAL(readA()),
-                         &megamachine, SLOT(readA()));
-        QObject::connect(&emitter,SIGNAL(readC()),
-                         &megamachine, SLOT(readC()));
-        QObject::connect(&emitter,SIGNAL(readG()),
-                         &megamachine, SLOT(readG()));
-        QObject::connect(&emitter,SIGNAL(readT()),
-                         &megamachine, SLOT(readT()));
-
-        emitter.beginAnalysis();
-        return 0;
-
-    //return a.exec();
+    return a.exec();
 }

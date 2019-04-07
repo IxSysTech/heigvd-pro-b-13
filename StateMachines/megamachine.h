@@ -11,7 +11,7 @@ class MegaMachine : public QObject
     Q_OBJECT
 public:
     explicit MegaMachine(QObject *parent = nullptr);
-    QStateMachine *machine;
+    QStateMachine machine;
     std::vector<QState*> states;
 public slots:
     void readA();
