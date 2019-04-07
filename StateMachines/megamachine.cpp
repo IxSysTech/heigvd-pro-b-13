@@ -18,22 +18,19 @@ MegaMachine::MegaMachine(QObject *parent) : QObject(parent)
 
     machine.setInitialState(states.at(0));*/
     QState *s1 = new QState();
-        QState *s2 = new QState();
-        QState *s3 = new QState();
+    QState *s2 = new QState();
+    QState *s3 = new QState();
 
-        s1->addTransition(this, SIGNAL(A()), s2);
-            s2->addTransition(this, SIGNAL(T()), s3);
-            s3->addTransition(this, SIGNAL(C()), s1);
+    s1->addTransition(this, SIGNAL(A()), s2);
+    s2->addTransition(this, SIGNAL(T()), s3);
+    s3->addTransition(this, SIGNAL(C()), s1);
 
-
-
-            machine.addState(s1);
-                machine.addState(s2);
-                machine.addState(s3);
-                machine.setInitialState(s1);
+    machine.addState(s1);
+    machine.addState(s2);
+    machine.addState(s3);
+    machine.setInitialState(s1);
 
     machine.start();
-    out << machine.isRunning();
 }
 
 void MegaMachine::readA(){

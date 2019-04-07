@@ -9,13 +9,25 @@ class Task : public QObject
 {
     Q_OBJECT
 public:
-    explicit Task(QObject *parent = 0) : QObject(parent) {}
+    explicit Task(QObject *parent = 0);
+
+signals:
+    void A();
+    void C();
+    void G();
+    void T();
+    void finished();
+
+private:
+    void buildStateMachine();
+    QStateMachine machine;
 
 public slots:
     void run();
-
-signals:
-    void finished();
+    void runS1();
+    void runS2();
+    void runS3();
+    void debugSlot();
 };
 
 #endif // TASK_H
