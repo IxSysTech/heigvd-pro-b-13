@@ -28,5 +28,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     megamachine.h \
     emitteracgt.h \
-    task.h \
     task.h
