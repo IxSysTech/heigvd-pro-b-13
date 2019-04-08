@@ -1,0 +1,3 @@
+/home/panticne/Documents/PRO/GALGO-2.0/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/panticne/Documents/PRO/GALGO-2.0/cmake-build-debug/CMakeFiles/GALGO_2_0.dir
+/home/panticne/Documents/PRO/GALGO-2.0/cmake-build-debug/CMakeFiles/edit_cache.dir
