@@ -9,6 +9,8 @@ prot_seq = ["LOCATE_protein/protein/protein_sequence",
 loc_seq = ["LOCATE_protein/scl_prediction/source/location",
            "LOCATE_protein/scl_prediction/source/goid"]
 
+loc_seq_tier = ["LOCATE_protein/literature/reference/locations/location"]
+
 nbProt = os.popen("grep -o '<LOCATE_protein*' minimouse.xml | wc -l").read()
 nbLoc = os.popen("grep -o '<location*' minimouse.xml | wc -l").read()
 nbLocNoPre = os.popen("grep -o '<location>No prediction*' minimouse.xml | wc -l").read()
@@ -40,18 +42,38 @@ for row in res:
     file.write(output)
 """
 
+#trouver les cas classiques
 for i in range(0, len(loc_seq)):
     j = 0
     for element in root.findall(loc_seq[i]):
         if element.text != "No prediction":
             res2[j][i] = element.text
             j += 1
+
+""" pas utilisé car blc
+#trouver tous les tiers 1/2
+for i in range(0, len(loc_seq_tier)):
+    for element in root.findall(loc_seq_tier[0]):
+        print '\n', element.attrib['goid'].split(';')
+        for child in element:
+            print child.tag, child.text
+"""
+
 id = 0
+goName = {}
+#construction de la hashtable afin d'entrer qu'une seule fois la goID
 for row in res2:
+    goID = row[1][3:10]
+    if goID not in goName :
+        if goID != "" :
+            goName[goID] = row[0]
     output = "INSERT INTO localisation(id,name,goid) VALUES(" + str(id) + ",'" + row[0] + "','" + row[1] + "');"
-    id += 1
-    print(output)
+    #id += 1
+    #print(output)
     #file2.write(output)
 
+
+#print(goName)
 file.close()
 file2.close()
+
