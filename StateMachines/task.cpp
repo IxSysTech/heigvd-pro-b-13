@@ -3,7 +3,7 @@
 
 Task::Task(QObject * parent) : QObject(parent)
 {
-    machine = new MegaMachine(this);
+    machine = new MegaMachine(3, this);
 }
 
 void Task::run()

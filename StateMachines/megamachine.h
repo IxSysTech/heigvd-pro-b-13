@@ -10,10 +10,8 @@ class MegaMachine : public QObject
 {
     Q_OBJECT
 public:
-    explicit MegaMachine(QObject *parent = nullptr);
-    void buildStateMachine();
-    QStateMachine machine;
-    std::vector<QState*> states;
+    explicit MegaMachine(int nbStates, QObject *parent = nullptr);
+
 public slots:
     void runS1();
     void runS2();
@@ -30,6 +28,10 @@ signals:
     void C();
     void G();
     void T();
+private:
+    void buildStateMachine(int nbStates);
+    QStateMachine machine;
+    std::vector<QState*> states;
 };
 
 #endif // MEGAMACHINE_H
