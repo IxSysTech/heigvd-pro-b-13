@@ -2,8 +2,8 @@
 #define TASK_H
 
 #include <QObject>
-#include "megamachine.h"
 #include "emitteracgt.h"
+#include "megamachinemanager.h"
 
 class Task : public QObject
 {
@@ -12,15 +12,12 @@ public:
     explicit Task(QObject *parent = 0);
 
 signals:
-    void readA();
-    void readC();
-    void readG();
-    void readT();
     void finished();
 
 public slots:
     void run();
 private:
+    MegaMachineManager *manager;
     MegaMachine *machine;
 };
 

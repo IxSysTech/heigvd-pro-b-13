@@ -13,33 +13,29 @@ void MegaMachine::buildStateMachine(int nbStates)
         state->addTransition(this, SIGNAL(T()), states.at(rand() % nbStates));
     }
 
-    connect(states.at(0), &QState::entered, this, &MegaMachine::runS1);
-    connect(states.at(1), &QState::entered, this, &MegaMachine::runS2);
-    connect(states.at(2), &QState::entered, this, &MegaMachine::runS3);
-
+    // connect(states.at(0), &QState::entered, this, &MegaMachine::yes);
+    connect(states.at(1), &QState::entered, this, &MegaMachine::no);
+    connect(states.at(2), &QState::entered, this, &MegaMachine::yes);
     machine.setInitialState(states.at(0));
 
+    connect(&machine, &QStateMachine::stopped, this, &MegaMachine::stop);
     machine.start();
 }
 
-MegaMachine::MegaMachine(int nbStates, QObject *parent) : QObject(parent)
+MegaMachine::MegaMachine(int nbStates, int maxAlerts, QObject *parent) : QObject(parent), maxAlerts(maxAlerts)
 {
     buildStateMachine(nbStates);
+
 }
 
-void MegaMachine::runS1()
-{
-    std::cout << "entered state S1" << std::endl;
+void MegaMachine::yes(){
+    if(++(this->ctrYes) >= maxAlerts)
+        this->machine.stop();
 }
 
-void MegaMachine::runS2()
-{
-    std::cout << "entered state S2" << std::endl;
-}
-
-void MegaMachine::runS3()
-{
-    std::cout << "entered state S3" << std::endl;
+void MegaMachine::no(){
+    if(++(this->ctrNo) >= maxAlerts)
+        this->machine.stop();
 }
 
 void MegaMachine::debugSlot()
@@ -58,5 +54,11 @@ void MegaMachine::readG(){
 }
 void MegaMachine::readT(){
     emit T();
+}
+
+void MegaMachine::stop(){
+    QTextStream out(stdout);
+    out << "A Machine has stop !" << endl;
+    emit stopped();
 }
 

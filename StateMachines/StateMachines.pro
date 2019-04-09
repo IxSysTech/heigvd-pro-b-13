@@ -18,7 +18,8 @@ SOURCES += \
         main.cpp \
     megamachine.cpp \
     emitteracgt.cpp \
-    task.cpp
+    task.cpp \
+    megamachinemanager.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -28,4 +29,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     megamachine.h \
     emitteracgt.h \
-    task.h
+    task.h \
+    megamachinemanager.h
