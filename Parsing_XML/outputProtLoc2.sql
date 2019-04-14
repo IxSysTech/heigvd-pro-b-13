@@ -1,3 +1,4 @@
+INSERT INTO ProtLoc(ProcID, LocI
 INSERT INTO ProtLoc(ProcID, LocID) VALUES('0','0');
 INSERT INTO ProtLoc(ProcID, LocID) VALUES('0','1');
 INSERT INTO ProtLoc(ProcID, LocID) VALUES('0','2');

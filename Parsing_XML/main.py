@@ -6,6 +6,8 @@ import collections
 file = open("outputProt.sql", "w+")
 file2 = open("outputLoc.sql", "w+")
 file3 = open("outputProtLoc.sql", "w+")
+file4 = open("outputProtType.sql", "w+")
+file5 = open("outputType.sql", "w+")
 
 prot_seq = ["LOCATE_protein/protein/protein_sequence",          #table prot
             "LOCATE_protein/transcript/transcript_sequence"]
@@ -13,7 +15,8 @@ prot_seq = ["LOCATE_protein/protein/protein_sequence",          #table prot
 loc_seq = ["LOCATE_protein/scl_prediction/source/location",     #table location
            "LOCATE_protein/scl_prediction/source/goid"]
 
-prot_loc_seq = ["LOCATE_protein/scl_prediction"]                               #table ProtLoc
+prot_loc_seq = ["LOCATE_protein/scl_prediction"]                               #table ProtLoc et table ProtType
+prot_type_seq = ["LOCATE_protein/protein"]                               #table ProtType
 
 loc_seq_tier = ["LOCATE_protein/literature/reference/locations/location"]
 
@@ -110,16 +113,35 @@ for element in root.findall(prot_loc_seq[0]):
                 if keygo == key_list[i] :
                     locID = i
                     output = "INSERT INTO ProtLoc(ProcID, LocID) VALUES('" + str(protID) + "','" + str(locID) + "');" + '\n'
-                    print output
+                    #print output
                     file3.write(output)
     protID += 1
 
-#os.system('cat outputProtLoc.sql | sort | uniq > outputProtLoc2.sql') #erreur premiere ligne ?
+os.system('cat outputProtLoc.sql | sort | uniq > outputProtLoc2.sql') #erreur premiere ligne ?
 
 #-------------
 #peuplage table ProtType
 
+protID = 0
+typeID = 0 # 0 humain, 1 mouse
+for element in root.findall(prot_type_seq[0]):
+    for source in element:
+        if source.tag == "organism":
+            organism = source.text
+            typeID = (0 , 1)[organism == 'Mouse']
+            output = "INSERT INTO ProtType(ProcID, TypeID) VALUES('" + str(protID) + "','" + str(typeID) + "');" + '\n'
+            #print output
+            file4.write(output)
+    protID += 1
 
+#-----------
+#peuplage table type
+file5.write("INSERT INTO Type(ID, Name) VALUES('0', 'Human');" + '\n' +
+            "INSERT INTO Type(ID, Name) VALUES('1', 'Mouse');" + '\n')
+
+#----------
 file.close()
 file2.close()
 file3.close()
+file4.close()
+file5.close()
