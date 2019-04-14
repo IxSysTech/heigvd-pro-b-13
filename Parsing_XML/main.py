@@ -1,23 +1,27 @@
 #!/usr/bin/python
 import xml.etree.ElementTree as ET
 import os
+import collections
 
 file = open("outputProt.sql", "w+")
 file2 = open("outputLoc.sql", "w+")
-prot_seq = ["LOCATE_protein/protein/protein_sequence",
+file3 = open("outputProtLoc.sql", "w+")
+
+prot_seq = ["LOCATE_protein/protein/protein_sequence",          #table prot
             "LOCATE_protein/transcript/transcript_sequence"]
-loc_seq = ["LOCATE_protein/scl_prediction/source/location",
+
+loc_seq = ["LOCATE_protein/scl_prediction/source/location",     #table location
            "LOCATE_protein/scl_prediction/source/goid"]
 
-prot_loc_seq = ["LOCATE_protein/protein/protein_sequence",
-                "LOCATE_protein/transcript/transcript_sequence",
-                "LOCATE_protein/scl_prediction/source/goid"]
+prot_loc_seq = ["LOCATE_protein/scl_prediction"]                               #table ProtLoc
 
 loc_seq_tier = ["LOCATE_protein/literature/reference/locations/location"]
 
 nbProt = os.popen("grep -o '<LOCATE_protein*' minimouse.xml | wc -l").read()
 nbLoc = os.popen("grep -o '<location*' minimouse.xml | wc -l").read()
 nbLocNoPre = os.popen("grep -o '<location>No prediction*' minimouse.xml | wc -l").read()
+
+nbProtLoc = nbProt
 
 res = []
 res2 = []
@@ -27,6 +31,8 @@ for i in range(int(nbProt)):
 
 for i in range(int(nbLoc) - int(nbLocNoPre)):
     res2.append([""] * 2)
+
+res3 = res #pour peupler la table ProtLoc on aura autant d'entrer que de prot
 
 organism = "LOCATE_protein/protein/organism"
 
@@ -44,7 +50,7 @@ id = 0
 for row in res:
     output = "INSERT INTO protein(id,sprt,sadn) VALUES(" + str(id) + ",'" + row[0] + "','" + row[1] + "');" + '\n'
     id += 1
-    print output
+    #print output
     file.write(output)
 
 #--------
@@ -77,18 +83,43 @@ for row in res2:
         if goID != "" :
             goName[goID] = row[0]
 
+#order de la hashmap afin de gagner en lisibilite
+goNameOrdered = collections.OrderedDict(sorted(goName.items()))
 
-for key in goName:
-    output = "INSERT INTO localisation(id,name,goid) VALUES(" + str(id) + ",'" + "GO:" + str(key) + "','"+ goName[key] + "');" + '\n'
+for key in goNameOrdered:
+    output = "INSERT INTO localisation(id,name,goid) VALUES(" + str(id) + ",'" + "GO:" + str(key) + "','"+ goNameOrdered[key] + "');" + '\n'
     id += 1
-    print output
+    #print output
     file2.write(output)
 #-------------
 # peuplage table PROTLOC
 
-#incrementer de 1 par 1 notre counter par LOC
+
+print "Peuplage table inter ProtLoc"
+protID = 0 # sert de clef pour protID car on incremente de 1 a chaque fois dans la table de Prot
+locID = 0
+
+key_list = list(goNameOrdered.keys())
+
+for element in root.findall(prot_loc_seq[0]):
+    for source in element:
+        if(source.find('location').text != "No prediction"):
+            goid = source.find('goid').text     #va nous servir a retrouver l'id de loc
+            keygo = goid[3:10]
+            for i in range(len(key_list)):
+                if keygo == key_list[i] :
+                    locID = i
+                    output = "INSERT INTO ProtLoc(ProcID, LocID) VALUES('" + str(protID) + "','" + str(locID) + "');" + '\n'
+                    print output
+                    file3.write(output)
+    protID += 1
+
+#os.system('cat outputProtLoc.sql | sort | uniq > outputProtLoc2.sql') #erreur premiere ligne ?
+
+#-------------
+#peuplage table ProtType
 
 
 file.close()
 file2.close()
-
+file3.close()
