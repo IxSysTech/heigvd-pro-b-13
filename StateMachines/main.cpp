@@ -1,6 +1,7 @@
 #include <QCoreApplication>
 #include <QTimer>
-#include "task.h"
+// #include "task.h"
+#include "megamachinemanager.h"
 
 int main(int argc, char *argv[])
 {

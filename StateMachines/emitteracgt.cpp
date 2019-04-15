@@ -18,6 +18,8 @@ void emitterACGT::beginAnalysis(){
         case 'T':
             emit readT();
             break;
+        default:
+            emit readX();
         }
     }
 }

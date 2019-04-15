@@ -11,6 +11,16 @@ void MegaMachine::buildStateMachine(int nbStates)
         state->addTransition(this, SIGNAL(C()), states.at(rand() % nbStates));
         state->addTransition(this, SIGNAL(G()), states.at(rand() % nbStates));
         state->addTransition(this, SIGNAL(T()), states.at(rand() % nbStates));
+        state->addTransition(this, SIGNAL(X()), states.at(rand() % nbStates));
+    }
+
+    int i = 0;
+    for(QState *state : states){
+        connect(state, &QState::entered, this, [i] () {
+            QTextStream out(stdout);
+            out << "Entered state : " << i << endl;
+        });
+        ++i;
     }
 
     // connect(states.at(0), &QState::entered, this, &MegaMachine::yes);
@@ -25,7 +35,6 @@ void MegaMachine::buildStateMachine(int nbStates)
 MegaMachine::MegaMachine(int nbStates, int maxAlerts, QObject *parent) : QObject(parent), maxAlerts(maxAlerts)
 {
     buildStateMachine(nbStates);
-
 }
 
 void MegaMachine::yes(){
@@ -54,6 +63,10 @@ void MegaMachine::readG(){
 }
 void MegaMachine::readT(){
     emit T();
+}
+
+void MegaMachine::readX(){
+    emit X();
 }
 
 void MegaMachine::stop(){

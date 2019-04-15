@@ -16,6 +16,7 @@ signals:
     void readC();
     void readG();
     void readT();
+    void readX();
 public slots:
 };
 

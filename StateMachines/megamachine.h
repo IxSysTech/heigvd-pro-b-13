@@ -20,6 +20,7 @@ public slots:
     void readC();
     void readG();
     void readT();
+    void readX();
     void stop();
 
 signals:
@@ -28,6 +29,7 @@ signals:
     void C();
     void G();
     void T();
+    void X();
     void stopped();
 private:
     void buildStateMachine(int nbStates);
