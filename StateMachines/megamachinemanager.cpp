@@ -4,7 +4,7 @@ MegaMachineManager::MegaMachineManager(QObject *parent) : QObject(parent)
 {
     //TODO: Créer les machines en regardant le vector de vector contenat les params des machines.
     // Multithread ici
-    machines.push_back(new MegaMachine(3, 1 , this));
+    machines.push_back(new MegaMachine(6, 3, this));
 }
 
 void MegaMachineManager::runMachines() {
