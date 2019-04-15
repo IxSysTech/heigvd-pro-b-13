@@ -88,6 +88,6 @@ void MegaMachine::readX(){
 void MegaMachine::stop(){
     QTextStream out(stdout);
     out << "A Machine has stop !" << endl;
-    emit stopped();
+    emit stopped(1);
 }
 

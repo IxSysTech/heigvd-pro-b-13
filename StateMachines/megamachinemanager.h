@@ -16,7 +16,7 @@ signals:
     void finished();
 public slots:
     void runMachines();
-    void stop();
+    void stop(int stoppedMachine);
 private:
     QVector<MegaMachine*> machines;
 };

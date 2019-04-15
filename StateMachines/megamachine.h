@@ -30,7 +30,7 @@ signals:
     void G();
     void T();
     void X();
-    void stopped();
+    void stopped(int stoppedMachine);
 private:
     void buildStateMachine(int nbStates);
     int ctrYes, ctrNo;

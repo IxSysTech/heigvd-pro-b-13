@@ -4,7 +4,7 @@ MegaMachineManager::MegaMachineManager(QObject *parent) : QObject(parent)
 {
     //TODO: Créer les machines en regardant le vector de vector contenat les params des machines.
     // Multithread ici
-    machines.push_back(new MegaMachine(6, 3, this));
+    machines.push_back(new MegaMachine(10, 1, this));
 }
 
 void MegaMachineManager::runMachines() {
@@ -21,14 +21,14 @@ void MegaMachineManager::runMachines() {
     connect(theEmitter, SIGNAL(readT()),machine,SLOT(readT()));
     connect(theEmitter, SIGNAL(readX()),machine,SLOT(readX()));
 
-    connect(machine, SIGNAL(stopped()), this, SLOT(stop()));
+    connect(machine, SIGNAL(stopped(int)), this, SLOT(stop(int)));
     QTextStream out(stdout);
     //out << machine->machine.isRunning();
     theEmitter->beginAnalysis();
     emit finished();
 }
 
-void MegaMachineManager::stop(){
+void MegaMachineManager::stop(int stoppedMachine){
     QTextStream out(stdout);
-    out << "A Machine has stopp !" << endl;
+    out << "One of my machine has stop, we should disconnect events for the machine : " << stoppedMachine << endl;
 }
