@@ -31,3 +31,6 @@ HEADERS += \
     emitteracgt.h \
     task.h \
     megamachinemanager.h
+
+DISTFILES += \
+    umlstatemachines.qmodel
