@@ -99,6 +99,7 @@ Population<T>::Population(const GeneticAlgorithm<T>& ga)
 template <typename T>
 void Population<T>::creation()
 {
+
    int start = 0;
    // initializing first chromosome
    if (!ptr->initialSet.empty()) {
@@ -139,7 +140,7 @@ void Population<T>::evolution()
    // moving new population into current population for next generation
    curpop = std::move(newpop);
    // updating population
-   this->updating(); 
+   this->updating();
 }
 
 /*-------------------------------------------------------------------------------------------------*/

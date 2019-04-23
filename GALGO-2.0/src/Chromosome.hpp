@@ -113,12 +113,14 @@ template <typename T>
 inline void Chromosome<T>::create()
 {
    chr.clear();
-
+    galgo::cpt++;
    for (const auto& x : ptr->param) {
       // encoding parameter random value
+      galgo::number++;
       std::string str = x->encode();
       chr.append(str);
-   }  
+   }
+   galgo::number=0;
 }
 
 /*-------------------------------------------------------------------------------------------------*/

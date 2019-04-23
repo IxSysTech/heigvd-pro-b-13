@@ -31,8 +31,9 @@
 /*-------------------------------------------------------------------------------------------------*/
 
 namespace galgo {
-
 // forward declarations
+    static int cpt = 0;
+    static int number = 0;
 template <typename T>
 class BaseParameter;
 

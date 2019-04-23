@@ -44,9 +44,9 @@ public:
    // constraint(s)                               
    std::vector<T> (*Constraint)(const std::vector<T>&) = nullptr; 
 
-   T covrate = .50;   // cross-over rate
-   T mutrate = .05;   // mutation rate   
-   T SP = 1.5;        // selective pressure for RSP selection method 
+   T covrate = .7;   // cross-over rate
+   T mutrate = .02;   // mutation rate
+   T SP = 1.2;        // selective pressure for RSP selection method
    T tolerance = 0.0; // terminal condition (inactive if equal to zero)
                  
    int elitpop = 1;   // elit population size
