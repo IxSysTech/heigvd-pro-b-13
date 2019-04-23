@@ -33,8 +33,8 @@ private:
 public: 
    // objective function pointer
    Func<T> Objective; 
-   // selection method initialized to roulette wheel selection                                   
-   void (*Selection)(Population<T>&) = RWS;  
+   //WE SELECT HERE THE METHOD OF EVOLUTION!!!!!!!!!!!!!!!!!!!!!
+   void (*Selection)(Population<T>&) = RWS;
    // cross-over method initialized to 1-point cross-over                                
    void (*CrossOver)(const Population<T>&, CHR<T>&, CHR<T>&) = P1XO;
    // mutation method initialized to single-point mutation 

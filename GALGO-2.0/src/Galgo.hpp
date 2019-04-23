@@ -34,6 +34,7 @@ namespace galgo {
 // forward declarations
     static int cpt = 0;
     static int number = 0;
+    static std::vector<std::string> param;
 template <typename T>
 class BaseParameter;
 
