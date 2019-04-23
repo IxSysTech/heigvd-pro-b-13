@@ -16,9 +16,12 @@ signals:
     void finished();
 public slots:
     void runMachines();
-    void stop(int stoppedMachine);
+    void stop(int stoppedMachine, int ctrYes, int ctrNo);
+    void nextSequence();
 private:
     QVector<MegaMachine*> machines;
+    emitterACGT *theEmitter;
+    QVector<int> scores;
 };
 
 #endif // MEGAMACHINEMANAGER_H

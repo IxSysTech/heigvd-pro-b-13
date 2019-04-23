@@ -18,7 +18,6 @@ SOURCES += \
         main.cpp \
     megamachine.cpp \
     emitteracgt.cpp \
-    task.cpp \
     megamachinemanager.cpp
 
 # Default rules for deployment.
@@ -29,7 +28,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     megamachine.h \
     emitteracgt.h \
-    task.h \
     megamachinemanager.h
 
 DISTFILES += \

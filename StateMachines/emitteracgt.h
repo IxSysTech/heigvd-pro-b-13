@@ -7,16 +7,21 @@ class emitterACGT : public QObject
 {
     Q_OBJECT
 public:
-    explicit emitterACGT(const std::string &sequence, QObject *parent = nullptr);
+    explicit emitterACGT(const std::map<std::string, bool> &sequences, QObject *parent = nullptr);
     void beginAnalysis();
+    bool getCurrentResult();
 private:
-    std::string sequence;
+    const std::map<std::string, bool> &sequences;
+    bool currentResult;
 signals:
     void readA();
     void readC();
     void readG();
     void readT();
     void readX();
+    void nextSequence();
+    void finishedSequence();
+    void finished();
 public slots:
 };
 

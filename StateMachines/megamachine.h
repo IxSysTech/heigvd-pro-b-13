@@ -1,16 +1,18 @@
 #ifndef MEGAMACHINE_H
 #define MEGAMACHINE_H
+#include <QThread>
 #include <QStateMachine>
 #include <QIODevice>
 #include <QTextStream>
 #include <iostream>
 #include <vector>
+#include <QEventLoop>
 
 class MegaMachine : public QObject
 {
     Q_OBJECT
 public:
-    explicit MegaMachine(int nbStates, int maxAlerts, QObject *parent = nullptr);
+    explicit MegaMachine(int nbStates, int maxAlerts, int id, QObject *parent = nullptr);
 
 public slots:
     void yes();
@@ -21,23 +23,25 @@ public slots:
     void readG();
     void readT();
     void readX();
-    void stop();
+    // void stop();
+    void finishedSequence();
+    void reset();
+    void nothing();
 
 signals:
-    void run();
     void A();
     void C();
     void G();
     void T();
     void X();
-    void stopped(int stoppedMachine);
+    void stopMachine();
+    void resetMachine();
+    void stopped(int stoppedMachine, int ctrYes, int ctrNo);
 private:
     void buildStateMachine(int nbStates);
     int ctrYes, ctrNo;
-    const int maxAlerts;
-
+    const int maxAlerts, id;
     std::vector<QState*> states;
-public:
     QStateMachine machine;
 };
 
