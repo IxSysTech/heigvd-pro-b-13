@@ -204,7 +204,7 @@ void GeneticAlgorithm<T>::run()
       // evolving population
       pop.evolution();
 
-      //We store the evoluated param in our vector.
+      //We store the new parameters in our vector
       for(int j = 0 ; j < 2; j++){
           for(int i = 0 ; i < 8 ; i ++){
               galgo::param[i+j*8] = GetBinary(pop(j)->getParam()[i]);
@@ -262,10 +262,7 @@ void GeneticAlgorithm<T>::print() const
    // getting best parameter(s) from best chromosome
    std::vector<T> bestParam = pop(0)->getParam();
    std::vector<T> bestResult = pop(0)->getResult();
-
-    for(int i = 0 ; i < 16; ++i) {
-        std::cout << galgo::param[i] << " ";
-    }
+   
     if (nogen % genstep == 0) {
       std::cout << " Generation = " << std::setw(std::to_string(nbgen).size()) << nogen << " |";
       for (int i = 0; i < nbparam; ++i) {
