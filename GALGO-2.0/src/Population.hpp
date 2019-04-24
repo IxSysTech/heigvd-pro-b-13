@@ -140,6 +140,7 @@ void Population<T>::evolution()
    // moving new population into current population for next generation
    curpop = std::move(newpop);
    // updating population
+
    this->updating();
 }
 

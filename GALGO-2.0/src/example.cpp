@@ -3,6 +3,7 @@
 //=================================================================================================
 
 #include "Galgo.hpp"
+#include "Chromosome.hpp"
 
 // objective class example
 template <typename T>
@@ -36,5 +37,4 @@ int main(int argc, char* [])
 
    // running genetic algorithm
    ga.run();
-
 }

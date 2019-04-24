@@ -38,6 +38,7 @@ void RWS(galgo::Population<T>& x)
          fsum -= x(j)->fitness;
          j++;
       }
+
       // selecting element
       x.select(j - 1);
    }

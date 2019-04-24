@@ -52,7 +52,7 @@ public:
    int elitpop = 1;   // elit population size
    int matsize;       // mating pool size, set to popsize by default
    int tntsize = 10;  // tournament size
-   int genstep = 10;  // generation step for outputting results
+   int genstep = 1;  // generation step for outputting results
    int precision = 5; // precision for outputting results
 
    // constructor
@@ -203,6 +203,7 @@ void GeneticAlgorithm<T>::run()
    for (nogen = 1; nogen <= nbgen; ++nogen) {
       // evolving population
       pop.evolution();
+
       // getting best current result
       bestResult = pop(0)->getTotal();
       // outputting results
