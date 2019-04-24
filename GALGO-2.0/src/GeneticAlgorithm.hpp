@@ -34,11 +34,11 @@ public:
    // objective function pointer
    Func<T> Objective; 
    //WE SELECT HERE THE METHOD OF EVOLUTION!!!!!!!!!!!!!!!!!!!!!
-   void (*Selection)(Population<T>&) = RWS;
+   void (*Selection)(Population<T>&) = SUS;
    // cross-over method initialized to 1-point cross-over                                
-   void (*CrossOver)(const Population<T>&, CHR<T>&, CHR<T>&) = P1XO;
+   void (*CrossOver)(const Population<T>&, CHR<T>&, CHR<T>&) = P2XO;
    // mutation method initialized to single-point mutation 
-   void (*Mutation)(CHR<T>&) = SPM;  
+   void (*Mutation)(CHR<T>&) = SPM;
    // adaptation to constraint(s) method                                        
    void (*Adaptation)(Population<T>&) = nullptr; 
    // constraint(s)                               
@@ -262,7 +262,7 @@ void GeneticAlgorithm<T>::print() const
    // getting best parameter(s) from best chromosome
    std::vector<T> bestParam = pop(0)->getParam();
    std::vector<T> bestResult = pop(0)->getResult();
-   
+
     if (nogen % genstep == 0) {
       std::cout << " Generation = " << std::setw(std::to_string(nbgen).size()) << nogen << " |";
       for (int i = 0; i < nbparam; ++i) {

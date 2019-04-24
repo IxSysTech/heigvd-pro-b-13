@@ -19,9 +19,9 @@ public:
 
 };
 
-
 int main(int argc, char* [])
 {
+
    //Test with hardcoded param
    galgo::Parameter<double,64> par1({0.0,3000000000.0});
    galgo::Parameter<double,64> par2({0.0,3000000000.0});
@@ -37,4 +37,5 @@ int main(int argc, char* [])
 
    // running genetic algorithm
    ga.run();
+
 }
