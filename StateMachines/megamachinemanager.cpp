@@ -2,6 +2,7 @@
 
 MegaMachineManager::MegaMachineManager(QObject *parent) : QObject(parent)
 {
+    QTextStream out(stdout);
     //TODO: Créer les machines en regardant le vector de vector contenant les params des machines.
     // Multithread ici
     int nbMachines = 1;
@@ -11,17 +12,21 @@ MegaMachineManager::MegaMachineManager(QObject *parent) : QObject(parent)
     srand(time(nullptr));
     int nbStates = 8;
     for(int i = 0; i < nbStates; ++i){
+        out << "State : " << i << " : " << endl;
         StateDescriptor *currentState = new StateDescriptor;
         currentState->transitions = std::vector<StateDescriptor::Transition>();
         for(int begin = 0; begin != 5; begin++){
+            int transition = rand() % nbStates;
+            out << begin << " -> " << transition << endl;
             StateDescriptor::Transition currentTrans = {
                 .signal = static_cast<StateDescriptor::Transition::signalType>(begin),
-                .destinationState = rand() % nbStates
+                .destinationState = transition
             };
             currentState->transitions.push_back(currentTrans);
         }
         currentState->stateAction = StateDescriptor::NOTHING;
         theTestMachine->push_back(*currentState);
+        out << "---------------------------------------" << endl;
     }
 
     // Put the last state to finish the machine
@@ -41,7 +46,6 @@ void MegaMachineManager::runMachines() {
     connect(theEmitter, SIGNAL(nextSequence()), this, SLOT(nextSequence()));
     //Test
     for(MegaMachine *machine : machines) {
-
         //TODO: faire ces connects pour chaque machine
         connect(theEmitter, SIGNAL(readA()),machine,SLOT(readA()));
         connect(theEmitter, SIGNAL(readC()),machine,SLOT(readC()));
