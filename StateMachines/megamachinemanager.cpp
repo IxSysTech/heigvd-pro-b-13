@@ -4,9 +4,9 @@ MegaMachineManager::MegaMachineManager(QObject *parent) : QObject(parent)
 {
     //TODO: Créer les machines en regardant le vector de vector contenat les params des machines.
     // Multithread ici
-    int nbMachines = 5;
+    int nbMachines = 1;
     for (int i = 0; i < nbMachines; ++i) {
-        machines.push_back(new MegaMachine(10, 1, i, this));
+        machines.push_back(new MegaMachine(10, 2, i, this));
     }
     scores = QVector<int>(nbMachines, 0);
 }
@@ -14,8 +14,10 @@ MegaMachineManager::MegaMachineManager(QObject *parent) : QObject(parent)
 void MegaMachineManager::runMachines() {
 
     std::map<std::string, bool> sequences = std::map<std::string, bool>();
-    sequences.insert(std::pair<std::string, bool>("ACGT", true));
-    sequences.insert(std::pair<std::string, bool>("ACGTGCAAAXXXAC", true));
+    sequences.insert(std::pair<std::string, bool>("ACGTTTT", true));
+    sequences.insert(std::pair<std::string, bool>("ACGGCAACAXXACGTXAC", true));
+    sequences.insert(std::pair<std::string, bool>("ACGTGCAACAXXACGTXAC", true));
+    sequences.insert(std::pair<std::string, bool>("ACGGCAACAXXACGXTAC", false));
     theEmitter = new emitterACGT(sequences);
     connect(theEmitter, SIGNAL(nextSequence()), this, SLOT(nextSequence()));
     //Test

@@ -3,7 +3,7 @@
 void MegaMachine::buildStateMachine(int nbStates)
 {
     QTextStream out(stdout);
-    for(int i = 0; i < nbStates; ++i){
+    /*for(int i = 0; i < nbStates; ++i){
         states.push_back(new QState(&machine));
     }
     srand(time(NULL));
@@ -55,6 +55,51 @@ void MegaMachine::buildStateMachine(int nbStates)
     machine.setInitialState(states.at(0));
 
     // connect(&machine, &QStateMachine::stopped, this, &MegaMachine::stop);
+    machine.start();*/
+
+    /**
+      Test machine
+    **/
+
+    for(int i = 0; i < 5; ++i){
+        states.push_back(new QState(&machine));
+    }
+
+    QState *finalState = new QState(&machine);
+
+    for(QState* state : states)
+        state->addTransition(this, SIGNAL(stopMachine()), finalState);
+
+    states.at(0)->addTransition(this, SIGNAL(A()), states.at(1));
+
+    states.at(1)->addTransition(this, SIGNAL(C()), states.at(2));
+    states.at(1)->addTransition(this, SIGNAL(C()), states.at(0));
+    states.at(1)->addTransition(this, SIGNAL(G()), states.at(0));
+    states.at(1)->addTransition(this, SIGNAL(T()), states.at(0));
+    states.at(1)->addTransition(this, SIGNAL(X()), states.at(0));
+
+    states.at(2)->addTransition(this, SIGNAL(G()), states.at(3));
+    states.at(2)->addTransition(this, SIGNAL(C()), states.at(0));
+    states.at(2)->addTransition(this, SIGNAL(G()), states.at(0));
+    states.at(2)->addTransition(this, SIGNAL(T()), states.at(0));
+    states.at(2)->addTransition(this, SIGNAL(X()), states.at(0));
+
+    states.at(3)->addTransition(this, SIGNAL(T()), states.at(4));
+    states.at(3)->addTransition(this, SIGNAL(C()), states.at(0));
+    states.at(3)->addTransition(this, SIGNAL(G()), states.at(0));
+    states.at(3)->addTransition(this, SIGNAL(T()), states.at(0));
+    states.at(3)->addTransition(this, SIGNAL(X()), states.at(0));
+
+    states.at(4)->addTransition(this, SIGNAL(A()), states.at(1));
+
+    finalState->addTransition(this, SIGNAL(resetMachine()), states.at(0));
+
+    connect(states.at(4), &QState::entered, this, &MegaMachine::yes);
+
+    // If nothing was detected
+    connect(finalState, &QState::entered, this, &MegaMachine::nothing);
+    machine.setInitialState(states.at(0));
+
     machine.start();
 }
 
