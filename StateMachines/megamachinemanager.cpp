@@ -9,13 +9,14 @@ MegaMachineManager::MegaMachineManager(QObject *parent) : QObject(parent)
     // Construction d'une machine de test
     std::vector<StateDescriptor> *theTestMachine = new std::vector<StateDescriptor>();
     srand(time(nullptr));
-    for(int i = 0; i < 4; ++i){
+    int nbStates = 8;
+    for(int i = 0; i < nbStates; ++i){
         StateDescriptor *currentState = new StateDescriptor;
         currentState->transitions = std::vector<StateDescriptor::Transition>();
         for(int begin = 0; begin != 5; begin++){
             StateDescriptor::Transition currentTrans = {
                 .signal = static_cast<StateDescriptor::Transition::signalType>(begin),
-                .destinationState = rand() % 4
+                .destinationState = rand() % nbStates
             };
             currentState->transitions.push_back(currentTrans);
         }
