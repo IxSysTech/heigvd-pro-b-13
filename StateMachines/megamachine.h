@@ -6,14 +6,16 @@
 #include <QTextStream>
 #include <iostream>
 #include <vector>
+#include <set>
 #include <QEventLoop>
+#include "utils.h"
 
 class MegaMachine : public QObject
 {
     Q_OBJECT
 public:
     explicit MegaMachine(int nbStates, int maxAlerts, int id, QObject *parent = nullptr);
-
+    explicit MegaMachine(std::vector<StateDescriptor> states, int maxAlerts, int id, QObject *parent = nullptr);
 public slots:
     void yes();
     void no();
@@ -26,7 +28,7 @@ public slots:
     // void stop();
     void finishedSequence();
     void reset();
-    void nothing();
+    void machineEnd();
 
 signals:
     void A();
@@ -39,6 +41,7 @@ signals:
     void stopped(int stoppedMachine, int ctrYes, int ctrNo);
 private:
     void buildStateMachine(int nbStates);
+    void buildStateMachine(std::vector<StateDescriptor> states);
     int ctrYes, ctrNo;
     const int maxAlerts, id;
     std::vector<QState*> states;

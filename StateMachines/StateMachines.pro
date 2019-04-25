@@ -28,7 +28,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     megamachine.h \
     emitteracgt.h \
-    megamachinemanager.h
+    megamachinemanager.h \
+    utils.h
 
 DISTFILES += \
     umlstatemachines.qmodel

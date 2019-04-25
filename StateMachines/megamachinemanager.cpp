@@ -2,11 +2,31 @@
 
 MegaMachineManager::MegaMachineManager(QObject *parent) : QObject(parent)
 {
-    //TODO: Créer les machines en regardant le vector de vector contenat les params des machines.
+    //TODO: Créer les machines en regardant le vector de vector contenant les params des machines.
     // Multithread ici
-    int nbMachines = 5;
-    for (int i = 0; i < nbMachines; ++i) {
-        machines.push_back(new MegaMachine(10, 1, i, this));
+    int nbMachines = 1;
+
+    // Construction d'une machine de test
+    std::vector<StateDescriptor> *theTestMachine = new std::vector<StateDescriptor>();
+    srand(time(nullptr));
+    for(int i = 0; i < 4; ++i){
+        StateDescriptor *currentState = new StateDescriptor;
+        currentState->transitions = std::vector<StateDescriptor::Transition>();
+        for(int begin = 0; begin != 5; begin++){
+            StateDescriptor::Transition currentTrans = {
+                .signal = static_cast<StateDescriptor::Transition::signalType>(begin),
+                .destinationState = rand() % 4
+            };
+            currentState->transitions.push_back(currentTrans);
+        }
+        currentState->stateAction = StateDescriptor::NOTHING;
+        theTestMachine->push_back(*currentState);
+    }
+
+    // Put the last state to finish the machine
+    theTestMachine->at(3).stateAction = StateDescriptor::YES;
+    for(int i = 0; i < nbMachines; ++i) {
+        machines.push_back(new MegaMachine(*theTestMachine, 1, i, this));
     }
     scores = QVector<int>(nbMachines, 0);
 }
@@ -53,7 +73,7 @@ void MegaMachineManager::stop(int stoppedMachine, int ctrYes, int ctrNo){
 
     // TODO: demander commant gérer les cas où le maxAlert n'est pas atteint (mais que ctrYes et ctrNo sont incrémentées)
     // Pour le moment : on admet que c'est comme si rien détecter (0)
-    if((ctrYes > ctrNo == theEmitter->getCurrentResult()) || (ctrYes < ctrNo == theEmitter->getCurrentResult()))
+    if(((ctrYes > ctrNo) == (theEmitter->getCurrentResult())) || ((ctrYes < ctrNo) == (theEmitter->getCurrentResult())))
         ++scores[stoppedMachine];
 }
 
