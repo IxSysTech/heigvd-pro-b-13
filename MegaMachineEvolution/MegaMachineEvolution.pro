@@ -33,6 +33,11 @@ SOURCES += \
     StateMachines/megamachinemanager.cpp \
     dispatcher.cpp
 
+INCLUDEPATH += \
+    GALGO/ \
+    GUI/ \
+    StateMachines/
+
 HEADERS += \
     GALGO/Chromosome.hpp \
     GALGO/Converter.hpp \
