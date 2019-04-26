@@ -30,7 +30,8 @@ SOURCES += \
     GUI/mainwindow.cpp \
     StateMachines/emitteracgt.cpp \
     StateMachines/megamachine.cpp \
-    StateMachines/megamachinemanager.cpp
+    StateMachines/megamachinemanager.cpp \
+    dispatcher.cpp
 
 HEADERS += \
     GALGO/Chromosome.hpp \
@@ -45,7 +46,8 @@ HEADERS += \
     StateMachines/emitteracgt.h \
     StateMachines/megamachine.h \
     StateMachines/megamachinemanager.h \
-    StateMachines/utils.h
+    StateMachines/utils.h \
+    dispatcher.h
 
 FORMS += \
     GUI/mainwindow.ui

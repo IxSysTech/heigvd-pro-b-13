@@ -1,9 +1,10 @@
 //=================================================================================================
 //                    Copyright (C) 2017 Olivier Mallet - All Rights Reserved                      
 //=================================================================================================
-
+/*
 #include "Galgo.hpp"
 #include "Chromosome.hpp"
+#include "dispatcher.h"
 
 // objective class example
 template <typename T>
@@ -13,15 +14,15 @@ public:
    //The objective is to have the greatest result from f(x)
    static std::vector<T> Objective(const std::vector<T>& x)
    {
-      T obj = x[0]+x[1]+x[2]+x[3]+x[4]+x[5]+x[6]+x[7];
+      T obj =x[0];
       return {obj};
    }
 
 };
 
-int genAlgo()
+int main()
 {
-   //Test with hardcoded param
+   //Test with hardcoded params
    galgo::Parameter<double,64> par1({0.0,3000000000.0});
    galgo::Parameter<double,64> par2({0.0,3000000000.0});
    galgo::Parameter<double,64> par3({0.0,3000000000.0});
@@ -36,4 +37,4 @@ int genAlgo()
 
    // running genetic algorithm
    ga.run();
-}
+}*/
