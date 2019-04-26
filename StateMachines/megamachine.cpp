@@ -21,19 +21,35 @@ void MegaMachine::buildStateMachine(std::vector<StateDescriptor> statesDescripti
                     break;
 
                 case StateDescriptor::Transition::C:
-                    states.at(stateNumber)->addTransition(this, SIGNAL(C()), states.at(currentTransition.destinationState));
+                    states.at(stateNumber)->addTransition(
+                                this,
+                                SIGNAL(C()),
+                                states.at(currentTransition.destinationState)
+                              );
                     break;
 
                 case StateDescriptor::Transition::G:
-                    states.at(stateNumber)->addTransition(this, SIGNAL(G()), states.at(currentTransition.destinationState));
+                    states.at(stateNumber)->addTransition(
+                                this,
+                                SIGNAL(G()),
+                                states.at(currentTransition.destinationState)
+                              );
                     break;
 
                 case StateDescriptor::Transition::T:
-                    states.at(stateNumber)->addTransition(this, SIGNAL(T()), states.at(currentTransition.destinationState));
+                    states.at(stateNumber)->addTransition(
+                                this,
+                                SIGNAL(T()),
+                                states.at(currentTransition.destinationState)
+                              );
                     break;
 
                 case StateDescriptor::Transition::X:
-                    states.at(stateNumber)->addTransition(this, SIGNAL(X()), states.at(currentTransition.destinationState));
+                    states.at(stateNumber)->addTransition(
+                                this,
+                                SIGNAL(X()),
+                                states.at(currentTransition.destinationState)
+                              );
                     break;
             }
         }
