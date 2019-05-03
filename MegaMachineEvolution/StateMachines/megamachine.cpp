@@ -205,7 +205,9 @@ void MegaMachine::finishedSequence(){
 }
 
 void MegaMachine::reset(){
+    QTextStream out(stdout);
     this->ctrNo = this->ctrYes = 0;
+    out << "Machine is running : " << this->machine.isRunning();
     emit resetMachine();
 }
 
