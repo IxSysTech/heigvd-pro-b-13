@@ -3,6 +3,11 @@
 
 #include <QObject>
 
+union converter {
+    double value;
+    uint64_t converted;
+};
+
 class Dispatcher : public QObject
 {
     Q_OBJECT

@@ -1,40 +1,12 @@
 #include "megamachinemanager.h"
 
-MegaMachineManager::MegaMachineManager(QObject *parent) : QObject(parent)
+MegaMachineManager::MegaMachineManager(std::vector<std::vector<StateDescriptor>> machinesGiven, std::vector<int> *scoresToGive, QObject *parent) : QObject(parent)
 {
-    QTextStream out(stdout);
-    //TODO: Créer les machines en regardant le vector de vector contenant les params des machines.
-    // Multithread ici
-    int nbMachines = 1;
-
-    // Construction d'une machine de test
-    std::vector<StateDescriptor> *theTestMachine = new std::vector<StateDescriptor>();
-    srand(time(nullptr));
-    int nbStates = 8;
-    for(int i = 0; i < nbStates; ++i){
-        out << "State : " << i << " : " << endl;
-        StateDescriptor *currentState = new StateDescriptor;
-        currentState->transitions = std::vector<StateDescriptor::Transition>();
-        for(int begin = 0; begin != 5; begin++){
-            int transition = rand() % nbStates;
-            out << begin << " -> " << transition << endl;
-            StateDescriptor::Transition currentTrans = {
-                .signal = static_cast<StateDescriptor::Transition::signalType>(begin),
-                .destinationState = transition
-            };
-            currentState->transitions.push_back(currentTrans);
-        }
-        currentState->stateAction = StateDescriptor::NOTHING;
-        theTestMachine->push_back(*currentState);
-        out << "---------------------------------------" << endl;
-    }
-
-    // Put the last state to finish the machine
-    theTestMachine->at(3).stateAction = StateDescriptor::YES;
+    int nbMachines = machines.size();
     for(int i = 0; i < nbMachines; ++i) {
-        machines.push_back(new MegaMachine(*theTestMachine, 1, i, this));
+        machines.push_back(new MegaMachine(machinesGiven.at(i), 1, i, this));
     }
-    scores = QVector<int>(nbMachines, 0);
+    scores = scoresToGive;
 }
 
 void MegaMachineManager::runMachines() {
@@ -60,7 +32,7 @@ void MegaMachineManager::runMachines() {
     QTextStream out(stdout);
     theEmitter->beginAnalysis();
     int count = 0;
-    for(int i : scores) {
+    for(int i : *scores) {
         out << "Score : " << i << " for machine : " << count++ << endl;
     }
     emit finished();
@@ -79,7 +51,7 @@ void MegaMachineManager::stop(int stoppedMachine, int ctrYes, int ctrNo){
     // TODO: demander commant gérer les cas où le maxAlert n'est pas atteint (mais que ctrYes et ctrNo sont incrémentées)
     // Pour le moment : on admet que c'est comme si rien détecter (0)
     if(((ctrYes > ctrNo) == (theEmitter->getCurrentResult())) || ((ctrYes < ctrNo) == (theEmitter->getCurrentResult())))
-        ++scores[stoppedMachine];
+        ++(*scores)[stoppedMachine];
 }
 
 void MegaMachineManager::nextSequence() {

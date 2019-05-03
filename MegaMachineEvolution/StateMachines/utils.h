@@ -8,11 +8,12 @@
 ///        This create the first state as initial and create a "final" state to stop the machine.
 ///
 struct StateDescriptor {
-    enum {
+    typedef enum {
+        NOTHING,
         NO,
-        YES,
-        NOTHING
-    } stateAction;
+        YES
+    } stateActionType;
+    stateActionType stateAction;
 
     struct Transition {
         typedef enum {
