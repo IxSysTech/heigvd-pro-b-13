@@ -2,6 +2,11 @@
 #include "dispatcher.h"
 #include <QApplication>
 #include <QTimer>
+#include <unistd.h>
+#include <iostream>
+#include <fstream>
+#include <stdio.h>
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -10,7 +15,11 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
     */
+    FILE* myfile;
+    myfile = std::fopen("test.txt", "w");
+    int myfileFD = fileno(myfile);
 
+    dup2(myfileFD, 1);
     // Task parented to the application so that it
     // will be deleted by the application.
     //Task *task = new Task(&a);
