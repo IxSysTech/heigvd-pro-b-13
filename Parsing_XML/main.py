@@ -8,6 +8,10 @@ file2 = open("outputLoc.sql", "w+")
 file3 = open("outputProtLoc.sql", "w+")
 file4 = open("outputProtType.sql", "w+")
 file5 = open("outputType.sql", "w+")
+file6 = open("outputError.sql", "w+")
+
+path = "../../LOCATE_mouse_v6_20081121.xml"
+#path = "minimouse.xml"
 
 prot_seq = ["LOCATE_protein/protein/protein_sequence",          #table prot
             "LOCATE_protein/transcript/transcript_sequence"]
@@ -20,9 +24,9 @@ prot_type_seq = ["LOCATE_protein/protein"]                               #table 
 
 loc_seq_tier = ["LOCATE_protein/literature/reference/locations/location"]
 
-nbProt = os.popen("grep -o '<LOCATE_protein*' minimouse.xml | wc -l").read()
-nbLoc = os.popen("grep -o '<location*' minimouse.xml | wc -l").read()
-nbLocNoPre = os.popen("grep -o '<location>No prediction*' minimouse.xml | wc -l").read()
+nbProt = os.popen("grep -o '<LOCATE_protein*' " + path + " | wc -l").read()
+nbLoc = os.popen("grep -o '<location*' " + path + " | wc -l").read()
+nbLocNoPre = os.popen("grep -o '<location>No prediction*' " + path + " | wc -l").read()
 
 nbProtLoc = nbProt
 
@@ -39,7 +43,7 @@ res3 = res #pour peupler la table ProtLoc on aura autant d'entrer que de prot
 
 organism = "LOCATE_protein/protein/organism"
 
-tree = ET.parse("minimouse.xml")
+tree = ET.parse(path)
 root = tree.getroot();
 
 # peuplage table proteine
@@ -51,7 +55,7 @@ for i in range(0, len(prot_seq)):
         j += 1
 id = 0
 for row in res:
-    output = "INSERT INTO protein(id,sprt,sadn) VALUES(" + str(id) + ",'" + row[0] + "','" + row[1] + "');" + '\n'
+    output = "INSERT INTO \"PRO19\".\"protein\"(id,sprt,sadn) VALUES(" + str(id) + ",'" + row[0] + "','" + row[1] + "');" + '\n'
     id += 1
     #print output
     file.write(output)
@@ -90,10 +94,13 @@ for row in res2:
 goNameOrdered = collections.OrderedDict(sorted(goName.items()))
 
 for key in goNameOrdered:
-    output = "INSERT INTO localisation(id,name,goid) VALUES(" + str(id) + ",'" + "GO:" + str(key) + "','"+ goNameOrdered[key] + "');" + '\n'
+    output = "INSERT INTO \"PRO19\".\"location\"(id,name,goid) VALUES(" + str(id) + ",'" + "GO:" + str(key) + "','"+ goNameOrdered[key] + "');" + '\n'
     id += 1
     #print output
     file2.write(output)
+
+
+
 #-------------
 # peuplage table PROTLOC
 
@@ -107,14 +114,18 @@ key_list = list(goNameOrdered.keys())
 for element in root.findall(prot_loc_seq[0]):
     for source in element:
         if(source.find('location').text != "No prediction"):
-            goid = source.find('goid').text     #va nous servir a retrouver l'id de loc
-            keygo = goid[3:10]
-            for i in range(len(key_list)):
-                if keygo == key_list[i] :
-                    locID = i
-                    output = "INSERT INTO ProtLoc(ProcID, LocID) VALUES('" + str(protID) + "','" + str(locID) + "');" + '\n'
-                    #print output
-                    file3.write(output)
+            try:
+                goid = source.find('goid').text     #va nous servir a retrouver l'id de loc
+                keygo = goid[3:10]
+                for i in range(len(key_list)):
+                    if keygo == key_list[i] :
+                        locID = i
+                        output = "INSERT INTO \"PRO19\".\"prot_to_loc\"(fk_prot, fk_loc) VALUES('" + str(protID) + "','" + str(locID) + "');" + '\n'
+                        #print output
+                        file3.write(output)
+            except:
+                file6.write("error at ProtID = " + str(protID) + '\n')
+
     protID += 1
 
 os.system('cat outputProtLoc.sql | sort | uniq > outputProtLoc2.sql') #erreur premiere ligne ?
@@ -129,15 +140,15 @@ for element in root.findall(prot_type_seq[0]):
         if source.tag == "organism":
             organism = source.text
             typeID = (0 , 1)[organism == 'Mouse']
-            output = "INSERT INTO ProtType(ProcID, TypeID) VALUES('" + str(protID) + "','" + str(typeID) + "');" + '\n'
+            output = "INSERT INTO \"PRO19\".\"prot_to_type\"(fk_prot, fk_type) VALUES('" + str(protID) + "','" + str(typeID) + "');" + '\n'
             #print output
             file4.write(output)
     protID += 1
 
 #-----------
 #peuplage table type
-file5.write("INSERT INTO Type(ID, Name) VALUES('0', 'Human');" + '\n' +
-            "INSERT INTO Type(ID, Name) VALUES('1', 'Mouse');" + '\n')
+file5.write("INSERT INTO \"PRO19\".\"typeOrganism\"(ID, Name) VALUES('0', 'Human');" + '\n' +
+            "INSERT INTO \"PRO19\".\"typeOrganism\"(ID, Name) VALUES('1', 'Mouse');" + '\n')
 
 #----------
 file.close()
@@ -145,3 +156,4 @@ file2.close()
 file3.close()
 file4.close()
 file5.close()
+file6.close()
