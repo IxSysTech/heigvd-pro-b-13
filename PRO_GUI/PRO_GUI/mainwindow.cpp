@@ -4,6 +4,7 @@
 #include <libssh/libssh.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <libpq/libpq-fs.h>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -27,6 +28,10 @@ void MainWindow::on_ckbUseSSH_clicked()
     ui->label_6->setDisabled(ui->label_6->isEnabled());
     ui->label_7->setDisabled(ui->label_7->isEnabled());
     ui->label_8->setDisabled(ui->label_8->isEnabled());
+
+    int lib_ver = PQlibVersion();
+
+        printf("Version of libpq: %d\n", lib_ver);
 }
 
 void MainWindow::on_btnConnect_clicked()
@@ -57,7 +62,7 @@ void MainWindow::on_btnConnect_clicked()
             exit(-1);
         }
 
-        rc = ssh_userauth_password(session, NULL, /*ui->txtSSHUsername->text().toStdString().c_str()*/ "MdpHardCodé");
+        rc = ssh_userauth_password(session, NULL, /*ui->txtSSHUsername->text().toStdString().c_str()*/ "MdpHardCodéf");
         if (rc != SSH_AUTH_SUCCESS){
             fprintf(stderr, "Error authenticating with password: %s\n",
                 ssh_get_error(session));
