@@ -737,7 +737,7 @@ configure:12186: $? = 0
 configure:12195: result: yes
 configure:12233: checking for correct C++ linkage of basic libpq functions
 configure:12272: g++ -o conftest -g -O2   -L/usr/lib conftest.cpp  >&5
-/usr/sbin/ld: /tmp/ccfGWxmu.o: in function `main':
+/usr/sbin/ld: /tmp/ccM1fJsq.o: in function `main':
 /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libpqxx-4.0/conftest.cpp:43: undefined reference to `PQexec'
 collect2: error: ld returned 1 exit status
 configure:12272: $? = 1

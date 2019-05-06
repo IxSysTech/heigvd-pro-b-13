@@ -11,6 +11,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    //Permet de cacher le mot de passe
+    ui->txtDBPassword->setEchoMode(QLineEdit::Password);
+    ui->txtSSHPassword->setEchoMode(QLineEdit::Password);
 }
 
 MainWindow::~MainWindow()
@@ -28,10 +32,6 @@ void MainWindow::on_ckbUseSSH_clicked()
     ui->label_6->setDisabled(ui->label_6->isEnabled());
     ui->label_7->setDisabled(ui->label_7->isEnabled());
     ui->label_8->setDisabled(ui->label_8->isEnabled());
-
-    int lib_ver = PQlibVersion();
-
-        printf("Version of libpq: %d\n", lib_ver);
 }
 
 void MainWindow::on_btnConnect_clicked()
@@ -43,8 +43,8 @@ void MainWindow::on_btnConnect_clicked()
     std::string dbPassword = ui->txtDBPassword->text().toStdString();
 
     if(ui->ckbUseSSH->isChecked()){
+        //Valeur pour vérifié la connection SSH
         int rc = 0;
-        //int verbosity = SSH_LOG_PROTOCOL;
 
         //Création de l'objet SSH
         ssh_session session = ssh_new();
@@ -52,8 +52,7 @@ void MainWindow::on_btnConnect_clicked()
 
         //Spécification du hostname ainsi que du user pour la connection
         ssh_options_set(session, SSH_OPTIONS_HOST, ui->txtSSHHost->text().toLocal8Bit().data());
-        ssh_options_set(session, SSH_OPTIONS_USER, ui->txtSSHPassword->text().toLocal8Bit().data());
-        //ssh_options_set(ssh_Connect, SSH_OPTIONS_LOG_VERBOSITY, &verbosity);
+        //ssh_options_set(session, SSH_OPTIONS_USER, username);
 
         rc = ssh_connect(session);
         if (rc != SSH_OK){
@@ -62,7 +61,8 @@ void MainWindow::on_btnConnect_clicked()
             exit(-1);
         }
 
-        rc = ssh_userauth_password(session, NULL, /*ui->txtSSHUsername->text().toStdString().c_str()*/ "MdpHardCodéf");
+        //Connection avec le mot de passe
+        rc = ssh_userauth_password(session, ui->txtSSHUsername->text().toLocal8Bit().data(), ui->txtSSHPassword->text().toLocal8Bit().data());
         if (rc != SSH_AUTH_SUCCESS){
             fprintf(stderr, "Error authenticating with password: %s\n",
                 ssh_get_error(session));
@@ -71,7 +71,7 @@ void MainWindow::on_btnConnect_clicked()
             exit(-1);
         }
 
-
+        //Fermeture de la session
         ssh_disconnect(session);
         ssh_free(session);
     }
