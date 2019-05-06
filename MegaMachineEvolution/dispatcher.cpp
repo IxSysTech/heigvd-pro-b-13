@@ -33,7 +33,7 @@ std::vector<std::string> Dispatcher::split(const std::string& s, char delimiter)
 
 void Dispatcher::initSequences(){
     sequences = new std::multimap<std::string, bool>();
-    std::ifstream test("sequences");
+    std::ifstream test("sequences3");
     std::string line;
     std::vector<std::string> tokens;
     char delimiter = ';';
@@ -81,7 +81,7 @@ void Dispatcher::run() {
     galgo::Parameter<double,64> par16({0.0, std::numeric_limits<double>::max()});
 
     // initiliazing genetic algorithm
-    galgo::GeneticAlgorithm<double> ga(Dispatcher::objective<double>,10,500,true,par1,par2,par3,par4,par5,par6,par7,par8,par9,par10,par11,par12,par13,par14,par15,par16);
+    galgo::GeneticAlgorithm<double> ga(Dispatcher::objective<double>,100,100,true,par1,par2,par3,par4,par5,par6,par7,par8,par9,par10,par11,par12,par13,par14,par15,par16);
 
     // running genetic algorithm
     ga.run();

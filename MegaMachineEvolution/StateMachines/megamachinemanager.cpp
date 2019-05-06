@@ -5,7 +5,7 @@ MegaMachineManager::MegaMachineManager(std::multimap<std::string, bool> *sequenc
     this->sequences = sequences;
     int nbMachines = machinesGiven.size();
     for(int i = 0; i < nbMachines; ++i) {
-        machines.push_back(new MegaMachine(machinesGiven.at(i), 2, i, this));
+        machines.push_back(new MegaMachine(machinesGiven.at(i), 1, i, this));
     }
     scores = scoresToGive;
 }
