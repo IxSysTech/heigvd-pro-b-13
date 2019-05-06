@@ -207,15 +207,7 @@ void MegaMachine::finishedSequence(){
 void MegaMachine::reset(){
     QTextStream out(stdout);
     this->ctrNo = this->ctrYes = 0;
-    out << "Machine is running : " << this->machine.isRunning();
+    out << "Machine is running : " << this->machine.isRunning() << endl;
     emit resetMachine();
 }
-
-/*
-void MegaMachine::stop(){
-    QTextStream out(stdout);
-    out << "A Machine has stop ! Result is : yes -> " << ctrYes << " and no -> " << ctrNo << endl;
-    // Emit which machine has stop
-    emit stopped(id, ctrYes, ctrNo);
-}*/
 

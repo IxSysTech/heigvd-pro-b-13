@@ -69,10 +69,9 @@ void MegaMachineManager::stop(int stoppedMachine, int ctrYes, int ctrNo){
 
 void MegaMachineManager::nextSequence() {
     QTextStream out(stdout);
-    out << "Resetting the machines for next sequence ...";
+    out << "Resetting the machines for next sequence ..." << endl;
     out.flush();
     for(MegaMachine *machine : machines) {
-        out << "reset";
         machine->reset();
     }
 }
