@@ -9,10 +9,10 @@ class emitterACGT : public QObject
 public:
     ///
     /// \brief emitterACGT - Class who treat each sequence and have the expected result
-    /// \param sequences - map containing pairs of sequences as String and it's expected result
+    /// \param sequences - multimap containing pairs of sequences as String and it's expected result
     /// \param parent - QObject parent
     ///
-    explicit emitterACGT(const std::map<std::string, bool> &sequences, QObject *parent = nullptr);
+    explicit emitterACGT(const std::multimap<std::string, bool> *sequences, QObject *parent = nullptr);
     ///
     /// \brief beginAnalysis - Begin analysis of the sequences
     ///
@@ -24,9 +24,9 @@ public:
     bool getCurrentResult();
 private:
     ///
-    /// \brief sequences - Map storing the sequences and the corresponding result of each sequence
+    /// \brief sequences - multimap storing the sequences and the corresponding result of each sequence
     ///
-    const std::map<std::string, bool> &sequences;
+    const std::multimap<std::string, bool> *sequences;
     bool currentResult;
 signals:
     ///

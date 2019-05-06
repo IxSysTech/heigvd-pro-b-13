@@ -15,7 +15,7 @@ public:
     /// \brief MegaMachineManager - Construct a megamachine for each vector containing StateDescriptor in the given vector.
     /// \param parent - QObject parent
     ///
-    explicit MegaMachineManager(std::vector<std::vector<StateDescriptor>> machinesGiven, std::vector<int> *scoresToGive, QObject *parent = nullptr);
+    explicit MegaMachineManager(std::multimap<std::string, bool> *sequences, std::vector<std::vector<StateDescriptor>> machinesGiven, std::vector<int> *scoresToGive, QObject *parent = nullptr);
 
 signals:
     ///
@@ -51,6 +51,8 @@ private:
     /// \brief scores - Storing the scores of each machine, calculated from the states of the counter when stopped
     ///
     std::vector<int> *scores;
+
+    std::multimap<std::string, bool> *sequences;
 };
 
 #endif // MEGAMACHINEMANAGER_H

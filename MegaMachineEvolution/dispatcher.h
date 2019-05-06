@@ -18,6 +18,10 @@ public:
     static std::vector<T> objective(const std::vector<T>& x);
 signals:
     void finished();
+private:
+    static std::vector<std::string> split(const std::string& s, char delimiter);
+    static std::multimap<std::string, bool> *sequences;
+    static void initSequences();
 public slots:
 };
 
