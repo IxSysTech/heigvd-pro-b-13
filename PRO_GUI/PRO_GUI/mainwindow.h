@@ -2,6 +2,12 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <string>
+#include <libssh/libssh.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <iostream>
+#include <libpq-fe.h>
 
 namespace Ui {
 class MainWindow;
@@ -21,6 +27,7 @@ private slots:
     void on_btnConnect_clicked();
 
 private:
+    ssh_session sshConnect(char* hostname, char* username, char* password);
     Ui::MainWindow *ui;
 };
 

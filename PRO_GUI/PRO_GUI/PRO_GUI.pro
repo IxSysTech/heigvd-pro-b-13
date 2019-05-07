@@ -45,3 +45,10 @@ else:unix: LIBS += -L$$PWD/libssh/build/lib/ -lssh
 
 INCLUDEPATH += $$PWD/libssh/build/include
 DEPENDPATH += $$PWD/libssh/build/include
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../../../../../usr/lib/release/ -lpq
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../../../../../usr/lib/debug/ -lpq
+else:unix: LIBS += -L$$PWD/../../../../../../../../usr/lib/ -lpq
+
+#INCLUDEPATH += $$PWD/../../../../../../../../usr/include
+DEPENDPATH += $$PWD/../../../../../../../../usr/include

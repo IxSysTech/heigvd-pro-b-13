@@ -1,10 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <string>
-#include <libssh/libssh.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <libpq/libpq-fs.h>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -36,12 +31,6 @@ void MainWindow::on_ckbUseSSH_clicked()
 
 void MainWindow::on_btnConnect_clicked()
 {
-    //Récupération des informations de connection pour la base de données
-    std::string dbHost = ui->txtDBHost->text().toStdString();
-    std::string dbName = ui->txtDBName->text().toStdString();
-    std::string dbUsername = ui->txtDBUsername->text().toStdString();
-    std::string dbPassword = ui->txtDBPassword->text().toStdString();
-
     if(ui->ckbUseSSH->isChecked()){
         //Valeur pour vérifié la connection SSH
         int rc = 0;
@@ -50,9 +39,8 @@ void MainWindow::on_btnConnect_clicked()
         ssh_session session = ssh_new();
         if (session == NULL){ exit(-1); }
 
-        //Spécification du hostname ainsi que du user pour la connection
+        //Spécification du hostname
         ssh_options_set(session, SSH_OPTIONS_HOST, ui->txtSSHHost->text().toLocal8Bit().data());
-        //ssh_options_set(session, SSH_OPTIONS_USER, username);
 
         rc = ssh_connect(session);
         if (rc != SSH_OK){
@@ -71,8 +59,31 @@ void MainWindow::on_btnConnect_clicked()
             exit(-1);
         }
 
+        PGconn *conn;
+        char connInfo[100];
+
+        sprintf(connInfo, "user=%s password=%s dbname=%s host=%s port=%d",
+                ui->txtDBUsername->text().toLocal8Bit().data(),
+                ui->txtDBPassword->text().toLocal8Bit().data(),
+                ui->txtDBName->text().toLocal8Bit().data(),
+                ui->txtDBHost->text().toLocal8Bit().data(),
+                5432);
+
+        std:: cout << connInfo << std::endl;
+
+        conn = PQconnectdb(connInfo);
+
+        if (PQstatus(conn) != CONNECTION_OK)
+        {
+            fprintf(stderr, "Connection to database failed: %s",
+                    PQerrorMessage(conn));
+            //exit_nicely(conn);
+        }
+
+
         //Fermeture de la session
         ssh_disconnect(session);
         ssh_free(session);
     }
 }
+
