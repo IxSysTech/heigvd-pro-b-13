@@ -10,6 +10,16 @@ MainWindow::MainWindow(QWidget *parent) :
     //Permet de cacher le mot de passe
     ui->txtDBPassword->setEchoMode(QLineEdit::Password);
     ui->txtSSHPassword->setEchoMode(QLineEdit::Password);
+
+    //Pour les tests
+    ui->txtDBHost->setText("localhost");
+    ui->txtDBName->setText("prot_family_b13");
+    ui->txtDBUsername->setText("samuel_m");
+    ui->txtDBPassword->setText("samuel_db");
+
+    ui->txtSSHHost->setText("trex.lan.iict.ch");
+    ui->txtSSHUsername->setText("samuel.mettler");
+    ui->txtSSHPassword->setText("samuel.b13");
 }
 
 MainWindow::~MainWindow()
@@ -27,29 +37,17 @@ void MainWindow::on_ckbUseSSH_clicked()
     ui->label_6->setDisabled(ui->label_6->isEnabled());
     ui->label_7->setDisabled(ui->label_7->isEnabled());
     ui->label_8->setDisabled(ui->label_8->isEnabled());
-
-
-    //Pour les tests
-    ui->txtDBHost->setText("localhost");
-    ui->txtDBName->setText("prot_family_b13");
-    ui->txtDBUsername->setText("samuel_m");
-    ui->txtDBPassword->setText("samuel_db");
-
-    ui->txtSSHHost->setText("trex.lan.iict.ch");
-    ui->txtSSHUsername->setText("samuel.mettler");
-    ui->txtSSHPassword->setText("samuel.b13");
 }
 
 void MainWindow::on_btnConnect_clicked()
 {
     if(ui->ckbUseSSH->isChecked()){
         ssh_session session = sshConnect();
-        sftp_session sftp = sftpConnect(session);
         ssh_channel channel = channelConnect(session);
         int rc;
 
         //Formatage de la requete
-        char* sqlResquest = "SELECT protein.sadn, location.id FROM \"PRO19\".protein INNER JOIN \"PRO19\".prot_to_loc ON protein.id = prot_to_loc.fk_prot INNER JOIN \"PRO19\".location on prot_to_loc.fk_loc = location.id WHERE location.id != 7 LIMIT  1900;";
+        char* sqlResquest = "SELECT protein.sadn, location.id FROM \"PRO19\".protein INNER JOIN \"PRO19\".prot_to_loc ON protein.id = prot_to_loc.fk_prot INNER JOIN \"PRO19\".location on prot_to_loc.fk_loc = location.id WHERE location.id != 7;";
         char command[500];
         sprintf(command, "PGPASSWORD=%s psql -U %s %s -c '%s' > result.txt;",
                 ui->txtDBPassword->text().toLocal8Bit().data(),
@@ -58,18 +56,14 @@ void MainWindow::on_btnConnect_clicked()
                 sqlResquest);
 
         //Envoie de la commande pour la requete au serveur distant
-        //sshWrite(channel, command);
+        sshWrite(channel, command);
 
-        //sleep(5);
+        sleep(5);
 
         //Lecture du fichier de résultat de la requete
-        rc = sshReadFile(session, sftp);
-        if(rc != SSH_OK){
-            std::cout << "Erreur de lecture dans le fichier" << std::endl;
-        }
+        scpRead(session);
 
         //Fermeture de toutes les connexions ssh
-        sftp_free(sftp);
         ssh_channel_close(channel);
         ssh_disconnect(session);
         ssh_free(session);
@@ -142,26 +136,79 @@ ssh_session MainWindow::sshConnect(){
     return session;
 }
 
-sftp_session MainWindow::sftpConnect(ssh_session session){
-    sftp_session sftp;
+void MainWindow::scpRead(ssh_session session){
+    ssh_scp scp;
     int rc;
+    int size, mode;
+    char *filename, *buffer;
+    scp = ssh_scp_new(session, SSH_SCP_READ, "/home/samuel.mettler/result.txt");
+    int fd = open("/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/result", O_WRONLY | O_CREAT);
+    if(fd == -1){
+        std::cout << "Errore when opening de local file" << std::endl;
+        exit(-1);
+    }
 
-    sftp = sftp_new(session);
-    if (sftp == NULL)
+    if (scp == NULL)
     {
-        fprintf(stderr, "Error allocating SFTP session: %s\n", ssh_get_error(session));
+      fprintf(stderr, "Error allocating scp session: %s\n",
+              ssh_get_error(session));
         exit(SSH_ERROR);
     }
-    rc = sftp_init(sftp);
+    rc = ssh_scp_init(scp);
     if (rc != SSH_OK)
     {
-    fprintf(stderr, "Error initializing SFTP session: %s.\n",
-        sftp_get_error(sftp));
-        sftp_free(sftp);
-        exit(SSH_ERROR);
+      fprintf(stderr, "Error initializing scp session: %s\n", ssh_get_error(session));
+      ssh_scp_free(scp);
     }
 
-    return sftp;
+    rc = ssh_scp_pull_request(scp);
+    if (rc != SSH_SCP_REQUEST_NEWFILE)
+    {
+       fprintf(stderr, "Error receiving information about file: %s\n",
+               ssh_get_error(session));
+       exit(SSH_ERROR);
+    }
+     size = ssh_scp_request_get_size(scp);
+     filename = strdup(ssh_scp_request_get_filename(scp));
+     mode = ssh_scp_request_get_permissions(scp);
+     printf("Receiving file %s, size %d, permissions 0%o\n",
+             filename, size, mode);
+     free(filename);
+     buffer = (char*)malloc(size);
+     if (buffer == NULL)
+     {
+       fprintf(stderr, "Memory allocation error\n");
+       exit(SSH_ERROR);
+     }
+     ssh_scp_accept_request(scp);
+
+     //Le fichier et lu par bloque
+     //La boucler permet de lire tout le fichier
+     int r = 0;
+     while (r < size) {
+         int st = ssh_scp_read(scp, buffer+r, size-r);
+         r += st;
+     }
+
+     if (rc == SSH_ERROR)
+     {
+       fprintf(stderr, "Error receiving file data: %s\n",
+               ssh_get_error(session));
+       free(buffer);
+       exit(SSH_ERROR);
+     }
+     printf("Done\n");
+     write(fd, buffer, size);
+     free(buffer);
+     rc = ssh_scp_pull_request(scp);
+     if (rc != SSH_SCP_REQUEST_EOF)
+     {
+       fprintf(stderr, "Unexpected request: %s\n", ssh_get_error(session));
+       exit(SSH_ERROR);
+     }
+
+     ssh_scp_close(scp);
+     ssh_scp_free(scp);
 }
 
 ssh_channel MainWindow::channelConnect(ssh_session session){
@@ -180,63 +227,5 @@ ssh_channel MainWindow::channelConnect(ssh_session session){
     }
 
     return channel;
-}
-
-int MainWindow::sshReadFile(ssh_session session, sftp_session sftp){
-    int access_type;
-     sftp_file file;
-     char buffer[MAX_XFER_BUF_SIZE];
-     int async_request;
-     int nbytes;
-     long counter;
-     int rc;
-     int fd;
-     access_type = O_RDONLY;
-
-     fd = open("/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/result.txt", O_CREAT);
-
-     file = sftp_open(sftp, "/home/samuel.mettler/result.txt", access_type, 0);
-     if (file == NULL) {
-       fprintf(stderr, "Can't open file for reading: %s\n", ssh_get_error(session));
-       return SSH_ERROR;
-     }
-     sftp_file_set_nonblocking(file);
-     async_request = sftp_async_read_begin(file, sizeof(buffer));
-     counter = 0L;
-     usleep(10000);
-     if (async_request >= 0) {
-       nbytes = sftp_async_read(file, buffer, sizeof(buffer), async_request);
-     } else {
-         nbytes = -1;
-     }
-     while (nbytes > 0 || nbytes == SSH_AGAIN) {
-       if (nbytes > 0) {
-         write(fd, buffer, nbytes);
-         async_request = sftp_async_read_begin(file, sizeof(buffer));
-       } else {
-           counter++;
-       }
-       usleep(10000);
-       if (async_request >= 0) {
-         nbytes = sftp_async_read(file, buffer, sizeof(buffer),
-                                  async_request);
-       } else {
-           nbytes = -1;
-       }
-     }
-     if (nbytes < 0) {
-       fprintf(stderr, "Error while reading file: %s\n",
-               ssh_get_error(session));
-       sftp_close(file);
-       return SSH_ERROR;
-     }
-     printf("The counter has reached value: %ld\n", counter);
-     rc = sftp_close(file);
-     if (rc != SSH_OK) {
-       fprintf(stderr, "Can't close the read file: %s\n",
-               ssh_get_error(session));
-       return rc;
-     }
-     return SSH_OK;
 }
 
