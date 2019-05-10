@@ -53,10 +53,14 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../PRO_GUI/main.cpp \
-		../PRO_GUI/mainwindow.cpp moc_mainwindow.cpp
+		../PRO_GUI/mainwindow.cpp \
+		../PRO_GUI/parameterwindow.cpp moc_mainwindow.cpp \
+		moc_parameterwindow.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
-		moc_mainwindow.o
+		parameterwindow.o \
+		moc_mainwindow.o \
+		moc_parameterwindow.o
 DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/common/unix.conf \
 		/usr/lib/qt/mkspecs/common/linux.conf \
@@ -188,8 +192,10 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/features/exceptions.prf \
 		/usr/lib/qt/mkspecs/features/yacc.prf \
 		/usr/lib/qt/mkspecs/features/lex.prf \
-		../PRO_GUI/PRO_GUI.pro ../PRO_GUI/mainwindow.h ../PRO_GUI/main.cpp \
-		../PRO_GUI/mainwindow.cpp
+		../PRO_GUI/PRO_GUI.pro ../PRO_GUI/mainwindow.h \
+		../PRO_GUI/parameterwindow.h ../PRO_GUI/main.cpp \
+		../PRO_GUI/mainwindow.cpp \
+		../PRO_GUI/parameterwindow.cpp
 QMAKE_TARGET  = PRO_GUI
 DESTDIR       = 
 TARGET        = PRO_GUI
@@ -198,7 +204,7 @@ TARGET        = PRO_GUI
 first: all
 ####### Build rules
 
-PRO_GUI: ui_mainwindow.h $(OBJECTS)  
+PRO_GUI: ui_mainwindow.h ui_parameterwindow.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../PRO_GUI/PRO_GUI.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mkspecs/features/spec_pre.prf \
@@ -487,9 +493,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../PRO_GUI/mainwindow.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../PRO_GUI/main.cpp ../PRO_GUI/mainwindow.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../PRO_GUI/mainwindow.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../PRO_GUI/mainwindow.h ../PRO_GUI/parameterwindow.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../PRO_GUI/main.cpp ../PRO_GUI/mainwindow.cpp ../PRO_GUI/parameterwindow.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../PRO_GUI/mainwindow.ui ../PRO_GUI/parameterwindow.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -521,24 +527,33 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/qt/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h /usr/lib/qt/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_parameterwindow.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_parameterwindow.cpp
 moc_mainwindow.cpp: ../PRO_GUI/mainwindow.h \
 		moc_predefs.h \
 		/usr/bin/moc
 	/usr/bin/moc $(DEFINES) --include /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/build-PRO_GUI-Desktop-Debug/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI -I/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/include -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I. -I/usr/include/c++/8.3.0 -I/usr/include/c++/8.3.0/x86_64-pc-linux-gnu -I/usr/include/c++/8.3.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/8.3.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/8.3.0/include-fixed -I/usr/include ../PRO_GUI/mainwindow.h -o moc_mainwindow.cpp
 
+moc_parameterwindow.cpp: ../PRO_GUI/parameterwindow.h \
+		moc_predefs.h \
+		/usr/bin/moc
+	/usr/bin/moc $(DEFINES) --include /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/build-PRO_GUI-Desktop-Debug/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI -I/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/include -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I. -I/usr/include/c++/8.3.0 -I/usr/include/c++/8.3.0/x86_64-pc-linux-gnu -I/usr/include/c++/8.3.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/8.3.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/8.3.0/include-fixed -I/usr/include ../PRO_GUI/parameterwindow.h -o moc_parameterwindow.cpp
+
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h
+compiler_uic_make_all: ui_mainwindow.h ui_parameterwindow.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h
+	-$(DEL_FILE) ui_mainwindow.h ui_parameterwindow.h
 ui_mainwindow.h: ../PRO_GUI/mainwindow.ui \
 		/usr/bin/uic
 	/usr/bin/uic ../PRO_GUI/mainwindow.ui -o ui_mainwindow.h
+
+ui_parameterwindow.h: ../PRO_GUI/parameterwindow.ui \
+		/usr/bin/uic
+	/usr/bin/uic ../PRO_GUI/parameterwindow.ui -o ui_parameterwindow.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -557,8 +572,15 @@ mainwindow.o: ../PRO_GUI/mainwindow.cpp ../PRO_GUI/mainwindow.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../PRO_GUI/mainwindow.cpp
 
+parameterwindow.o: ../PRO_GUI/parameterwindow.cpp ../PRO_GUI/parameterwindow.h \
+		ui_parameterwindow.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o parameterwindow.o ../PRO_GUI/parameterwindow.cpp
+
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
+
+moc_parameterwindow.o: moc_parameterwindow.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_parameterwindow.o moc_parameterwindow.cpp
 
 ####### Install
 

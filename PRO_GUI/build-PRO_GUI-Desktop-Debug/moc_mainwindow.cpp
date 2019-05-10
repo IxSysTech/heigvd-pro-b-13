@@ -72,7 +72,6 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         auto *_t = static_cast<MainWindow *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->on_ckbUseSSH_clicked(); break;
         case 1: _t->on_btnConnect_clicked(); break;
         default: ;
         }

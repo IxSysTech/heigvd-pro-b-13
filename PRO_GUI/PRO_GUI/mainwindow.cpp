@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "parameterwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -27,47 +28,36 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
-void MainWindow::on_ckbUseSSH_clicked()
-{
-    //Enable au disable de section of ssh connection
-    ui->txtSSHPassword->setDisabled(ui->txtSSHPassword->isEnabled());
-    ui->txtSSHUsername->setDisabled(ui->txtSSHUsername->isEnabled());
-    ui->txtSSHHost->setDisabled(ui->txtSSHHost->isEnabled());
-    ui->label_6->setDisabled(ui->label_6->isEnabled());
-    ui->label_7->setDisabled(ui->label_7->isEnabled());
-    ui->label_8->setDisabled(ui->label_8->isEnabled());
-}
-
 void MainWindow::on_btnConnect_clicked()
 {
-    if(ui->ckbUseSSH->isChecked()){
-        ssh_session session = sshConnect();
-        ssh_channel channel = channelConnect(session);
-        int rc;
+    ssh_session session = sshConnect();
+    ssh_channel channel = channelConnect(session);
+    int rc;
 
-        //Formatage de la requete
-        char* sqlResquest = "SELECT protein.sadn, location.id FROM \"PRO19\".protein INNER JOIN \"PRO19\".prot_to_loc ON protein.id = prot_to_loc.fk_prot INNER JOIN \"PRO19\".location on prot_to_loc.fk_loc = location.id WHERE location.id != 7;";
-        char command[500];
-        sprintf(command, "PGPASSWORD=%s psql -U %s %s -c '%s' > result.txt;",
-                ui->txtDBPassword->text().toLocal8Bit().data(),
-                ui->txtDBUsername->text().toLocal8Bit().data(),
-                ui->txtDBName->text().toLocal8Bit().data(),
-                sqlResquest);
+    //Formatage de la requete
+    char* sqlResquest = "SELECT protein.sadn, location.id FROM \"PRO19\".protein INNER JOIN \"PRO19\".prot_to_loc ON protein.id = prot_to_loc.fk_prot INNER JOIN \"PRO19\".location on prot_to_loc.fk_loc = location.id WHERE location.id != 7 LIMIT 5000;";
+    char command[500];
+    sprintf(command, "PGPASSWORD=%s psql -U %s %s -c '%s' > result.txt;",
+            ui->txtDBPassword->text().toLocal8Bit().data(),
+            ui->txtDBUsername->text().toLocal8Bit().data(),
+            ui->txtDBName->text().toLocal8Bit().data(),
+            sqlResquest);
 
-        //Envoie de la commande pour la requete au serveur distant
-        sshWrite(channel, command);
+    //Envoie de la commande pour la requete au serveur distant
+    sshWrite(channel, command);
 
-        sleep(5);
+    sleep(10);
 
-        //Lecture du fichier de résultat de la requete
-        scpRead(session);
+    /*ParameterWindow p;
+    p.show();*/
 
-        //Fermeture de toutes les connexions ssh
-        ssh_channel_close(channel);
-        ssh_disconnect(session);
-        ssh_free(session);
-    }
+    //Lecture du fichier de résultat de la requete
+    scpRead(session);
+
+    //Fermeture de toutes les connexions ssh
+    ssh_channel_close(channel);
+    ssh_disconnect(session);
+    ssh_free(session);
 }
 
 void MainWindow::sshRead(ssh_channel channel){

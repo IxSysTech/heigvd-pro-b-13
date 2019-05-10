@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>398</width>
-    <height>369</height>
+    <width>460</width>
+    <height>370</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>460</width>
+    <height>370</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>460</width>
+    <height>370</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -17,7 +29,7 @@
    <widget class="QLineEdit" name="txtDBHost">
     <property name="geometry">
      <rect>
-      <x>141</x>
+      <x>220</x>
       <y>49</y>
       <width>231</width>
       <height>26</height>
@@ -27,7 +39,7 @@
    <widget class="QLineEdit" name="txtDBName">
     <property name="geometry">
      <rect>
-      <x>142</x>
+      <x>221</x>
       <y>80</y>
       <width>231</width>
       <height>26</height>
@@ -37,7 +49,7 @@
    <widget class="QLineEdit" name="txtDBUsername">
     <property name="geometry">
      <rect>
-      <x>142</x>
+      <x>221</x>
       <y>111</y>
       <width>231</width>
       <height>26</height>
@@ -67,7 +79,7 @@
      <rect>
       <x>22</x>
       <y>10</y>
-      <width>381</width>
+      <width>431</width>
       <height>20</height>
      </rect>
     </property>
@@ -137,7 +149,7 @@
    <widget class="QLineEdit" name="txtDBPassword">
     <property name="geometry">
      <rect>
-      <x>141</x>
+      <x>220</x>
       <y>141</y>
       <width>231</width>
       <height>26</height>
@@ -149,7 +161,7 @@
      <rect>
       <x>12</x>
       <y>300</y>
-      <width>361</width>
+      <width>441</width>
       <height>26</height>
      </rect>
     </property>
@@ -157,22 +169,9 @@
      <string>Connect</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="ckbUseSSH">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>180</y>
-      <width>151</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Use SSH Connection</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_6">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
@@ -193,7 +192,7 @@
    </widget>
    <widget class="QLabel" name="label_7">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
@@ -214,7 +213,7 @@
    </widget>
    <widget class="QLabel" name="label_8">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
@@ -235,11 +234,11 @@
    </widget>
    <widget class="QLineEdit" name="txtSSHPassword">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
-      <x>141</x>
+      <x>220</x>
       <y>270</y>
       <width>231</width>
       <height>26</height>
@@ -248,11 +247,11 @@
    </widget>
    <widget class="QLineEdit" name="txtSSHUsername">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
-      <x>141</x>
+      <x>220</x>
       <y>240</y>
       <width>231</width>
       <height>26</height>
@@ -261,11 +260,11 @@
    </widget>
    <widget class="QLineEdit" name="txtSSHHost">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
-      <x>141</x>
+      <x>220</x>
       <y>209</y>
       <width>231</width>
       <height>26</height>
@@ -276,6 +275,24 @@
     </property>
     <property name="readOnly">
      <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>179</y>
+      <width>441</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>SSH connection information</string>
     </property>
    </widget>
   </widget>
@@ -295,7 +312,6 @@
   <tabstop>txtDBName</tabstop>
   <tabstop>txtDBUsername</tabstop>
   <tabstop>txtDBPassword</tabstop>
-  <tabstop>ckbUseSSH</tabstop>
   <tabstop>txtSSHHost</tabstop>
   <tabstop>txtSSHUsername</tabstop>
   <tabstop>txtSSHPassword</tabstop>
