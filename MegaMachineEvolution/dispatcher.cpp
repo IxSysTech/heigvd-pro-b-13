@@ -33,7 +33,7 @@ std::vector<std::string> Dispatcher::split(const std::string& s, char delimiter)
 
 void Dispatcher::initSequences(){
     sequences = new std::multimap<std::string, bool>();
-    std::ifstream test("sequences3");
+    std::ifstream test("gattacaTest");
     std::string line;
     std::vector<std::string> tokens;
     char delimiter = ';';

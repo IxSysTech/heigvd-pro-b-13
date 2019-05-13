@@ -5,7 +5,7 @@ MegaMachineManager::MegaMachineManager(std::multimap<std::string, bool> *sequenc
     this->sequences = sequences;
     int nbMachines = machinesGiven.size();
     for(int i = 0; i < nbMachines; ++i) {
-        machines.push_back(new MegaMachine(machinesGiven.at(i), 1, i, this));
+        machines.push_back(new MegaMachine(machinesGiven.at(i), 7, i, this));
     }
     scores = scoresToGive;
 }
@@ -49,8 +49,9 @@ void MegaMachineManager::stop(int stoppedMachine, int ctrYes, int ctrNo){
     // Pour le moment : on admet que c'est comme si rien détecter (0)
 
     if(ctrYes != ctrNo)
-        if((ctrYes > ctrNo ? true : false) == theEmitter->getCurrentResult())
-            ++(*scores)[stoppedMachine];
+        if(ctrYes == 7 || ctrNo == 7)
+            if((ctrYes > ctrNo ? true : false) == theEmitter->getCurrentResult())
+                ++(*scores)[stoppedMachine];
 }
 
 void MegaMachineManager::nextSequence() {
