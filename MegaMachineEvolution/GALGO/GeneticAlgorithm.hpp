@@ -48,7 +48,7 @@ public:
    std::vector<T> (*Constraint)(const std::vector<T>&) = nullptr; 
 
    T covrate = .7;   // cross-over rate
-   T mutrate = .1;   // mutation rate
+   T mutrate;   // mutation rate
    T SP = 1.2;        // selective pressure for RSP selection method
    T tolerance = 0.0; // terminal condition (inactive if equal to zero)
                  
@@ -60,7 +60,8 @@ public:
 
    // constructor
    template <int...N>
-   GeneticAlgorithm(int indexMutaionMode, int insexCrossOverMode, int indexSelectionMode, Func<T> objective, int popsize, int nbgen, bool output, const Parameter<T,N>&...args);
+   GeneticAlgorithm(int indexMutaionMode, int insexCrossOverMode, int indexSelectionMode,T covrate, T mutrate, T SP, Func<T> objective, int popsize, int nbgen, bool output, const Parameter<T,N>&...args);
+
    // run genetic algorithm
    void run();
    // return best chromosome 
@@ -91,11 +92,15 @@ private:
    
 // constructor
 template <typename T> template <int...N>
-GeneticAlgorithm<T>::GeneticAlgorithm(int indexMutationMode, int indexCrossOverMode, int indexSelectionMode,Func<T> objective, int popsize, int nbgen, bool output, const Parameter<T,N>&...args)
+GeneticAlgorithm<T>::GeneticAlgorithm(int indexMutationMode, int indexCrossOverMode, int indexSelectionMode, T covrate, T mutrate, T SP,Func<T> objective, int popsize, int nbgen, bool output, const Parameter<T,N>&...args)
 {
    this->Mutation = this->mutationModes.at(indexMutationMode);
    this->CrossOver = this->crossOverModes.at(indexCrossOverMode);
    this->Selection = this->selectionModes.at(indexSelectionMode);
+
+   this->covrate = covrate;   // cross-over rate
+   this->mutrate = mutrate;   // mutation rate
+   this->SP = SP;        // selective pressure for RSP selection method
    this->Objective = objective;
    // getting total number of bits per chromosome
    this->nbbit = sum(N...);
