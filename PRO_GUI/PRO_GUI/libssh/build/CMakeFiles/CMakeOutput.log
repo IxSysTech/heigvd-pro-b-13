@@ -1,0 +1,2220 @@
+The system is: Linux - 4.19.34-1-MANJARO - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/sbin/cc 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/3.14.3/CompilerIdC/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_5646f/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_5646f.dir/build.make CMakeFiles/cmTC_5646f.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5646f.dir/testCCompiler.c.o
+/usr/sbin/cc   -fPIE   -o CMakeFiles/cmTC_5646f.dir/testCCompiler.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_5646f
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5646f.dir/link.txt --verbose=1
+/usr/sbin/cc      -rdynamic CMakeFiles/cmTC_5646f.dir/testCCompiler.c.o  -o cmTC_5646f 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_5f266/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_5f266.dir/build.make CMakeFiles/cmTC_5f266.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5f266.dir/CMakeCCompilerABI.c.o
+/usr/sbin/cc   -fPIE   -v -o CMakeFiles/cmTC_5f266.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CMakeCCompilerABI.c
+Using built-in specs.
+COLLECT_GCC=/usr/sbin/cc
+Target: x86_64-pc-linux-gnu
+Configured with: /build/gcc/src/gcc/configure --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://bugs.archlinux.org/ --enable-languages=c,c++,ada,fortran,go,lto,objc,obj-c++ --enable-shared --enable-threads=posix --enable-libmpx --with-system-zlib --with-isl --enable-__cxa_atexit --disable-libunwind-exceptions --enable-clocale=gnu --disable-libstdcxx-pch --disable-libssp --enable-gnu-unique-object --enable-linker-build-id --enable-lto --enable-plugin --enable-install-libiberty --with-linker-hash-style=gnu --enable-gnu-indirect-function --enable-multilib --disable-werror --enable-checking=release --enable-default-pie --enable-default-ssp --enable-cet=auto
+Thread model: posix
+gcc version 8.2.1 20181127 (GCC) 
+COLLECT_GCC_OPTIONS='-fPIE' '-v' '-o' 'CMakeFiles/cmTC_5f266.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/cc1 -quiet -v /usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_5f266.dir/CMakeCCompilerABI.c.o -version -fPIE -o /tmp/ccYnOsXq.s
+GNU C17 (GCC) version 8.2.1 20181127 (x86_64-pc-linux-gnu)
+	compiled by GNU C version 8.2.1 20181127, GMP version 6.1.2, MPFR version 4.0.1, MPC version 1.1.0, isl version isl-0.20-GMP
+
+warning: MPFR header version 4.0.1 differs from library version 4.0.2.
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring nonexistent directory "/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../x86_64-pc-linux-gnu/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include
+ /usr/local/include
+ /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include-fixed
+ /usr/include
+End of search list.
+GNU C17 (GCC) version 8.2.1 20181127 (x86_64-pc-linux-gnu)
+	compiled by GNU C version 8.2.1 20181127, GMP version 6.1.2, MPFR version 4.0.1, MPC version 1.1.0, isl version isl-0.20-GMP
+
+warning: MPFR header version 4.0.1 differs from library version 4.0.2.
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: 0c14e25c3256cb739a3fd5c231a3c41d
+COLLECT_GCC_OPTIONS='-fPIE' '-v' '-o' 'CMakeFiles/cmTC_5f266.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64'
+ as -v --64 -o CMakeFiles/cmTC_5f266.dir/CMakeCCompilerABI.c.o /tmp/ccYnOsXq.s
+GNU assembler version 2.31.1 (x86_64-pc-linux-gnu) using BFD version (GNU Binutils) 2.31.1
+COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-fPIE' '-v' '-o' 'CMakeFiles/cmTC_5f266.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64'
+Linking C executable cmTC_5f266
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5f266.dir/link.txt --verbose=1
+/usr/sbin/cc     -v -rdynamic CMakeFiles/cmTC_5f266.dir/CMakeCCompilerABI.c.o  -o cmTC_5f266 
+Using built-in specs.
+COLLECT_GCC=/usr/sbin/cc
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/lto-wrapper
+Target: x86_64-pc-linux-gnu
+Configured with: /build/gcc/src/gcc/configure --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://bugs.archlinux.org/ --enable-languages=c,c++,ada,fortran,go,lto,objc,obj-c++ --enable-shared --enable-threads=posix --enable-libmpx --with-system-zlib --with-isl --enable-__cxa_atexit --disable-libunwind-exceptions --enable-clocale=gnu --disable-libstdcxx-pch --disable-libssp --enable-gnu-unique-object --enable-linker-build-id --enable-lto --enable-plugin --enable-install-libiberty --with-linker-hash-style=gnu --enable-gnu-indirect-function --enable-multilib --disable-werror --enable-checking=release --enable-default-pie --enable-default-ssp --enable-cet=auto
+Thread model: posix
+gcc version 8.2.1 20181127 (GCC) 
+COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_5f266' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/collect2 -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccDTktUs.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_5f266 /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../.. CMakeFiles/cmTC_5f266.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_5f266' '-mtune=generic' '-march=x86-64'
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Parsed C implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include]
+    add: [/usr/local/include]
+    add: [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include-fixed]
+    add: [/usr/include]
+  end of search list found
+  collapse include dir [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include] ==> [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include-fixed] ==> [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include-fixed]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  implicit include dirs: [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include;/usr/local/include;/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include-fixed;/usr/include]
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/sbin/make cmTC_5f266/fast ]
+  ignore line: [/usr/sbin/make -f CMakeFiles/cmTC_5f266.dir/build.make CMakeFiles/cmTC_5f266.dir/build]
+  ignore line: [make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_5f266.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/sbin/cc   -fPIE   -v -o CMakeFiles/cmTC_5f266.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CMakeCCompilerABI.c]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/sbin/cc]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Configured with: /build/gcc/src/gcc/configure --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://bugs.archlinux.org/ --enable-languages=c,c++,ada,fortran,go,lto,objc,obj-c++ --enable-shared --enable-threads=posix --enable-libmpx --with-system-zlib --with-isl --enable-__cxa_atexit --disable-libunwind-exceptions --enable-clocale=gnu --disable-libstdcxx-pch --disable-libssp --enable-gnu-unique-object --enable-linker-build-id --enable-lto --enable-plugin --enable-install-libiberty --with-linker-hash-style=gnu --enable-gnu-indirect-function --enable-multilib --disable-werror --enable-checking=release --enable-default-pie --enable-default-ssp --enable-cet=auto]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 8.2.1 20181127 (GCC) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-fPIE' '-v' '-o' 'CMakeFiles/cmTC_5f266.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64']
+  ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/cc1 -quiet -v /usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_5f266.dir/CMakeCCompilerABI.c.o -version -fPIE -o /tmp/ccYnOsXq.s]
+  ignore line: [GNU C17 (GCC) version 8.2.1 20181127 (x86_64-pc-linux-gnu)]
+  ignore line: [	compiled by GNU C version 8.2.1 20181127, GMP version 6.1.2, MPFR version 4.0.1, MPC version 1.1.0, isl version isl-0.20-GMP]
+  ignore line: []
+  ignore line: [warning: MPFR header version 4.0.1 differs from library version 4.0.2.]
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../x86_64-pc-linux-gnu/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include-fixed]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [GNU C17 (GCC) version 8.2.1 20181127 (x86_64-pc-linux-gnu)]
+  ignore line: [	compiled by GNU C version 8.2.1 20181127, GMP version 6.1.2, MPFR version 4.0.1, MPC version 1.1.0, isl version isl-0.20-GMP]
+  ignore line: []
+  ignore line: [warning: MPFR header version 4.0.1 differs from library version 4.0.2.]
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [Compiler executable checksum: 0c14e25c3256cb739a3fd5c231a3c41d]
+  ignore line: [COLLECT_GCC_OPTIONS='-fPIE' '-v' '-o' 'CMakeFiles/cmTC_5f266.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64']
+  ignore line: [ as -v --64 -o CMakeFiles/cmTC_5f266.dir/CMakeCCompilerABI.c.o /tmp/ccYnOsXq.s]
+  ignore line: [GNU assembler version 2.31.1 (x86_64-pc-linux-gnu) using BFD version (GNU Binutils) 2.31.1]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-fPIE' '-v' '-o' 'CMakeFiles/cmTC_5f266.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64']
+  ignore line: [Linking C executable cmTC_5f266]
+  ignore line: [/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5f266.dir/link.txt --verbose=1]
+  ignore line: [/usr/sbin/cc     -v -rdynamic CMakeFiles/cmTC_5f266.dir/CMakeCCompilerABI.c.o  -o cmTC_5f266 ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/sbin/cc]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/lto-wrapper]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Configured with: /build/gcc/src/gcc/configure --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://bugs.archlinux.org/ --enable-languages=c,c++,ada,fortran,go,lto,objc,obj-c++ --enable-shared --enable-threads=posix --enable-libmpx --with-system-zlib --with-isl --enable-__cxa_atexit --disable-libunwind-exceptions --enable-clocale=gnu --disable-libstdcxx-pch --disable-libssp --enable-gnu-unique-object --enable-linker-build-id --enable-lto --enable-plugin --enable-install-libiberty --with-linker-hash-style=gnu --enable-gnu-indirect-function --enable-multilib --disable-werror --enable-checking=release --enable-default-pie --enable-default-ssp --enable-cet=auto]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 8.2.1 20181127 (GCC) ]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_5f266' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/collect2 -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccDTktUs.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_5f266 /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../.. CMakeFiles/cmTC_5f266.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib/crtn.o]
+    arg [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccDTktUs.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-export-dynamic] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-pie] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_5f266] ==> ignore
+    arg [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib/Scrt1.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib/crti.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/crtbeginS.o] ==> ignore
+    arg [-L/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1] ==> dir [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1]
+    arg [-L/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib]
+    arg [-L/lib/../lib] ==> dir [/lib/../lib]
+    arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
+    arg [-L/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../..] ==> dir [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../..]
+    arg [CMakeFiles/cmTC_5f266.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/crtendS.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib/crtn.o] ==> ignore
+  collapse library dir [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1] ==> [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1]
+  collapse library dir [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib] ==> [/usr/lib]
+  collapse library dir [/lib/../lib] ==> [/lib]
+  collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
+  collapse library dir [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../..] ==> [/usr/lib]
+  implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
+  implicit dirs: [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1;/usr/lib;/lib]
+  implicit fwks: []
+
+
+
+
+Detecting C [-std=c11] compiler features compiled with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_7ffd5/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_7ffd5.dir/build.make CMakeFiles/cmTC_7ffd5.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7ffd5.dir/feature_tests.c.o
+/usr/sbin/cc   -fPIE   -std=c11 -o CMakeFiles/cmTC_7ffd5.dir/feature_tests.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_7ffd5
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7ffd5.dir/link.txt --verbose=1
+/usr/sbin/cc      -rdynamic CMakeFiles/cmTC_7ffd5.dir/feature_tests.c.o  -o cmTC_7ffd5 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_restrict
+    Feature record: C_FEATURE:1c_static_assert
+    Feature record: C_FEATURE:1c_variadic_macros
+
+
+Detecting C [-std=c99] compiler features compiled with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_48cd3/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_48cd3.dir/build.make CMakeFiles/cmTC_48cd3.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_48cd3.dir/feature_tests.c.o
+/usr/sbin/cc   -fPIE   -std=c99 -o CMakeFiles/cmTC_48cd3.dir/feature_tests.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_48cd3
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_48cd3.dir/link.txt --verbose=1
+/usr/sbin/cc      -rdynamic CMakeFiles/cmTC_48cd3.dir/feature_tests.c.o  -o cmTC_48cd3 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_restrict
+    Feature record: C_FEATURE:0c_static_assert
+    Feature record: C_FEATURE:1c_variadic_macros
+
+
+Detecting C [-std=c90] compiler features compiled with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_2a74d/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_2a74d.dir/build.make CMakeFiles/cmTC_2a74d.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_2a74d.dir/feature_tests.c.o
+/usr/sbin/cc   -fPIE   -std=c90 -o CMakeFiles/cmTC_2a74d.dir/feature_tests.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_2a74d
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2a74d.dir/link.txt --verbose=1
+/usr/sbin/cc      -rdynamic CMakeFiles/cmTC_2a74d.dir/feature_tests.c.o  -o cmTC_2a74d 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:0c_restrict
+    Feature record: C_FEATURE:0c_static_assert
+    Feature record: C_FEATURE:0c_variadic_macros
+Performing C SOURCE FILE Test REQUIRED_FLAGS_WERROR succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_22134/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_22134.dir/build.make CMakeFiles/cmTC_22134.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_22134.dir/src.c.o
+/usr/sbin/cc   -DREQUIRED_FLAGS_WERROR -fPIE   -Werror -o CMakeFiles/cmTC_22134.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_22134
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_22134.dir/link.txt --verbose=1
+/usr/sbin/cc  -DREQUIRED_FLAGS_WERROR    -rdynamic CMakeFiles/cmTC_22134.dir/src.c.o  -o cmTC_22134 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_STD_GNU99_FLAG succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_66038/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_66038.dir/build.make CMakeFiles/cmTC_66038.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_66038.dir/src.c.o
+/usr/sbin/cc   -DWITH_STD_GNU99_FLAG -Werror -fPIE   -std=gnu99 -o CMakeFiles/cmTC_66038.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_66038
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_66038.dir/link.txt --verbose=1
+/usr/sbin/cc  -DWITH_STD_GNU99_FLAG -Werror    -rdynamic CMakeFiles/cmTC_66038.dir/src.c.o  -o cmTC_66038 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WPEDANTIC_FLAG succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_0c665/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_0c665.dir/build.make CMakeFiles/cmTC_0c665.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_0c665.dir/src.c.o
+/usr/sbin/cc   -DWITH_WPEDANTIC_FLAG -Werror -fPIE   -Wpedantic -o CMakeFiles/cmTC_0c665.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_0c665
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0c665.dir/link.txt --verbose=1
+/usr/sbin/cc  -DWITH_WPEDANTIC_FLAG -Werror    -rdynamic CMakeFiles/cmTC_0c665.dir/src.c.o  -o cmTC_0c665 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WALL_FLAG succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_ccc84/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_ccc84.dir/build.make CMakeFiles/cmTC_ccc84.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ccc84.dir/src.c.o
+/usr/sbin/cc   -DWITH_WALL_FLAG -Werror -fPIE   -Wall -o CMakeFiles/cmTC_ccc84.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_ccc84
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ccc84.dir/link.txt --verbose=1
+/usr/sbin/cc  -DWITH_WALL_FLAG -Werror    -rdynamic CMakeFiles/cmTC_ccc84.dir/src.c.o  -o cmTC_ccc84 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WSHADOW_FLAG succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_8cf82/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_8cf82.dir/build.make CMakeFiles/cmTC_8cf82.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8cf82.dir/src.c.o
+/usr/sbin/cc   -DWITH_WSHADOW_FLAG -Werror -fPIE   -Wshadow -o CMakeFiles/cmTC_8cf82.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_8cf82
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8cf82.dir/link.txt --verbose=1
+/usr/sbin/cc  -DWITH_WSHADOW_FLAG -Werror    -rdynamic CMakeFiles/cmTC_8cf82.dir/src.c.o  -o cmTC_8cf82 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WMISSING_PROTOTYPES_FLAG succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_18e98/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_18e98.dir/build.make CMakeFiles/cmTC_18e98.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_18e98.dir/src.c.o
+/usr/sbin/cc   -DWITH_WMISSING_PROTOTYPES_FLAG -Werror -fPIE   -Wmissing-prototypes -o CMakeFiles/cmTC_18e98.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_18e98
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_18e98.dir/link.txt --verbose=1
+/usr/sbin/cc  -DWITH_WMISSING_PROTOTYPES_FLAG -Werror    -rdynamic CMakeFiles/cmTC_18e98.dir/src.c.o  -o cmTC_18e98 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WCAST_ALIGN_FLAG succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_76954/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_76954.dir/build.make CMakeFiles/cmTC_76954.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_76954.dir/src.c.o
+/usr/sbin/cc   -DWITH_WCAST_ALIGN_FLAG -Werror -fPIE   -Wcast-align -o CMakeFiles/cmTC_76954.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_76954
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_76954.dir/link.txt --verbose=1
+/usr/sbin/cc  -DWITH_WCAST_ALIGN_FLAG -Werror    -rdynamic CMakeFiles/cmTC_76954.dir/src.c.o  -o cmTC_76954 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WERROR_ADDRESS_FLAG succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_6a9f9/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_6a9f9.dir/build.make CMakeFiles/cmTC_6a9f9.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_6a9f9.dir/src.c.o
+/usr/sbin/cc   -DWITH_WERROR_ADDRESS_FLAG -Werror -fPIE   -Werror=address -o CMakeFiles/cmTC_6a9f9.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_6a9f9
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6a9f9.dir/link.txt --verbose=1
+/usr/sbin/cc  -DWITH_WERROR_ADDRESS_FLAG -Werror    -rdynamic CMakeFiles/cmTC_6a9f9.dir/src.c.o  -o cmTC_6a9f9 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WSTRICT_PROTOTYPES_FLAG succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_f5d3f/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_f5d3f.dir/build.make CMakeFiles/cmTC_f5d3f.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f5d3f.dir/src.c.o
+/usr/sbin/cc   -DWITH_WSTRICT_PROTOTYPES_FLAG -Werror -fPIE   -Wstrict-prototypes -o CMakeFiles/cmTC_f5d3f.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_f5d3f
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f5d3f.dir/link.txt --verbose=1
+/usr/sbin/cc  -DWITH_WSTRICT_PROTOTYPES_FLAG -Werror    -rdynamic CMakeFiles/cmTC_f5d3f.dir/src.c.o  -o cmTC_f5d3f 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WERROR_STRICT_PROTOTYPES_FLAG succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_77b70/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_77b70.dir/build.make CMakeFiles/cmTC_77b70.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_77b70.dir/src.c.o
+/usr/sbin/cc   -DWITH_WERROR_STRICT_PROTOTYPES_FLAG -Werror -fPIE   -Werror=strict-prototypes -o CMakeFiles/cmTC_77b70.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_77b70
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_77b70.dir/link.txt --verbose=1
+/usr/sbin/cc  -DWITH_WERROR_STRICT_PROTOTYPES_FLAG -Werror    -rdynamic CMakeFiles/cmTC_77b70.dir/src.c.o  -o cmTC_77b70 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WWRITE_STRINGS_FLAG succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_81892/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_81892.dir/build.make CMakeFiles/cmTC_81892.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_81892.dir/src.c.o
+/usr/sbin/cc   -DWITH_WWRITE_STRINGS_FLAG -Werror -fPIE   -Wwrite-strings -o CMakeFiles/cmTC_81892.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_81892
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_81892.dir/link.txt --verbose=1
+/usr/sbin/cc  -DWITH_WWRITE_STRINGS_FLAG -Werror    -rdynamic CMakeFiles/cmTC_81892.dir/src.c.o  -o cmTC_81892 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WERROR_WRITE_STRINGS_FLAG succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_41c08/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_41c08.dir/build.make CMakeFiles/cmTC_41c08.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_41c08.dir/src.c.o
+/usr/sbin/cc   -DWITH_WERROR_WRITE_STRINGS_FLAG -Werror -fPIE   -Werror=write-strings -o CMakeFiles/cmTC_41c08.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_41c08
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_41c08.dir/link.txt --verbose=1
+/usr/sbin/cc  -DWITH_WERROR_WRITE_STRINGS_FLAG -Werror    -rdynamic CMakeFiles/cmTC_41c08.dir/src.c.o  -o cmTC_41c08 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WERROR_IMPLICIT_FUNCTION_DECLARATION_FLAG succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_b983a/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_b983a.dir/build.make CMakeFiles/cmTC_b983a.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b983a.dir/src.c.o
+/usr/sbin/cc   -DWITH_WERROR_IMPLICIT_FUNCTION_DECLARATION_FLAG -Werror -fPIE   -Werror-implicit-function-declaration -o CMakeFiles/cmTC_b983a.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_b983a
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b983a.dir/link.txt --verbose=1
+/usr/sbin/cc  -DWITH_WERROR_IMPLICIT_FUNCTION_DECLARATION_FLAG -Werror    -rdynamic CMakeFiles/cmTC_b983a.dir/src.c.o  -o cmTC_b983a 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WPOINTER_ARITH_FLAG succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_30727/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_30727.dir/build.make CMakeFiles/cmTC_30727.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_30727.dir/src.c.o
+/usr/sbin/cc   -DWITH_WPOINTER_ARITH_FLAG -Werror -fPIE   -Wpointer-arith -o CMakeFiles/cmTC_30727.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_30727
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_30727.dir/link.txt --verbose=1
+/usr/sbin/cc  -DWITH_WPOINTER_ARITH_FLAG -Werror    -rdynamic CMakeFiles/cmTC_30727.dir/src.c.o  -o cmTC_30727 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WERROR_POINTER_ARITH_FLAG succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_ff713/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_ff713.dir/build.make CMakeFiles/cmTC_ff713.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ff713.dir/src.c.o
+/usr/sbin/cc   -DWITH_WERROR_POINTER_ARITH_FLAG -Werror -fPIE   -Werror=pointer-arith -o CMakeFiles/cmTC_ff713.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_ff713
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ff713.dir/link.txt --verbose=1
+/usr/sbin/cc  -DWITH_WERROR_POINTER_ARITH_FLAG -Werror    -rdynamic CMakeFiles/cmTC_ff713.dir/src.c.o  -o cmTC_ff713 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WDECLARATION_AFTER_STATEMENT_FLAG succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_3f5f3/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_3f5f3.dir/build.make CMakeFiles/cmTC_3f5f3.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3f5f3.dir/src.c.o
+/usr/sbin/cc   -DWITH_WDECLARATION_AFTER_STATEMENT_FLAG -Werror -fPIE   -Wdeclaration-after-statement -o CMakeFiles/cmTC_3f5f3.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_3f5f3
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3f5f3.dir/link.txt --verbose=1
+/usr/sbin/cc  -DWITH_WDECLARATION_AFTER_STATEMENT_FLAG -Werror    -rdynamic CMakeFiles/cmTC_3f5f3.dir/src.c.o  -o cmTC_3f5f3 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WERROR_DECLARATION_AFTER_STATEMENT_FLAG succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_e9e34/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_e9e34.dir/build.make CMakeFiles/cmTC_e9e34.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e9e34.dir/src.c.o
+/usr/sbin/cc   -DWITH_WERROR_DECLARATION_AFTER_STATEMENT_FLAG -Werror -fPIE   -Werror=declaration-after-statement -o CMakeFiles/cmTC_e9e34.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_e9e34
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e9e34.dir/link.txt --verbose=1
+/usr/sbin/cc  -DWITH_WERROR_DECLARATION_AFTER_STATEMENT_FLAG -Werror    -rdynamic CMakeFiles/cmTC_e9e34.dir/src.c.o  -o cmTC_e9e34 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WRETURN_TYPE_FLAG succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_89573/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_89573.dir/build.make CMakeFiles/cmTC_89573.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_89573.dir/src.c.o
+/usr/sbin/cc   -DWITH_WRETURN_TYPE_FLAG -Werror -fPIE   -Wreturn-type -o CMakeFiles/cmTC_89573.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_89573
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_89573.dir/link.txt --verbose=1
+/usr/sbin/cc  -DWITH_WRETURN_TYPE_FLAG -Werror    -rdynamic CMakeFiles/cmTC_89573.dir/src.c.o  -o cmTC_89573 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WERROR_RETURN_TYPE_FLAG succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_e8370/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_e8370.dir/build.make CMakeFiles/cmTC_e8370.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e8370.dir/src.c.o
+/usr/sbin/cc   -DWITH_WERROR_RETURN_TYPE_FLAG -Werror -fPIE   -Werror=return-type -o CMakeFiles/cmTC_e8370.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_e8370
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e8370.dir/link.txt --verbose=1
+/usr/sbin/cc  -DWITH_WERROR_RETURN_TYPE_FLAG -Werror    -rdynamic CMakeFiles/cmTC_e8370.dir/src.c.o  -o cmTC_e8370 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WUNINITIALIZED_FLAG succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_d9e90/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_d9e90.dir/build.make CMakeFiles/cmTC_d9e90.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d9e90.dir/src.c.o
+/usr/sbin/cc   -DWITH_WUNINITIALIZED_FLAG -Werror -fPIE   -Wuninitialized -o CMakeFiles/cmTC_d9e90.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_d9e90
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d9e90.dir/link.txt --verbose=1
+/usr/sbin/cc  -DWITH_WUNINITIALIZED_FLAG -Werror    -rdynamic CMakeFiles/cmTC_d9e90.dir/src.c.o  -o cmTC_d9e90 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WERROR_UNINITIALIZED_FLAG succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_a1a48/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_a1a48.dir/build.make CMakeFiles/cmTC_a1a48.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a1a48.dir/src.c.o
+/usr/sbin/cc   -DWITH_WERROR_UNINITIALIZED_FLAG -Werror -fPIE   -Werror=uninitialized -o CMakeFiles/cmTC_a1a48.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_a1a48
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a1a48.dir/link.txt --verbose=1
+/usr/sbin/cc  -DWITH_WERROR_UNINITIALIZED_FLAG -Werror    -rdynamic CMakeFiles/cmTC_a1a48.dir/src.c.o  -o cmTC_a1a48 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WIMPLICIT_FALLTHROUGH_FLAG succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_c5fe8/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_c5fe8.dir/build.make CMakeFiles/cmTC_c5fe8.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c5fe8.dir/src.c.o
+/usr/sbin/cc   -DWITH_WIMPLICIT_FALLTHROUGH_FLAG -Werror -fPIE   -Wimplicit-fallthrough -o CMakeFiles/cmTC_c5fe8.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_c5fe8
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c5fe8.dir/link.txt --verbose=1
+/usr/sbin/cc  -DWITH_WIMPLICIT_FALLTHROUGH_FLAG -Werror    -rdynamic CMakeFiles/cmTC_c5fe8.dir/src.c.o  -o cmTC_c5fe8 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WERROR_STRICT_OVERFLOW_FLAG succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_14aaf/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_14aaf.dir/build.make CMakeFiles/cmTC_14aaf.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_14aaf.dir/src.c.o
+/usr/sbin/cc   -DWITH_WERROR_STRICT_OVERFLOW_FLAG -Werror -fPIE   -Werror=strict-overflow -o CMakeFiles/cmTC_14aaf.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_14aaf
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_14aaf.dir/link.txt --verbose=1
+/usr/sbin/cc  -DWITH_WERROR_STRICT_OVERFLOW_FLAG -Werror    -rdynamic CMakeFiles/cmTC_14aaf.dir/src.c.o  -o cmTC_14aaf 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WSTRICT_OVERFLOW_2_FLAG succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_5e324/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_5e324.dir/build.make CMakeFiles/cmTC_5e324.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5e324.dir/src.c.o
+/usr/sbin/cc   -DWITH_WSTRICT_OVERFLOW_2_FLAG -Werror -fPIE   -Wstrict-overflow=2 -o CMakeFiles/cmTC_5e324.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_5e324
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5e324.dir/link.txt --verbose=1
+/usr/sbin/cc  -DWITH_WSTRICT_OVERFLOW_2_FLAG -Werror    -rdynamic CMakeFiles/cmTC_5e324.dir/src.c.o  -o cmTC_5e324 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WNO_FORMAT_ZERO_LENGTH_FLAG succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_8a089/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_8a089.dir/build.make CMakeFiles/cmTC_8a089.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8a089.dir/src.c.o
+/usr/sbin/cc   -DWITH_WNO_FORMAT_ZERO_LENGTH_FLAG -Werror -fPIE   -Wno-format-zero-length -o CMakeFiles/cmTC_8a089.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_8a089
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8a089.dir/link.txt --verbose=1
+/usr/sbin/cc  -DWITH_WNO_FORMAT_ZERO_LENGTH_FLAG -Werror    -rdynamic CMakeFiles/cmTC_8a089.dir/src.c.o  -o cmTC_8a089 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WMISSING_FIELD_INITIALIZERS_FLAG succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_bc320/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_bc320.dir/build.make CMakeFiles/cmTC_bc320.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_bc320.dir/src.c.o
+/usr/sbin/cc   -DWITH_WMISSING_FIELD_INITIALIZERS_FLAG -Werror -fPIE   -Wmissing-field-initializers -o CMakeFiles/cmTC_bc320.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_bc320
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bc320.dir/link.txt --verbose=1
+/usr/sbin/cc  -DWITH_WMISSING_FIELD_INITIALIZERS_FLAG -Werror    -rdynamic CMakeFiles/cmTC_bc320.dir/src.c.o  -o cmTC_bc320 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test REQUIRED_FLAGS_WFORMAT succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_6e483/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_6e483.dir/build.make CMakeFiles/cmTC_6e483.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_6e483.dir/src.c.o
+/usr/sbin/cc   -DREQUIRED_FLAGS_WFORMAT -Werror -fPIE   -Wformat -o CMakeFiles/cmTC_6e483.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_6e483
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6e483.dir/link.txt --verbose=1
+/usr/sbin/cc  -DREQUIRED_FLAGS_WFORMAT -Werror    -rdynamic CMakeFiles/cmTC_6e483.dir/src.c.o  -o cmTC_6e483 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WFORMAT_SECURITY_FLAG succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_23226/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_23226.dir/build.make CMakeFiles/cmTC_23226.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_23226.dir/src.c.o
+/usr/sbin/cc   -DWITH_WFORMAT_SECURITY_FLAG -Werror -Wformat -fPIE   -Wformat-security -o CMakeFiles/cmTC_23226.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_23226
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_23226.dir/link.txt --verbose=1
+/usr/sbin/cc  -DWITH_WFORMAT_SECURITY_FLAG -Werror -Wformat    -rdynamic CMakeFiles/cmTC_23226.dir/src.c.o  -o cmTC_23226 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_WERROR_FORMAT_SECURITY_FLAG succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_a1c6b/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_a1c6b.dir/build.make CMakeFiles/cmTC_a1c6b.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a1c6b.dir/src.c.o
+/usr/sbin/cc   -DWITH_WERROR_FORMAT_SECURITY_FLAG -Werror -Wformat -fPIE   -Werror=format-security -o CMakeFiles/cmTC_a1c6b.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_a1c6b
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a1c6b.dir/link.txt --verbose=1
+/usr/sbin/cc  -DWITH_WERROR_FORMAT_SECURITY_FLAG -Werror -Wformat    -rdynamic CMakeFiles/cmTC_a1c6b.dir/src.c.o  -o cmTC_a1c6b 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_FNO_COMMON_FLAG succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_f502b/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_f502b.dir/build.make CMakeFiles/cmTC_f502b.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f502b.dir/src.c.o
+/usr/sbin/cc   -DWITH_FNO_COMMON_FLAG -Werror -Wformat -fPIE   -fno-common -o CMakeFiles/cmTC_f502b.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_f502b
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f502b.dir/link.txt --verbose=1
+/usr/sbin/cc  -DWITH_FNO_COMMON_FLAG -Werror -Wformat    -rdynamic CMakeFiles/cmTC_f502b.dir/src.c.o  -o cmTC_f502b 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test WITH_STACK_PROTECTOR_STRONG succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_91f25/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_91f25.dir/build.make CMakeFiles/cmTC_91f25.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_91f25.dir/src.c.o
+/usr/sbin/cc   -DWITH_STACK_PROTECTOR_STRONG -fstack-protector-strong -fPIE   -o CMakeFiles/cmTC_91f25.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_91f25
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_91f25.dir/link.txt --verbose=1
+/usr/sbin/cc  -DWITH_STACK_PROTECTOR_STRONG -fstack-protector-strong    -rdynamic CMakeFiles/cmTC_91f25.dir/src.c.o  -o cmTC_91f25 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(int argc, char **argv) { char buffer[256]; return buffer[argc]=0;}
+Performing C SOURCE FILE Test WITH_STACK_CLASH_PROTECTION succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_56ffc/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_56ffc.dir/build.make CMakeFiles/cmTC_56ffc.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_56ffc.dir/src.c.o
+/usr/sbin/cc   -DWITH_STACK_CLASH_PROTECTION -fstack-clash-protection -fPIE   -o CMakeFiles/cmTC_56ffc.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_56ffc
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_56ffc.dir/link.txt --verbose=1
+/usr/sbin/cc  -DWITH_STACK_CLASH_PROTECTION -fstack-clash-protection    -rdynamic CMakeFiles/cmTC_56ffc.dir/src.c.o  -o cmTC_56ffc 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(int argc, char **argv) { char buffer[256]; return buffer[argc]=0;}
+Performing C SOURCE FILE Test WITH_WNO_DEPRECATED_DECLARATIONS_FLAG succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_e473c/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_e473c.dir/build.make CMakeFiles/cmTC_e473c.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e473c.dir/src.c.o
+/usr/sbin/cc   -DWITH_WNO_DEPRECATED_DECLARATIONS_FLAG -Werror -Wformat -fPIE   -Wno-deprecated-declarations -o CMakeFiles/cmTC_e473c.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_e473c
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e473c.dir/link.txt --verbose=1
+/usr/sbin/cc  -DWITH_WNO_DEPRECATED_DECLARATIONS_FLAG -Werror -Wformat    -rdynamic CMakeFiles/cmTC_e473c.dir/src.c.o  -o cmTC_e473c 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_42c90/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_42c90.dir/build.make CMakeFiles/cmTC_42c90.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_42c90.dir/CheckIncludeFile.c.o
+/usr/sbin/cc   -fPIE   -o CMakeFiles/cmTC_42c90.dir/CheckIncludeFile.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_42c90
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_42c90.dir/link.txt --verbose=1
+/usr/sbin/cc      -rdynamic CMakeFiles/cmTC_42c90.dir/CheckIncludeFile.c.o  -o cmTC_42c90 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Performing C SOURCE FILE Test WITH_VISIBILITY_HIDDEN succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_39222/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_39222.dir/build.make CMakeFiles/cmTC_39222.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_39222.dir/src.c.o
+/usr/sbin/cc   -DWITH_VISIBILITY_HIDDEN -fvisibility=hidden -fPIE   -o CMakeFiles/cmTC_39222.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_39222
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_39222.dir/link.txt --verbose=1
+/usr/sbin/cc  -DWITH_VISIBILITY_HIDDEN -fvisibility=hidden    -rdynamic CMakeFiles/cmTC_39222.dir/src.c.o  -o cmTC_39222 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+void __attribute__((visibility("default"))) test() {}
+int main(void){ return 0; }
+
+Determining if the include file argp.h exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_dee06/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_dee06.dir/build.make CMakeFiles/cmTC_dee06.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_dee06.dir/CheckIncludeFile.c.o
+/usr/sbin/cc   -fPIE   -o CMakeFiles/cmTC_dee06.dir/CheckIncludeFile.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_dee06
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_dee06.dir/link.txt --verbose=1
+/usr/sbin/cc      -rdynamic CMakeFiles/cmTC_dee06.dir/CheckIncludeFile.c.o  -o cmTC_dee06 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file pty.h exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_168e7/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_168e7.dir/build.make CMakeFiles/cmTC_168e7.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_168e7.dir/CheckIncludeFile.c.o
+/usr/sbin/cc   -fPIE   -o CMakeFiles/cmTC_168e7.dir/CheckIncludeFile.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_168e7
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_168e7.dir/link.txt --verbose=1
+/usr/sbin/cc      -rdynamic CMakeFiles/cmTC_168e7.dir/CheckIncludeFile.c.o  -o cmTC_168e7 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file utmp.h exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_4af29/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_4af29.dir/build.make CMakeFiles/cmTC_4af29.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4af29.dir/CheckIncludeFile.c.o
+/usr/sbin/cc   -fPIE   -o CMakeFiles/cmTC_4af29.dir/CheckIncludeFile.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_4af29
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4af29.dir/link.txt --verbose=1
+/usr/sbin/cc      -rdynamic CMakeFiles/cmTC_4af29.dir/CheckIncludeFile.c.o  -o cmTC_4af29 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file termios.h exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_df9c5/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_df9c5.dir/build.make CMakeFiles/cmTC_df9c5.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_df9c5.dir/CheckIncludeFile.c.o
+/usr/sbin/cc   -fPIE   -o CMakeFiles/cmTC_df9c5.dir/CheckIncludeFile.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_df9c5
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_df9c5.dir/link.txt --verbose=1
+/usr/sbin/cc      -rdynamic CMakeFiles/cmTC_df9c5.dir/CheckIncludeFile.c.o  -o cmTC_df9c5 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file unistd.h exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_6b548/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_6b548.dir/build.make CMakeFiles/cmTC_6b548.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_6b548.dir/CheckIncludeFile.c.o
+/usr/sbin/cc   -fPIE   -o CMakeFiles/cmTC_6b548.dir/CheckIncludeFile.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_6b548
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6b548.dir/link.txt --verbose=1
+/usr/sbin/cc      -rdynamic CMakeFiles/cmTC_6b548.dir/CheckIncludeFile.c.o  -o cmTC_6b548 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file stdint.h exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_2a718/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_2a718.dir/build.make CMakeFiles/cmTC_2a718.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_2a718.dir/CheckIncludeFile.c.o
+/usr/sbin/cc   -fPIE   -o CMakeFiles/cmTC_2a718.dir/CheckIncludeFile.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_2a718
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2a718.dir/link.txt --verbose=1
+/usr/sbin/cc      -rdynamic CMakeFiles/cmTC_2a718.dir/CheckIncludeFile.c.o  -o cmTC_2a718 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file sys/time.h exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_71371/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_71371.dir/build.make CMakeFiles/cmTC_71371.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_71371.dir/CheckIncludeFile.c.o
+/usr/sbin/cc   -fPIE   -o CMakeFiles/cmTC_71371.dir/CheckIncludeFile.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_71371
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_71371.dir/link.txt --verbose=1
+/usr/sbin/cc      -rdynamic CMakeFiles/cmTC_71371.dir/CheckIncludeFile.c.o  -o cmTC_71371 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file sys/param.h exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_43643/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_43643.dir/build.make CMakeFiles/cmTC_43643.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_43643.dir/CheckIncludeFile.c.o
+/usr/sbin/cc   -fPIE   -o CMakeFiles/cmTC_43643.dir/CheckIncludeFile.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_43643
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_43643.dir/link.txt --verbose=1
+/usr/sbin/cc      -rdynamic CMakeFiles/cmTC_43643.dir/CheckIncludeFile.c.o  -o cmTC_43643 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file arpa/inet.h exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_7a5bd/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_7a5bd.dir/build.make CMakeFiles/cmTC_7a5bd.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7a5bd.dir/CheckIncludeFile.c.o
+/usr/sbin/cc   -fPIE   -o CMakeFiles/cmTC_7a5bd.dir/CheckIncludeFile.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_7a5bd
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7a5bd.dir/link.txt --verbose=1
+/usr/sbin/cc      -rdynamic CMakeFiles/cmTC_7a5bd.dir/CheckIncludeFile.c.o  -o cmTC_7a5bd 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file byteswap.h exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_d25d2/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_d25d2.dir/build.make CMakeFiles/cmTC_d25d2.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d25d2.dir/CheckIncludeFile.c.o
+/usr/sbin/cc   -fPIE   -o CMakeFiles/cmTC_d25d2.dir/CheckIncludeFile.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_d25d2
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d25d2.dir/link.txt --verbose=1
+/usr/sbin/cc      -rdynamic CMakeFiles/cmTC_d25d2.dir/CheckIncludeFile.c.o  -o cmTC_d25d2 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file glob.h exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_015ca/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_015ca.dir/build.make CMakeFiles/cmTC_015ca.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_015ca.dir/CheckIncludeFile.c.o
+/usr/sbin/cc   -fPIE   -o CMakeFiles/cmTC_015ca.dir/CheckIncludeFile.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_015ca
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_015ca.dir/link.txt --verbose=1
+/usr/sbin/cc      -rdynamic CMakeFiles/cmTC_015ca.dir/CheckIncludeFile.c.o  -o cmTC_015ca 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file openssl/des.h exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_d8270/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_d8270.dir/build.make CMakeFiles/cmTC_d8270.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d8270.dir/CheckIncludeFile.c.o
+/usr/sbin/cc   -fPIE   -o CMakeFiles/cmTC_d8270.dir/CheckIncludeFile.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_d8270
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d8270.dir/link.txt --verbose=1
+/usr/sbin/cc      -rdynamic CMakeFiles/cmTC_d8270.dir/CheckIncludeFile.c.o  -o cmTC_d8270 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file openssl/aes.h exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_3412a/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_3412a.dir/build.make CMakeFiles/cmTC_3412a.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3412a.dir/CheckIncludeFile.c.o
+/usr/sbin/cc   -fPIE   -o CMakeFiles/cmTC_3412a.dir/CheckIncludeFile.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_3412a
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3412a.dir/link.txt --verbose=1
+/usr/sbin/cc      -rdynamic CMakeFiles/cmTC_3412a.dir/CheckIncludeFile.c.o  -o cmTC_3412a 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file openssl/ecdh.h exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_09605/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_09605.dir/build.make CMakeFiles/cmTC_09605.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_09605.dir/CheckIncludeFile.c.o
+/usr/sbin/cc   -fPIE   -o CMakeFiles/cmTC_09605.dir/CheckIncludeFile.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_09605
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_09605.dir/link.txt --verbose=1
+/usr/sbin/cc      -rdynamic CMakeFiles/cmTC_09605.dir/CheckIncludeFile.c.o  -o cmTC_09605 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file openssl/ec.h exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_7491a/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_7491a.dir/build.make CMakeFiles/cmTC_7491a.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7491a.dir/CheckIncludeFile.c.o
+/usr/sbin/cc   -fPIE   -o CMakeFiles/cmTC_7491a.dir/CheckIncludeFile.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_7491a
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7491a.dir/link.txt --verbose=1
+/usr/sbin/cc      -rdynamic CMakeFiles/cmTC_7491a.dir/CheckIncludeFile.c.o  -o cmTC_7491a 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file openssl/ecdsa.h exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_883bb/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_883bb.dir/build.make CMakeFiles/cmTC_883bb.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_883bb.dir/CheckIncludeFile.c.o
+/usr/sbin/cc   -fPIE   -o CMakeFiles/cmTC_883bb.dir/CheckIncludeFile.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_883bb
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_883bb.dir/link.txt --verbose=1
+/usr/sbin/cc      -rdynamic CMakeFiles/cmTC_883bb.dir/CheckIncludeFile.c.o  -o cmTC_883bb 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function EVP_aes_128_ctr exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_e0b92/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_e0b92.dir/build.make CMakeFiles/cmTC_e0b92.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e0b92.dir/CheckFunctionExists.c.o
+/usr/sbin/cc   -DCHECK_FUNCTION_EXISTS=EVP_aes_128_ctr -fPIE   -o CMakeFiles/cmTC_e0b92.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CheckFunctionExists.c
+Linking C executable cmTC_e0b92
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e0b92.dir/link.txt --verbose=1
+/usr/sbin/cc  -DCHECK_FUNCTION_EXISTS=EVP_aes_128_ctr    -rdynamic CMakeFiles/cmTC_e0b92.dir/CheckFunctionExists.c.o  -o cmTC_e0b92 /usr/lib/libcrypto.so 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function EVP_aes_128_cbc exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_3ca68/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_3ca68.dir/build.make CMakeFiles/cmTC_3ca68.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3ca68.dir/CheckFunctionExists.c.o
+/usr/sbin/cc   -DCHECK_FUNCTION_EXISTS=EVP_aes_128_cbc -fPIE   -o CMakeFiles/cmTC_3ca68.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CheckFunctionExists.c
+Linking C executable cmTC_3ca68
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3ca68.dir/link.txt --verbose=1
+/usr/sbin/cc  -DCHECK_FUNCTION_EXISTS=EVP_aes_128_cbc    -rdynamic CMakeFiles/cmTC_3ca68.dir/CheckFunctionExists.c.o  -o cmTC_3ca68 /usr/lib/libcrypto.so 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function EVP_aes_128_gcm exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_f1c40/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_f1c40.dir/build.make CMakeFiles/cmTC_f1c40.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f1c40.dir/CheckFunctionExists.c.o
+/usr/sbin/cc   -DCHECK_FUNCTION_EXISTS=EVP_aes_128_gcm -fPIE   -o CMakeFiles/cmTC_f1c40.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CheckFunctionExists.c
+Linking C executable cmTC_f1c40
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f1c40.dir/link.txt --verbose=1
+/usr/sbin/cc  -DCHECK_FUNCTION_EXISTS=EVP_aes_128_gcm    -rdynamic CMakeFiles/cmTC_f1c40.dir/CheckFunctionExists.c.o  -o cmTC_f1c40 /usr/lib/libcrypto.so 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function CRYPTO_ctr128_encrypt exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_5762b/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_5762b.dir/build.make CMakeFiles/cmTC_5762b.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5762b.dir/CheckFunctionExists.c.o
+/usr/sbin/cc   -DCHECK_FUNCTION_EXISTS=CRYPTO_ctr128_encrypt -fPIE   -o CMakeFiles/cmTC_5762b.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CheckFunctionExists.c
+Linking C executable cmTC_5762b
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5762b.dir/link.txt --verbose=1
+/usr/sbin/cc  -DCHECK_FUNCTION_EXISTS=CRYPTO_ctr128_encrypt    -rdynamic CMakeFiles/cmTC_5762b.dir/CheckFunctionExists.c.o  -o cmTC_5762b /usr/lib/libcrypto.so 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function EVP_CIPHER_CTX_new exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_7df0d/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_7df0d.dir/build.make CMakeFiles/cmTC_7df0d.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7df0d.dir/CheckFunctionExists.c.o
+/usr/sbin/cc   -DCHECK_FUNCTION_EXISTS=EVP_CIPHER_CTX_new -fPIE   -o CMakeFiles/cmTC_7df0d.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CheckFunctionExists.c
+Linking C executable cmTC_7df0d
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7df0d.dir/link.txt --verbose=1
+/usr/sbin/cc  -DCHECK_FUNCTION_EXISTS=EVP_CIPHER_CTX_new    -rdynamic CMakeFiles/cmTC_7df0d.dir/CheckFunctionExists.c.o  -o cmTC_7df0d /usr/lib/libcrypto.so 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function RAND_priv_bytes exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_72f4c/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_72f4c.dir/build.make CMakeFiles/cmTC_72f4c.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_72f4c.dir/CheckFunctionExists.c.o
+/usr/sbin/cc   -DCHECK_FUNCTION_EXISTS=RAND_priv_bytes -fPIE   -o CMakeFiles/cmTC_72f4c.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CheckFunctionExists.c
+Linking C executable cmTC_72f4c
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_72f4c.dir/link.txt --verbose=1
+/usr/sbin/cc  -DCHECK_FUNCTION_EXISTS=RAND_priv_bytes    -rdynamic CMakeFiles/cmTC_72f4c.dir/CheckFunctionExists.c.o  -o cmTC_72f4c /usr/lib/libcrypto.so 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function isblank exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_c3440/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_c3440.dir/build.make CMakeFiles/cmTC_c3440.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c3440.dir/CheckFunctionExists.c.o
+/usr/sbin/cc   -DCHECK_FUNCTION_EXISTS=isblank -fPIE   -o CMakeFiles/cmTC_c3440.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CheckFunctionExists.c
+<command-line>: warning: conflicting types for built-in function ‘isblank’ [-Wbuiltin-declaration-mismatch]
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS(void);
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_c3440
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c3440.dir/link.txt --verbose=1
+/usr/sbin/cc  -DCHECK_FUNCTION_EXISTS=isblank    -rdynamic CMakeFiles/cmTC_c3440.dir/CheckFunctionExists.c.o  -o cmTC_c3440 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function strncpy exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_9682f/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_9682f.dir/build.make CMakeFiles/cmTC_9682f.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9682f.dir/CheckFunctionExists.c.o
+/usr/sbin/cc   -DCHECK_FUNCTION_EXISTS=strncpy -fPIE   -o CMakeFiles/cmTC_9682f.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CheckFunctionExists.c
+<command-line>: warning: conflicting types for built-in function ‘strncpy’ [-Wbuiltin-declaration-mismatch]
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS(void);
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_9682f
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9682f.dir/link.txt --verbose=1
+/usr/sbin/cc  -DCHECK_FUNCTION_EXISTS=strncpy    -rdynamic CMakeFiles/cmTC_9682f.dir/CheckFunctionExists.c.o  -o cmTC_9682f 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function strndup exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_e6b6b/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_e6b6b.dir/build.make CMakeFiles/cmTC_e6b6b.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e6b6b.dir/CheckFunctionExists.c.o
+/usr/sbin/cc   -DCHECK_FUNCTION_EXISTS=strndup -fPIE   -o CMakeFiles/cmTC_e6b6b.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CheckFunctionExists.c
+<command-line>: warning: conflicting types for built-in function ‘strndup’ [-Wbuiltin-declaration-mismatch]
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS(void);
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_e6b6b
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e6b6b.dir/link.txt --verbose=1
+/usr/sbin/cc  -DCHECK_FUNCTION_EXISTS=strndup    -rdynamic CMakeFiles/cmTC_e6b6b.dir/CheckFunctionExists.c.o  -o cmTC_e6b6b 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function strtoull exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_27364/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_27364.dir/build.make CMakeFiles/cmTC_27364.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_27364.dir/CheckFunctionExists.c.o
+/usr/sbin/cc   -DCHECK_FUNCTION_EXISTS=strtoull -fPIE   -o CMakeFiles/cmTC_27364.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CheckFunctionExists.c
+Linking C executable cmTC_27364
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_27364.dir/link.txt --verbose=1
+/usr/sbin/cc  -DCHECK_FUNCTION_EXISTS=strtoull    -rdynamic CMakeFiles/cmTC_27364.dir/CheckFunctionExists.c.o  -o cmTC_27364 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function explicit_bzero exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_0b871/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_0b871.dir/build.make CMakeFiles/cmTC_0b871.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_0b871.dir/CheckFunctionExists.c.o
+/usr/sbin/cc   -DCHECK_FUNCTION_EXISTS=explicit_bzero -fPIE   -o CMakeFiles/cmTC_0b871.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CheckFunctionExists.c
+Linking C executable cmTC_0b871
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0b871.dir/link.txt --verbose=1
+/usr/sbin/cc  -DCHECK_FUNCTION_EXISTS=explicit_bzero    -rdynamic CMakeFiles/cmTC_0b871.dir/CheckFunctionExists.c.o  -o cmTC_0b871 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Performing C SOURCE FILE Test HAVE_GLOB_GL_FLAGS_MEMBER succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_ea1fe/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_ea1fe.dir/build.make CMakeFiles/cmTC_ea1fe.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ea1fe.dir/src.c.o
+/usr/sbin/cc   -DHAVE_GLOB_GL_FLAGS_MEMBER -fPIE   -o CMakeFiles/cmTC_ea1fe.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_ea1fe
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ea1fe.dir/link.txt --verbose=1
+/usr/sbin/cc  -DHAVE_GLOB_GL_FLAGS_MEMBER    -rdynamic CMakeFiles/cmTC_ea1fe.dir/src.c.o  -o cmTC_ea1fe 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <glob.h>
+
+int main()
+{
+   (void)sizeof(((glob_t *)0)->gl_flags);
+   return 0;
+}
+
+Determining if the function glob exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_a1ac8/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_a1ac8.dir/build.make CMakeFiles/cmTC_a1ac8.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a1ac8.dir/CheckFunctionExists.c.o
+/usr/sbin/cc   -DCHECK_FUNCTION_EXISTS=glob -fPIE   -o CMakeFiles/cmTC_a1ac8.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CheckFunctionExists.c
+Linking C executable cmTC_a1ac8
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a1ac8.dir/link.txt --verbose=1
+/usr/sbin/cc  -DCHECK_FUNCTION_EXISTS=glob    -rdynamic CMakeFiles/cmTC_a1ac8.dir/CheckFunctionExists.c.o  -o cmTC_a1ac8 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function vsnprintf exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_27313/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_27313.dir/build.make CMakeFiles/cmTC_27313.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_27313.dir/CheckFunctionExists.c.o
+/usr/sbin/cc   -DCHECK_FUNCTION_EXISTS=vsnprintf -fPIE   -o CMakeFiles/cmTC_27313.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CheckFunctionExists.c
+<command-line>: warning: conflicting types for built-in function ‘vsnprintf’ [-Wbuiltin-declaration-mismatch]
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS(void);
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_27313
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_27313.dir/link.txt --verbose=1
+/usr/sbin/cc  -DCHECK_FUNCTION_EXISTS=vsnprintf    -rdynamic CMakeFiles/cmTC_27313.dir/CheckFunctionExists.c.o  -o cmTC_27313 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function snprintf exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_dfe56/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_dfe56.dir/build.make CMakeFiles/cmTC_dfe56.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_dfe56.dir/CheckFunctionExists.c.o
+/usr/sbin/cc   -DCHECK_FUNCTION_EXISTS=snprintf -fPIE   -o CMakeFiles/cmTC_dfe56.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CheckFunctionExists.c
+<command-line>: warning: conflicting types for built-in function ‘snprintf’ [-Wbuiltin-declaration-mismatch]
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+   CHECK_FUNCTION_EXISTS(void);
+   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_dfe56
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_dfe56.dir/link.txt --verbose=1
+/usr/sbin/cc  -DCHECK_FUNCTION_EXISTS=snprintf    -rdynamic CMakeFiles/cmTC_dfe56.dir/CheckFunctionExists.c.o  -o cmTC_dfe56 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function poll exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_87477/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_87477.dir/build.make CMakeFiles/cmTC_87477.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_87477.dir/CheckFunctionExists.c.o
+/usr/sbin/cc   -DCHECK_FUNCTION_EXISTS=poll -fPIE   -o CMakeFiles/cmTC_87477.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CheckFunctionExists.c
+Linking C executable cmTC_87477
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_87477.dir/link.txt --verbose=1
+/usr/sbin/cc  -DCHECK_FUNCTION_EXISTS=poll    -rdynamic CMakeFiles/cmTC_87477.dir/CheckFunctionExists.c.o  -o cmTC_87477 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function select exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_23ca3/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_23ca3.dir/build.make CMakeFiles/cmTC_23ca3.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_23ca3.dir/CheckFunctionExists.c.o
+/usr/sbin/cc   -DCHECK_FUNCTION_EXISTS=select -fPIE   -o CMakeFiles/cmTC_23ca3.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CheckFunctionExists.c
+Linking C executable cmTC_23ca3
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_23ca3.dir/link.txt --verbose=1
+/usr/sbin/cc  -DCHECK_FUNCTION_EXISTS=select    -rdynamic CMakeFiles/cmTC_23ca3.dir/CheckFunctionExists.c.o  -o cmTC_23ca3 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function getaddrinfo exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_30f84/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_30f84.dir/build.make CMakeFiles/cmTC_30f84.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_30f84.dir/CheckFunctionExists.c.o
+/usr/sbin/cc   -DCHECK_FUNCTION_EXISTS=getaddrinfo -fPIE   -o CMakeFiles/cmTC_30f84.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CheckFunctionExists.c
+Linking C executable cmTC_30f84
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_30f84.dir/link.txt --verbose=1
+/usr/sbin/cc  -DCHECK_FUNCTION_EXISTS=getaddrinfo    -rdynamic CMakeFiles/cmTC_30f84.dir/CheckFunctionExists.c.o  -o cmTC_30f84 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function clock_gettime exists in the rt passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_009c3/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_009c3.dir/build.make CMakeFiles/cmTC_009c3.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_009c3.dir/CheckFunctionExists.c.o
+/usr/sbin/cc   -DCHECK_FUNCTION_EXISTS=clock_gettime -fPIE   -o CMakeFiles/cmTC_009c3.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CheckFunctionExists.c
+Linking C executable cmTC_009c3
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_009c3.dir/link.txt --verbose=1
+/usr/sbin/cc  -DCHECK_FUNCTION_EXISTS=clock_gettime    -rdynamic CMakeFiles/cmTC_009c3.dir/CheckFunctionExists.c.o  -o cmTC_009c3 -lrt 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function forkpty exists in the util passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_71263/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_71263.dir/build.make CMakeFiles/cmTC_71263.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_71263.dir/CheckFunctionExists.c.o
+/usr/sbin/cc   -DCHECK_FUNCTION_EXISTS=forkpty -fPIE   -o CMakeFiles/cmTC_71263.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CheckFunctionExists.c
+Linking C executable cmTC_71263
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_71263.dir/link.txt --verbose=1
+/usr/sbin/cc  -DCHECK_FUNCTION_EXISTS=forkpty    -rdynamic CMakeFiles/cmTC_71263.dir/CheckFunctionExists.c.o  -o cmTC_71263 -lutil 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function cfmakeraw exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_cbcb8/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_cbcb8.dir/build.make CMakeFiles/cmTC_cbcb8.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_cbcb8.dir/CheckFunctionExists.c.o
+/usr/sbin/cc   -DCHECK_FUNCTION_EXISTS=cfmakeraw -fPIE   -o CMakeFiles/cmTC_cbcb8.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CheckFunctionExists.c
+Linking C executable cmTC_cbcb8
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cbcb8.dir/link.txt --verbose=1
+/usr/sbin/cc  -DCHECK_FUNCTION_EXISTS=cfmakeraw    -rdynamic CMakeFiles/cmTC_cbcb8.dir/CheckFunctionExists.c.o  -o cmTC_cbcb8 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Performing C SOURCE FILE Test HAVE_GCC_THREAD_LOCAL_STORAGE succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_ce5a3/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_ce5a3.dir/build.make CMakeFiles/cmTC_ce5a3.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ce5a3.dir/src.c.o
+/usr/sbin/cc   -DHAVE_GCC_THREAD_LOCAL_STORAGE -fPIE   -o CMakeFiles/cmTC_ce5a3.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_ce5a3
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ce5a3.dir/link.txt --verbose=1
+/usr/sbin/cc  -DHAVE_GCC_THREAD_LOCAL_STORAGE    -rdynamic CMakeFiles/cmTC_ce5a3.dir/src.c.o  -o cmTC_ce5a3 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+__thread int tls;
+
+int main(void) {
+    return 0;
+}
+Performing C SOURCE FILE Test HAVE_CONSTRUCTOR_ATTRIBUTE succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_19bb6/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_19bb6.dir/build.make CMakeFiles/cmTC_19bb6.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_19bb6.dir/src.c.o
+/usr/sbin/cc   -DHAVE_CONSTRUCTOR_ATTRIBUTE -Wattributes -Werror -fPIE   -o CMakeFiles/cmTC_19bb6.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_19bb6
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_19bb6.dir/link.txt --verbose=1
+/usr/sbin/cc  -DHAVE_CONSTRUCTOR_ATTRIBUTE -Wattributes -Werror    -rdynamic CMakeFiles/cmTC_19bb6.dir/src.c.o  -o cmTC_19bb6 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+void test_constructor_attribute(void) __attribute__ ((constructor));
+
+void test_constructor_attribute(void)
+{
+    return;
+}
+
+int main(void) {
+    return 0;
+}
+Performing C SOURCE FILE Test HAVE_DESTRUCTOR_ATTRIBUTE succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_a353a/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_a353a.dir/build.make CMakeFiles/cmTC_a353a.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a353a.dir/src.c.o
+/usr/sbin/cc   -DHAVE_DESTRUCTOR_ATTRIBUTE -Wattributes -Werror -fPIE   -o CMakeFiles/cmTC_a353a.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_a353a
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a353a.dir/link.txt --verbose=1
+/usr/sbin/cc  -DHAVE_DESTRUCTOR_ATTRIBUTE -Wattributes -Werror    -rdynamic CMakeFiles/cmTC_a353a.dir/src.c.o  -o cmTC_a353a 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+void test_destructor_attribute(void) __attribute__ ((destructor));
+
+void test_destructor_attribute(void)
+{
+    return;
+}
+
+int main(void) {
+    return 0;
+}
+Performing C SOURCE FILE Test HAVE_FALLTHROUGH_ATTRIBUTE succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_20c55/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_20c55.dir/build.make CMakeFiles/cmTC_20c55.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_20c55.dir/src.c.o
+/usr/sbin/cc   -DHAVE_FALLTHROUGH_ATTRIBUTE -Wattributes -Werror -fPIE   -o CMakeFiles/cmTC_20c55.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_20c55
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_20c55.dir/link.txt --verbose=1
+/usr/sbin/cc  -DHAVE_FALLTHROUGH_ATTRIBUTE -Wattributes -Werror    -rdynamic CMakeFiles/cmTC_20c55.dir/src.c.o  -o cmTC_20c55 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#define FALL_THROUGH __attribute__((fallthrough))
+
+int main(void) {
+    int i = 2;
+
+    switch (i) {
+    case 0:
+        FALL_THROUGH;
+    case 1:
+        break;
+    default:
+        break;
+    }
+
+    return 0;
+}
+Performing C SOURCE FILE Test HAVE_UNUSED_ATTRIBUTE succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_74d13/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_74d13.dir/build.make CMakeFiles/cmTC_74d13.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_74d13.dir/src.c.o
+/usr/sbin/cc   -DHAVE_UNUSED_ATTRIBUTE -Wattributes -Werror -fPIE   -o CMakeFiles/cmTC_74d13.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_74d13
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_74d13.dir/link.txt --verbose=1
+/usr/sbin/cc  -DHAVE_UNUSED_ATTRIBUTE -Wattributes -Werror    -rdynamic CMakeFiles/cmTC_74d13.dir/src.c.o  -o cmTC_74d13 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+    #define __unused __attribute__((unused))
+
+    static int do_nothing(int i __unused)
+    {
+        return 0;
+    }
+
+    int main(void)
+    {
+        int i;
+
+        i = do_nothing(5);
+        if (i > 5) {
+            return 1;
+        }
+
+        return 0;
+    }
+Performing C SOURCE FILE Test HAVE_GCC_VOLATILE_MEMORY_PROTECTION succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_ec0f3/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_ec0f3.dir/build.make CMakeFiles/cmTC_ec0f3.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ec0f3.dir/src.c.o
+/usr/sbin/cc   -DHAVE_GCC_VOLATILE_MEMORY_PROTECTION -Wattributes -Werror -fPIE   -o CMakeFiles/cmTC_ec0f3.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_ec0f3
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ec0f3.dir/link.txt --verbose=1
+/usr/sbin/cc  -DHAVE_GCC_VOLATILE_MEMORY_PROTECTION -Wattributes -Werror    -rdynamic CMakeFiles/cmTC_ec0f3.dir/src.c.o  -o cmTC_ec0f3 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <string.h>
+
+int main(void)
+{
+    char buf[] = "This is some content";
+
+    memset(buf, '\0', sizeof(buf)); __asm__ volatile("" : : "g"(&buf) : "memory");
+
+    return 0;
+}
+Performing C SOURCE FILE Test HAVE_COMPILER__FUNC__ succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_e3d98/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_e3d98.dir/build.make CMakeFiles/cmTC_e3d98.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e3d98.dir/src.c.o
+/usr/sbin/cc   -DHAVE_COMPILER__FUNC__ -Wattributes -Werror -fPIE   -o CMakeFiles/cmTC_e3d98.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_e3d98
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e3d98.dir/link.txt --verbose=1
+/usr/sbin/cc  -DHAVE_COMPILER__FUNC__ -Wattributes -Werror    -rdynamic CMakeFiles/cmTC_e3d98.dir/src.c.o  -o cmTC_e3d98 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <stdio.h>
+int main(void) {
+    printf("%s", __func__);
+    return 0;
+}
+Performing C SOURCE FILE Test HAVE_COMPILER__FUNCTION__ succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_1e084/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_1e084.dir/build.make CMakeFiles/cmTC_1e084.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1e084.dir/src.c.o
+/usr/sbin/cc   -DHAVE_COMPILER__FUNCTION__ -Wattributes -Werror -fPIE   -o CMakeFiles/cmTC_1e084.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_1e084
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1e084.dir/link.txt --verbose=1
+/usr/sbin/cc  -DHAVE_COMPILER__FUNCTION__ -Wattributes -Werror    -rdynamic CMakeFiles/cmTC_1e084.dir/src.c.o  -o cmTC_1e084 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <stdio.h>
+int main(void) {
+    printf("%s", __FUNCTION__);
+    return 0;
+}
+Performing C SOURCE FILE Test HAVE_LD_VERSION_SCRIPT succeeded with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_34cd2/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_34cd2.dir/build.make CMakeFiles/cmTC_34cd2.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_34cd2.dir/src.c.o
+/usr/sbin/cc   -DHAVE_LD_VERSION_SCRIPT -Wl,--version-script="/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/conftest.map" -fPIE   -o CMakeFiles/cmTC_34cd2.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_34cd2
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_34cd2.dir/link.txt --verbose=1
+/usr/sbin/cc  -DHAVE_LD_VERSION_SCRIPT -Wl,--version-script="/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/conftest.map"    -rdynamic CMakeFiles/cmTC_34cd2.dir/src.c.o  -o cmTC_34cd2 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main(void) { return 0; }
+Determining if the include file sys/types.h exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_16711/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_16711.dir/build.make CMakeFiles/cmTC_16711.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_16711.dir/CheckIncludeFile.c.o
+/usr/sbin/cc   -fPIE   -o CMakeFiles/cmTC_16711.dir/CheckIncludeFile.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_16711
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_16711.dir/link.txt --verbose=1
+/usr/sbin/cc      -rdynamic CMakeFiles/cmTC_16711.dir/CheckIncludeFile.c.o  -o cmTC_16711 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file stddef.h exists passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_a8074/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_a8074.dir/build.make CMakeFiles/cmTC_a8074.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a8074.dir/CheckIncludeFile.c.o
+/usr/sbin/cc   -fPIE   -o CMakeFiles/cmTC_a8074.dir/CheckIncludeFile.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_a8074
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a8074.dir/link.txt --verbose=1
+/usr/sbin/cc      -rdynamic CMakeFiles/cmTC_a8074.dir/CheckIncludeFile.c.o  -o cmTC_a8074 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining size of unsigned short passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_88812/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_88812.dir/build.make CMakeFiles/cmTC_88812.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_88812.dir/CMAKE_SIZEOF_UNSIGNED_SHORT.c.o
+/usr/sbin/cc   -fPIE   -o CMakeFiles/cmTC_88812.dir/CMAKE_SIZEOF_UNSIGNED_SHORT.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CheckTypeSize/CMAKE_SIZEOF_UNSIGNED_SHORT.c
+Linking C executable cmTC_88812
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_88812.dir/link.txt --verbose=1
+/usr/sbin/cc      -rdynamic CMakeFiles/cmTC_88812.dir/CMAKE_SIZEOF_UNSIGNED_SHORT.c.o  -o cmTC_88812 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the system is big endian passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_9835c/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_9835c.dir/build.make CMakeFiles/cmTC_9835c.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9835c.dir/TestEndianess.c.o
+/usr/sbin/cc   -fPIE   -o CMakeFiles/cmTC_9835c.dir/TestEndianess.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/TestEndianess.c
+Linking C executable cmTC_9835c
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9835c.dir/link.txt --verbose=1
+/usr/sbin/cc      -rdynamic CMakeFiles/cmTC_9835c.dir/TestEndianess.c.o  -o cmTC_9835c 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+TestEndianess.c:
+/* A 16 bit integer is required. */
+typedef unsigned short cmakeint16;
+
+/* On a little endian machine, these 16bit ints will give "THIS IS LITTLE ENDIAN."
+   On a big endian machine the characters will be exchanged pairwise. */
+const cmakeint16 info_little[] =  {0x4854, 0x5349, 0x4920, 0x2053, 0x494c, 0x5454, 0x454c, 0x4520, 0x444e, 0x4149, 0x2e4e, 0x0000};
+
+/* on a big endian machine, these 16bit ints will give "THIS IS BIG ENDIAN."
+   On a little endian machine the characters will be exchanged pairwise. */
+const cmakeint16 info_big[] =     {0x5448, 0x4953, 0x2049, 0x5320, 0x4249, 0x4720, 0x454e, 0x4449, 0x414e, 0x2e2e, 0x0000};
+
+#ifdef __CLASSIC_C__
+int main(argc, argv) int argc; char *argv[];
+#else
+int main(int argc, char *argv[])
+#endif
+{
+  int require = 0;
+  require += info_little[argc];
+  require += info_big[argc];
+  (void)argv;
+  return require;
+}
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /usr/sbin/c++ 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is GNU, found in "/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/3.14.3/CompilerIdCXX/a.out"
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_bc9d8/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_bc9d8.dir/build.make CMakeFiles/cmTC_bc9d8.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_bc9d8.dir/testCXXCompiler.cxx.o
+/usr/sbin/c++    -fPIE   -o CMakeFiles/cmTC_bc9d8.dir/testCXXCompiler.cxx.o -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_bc9d8
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bc9d8.dir/link.txt --verbose=1
+/usr/sbin/c++       -rdynamic CMakeFiles/cmTC_bc9d8.dir/testCXXCompiler.cxx.o  -o cmTC_bc9d8 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_e624e/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_e624e.dir/build.make CMakeFiles/cmTC_e624e.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_e624e.dir/CMakeCXXCompilerABI.cpp.o
+/usr/sbin/c++    -fPIE   -v -o CMakeFiles/cmTC_e624e.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CMakeCXXCompilerABI.cpp
+Using built-in specs.
+COLLECT_GCC=/usr/sbin/c++
+Target: x86_64-pc-linux-gnu
+Configured with: /build/gcc/src/gcc/configure --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://bugs.archlinux.org/ --enable-languages=c,c++,ada,fortran,go,lto,objc,obj-c++ --enable-shared --enable-threads=posix --enable-libmpx --with-system-zlib --with-isl --enable-__cxa_atexit --disable-libunwind-exceptions --enable-clocale=gnu --disable-libstdcxx-pch --disable-libssp --enable-gnu-unique-object --enable-linker-build-id --enable-lto --enable-plugin --enable-install-libiberty --with-linker-hash-style=gnu --enable-gnu-indirect-function --enable-multilib --disable-werror --enable-checking=release --enable-default-pie --enable-default-ssp --enable-cet=auto
+Thread model: posix
+gcc version 8.2.1 20181127 (GCC) 
+COLLECT_GCC_OPTIONS='-fPIE' '-v' '-o' 'CMakeFiles/cmTC_e624e.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/cc1plus -quiet -v -D_GNU_SOURCE /usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_e624e.dir/CMakeCXXCompilerABI.cpp.o -version -fPIE -o /tmp/ccoXmn7U.s
+GNU C++14 (GCC) version 8.2.1 20181127 (x86_64-pc-linux-gnu)
+	compiled by GNU C version 8.2.1 20181127, GMP version 6.1.2, MPFR version 4.0.1, MPC version 1.1.0, isl version isl-0.20-GMP
+
+warning: MPFR header version 4.0.1 differs from library version 4.0.2.
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring nonexistent directory "/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../x86_64-pc-linux-gnu/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../include/c++/8.2.1
+ /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../include/c++/8.2.1/x86_64-pc-linux-gnu
+ /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../include/c++/8.2.1/backward
+ /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include
+ /usr/local/include
+ /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include-fixed
+ /usr/include
+End of search list.
+GNU C++14 (GCC) version 8.2.1 20181127 (x86_64-pc-linux-gnu)
+	compiled by GNU C version 8.2.1 20181127, GMP version 6.1.2, MPFR version 4.0.1, MPC version 1.1.0, isl version isl-0.20-GMP
+
+warning: MPFR header version 4.0.1 differs from library version 4.0.2.
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: c228073cd86637479fc341ff509ca7e7
+COLLECT_GCC_OPTIONS='-fPIE' '-v' '-o' 'CMakeFiles/cmTC_e624e.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ as -v --64 -o CMakeFiles/cmTC_e624e.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccoXmn7U.s
+GNU assembler version 2.31.1 (x86_64-pc-linux-gnu) using BFD version (GNU Binutils) 2.31.1
+COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-fPIE' '-v' '-o' 'CMakeFiles/cmTC_e624e.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+Linking CXX executable cmTC_e624e
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e624e.dir/link.txt --verbose=1
+/usr/sbin/c++      -v -rdynamic CMakeFiles/cmTC_e624e.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_e624e 
+Using built-in specs.
+COLLECT_GCC=/usr/sbin/c++
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/lto-wrapper
+Target: x86_64-pc-linux-gnu
+Configured with: /build/gcc/src/gcc/configure --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://bugs.archlinux.org/ --enable-languages=c,c++,ada,fortran,go,lto,objc,obj-c++ --enable-shared --enable-threads=posix --enable-libmpx --with-system-zlib --with-isl --enable-__cxa_atexit --disable-libunwind-exceptions --enable-clocale=gnu --disable-libstdcxx-pch --disable-libssp --enable-gnu-unique-object --enable-linker-build-id --enable-lto --enable-plugin --enable-install-libiberty --with-linker-hash-style=gnu --enable-gnu-indirect-function --enable-multilib --disable-werror --enable-checking=release --enable-default-pie --enable-default-ssp --enable-cet=auto
+Thread model: posix
+gcc version 8.2.1 20181127 (GCC) 
+COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_e624e' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/collect2 -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccr2SIcY.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_e624e /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../.. CMakeFiles/cmTC_e624e.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_e624e' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+Parsed CXX implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../include/c++/8.2.1]
+    add: [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../include/c++/8.2.1/x86_64-pc-linux-gnu]
+    add: [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../include/c++/8.2.1/backward]
+    add: [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include]
+    add: [/usr/local/include]
+    add: [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include-fixed]
+    add: [/usr/include]
+  end of search list found
+  collapse include dir [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../include/c++/8.2.1] ==> [/usr/include/c++/8.2.1]
+  collapse include dir [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../include/c++/8.2.1/x86_64-pc-linux-gnu] ==> [/usr/include/c++/8.2.1/x86_64-pc-linux-gnu]
+  collapse include dir [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../include/c++/8.2.1/backward] ==> [/usr/include/c++/8.2.1/backward]
+  collapse include dir [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include] ==> [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include-fixed] ==> [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include-fixed]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  implicit include dirs: [/usr/include/c++/8.2.1;/usr/include/c++/8.2.1/x86_64-pc-linux-gnu;/usr/include/c++/8.2.1/backward;/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include;/usr/local/include;/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include-fixed;/usr/include]
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/sbin/make cmTC_e624e/fast ]
+  ignore line: [/usr/sbin/make -f CMakeFiles/cmTC_e624e.dir/build.make CMakeFiles/cmTC_e624e.dir/build]
+  ignore line: [make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp']
+  ignore line: [Building CXX object CMakeFiles/cmTC_e624e.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/sbin/c++    -fPIE   -v -o CMakeFiles/cmTC_e624e.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/sbin/c++]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Configured with: /build/gcc/src/gcc/configure --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://bugs.archlinux.org/ --enable-languages=c,c++,ada,fortran,go,lto,objc,obj-c++ --enable-shared --enable-threads=posix --enable-libmpx --with-system-zlib --with-isl --enable-__cxa_atexit --disable-libunwind-exceptions --enable-clocale=gnu --disable-libstdcxx-pch --disable-libssp --enable-gnu-unique-object --enable-linker-build-id --enable-lto --enable-plugin --enable-install-libiberty --with-linker-hash-style=gnu --enable-gnu-indirect-function --enable-multilib --disable-werror --enable-checking=release --enable-default-pie --enable-default-ssp --enable-cet=auto]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 8.2.1 20181127 (GCC) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-fPIE' '-v' '-o' 'CMakeFiles/cmTC_e624e.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/cc1plus -quiet -v -D_GNU_SOURCE /usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_e624e.dir/CMakeCXXCompilerABI.cpp.o -version -fPIE -o /tmp/ccoXmn7U.s]
+  ignore line: [GNU C++14 (GCC) version 8.2.1 20181127 (x86_64-pc-linux-gnu)]
+  ignore line: [	compiled by GNU C version 8.2.1 20181127, GMP version 6.1.2, MPFR version 4.0.1, MPC version 1.1.0, isl version isl-0.20-GMP]
+  ignore line: []
+  ignore line: [warning: MPFR header version 4.0.1 differs from library version 4.0.2.]
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../x86_64-pc-linux-gnu/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../include/c++/8.2.1]
+  ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../include/c++/8.2.1/x86_64-pc-linux-gnu]
+  ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../include/c++/8.2.1/backward]
+  ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include-fixed]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [GNU C++14 (GCC) version 8.2.1 20181127 (x86_64-pc-linux-gnu)]
+  ignore line: [	compiled by GNU C version 8.2.1 20181127, GMP version 6.1.2, MPFR version 4.0.1, MPC version 1.1.0, isl version isl-0.20-GMP]
+  ignore line: []
+  ignore line: [warning: MPFR header version 4.0.1 differs from library version 4.0.2.]
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [Compiler executable checksum: c228073cd86637479fc341ff509ca7e7]
+  ignore line: [COLLECT_GCC_OPTIONS='-fPIE' '-v' '-o' 'CMakeFiles/cmTC_e624e.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  ignore line: [ as -v --64 -o CMakeFiles/cmTC_e624e.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccoXmn7U.s]
+  ignore line: [GNU assembler version 2.31.1 (x86_64-pc-linux-gnu) using BFD version (GNU Binutils) 2.31.1]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-fPIE' '-v' '-o' 'CMakeFiles/cmTC_e624e.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  ignore line: [Linking CXX executable cmTC_e624e]
+  ignore line: [/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e624e.dir/link.txt --verbose=1]
+  ignore line: [/usr/sbin/c++      -v -rdynamic CMakeFiles/cmTC_e624e.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_e624e ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/sbin/c++]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/lto-wrapper]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Configured with: /build/gcc/src/gcc/configure --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://bugs.archlinux.org/ --enable-languages=c,c++,ada,fortran,go,lto,objc,obj-c++ --enable-shared --enable-threads=posix --enable-libmpx --with-system-zlib --with-isl --enable-__cxa_atexit --disable-libunwind-exceptions --enable-clocale=gnu --disable-libstdcxx-pch --disable-libssp --enable-gnu-unique-object --enable-linker-build-id --enable-lto --enable-plugin --enable-install-libiberty --with-linker-hash-style=gnu --enable-gnu-indirect-function --enable-multilib --disable-werror --enable-checking=release --enable-default-pie --enable-default-ssp --enable-cet=auto]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 8.2.1 20181127 (GCC) ]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_e624e' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/collect2 -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccr2SIcY.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_e624e /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../.. CMakeFiles/cmTC_e624e.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib/crtn.o]
+    arg [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccr2SIcY.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-export-dynamic] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-pie] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_e624e] ==> ignore
+    arg [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib/Scrt1.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib/crti.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/crtbeginS.o] ==> ignore
+    arg [-L/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1] ==> dir [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1]
+    arg [-L/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib]
+    arg [-L/lib/../lib] ==> dir [/lib/../lib]
+    arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
+    arg [-L/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../..] ==> dir [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../..]
+    arg [CMakeFiles/cmTC_e624e.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/crtendS.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib/crtn.o] ==> ignore
+  collapse library dir [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1] ==> [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1]
+  collapse library dir [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../lib] ==> [/usr/lib]
+  collapse library dir [/lib/../lib] ==> [/lib]
+  collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
+  collapse library dir [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../..] ==> [/usr/lib]
+  implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
+  implicit dirs: [/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1;/usr/lib;/lib]
+  implicit fwks: []
+
+
+
+
+Detecting CXX [-std=c++2a] compiler features compiled with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_40834/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_40834.dir/build.make CMakeFiles/cmTC_40834.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_40834.dir/feature_tests.cxx.o
+/usr/sbin/c++    -fPIE   -std=c++2a -o CMakeFiles/cmTC_40834.dir/feature_tests.cxx.o -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_40834
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_40834.dir/link.txt --verbose=1
+/usr/sbin/c++       -rdynamic CMakeFiles/cmTC_40834.dir/feature_tests.cxx.o  -o cmTC_40834 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+    Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:1cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:1cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:1cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:1cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_decltype_incomplete_return_types
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:1cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:1cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:1cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:1cxx_relaxed_constexpr
+    Feature record: CXX_FEATURE:1cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:1cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+
+
+Detecting CXX [-std=c++17] compiler features compiled with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_aef86/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_aef86.dir/build.make CMakeFiles/cmTC_aef86.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_aef86.dir/feature_tests.cxx.o
+/usr/sbin/c++    -fPIE   -std=c++17 -o CMakeFiles/cmTC_aef86.dir/feature_tests.cxx.o -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_aef86
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_aef86.dir/link.txt --verbose=1
+/usr/sbin/c++       -rdynamic CMakeFiles/cmTC_aef86.dir/feature_tests.cxx.o  -o cmTC_aef86 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+    Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:1cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:1cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:1cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:1cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_decltype_incomplete_return_types
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:1cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:1cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:1cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:1cxx_relaxed_constexpr
+    Feature record: CXX_FEATURE:1cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:1cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+
+
+Detecting CXX [-std=c++14] compiler features compiled with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_51767/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_51767.dir/build.make CMakeFiles/cmTC_51767.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_51767.dir/feature_tests.cxx.o
+/usr/sbin/c++    -fPIE   -std=c++14 -o CMakeFiles/cmTC_51767.dir/feature_tests.cxx.o -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_51767
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_51767.dir/link.txt --verbose=1
+/usr/sbin/c++       -rdynamic CMakeFiles/cmTC_51767.dir/feature_tests.cxx.o  -o cmTC_51767 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+    Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:1cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:1cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:1cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:1cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_decltype_incomplete_return_types
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:1cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:1cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:1cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:1cxx_relaxed_constexpr
+    Feature record: CXX_FEATURE:1cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:1cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+
+
+Detecting CXX [-std=c++11] compiler features compiled with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_0975f/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_0975f.dir/build.make CMakeFiles/cmTC_0975f.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_0975f.dir/feature_tests.cxx.o
+/usr/sbin/c++    -fPIE   -std=c++11 -o CMakeFiles/cmTC_0975f.dir/feature_tests.cxx.o -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_0975f
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0975f.dir/link.txt --verbose=1
+/usr/sbin/c++       -rdynamic CMakeFiles/cmTC_0975f.dir/feature_tests.cxx.o  -o cmTC_0975f 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+    Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:0cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:0cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:0cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:0cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_decltype_incomplete_return_types
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:0cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:0cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:0cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:0cxx_relaxed_constexpr
+    Feature record: CXX_FEATURE:0cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:0cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+
+
+Detecting CXX [-std=c++98] compiler features compiled with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_75882/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_75882.dir/build.make CMakeFiles/cmTC_75882.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_75882.dir/feature_tests.cxx.o
+/usr/sbin/c++    -fPIE   -std=c++98 -o CMakeFiles/cmTC_75882.dir/feature_tests.cxx.o -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_75882
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_75882.dir/link.txt --verbose=1
+/usr/sbin/c++       -rdynamic CMakeFiles/cmTC_75882.dir/feature_tests.cxx.o  -o cmTC_75882 
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+
+
+    Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:0cxx_alias_templates
+    Feature record: CXX_FEATURE:0cxx_alignas
+    Feature record: CXX_FEATURE:0cxx_alignof
+    Feature record: CXX_FEATURE:0cxx_attributes
+    Feature record: CXX_FEATURE:0cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:0cxx_auto_type
+    Feature record: CXX_FEATURE:0cxx_binary_literals
+    Feature record: CXX_FEATURE:0cxx_constexpr
+    Feature record: CXX_FEATURE:0cxx_contextual_conversions
+    Feature record: CXX_FEATURE:0cxx_decltype
+    Feature record: CXX_FEATURE:0cxx_decltype_auto
+    Feature record: CXX_FEATURE:0cxx_decltype_incomplete_return_types
+    Feature record: CXX_FEATURE:0cxx_default_function_template_args
+    Feature record: CXX_FEATURE:0cxx_defaulted_functions
+    Feature record: CXX_FEATURE:0cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:0cxx_delegating_constructors
+    Feature record: CXX_FEATURE:0cxx_deleted_functions
+    Feature record: CXX_FEATURE:0cxx_digit_separators
+    Feature record: CXX_FEATURE:0cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:0cxx_explicit_conversions
+    Feature record: CXX_FEATURE:0cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:0cxx_extern_templates
+    Feature record: CXX_FEATURE:0cxx_final
+    Feature record: CXX_FEATURE:0cxx_func_identifier
+    Feature record: CXX_FEATURE:0cxx_generalized_initializers
+    Feature record: CXX_FEATURE:0cxx_generic_lambdas
+    Feature record: CXX_FEATURE:0cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:0cxx_inline_namespaces
+    Feature record: CXX_FEATURE:0cxx_lambdas
+    Feature record: CXX_FEATURE:0cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:0cxx_local_type_template_args
+    Feature record: CXX_FEATURE:0cxx_long_long_type
+    Feature record: CXX_FEATURE:0cxx_noexcept
+    Feature record: CXX_FEATURE:0cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:0cxx_nullptr
+    Feature record: CXX_FEATURE:0cxx_override
+    Feature record: CXX_FEATURE:0cxx_range_for
+    Feature record: CXX_FEATURE:0cxx_raw_string_literals
+    Feature record: CXX_FEATURE:0cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:0cxx_relaxed_constexpr
+    Feature record: CXX_FEATURE:0cxx_return_type_deduction
+    Feature record: CXX_FEATURE:0cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:0cxx_rvalue_references
+    Feature record: CXX_FEATURE:0cxx_sizeof_member
+    Feature record: CXX_FEATURE:0cxx_static_assert
+    Feature record: CXX_FEATURE:0cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:0cxx_thread_local
+    Feature record: CXX_FEATURE:0cxx_trailing_return_types
+    Feature record: CXX_FEATURE:0cxx_unicode_literals
+    Feature record: CXX_FEATURE:0cxx_uniform_initialization
+    Feature record: CXX_FEATURE:0cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:0cxx_user_literals
+    Feature record: CXX_FEATURE:0cxx_variable_templates
+    Feature record: CXX_FEATURE:0cxx_variadic_macros
+    Feature record: CXX_FEATURE:0cxx_variadic_templates
