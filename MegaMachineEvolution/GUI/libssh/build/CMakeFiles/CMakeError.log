@@ -1,0 +1,297 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_ee0af/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_ee0af.dir/build.make CMakeFiles/cmTC_ee0af.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ee0af.dir/CheckSymbolExists.c.o
+/usr/sbin/cc   -fPIE   -o CMakeFiles/cmTC_ee0af.dir/CheckSymbolExists.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_ee0af
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ee0af.dir/link.txt --verbose=1
+/usr/sbin/cc      -rdynamic CMakeFiles/cmTC_ee0af.dir/CheckSymbolExists.c.o  -o cmTC_ee0af 
+/usr/sbin/ld: CMakeFiles/cmTC_ee0af.dir/CheckSymbolExists.c.o: in function `main':
+CheckSymbolExists.c:(.text+0x1b): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_ee0af.dir/build.make:87: cmTC_ee0af] Error 1
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_ee0af/fast] Error 2
+
+File /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the include file util.h exists failed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_e4e05/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_e4e05.dir/build.make CMakeFiles/cmTC_e4e05.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e4e05.dir/CheckIncludeFile.c.o
+/usr/sbin/cc   -fPIE   -o CMakeFiles/cmTC_e4e05.dir/CheckIncludeFile.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:10: fatal error: util.h: No such file or directory
+ #include <util.h>
+          ^~~~~~~~
+compilation terminated.
+make[1]: *** [CMakeFiles/cmTC_e4e05.dir/build.make:66: CMakeFiles/cmTC_e4e05.dir/CheckIncludeFile.c.o] Error 1
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_e4e05/fast] Error 2
+
+
+Determining if the include file libutil.h exists failed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_b8c52/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_b8c52.dir/build.make CMakeFiles/cmTC_b8c52.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b8c52.dir/CheckIncludeFile.c.o
+/usr/sbin/cc   -fPIE   -o CMakeFiles/cmTC_b8c52.dir/CheckIncludeFile.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:10: fatal error: libutil.h: No such file or directory
+ #include <libutil.h>
+          ^~~~~~~~~~~
+compilation terminated.
+make[1]: *** [CMakeFiles/cmTC_b8c52.dir/build.make:66: CMakeFiles/cmTC_b8c52.dir/CheckIncludeFile.c.o] Error 1
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_b8c52/fast] Error 2
+
+
+Determining if the include file sys/utime.h exists failed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_85df8/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_85df8.dir/build.make CMakeFiles/cmTC_85df8.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_85df8.dir/CheckIncludeFile.c.o
+/usr/sbin/cc   -fPIE   -o CMakeFiles/cmTC_85df8.dir/CheckIncludeFile.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:10: fatal error: sys/utime.h: No such file or directory
+ #include <sys/utime.h>
+          ^~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [CMakeFiles/cmTC_85df8.dir/build.make:66: CMakeFiles/cmTC_85df8.dir/CheckIncludeFile.c.o] Error 1
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_85df8/fast] Error 2
+
+
+Determining if the include file valgrind/valgrind.h exists failed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_1f20c/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_1f20c.dir/build.make CMakeFiles/cmTC_1f20c.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1f20c.dir/CheckIncludeFile.c.o
+/usr/sbin/cc   -fPIE   -o CMakeFiles/cmTC_1f20c.dir/CheckIncludeFile.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:10: fatal error: valgrind/valgrind.h: No such file or directory
+ #include <valgrind/valgrind.h>
+          ^~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [CMakeFiles/cmTC_1f20c.dir/build.make:66: CMakeFiles/cmTC_1f20c.dir/CheckIncludeFile.c.o] Error 1
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_1f20c/fast] Error 2
+
+
+Determining if the function CRYPTO_THREADID_set_callback exists failed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_95bae/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_95bae.dir/build.make CMakeFiles/cmTC_95bae.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_95bae.dir/CheckFunctionExists.c.o
+/usr/sbin/cc   -DCHECK_FUNCTION_EXISTS=CRYPTO_THREADID_set_callback -fPIE   -o CMakeFiles/cmTC_95bae.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CheckFunctionExists.c
+Linking C executable cmTC_95bae
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_95bae.dir/link.txt --verbose=1
+/usr/sbin/cc  -DCHECK_FUNCTION_EXISTS=CRYPTO_THREADID_set_callback    -rdynamic CMakeFiles/cmTC_95bae.dir/CheckFunctionExists.c.o  -o cmTC_95bae /usr/lib/libcrypto.so 
+/usr/sbin/ld: CMakeFiles/cmTC_95bae.dir/CheckFunctionExists.c.o: in function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `CRYPTO_THREADID_set_callback'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_95bae.dir/build.make:88: cmTC_95bae] Error 1
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_95bae/fast] Error 2
+
+
+Determining if the function EVP_KDF_CTX_new_id exists failed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_c22c5/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_c22c5.dir/build.make CMakeFiles/cmTC_c22c5.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c22c5.dir/CheckFunctionExists.c.o
+/usr/sbin/cc   -DCHECK_FUNCTION_EXISTS=EVP_KDF_CTX_new_id -fPIE   -o CMakeFiles/cmTC_c22c5.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CheckFunctionExists.c
+Linking C executable cmTC_c22c5
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c22c5.dir/link.txt --verbose=1
+/usr/sbin/cc  -DCHECK_FUNCTION_EXISTS=EVP_KDF_CTX_new_id    -rdynamic CMakeFiles/cmTC_c22c5.dir/CheckFunctionExists.c.o  -o cmTC_c22c5 /usr/lib/libcrypto.so 
+/usr/sbin/ld: CMakeFiles/cmTC_c22c5.dir/CheckFunctionExists.c.o: in function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `EVP_KDF_CTX_new_id'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_c22c5.dir/build.make:88: cmTC_c22c5] Error 1
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_c22c5/fast] Error 2
+
+
+Determining if the function OPENSSL_ia32cap_loc exists failed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_8e3af/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_8e3af.dir/build.make CMakeFiles/cmTC_8e3af.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8e3af.dir/CheckFunctionExists.c.o
+/usr/sbin/cc   -DCHECK_FUNCTION_EXISTS=OPENSSL_ia32cap_loc -fPIE   -o CMakeFiles/cmTC_8e3af.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CheckFunctionExists.c
+Linking C executable cmTC_8e3af
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8e3af.dir/link.txt --verbose=1
+/usr/sbin/cc  -DCHECK_FUNCTION_EXISTS=OPENSSL_ia32cap_loc    -rdynamic CMakeFiles/cmTC_8e3af.dir/CheckFunctionExists.c.o  -o cmTC_8e3af /usr/lib/libcrypto.so 
+/usr/sbin/ld: CMakeFiles/cmTC_8e3af.dir/CheckFunctionExists.c.o: in function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `OPENSSL_ia32cap_loc'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_8e3af.dir/build.make:88: cmTC_8e3af] Error 1
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_8e3af/fast] Error 2
+
+
+Determining if the function memset_s exists failed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_1422b/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_1422b.dir/build.make CMakeFiles/cmTC_1422b.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1422b.dir/CheckFunctionExists.c.o
+/usr/sbin/cc   -DCHECK_FUNCTION_EXISTS=memset_s -fPIE   -o CMakeFiles/cmTC_1422b.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CheckFunctionExists.c
+Linking C executable cmTC_1422b
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1422b.dir/link.txt --verbose=1
+/usr/sbin/cc  -DCHECK_FUNCTION_EXISTS=memset_s    -rdynamic CMakeFiles/cmTC_1422b.dir/CheckFunctionExists.c.o  -o cmTC_1422b 
+/usr/sbin/ld: CMakeFiles/cmTC_1422b.dir/CheckFunctionExists.c.o: in function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `memset_s'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_1422b.dir/build.make:87: cmTC_1422b] Error 1
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_1422b/fast] Error 2
+
+
+Determining if the ntohll exist failed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_d9ac4/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_d9ac4.dir/build.make CMakeFiles/cmTC_d9ac4.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d9ac4.dir/CheckSymbolExists.c.o
+/usr/sbin/cc   -fPIE   -o CMakeFiles/cmTC_d9ac4.dir/CheckSymbolExists.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function ‘main’:
+/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:8:19: error: ‘ntohll’ undeclared (first use in this function); did you mean ‘ntohl’?
+   return ((int*)(&ntohll))[argc];
+                   ^~~~~~
+                   ntohl
+/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:8:19: note: each undeclared identifier is reported only once for each function it appears in
+make[1]: *** [CMakeFiles/cmTC_d9ac4.dir/build.make:66: CMakeFiles/cmTC_d9ac4.dir/CheckSymbolExists.c.o] Error 1
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_d9ac4/fast] Error 2
+
+File /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <arpa/inet.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef ntohll
+  return ((int*)(&ntohll))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the htonll exist failed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_71138/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_71138.dir/build.make CMakeFiles/cmTC_71138.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_71138.dir/CheckSymbolExists.c.o
+/usr/sbin/cc   -fPIE   -o CMakeFiles/cmTC_71138.dir/CheckSymbolExists.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function ‘main’:
+/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:8:19: error: ‘htonll’ undeclared (first use in this function); did you mean ‘htonl’?
+   return ((int*)(&htonll))[argc];
+                   ^~~~~~
+                   htonl
+/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:8:19: note: each undeclared identifier is reported only once for each function it appears in
+make[1]: *** [CMakeFiles/cmTC_71138.dir/build.make:66: CMakeFiles/cmTC_71138.dir/CheckSymbolExists.c.o] Error 1
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_71138/fast] Error 2
+
+File /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <arpa/inet.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef htonll
+  return ((int*)(&htonll))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function __strtoull exists failed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_b17ae/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_b17ae.dir/build.make CMakeFiles/cmTC_b17ae.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b17ae.dir/CheckFunctionExists.c.o
+/usr/sbin/cc   -DCHECK_FUNCTION_EXISTS=__strtoull -fPIE   -o CMakeFiles/cmTC_b17ae.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/cmake-3.14.3-Linux-x86_64/share/cmake-3.14/Modules/CheckFunctionExists.c
+Linking C executable cmTC_b17ae
+/usr/share/cmake/cmake-3.14.3-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b17ae.dir/link.txt --verbose=1
+/usr/sbin/cc  -DCHECK_FUNCTION_EXISTS=__strtoull    -rdynamic CMakeFiles/cmTC_b17ae.dir/CheckFunctionExists.c.o  -o cmTC_b17ae 
+/usr/sbin/ld: CMakeFiles/cmTC_b17ae.dir/CheckFunctionExists.c.o: in function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `__strtoull'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_b17ae.dir/build.make:87: cmTC_b17ae] Error 1
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_b17ae/fast] Error 2
+
+
+Performing C SOURCE FILE Test HAVE_MSC_THREAD_LOCAL_STORAGE failed with the following output:
+Change Dir: /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/sbin/make cmTC_877ac/fast 
+/usr/sbin/make -f CMakeFiles/cmTC_877ac.dir/build.make CMakeFiles/cmTC_877ac.dir/build
+make[1]: Entering directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_877ac.dir/src.c.o
+/usr/sbin/cc   -DHAVE_MSC_THREAD_LOCAL_STORAGE -fPIE   -o CMakeFiles/cmTC_877ac.dir/src.c.o   -c /home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c
+/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c:2:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ __declspec(thread) int tls;
+ ^~~~~~~~~~
+/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c: In function ‘__declspec’:
+/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c:4:16: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ int main(void) {
+                ^
+/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c:2:1: warning: type of ‘thread’ defaults to ‘int’ [-Wimplicit-int]
+ __declspec(thread) int tls;
+ ^~~~~~~~~~
+/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c:2:24: error: declaration for parameter ‘tls’ but no such parameter
+ __declspec(thread) int tls;
+                        ^~~
+/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp/src.c:6: error: expected ‘{’ at end of input
+ }
+ 
+make[1]: *** [CMakeFiles/cmTC_877ac.dir/build.make:66: CMakeFiles/cmTC_877ac.dir/src.c.o] Error 1
+make[1]: Leaving directory '/home/david/Desktop/HEIG-VD/PRO/heigvd-pro-b-13/PRO_GUI/PRO_GUI/libssh/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_877ac/fast] Error 2
+
+Source file was:
+
+__declspec(thread) int tls;
+
+int main(void) {
+    return 0;
+}

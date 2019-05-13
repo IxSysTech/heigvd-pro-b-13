@@ -29,23 +29,26 @@ private:
    std::vector<T> upperBound;     // parameter(s) upper bound
    std::vector<T> initialSet;     // initial set of parameter(s)
    std::vector<int> idx;          // indexes for chromosome breakdown
+   std::vector<void (*)(Population<T>&)> selectionModes = {RWS, SUS, RNK, RSP, TNT, TRS};
+   std::vector<void (*)(const Population<T>&, CHR<T>&, CHR<T>&)> crossOverModes = {P1XO, P2XO, UXO};
+   std::vector<void (*)(CHR<T>&)> mutationModes = {BDM, SPM, UNM};
 
 public: 
    // objective function pointer
    Func<T> Objective; 
    //WE SELECT HERE THE METHOD OF EVOLUTION!!!!!!!!!!!!!!!!!!!!!
-   void (*Selection)(Population<T>&) = SUS;
+   void (*Selection)(Population<T>&);
    // cross-over method initialized to 1-point cross-over                                
-   void (*CrossOver)(const Population<T>&, CHR<T>&, CHR<T>&) = P2XO;
+   void (*CrossOver)(const Population<T>&, CHR<T>&, CHR<T>&);
    // mutation method initialized to single-point mutation 
-   void (*Mutation)(CHR<T>&) = SPM;
+   void (*Mutation)(CHR<T>&);
    // adaptation to constraint(s) method                                        
    void (*Adaptation)(Population<T>&) = nullptr; 
    // constraint(s)                               
    std::vector<T> (*Constraint)(const std::vector<T>&) = nullptr; 
 
    T covrate = .7;   // cross-over rate
-   T mutrate = .02;   // mutation rate
+   T mutrate = .1;   // mutation rate
    T SP = 1.2;        // selective pressure for RSP selection method
    T tolerance = 0.0; // terminal condition (inactive if equal to zero)
                  
@@ -57,7 +60,7 @@ public:
 
    // constructor
    template <int...N>
-   GeneticAlgorithm(Func<T> objective, int popsize, int nbgen, bool output, const Parameter<T,N>&...args);
+   GeneticAlgorithm(int indexMutaionMode, int insexCrossOverMode, int indexSelectionMode, Func<T> objective, int popsize, int nbgen, bool output, const Parameter<T,N>&...args);
    // run genetic algorithm
    void run();
    // return best chromosome 
@@ -88,8 +91,11 @@ private:
    
 // constructor
 template <typename T> template <int...N>
-GeneticAlgorithm<T>::GeneticAlgorithm(Func<T> objective, int popsize, int nbgen, bool output, const Parameter<T,N>&...args)
+GeneticAlgorithm<T>::GeneticAlgorithm(int indexMutationMode, int indexCrossOverMode, int indexSelectionMode,Func<T> objective, int popsize, int nbgen, bool output, const Parameter<T,N>&...args)
 {
+   this->Mutation = this->mutationModes.at(indexMutationMode);
+   this->CrossOver = this->crossOverModes.at(indexCrossOverMode);
+   this->Selection = this->selectionModes.at(indexSelectionMode);
    this->Objective = objective;
    // getting total number of bits per chromosome
    this->nbbit = sum(N...);

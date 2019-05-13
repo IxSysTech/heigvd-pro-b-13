@@ -49,7 +49,6 @@ void MegaMachineManager::stop(int stoppedMachine, int ctrYes, int ctrNo){
     // Pour le moment : on admet que c'est comme si rien détecter (0)
 
     if(ctrYes != ctrNo)
-        if(ctrYes == 7 || ctrNo == 7)
             if((ctrYes > ctrNo ? true : false) == theEmitter->getCurrentResult())
                 ++(*scores)[stoppedMachine];
 }

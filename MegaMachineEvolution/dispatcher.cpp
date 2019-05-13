@@ -1,11 +1,5 @@
 #include "dispatcher.h"
-#include "Galgo.hpp"
-#include "megamachinemanager.h"
-#include "utils.h"
-#include <QObject>
-#include <vector>
-#include <QTimer>
-#include <fstream>
+#include "GALGO/Galgo.hpp"
 
 // Get the appropriate number of bits for each transition
 #define MASK_TRANSITIONS 0x000000000000000F
@@ -14,8 +8,10 @@
 
 std::multimap<std::string, bool>* Dispatcher::sequences;
 
-Dispatcher::Dispatcher(QObject *parent) : QObject(parent)
+Dispatcher::Dispatcher(int crossMode, int selectMode, int mutMode, double crossOverRate, double mutationRate, double selectivePressureRate, double toleranceRate, unsigned int stateNb, unsigned int popsize, unsigned int maxAlert, unsigned int genNb, QObject *parent) :
+    crossMode(crossMode), selectMode(selectMode), mutMode(mutMode), crossOverRate(crossOverRate), mutationRate(mutationRate), selectivePressureRate(selectivePressureRate), toleranceRate(toleranceRate), stateNb(stateNb), maxAlert(maxAlert), genNb(genNb), popsize(popsize), QObject(parent)
 {
+
     //TODO: Receive all the configs necessary to the statemachines and the genetical algorithm
 }
 
@@ -39,7 +35,7 @@ void Dispatcher::initSequences(){
     char delimiter = ';';
     while(std::getline(test, line)){
         tokens = split(line, delimiter);
-        sequences->insert(std::pair<std::string, bool>(tokens[0], tokens[1] == "7" ? true : false));
+        sequences->insert(std::pair<std::string, bool>(tokens[0], tokens[1] == "0" ? true : false));
     }
 }
 
@@ -63,25 +59,25 @@ void Dispatcher::run() {
     */
 
     //Test with hardcoded params
-    galgo::Parameter<double,64> par1({0.0, std::numeric_limits<double>::max()});
-    galgo::Parameter<double,64> par2({0.0, std::numeric_limits<double>::max()});
-    galgo::Parameter<double,64> par3({0.0, std::numeric_limits<double>::max()});
-    galgo::Parameter<double,64> par4({0.0, std::numeric_limits<double>::max()});
-    galgo::Parameter<double,64> par5({0.0, std::numeric_limits<double>::max()});
-    galgo::Parameter<double,64> par6({0.0, std::numeric_limits<double>::max()});
-    galgo::Parameter<double,64> par7({0.0, std::numeric_limits<double>::max()});
-    galgo::Parameter<double,64> par8({0.0, std::numeric_limits<double>::max()});
-    galgo::Parameter<double,64> par9({0.0, std::numeric_limits<double>::max()});
-    galgo::Parameter<double,64> par10({0.0, std::numeric_limits<double>::max()});
-    galgo::Parameter<double,64> par11({0.0, std::numeric_limits<double>::max()});
-    galgo::Parameter<double,64> par12({0.0, std::numeric_limits<double>::max()});
-    galgo::Parameter<double,64> par13({0.0, std::numeric_limits<double>::max()});
-    galgo::Parameter<double,64> par14({0.0, std::numeric_limits<double>::max()});
-    galgo::Parameter<double,64> par15({0.0, std::numeric_limits<double>::max()});
-    galgo::Parameter<double,64> par16({0.0, std::numeric_limits<double>::max()});
+    galgo::Parameter<float,32> par1({0.0, std::numeric_limits<float>::max()});
+    galgo::Parameter<float,32> par2({0.0, std::numeric_limits<float>::max()});
+    galgo::Parameter<float,32> par3({0.0, std::numeric_limits<float>::max()});
+    galgo::Parameter<float,32> par4({0.0, std::numeric_limits<float>::max()});
+    galgo::Parameter<float,32> par5({0.0, std::numeric_limits<float>::max()});
+    galgo::Parameter<float,32> par6({0.0, std::numeric_limits<float>::max()});
+    galgo::Parameter<float,32> par7({0.0, std::numeric_limits<float>::max()});
+    galgo::Parameter<float,32> par8({0.0, std::numeric_limits<float>::max()});
+    galgo::Parameter<float,32> par9({0.0, std::numeric_limits<float>::max()});
+    galgo::Parameter<float,32> par10({0.0, std::numeric_limits<float>::max()});
+    galgo::Parameter<float,32> par11({0.0, std::numeric_limits<float>::max()});
+    galgo::Parameter<float,32> par12({0.0, std::numeric_limits<float>::max()});
+    galgo::Parameter<float,32> par13({0.0, std::numeric_limits<float>::max()});
+    galgo::Parameter<float,32> par14({0.0, std::numeric_limits<float>::max()});
+    galgo::Parameter<float,32> par15({0.0, std::numeric_limits<float>::max()});
+    galgo::Parameter<float,32> par16({0.0, std::numeric_limits<float>::max()});
 
     // initiliazing genetic algorithm
-    galgo::GeneticAlgorithm<double> ga(Dispatcher::objective<double>,100,100,true,par1,par2,par3,par4,par5,par6,par7,par8,par9,par10,par11,par12,par13,par14,par15,par16);
+    galgo::GeneticAlgorithm<float> ga(this->mutMode,this->crossMode,this->selectMode,Dispatcher::objective<float>,this->popsize,this->genNb,true,par1,par2,par3,par4,par5,par6,par7,par8,par9,par10,par11,par12,par13,par14,par15,par16);
 
     // running genetic algorithm
     ga.run();
@@ -99,7 +95,7 @@ std::vector<T> Dispatcher::objective(const std::vector<T>& x){
     for(size_t i = 0; i < nbStates; ++i){
         converter test;
         test.value = x.at(i);
-        uint64_t binRepresentation = test.converted;
+        uint32_t binRepresentation = test.converted;
         out << "State : " << i << " : " << endl;
         StateDescriptor *currentState = new StateDescriptor;
         currentState->transitions = std::vector<StateDescriptor::Transition>();
@@ -129,5 +125,5 @@ std::vector<T> Dispatcher::objective(const std::vector<T>& x){
     QTimer::singleShot(0, manager, &MegaMachineManager::runMachines);
     loop.exec();
 
-    return {static_cast<double>(scores->at(0))};
+    return {static_cast<float>(scores->at(0))};
 }

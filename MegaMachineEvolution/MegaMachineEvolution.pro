@@ -25,18 +25,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-    GUI/main.cpp \
-    GALGO/example.cpp \
-    GUI/mainwindow.cpp \
     StateMachines/emitteracgt.cpp \
     StateMachines/megamachine.cpp \
     StateMachines/megamachinemanager.cpp \
-    dispatcher.cpp
-
-INCLUDEPATH += \
-    GALGO/ \
-    GUI/ \
-    StateMachines/
+    dispatcher.cpp \
+    GUI/oldmain.cpp \
+    GUI/main.cpp \
+    GUI/mainwindow.cpp \
+    GUI/parameterwindow.cpp
 
 HEADERS += \
     GALGO/Chromosome.hpp \
@@ -48,16 +44,25 @@ HEADERS += \
     GALGO/Population.hpp \
     GALGO/Randomize.hpp \
     GUI/mainwindow.h \
+    GUI/parameterwindow.h \
     StateMachines/emitteracgt.h \
     StateMachines/megamachine.h \
     StateMachines/megamachinemanager.h \
-    StateMachines/utils.h \
-    dispatcher.h
+    dispatcher.h \
+    StateMachines/utils.h
 
 FORMS += \
-    GUI/mainwindow.ui
+    GUI/mainwindow.ui \
+    GUI/parameterwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/GUI/libssh/build/lib/release/ -lssh
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/GUI/libssh/build/lib/debug/ -lssh
+else:unix: LIBS += -L$$PWD/GUI/libssh/build/lib/ -lssh
+
+INCLUDEPATH += $$PWD/GUI/libssh/build/include
+DEPENDPATH += $$PWD/GUI/libssh/build/include

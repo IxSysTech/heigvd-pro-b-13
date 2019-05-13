@@ -2,6 +2,16 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <string>
+#include <libssh/libssh.h>
+#include <libssh/sftp.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <iostream>
+#include <fcntl.h>
+#include "parameterwindow.h"
+
+#define MAX_XFER_BUF_SIZE 16384
 
 namespace Ui {
 class MainWindow;
@@ -15,7 +25,16 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_btnConnect_clicked();
+
 private:
+    ParameterWindow p;
+    ssh_session sshConnect();
+    void scpRead(ssh_session session);
+    ssh_channel channelConnect(ssh_session session);
+    void sshWrite(ssh_channel channel, char* command);
+    void sshRead(ssh_channel channel);
     Ui::MainWindow *ui;
 };
 

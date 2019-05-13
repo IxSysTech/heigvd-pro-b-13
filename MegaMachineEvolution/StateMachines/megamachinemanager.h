@@ -5,7 +5,6 @@
 #include <QVector>
 #include "emitteracgt.h"
 #include "megamachine.h"
-#include "utils.h"
 
 class MegaMachineManager : public QObject
 {
