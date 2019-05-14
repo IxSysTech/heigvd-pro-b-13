@@ -2,6 +2,7 @@
 #define PARAMETERWINDOW_H
 
 #include <QMainWindow>
+#include <QApplication>
 #include "../dispatcher.h"
 #include <unistd.h>
 #include <QTimer>
@@ -21,8 +22,15 @@ public:
 private slots:
     void on_btnRun_clicked();
 
+public slots:
+    void incrementProgressBar(double percent);
+
 private:
     Ui::ParameterWindow *ui;
+    double progress = 0.0;
+
+signals:
+    void incrementPercent(double);
 };
 
 #endif // PARAMETERWINDOW_H

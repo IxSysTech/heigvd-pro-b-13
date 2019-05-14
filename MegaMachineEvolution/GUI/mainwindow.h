@@ -13,6 +13,7 @@
 #include "parameterwindow.h"
 
 #define MAX_XFER_BUF_SIZE 32768
+#define ERROR_MESSAGE "FATAL"
 
 namespace Ui {
 class MainWindow;
@@ -35,7 +36,7 @@ private:
     int scpRead(ssh_session session);
     int channelConnect(ssh_session session, ssh_channel &channel);
     int sshWrite(ssh_channel channel, char* command);
-    int sshRead(ssh_channel channel, char *result);
+    int sshRead(ssh_channel channel, std::string &result);
     void setGUIEnabled(bool value);
     Ui::MainWindow *ui;
 };

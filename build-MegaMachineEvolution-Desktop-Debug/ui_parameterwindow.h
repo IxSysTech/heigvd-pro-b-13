@@ -16,6 +16,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStatusBar>
@@ -52,6 +53,7 @@ public:
     QSpinBox *sbPopulationSize;
     QLabel *label_12;
     QSpinBox *sbMaxAlert;
+    QProgressBar *pgbGeneration;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -59,9 +61,9 @@ public:
     {
         if (ParameterWindow->objectName().isEmpty())
             ParameterWindow->setObjectName(QString::fromUtf8("ParameterWindow"));
-        ParameterWindow->resize(700, 500);
-        ParameterWindow->setMinimumSize(QSize(700, 500));
-        ParameterWindow->setMaximumSize(QSize(700, 500));
+        ParameterWindow->resize(700, 510);
+        ParameterWindow->setMinimumSize(QSize(700, 510));
+        ParameterWindow->setMaximumSize(QSize(700, 510));
         centralwidget = new QWidget(ParameterWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         label = new QLabel(centralwidget);
@@ -158,6 +160,10 @@ public:
         sbMaxAlert->setMinimum(1);
         sbMaxAlert->setMaximum(1000);
         sbMaxAlert->setValue(1);
+        pgbGeneration = new QProgressBar(centralwidget);
+        pgbGeneration->setObjectName(QString::fromUtf8("pgbGeneration"));
+        pgbGeneration->setGeometry(QRect(20, 431, 661, 23));
+        pgbGeneration->setValue(0);
         ParameterWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(ParameterWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -174,7 +180,7 @@ public:
 
     void retranslateUi(QMainWindow *ParameterWindow)
     {
-        ParameterWindow->setWindowTitle(QApplication::translate("ParameterWindow", "MainWindow", nullptr));
+        ParameterWindow->setWindowTitle(QApplication::translate("ParameterWindow", "Mega Machine Evolution - Parameters", nullptr));
         label->setText(QApplication::translate("ParameterWindow", "Genetic algorithme parameters", nullptr));
         label_2->setText(QApplication::translate("ParameterWindow", "Selection mode", nullptr));
         label_3->setText(QApplication::translate("ParameterWindow", "Cross-over mode", nullptr));

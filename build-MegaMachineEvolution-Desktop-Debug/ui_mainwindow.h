@@ -159,7 +159,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Mega Machine Evolution - Connection", nullptr));
         label->setText(QApplication::translate("MainWindow", "Host", nullptr));
         label_2->setText(QApplication::translate("MainWindow", "Database connection information", nullptr));
         label_3->setText(QApplication::translate("MainWindow", "Database name", nullptr));

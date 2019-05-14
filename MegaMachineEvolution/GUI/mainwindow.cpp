@@ -36,19 +36,21 @@ void MainWindow::on_btnConnect_clicked()
     ssh_session session = nullptr;
     ssh_channel channel = nullptr;
 
+    this->setGUIEnabled(false);
     rc = sshConnect(&session);
     if(rc != SSH_OK){
-        ui->lblInfo->setVisible(true);
         ui->lblInfo->setText("Connection to host via SSH failed");
         qApp->processEvents();
     } else {
         rc = channelConnect(session, channel);
         if(rc != SSH_OK){
-            ui->lblInfo->setVisible(true);
             ui->lblInfo->setText("Connection to host via SSH failed");
+            setGUIEnabled(true);
             qApp->processEvents();
         } else {
-            ui->lblInfo->setVisible(true);
+            ui->lblInfo->setText("Connecting to the database...");
+            qApp->processEvents();
+
             //Formatage de la requete
             std::string sqlResquest = "SELECT protein.sadn, location.id FROM \"PRO19\".protein INNER JOIN \"PRO19\".prot_to_loc ON protein.id = prot_to_loc.fk_prot INNER JOIN \"PRO19\".location on prot_to_loc.fk_loc = location.id WHERE location.id != 7 LIMIT 5000;";
             char command[500];
@@ -61,61 +63,73 @@ void MainWindow::on_btnConnect_clicked()
             //Envoie de la commande pour la requete au serveur distant
             rc = sshWrite(channel, command);
             if (rc != SSH_OK){
-                ui->lblInfo->setText("Connection do databse failed");
+                ui->lblInfo->setText("Connection to database failed");
+                setGUIEnabled(true);
                 qApp->processEvents();
             } else {
-                char* cmdResult;
-                //sshRead(channel, cmd);
-
-                this->setGUIEnabled(false);
-                ui->lblInfo->setText("Connecting to database ...");
-                qApp->processEvents();
-
                 sleep(5);
+                //std::string resultCmd;
+                //TODO gérer l'erreur de connection à la base de données (SSH_ERROR)
+                //rc = sshRead(channel, resultCmd);
+                    if(false /*rc != SSH_OK || strstr(resultCmd.c_str(), ERROR_MESSAGE)*/){
+                        ui->lblInfo->setText("Connection to database failed");
+                        setGUIEnabled(true);
+                        qApp->processEvents();
+                    } else {
+                        //Lecture du fichier de résultat de la requete
+                        ui->lblInfo->setText("Getting data from database ...");
+                        qApp->processEvents();
 
-                //Lecture du fichier de résultat de la requete
-                ui->lblInfo->setText("Getting data from database ...");
-                qApp->processEvents();
-
-                rc = scpRead(session);
-                if(rc != SSH_OK){
-                    ui->lblInfo->setText("Error during the download of data");
-                    qApp->processEvents();
-                    setGUIEnabled(true);
-                } else {
-                    this->hide();
-                    this->p.show();
+                        rc = scpRead(session);
+                        if(rc != SSH_OK){
+                            ui->lblInfo->setText("Error during the download of data");
+                            qApp->processEvents();
+                            setGUIEnabled(true);
+                        } else {
+                            this->hide();
+                            this->p.show();
+                        }
+                    }
                 }
             }
-
 
             //Fermeture de toutes les connexions ssh
             ssh_channel_close(channel);
             ssh_disconnect(session);
             ssh_free(session);
-        }
     }
 }
 
-int MainWindow::sshRead(ssh_channel channel, char* result){
+int MainWindow::sshRead(ssh_channel channel, std::string &result){
+    char buffer[256];
     int nbytes;
+    int rc;
 
-    nbytes = ssh_channel_read(channel, result, sizeof(result), 0);
-    while (nbytes > 0)
-    {
-        if (fwrite(result, 1, nbytes, stdout) != nbytes){
-            ssh_channel_close(channel);
-            ssh_channel_free(channel);
-            return SSH_ERROR;
-        }
-        nbytes = ssh_channel_read(channel, result, sizeof(result), 0);
+    rc = ssh_channel_open_session(channel);
+    if (rc != SSH_OK){
+        ssh_channel_free(channel);
+        return rc;
     }
 
-    if (nbytes < 0){
+    nbytes = ssh_channel_read(channel, buffer, sizeof(buffer), 0);
+    while (nbytes > 0)
+    {
+      if (fwrite(buffer, 1, nbytes, stdout) != nbytes)
+      {
         ssh_channel_close(channel);
         ssh_channel_free(channel);
         return SSH_ERROR;
+      }
+      nbytes = ssh_channel_read(channel, buffer, sizeof(buffer), 0);
     }
+    if (nbytes < 0)
+    {
+      ssh_channel_close(channel);
+      ssh_channel_free(channel);
+      return SSH_ERROR;
+    }
+
+    result = buffer;
 
     return SSH_OK;
 }
@@ -136,6 +150,10 @@ int MainWindow::sshWrite(ssh_channel channel, char* command){
 
 int MainWindow::sshConnect(ssh_session *session){
     int rc;
+
+    ui->lblInfo->setVisible(true);
+    ui->lblInfo->setText("Connecting to the SSH host...");
+    qApp->processEvents();
 
     //Création de l'objet SSH
     *session = ssh_new();

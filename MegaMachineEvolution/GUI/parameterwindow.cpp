@@ -32,6 +32,9 @@ ParameterWindow::ParameterWindow(QWidget *parent) :
     ui->dsbCrossOverRate->setValue(0.5);
     ui->dsbMutationRate->setValue(0.05);
     ui->dsbToleranceRate->setValue(0.0);
+    ui->pgbGeneration->setVisible(false);
+
+    connect(this, SIGNAL(incrementPercent(double)), this, SLOT(incrementProgressBar(double)));
 }
 
 ParameterWindow::~ParameterWindow()
@@ -66,5 +69,17 @@ void ParameterWindow::on_btnRun_clicked()
     //QTimer::singleShot(0, task, &Task::run);
     QTimer::singleShot(0, DISPATCHER, &Dispatcher::run);
 
+    // Setup progress bar
+    ui->pgbGeneration->setVisible(true);
+    ui->btnRun->setVisible(false);
+    ui->pgbGeneration->setMaximum(ui->sbGenerationNumber->value());
+    qApp->processEvents();
+
     loop.exec();
+}
+
+void ParameterWindow::incrementProgressBar(double percent){
+    progress += percent;
+    ui->pgbGeneration->setValue(progress);
+    qApp->processEvents();
 }
