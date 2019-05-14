@@ -8,10 +8,13 @@
 
 std::multimap<std::string, bool>* Dispatcher::sequences;
 
-Dispatcher::Dispatcher(int crossMode, int selectMode, int mutMode, double crossOverRate, double mutationRate, double selectivePressureRate, double toleranceRate, unsigned int stateNb, unsigned int popsize, unsigned int maxAlert, unsigned int genNb, QObject *parent) :
-    crossMode(crossMode), selectMode(selectMode), mutMode(mutMode), crossOverRate(crossOverRate), mutationRate(mutationRate), selectivePressureRate(selectivePressureRate), toleranceRate(toleranceRate), stateNb(stateNb), maxAlert(maxAlert), genNb(genNb), popsize(popsize), QObject(parent)
-{
+//TODO: Changer ça
+unsigned int GLOBAL_MAX_ALERTS = 1;
 
+Dispatcher::Dispatcher(int crossMode, int selectMode, int mutMode, double crossOverRate, double mutationRate, double selectivePressureRate, double toleranceRate, unsigned int stateNb, unsigned int popsize, unsigned int maxAlert, unsigned int genNb, QObject *parent) :
+    crossMode(crossMode), selectMode(selectMode), mutMode(mutMode), crossOverRate(crossOverRate), mutationRate(mutationRate), selectivePressureRate(selectivePressureRate), toleranceRate(toleranceRate), stateNb(stateNb), genNb(genNb), popsize(popsize), QObject(parent)
+{
+    GLOBAL_MAX_ALERTS = maxAlert;
     //TODO: Receive all the configs necessary to the statemachines and the genetical algorithm
 }
 
@@ -43,7 +46,7 @@ void Dispatcher::run() {
 
     this->initSequences();
     //Test with hardcoded params
-    /*galgo::Parameter<float,32> par1({0.0, std::numeric_limits<float>::max()});
+    galgo::Parameter<float,32> par1({0.0, std::numeric_limits<float>::max()});
     galgo::Parameter<float,32> par2({0.0, std::numeric_limits<float>::max()});
     galgo::Parameter<float,32> par3({0.0, std::numeric_limits<float>::max()});
     galgo::Parameter<float,32> par4({0.0, std::numeric_limits<float>::max()});
@@ -59,21 +62,25 @@ void Dispatcher::run() {
     galgo::Parameter<float,32> par14({0.0, std::numeric_limits<float>::max()});
     galgo::Parameter<float,32> par15({0.0, std::numeric_limits<float>::max()});
     galgo::Parameter<float,32> par16({0.0, std::numeric_limits<float>::max()});
-*/
-    std::vector<galgo::Parameter<float,32>> parameters;
-    //std::tuple<const Parameter<T,N>&...> tp;
 
-    for(int i = 0; i < this->stateNb; ++i)
-        parameters.push_back(galgo::Parameter<float,32>({0.0, std::numeric_limits<float>::max()}));
+    /*
+    galgo::Parameter<float,32> params[this->stateNb];
+
+    for(int i = 0; i < this->stateNb; ++i) {
+        params[i] = galgo::Parameter<float,32>({0.0, std::numeric_limits<float>::max()});
+    }
+    */
 
 
     // initiliazing genetic algorithm
-    //galgo::GeneticAlgorithm<float> ga(this->mutMode,this->crossMode,this->selectMode,Dispatcher::objective<float>,this->popsize,this->genNb,true,par1,par2,par3,par4,par5,par6,par7,par8,par9,par10,par11,par12,par13,par14,par15,par16);
-    galgo::GeneticAlgorithm<float> ga(this->mutMode, this->crossMode, this->selectMode, this->crossOverRate, this->mutationRate, this->selectivePressureRate, Dispatcher::objective<float>, this->popsize, this->genNb, true, tp);
+    galgo::GeneticAlgorithm<float> ga(this->mutMode,this->crossMode,this->selectMode,this->crossOverRate,this->mutationRate,this->selectivePressureRate,Dispatcher::objective<float>,this->popsize,this->genNb,true,par1,par2,par3,par4,par5,par6,par7,par8,par9,par10,par11,par12,par13,par14,par15,par16);
+    //galgo::GeneticAlgorithm<float> ga(this->mutMode, this->crossMode, this->selectMode, this->crossOverRate, this->mutationRate, this->selectivePressureRate, Dispatcher::objective<float>, this->popsize, this->genNb, true, params);
 
     // running genetic algorithm
     ga.run();
-    ga.result();
+    // TODO: recup best fit :
+    // ga.result();
+
     emit finished();
 }
 
@@ -111,7 +118,7 @@ std::vector<T> Dispatcher::objective(const std::vector<T>& x){
     std::vector<std::vector<StateDescriptor>> *theMachines = new std::vector<std::vector<StateDescriptor>>();
     std::vector<int> *scores = new std::vector<int>(1, 0);
     theMachines->push_back(*theTestMachine);
-    MegaMachineManager *manager = new MegaMachineManager(sequences,*theMachines, scores);
+    MegaMachineManager *manager = new MegaMachineManager(sequences,*theMachines, scores, GLOBAL_MAX_ALERTS);
 
     QEventLoop loop;
     QObject::connect(manager, SIGNAL (finished()), &loop, SLOT (quit()));

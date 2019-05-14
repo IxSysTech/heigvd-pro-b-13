@@ -11,10 +11,14 @@ class MegaMachineManager : public QObject
     Q_OBJECT
 public:
     ///
-    /// \brief MegaMachineManager - Construct a megamachine for each vector containing StateDescriptor in the given vector.
-    /// \param parent - QObject parent
+    /// \brief MegaMachineManager
+    /// \param sequences
+    /// \param machinesGiven
+    /// \param scoresToGive
+    /// \param maxAlerts
+    /// \param parent
     ///
-    explicit MegaMachineManager(std::multimap<std::string, bool> *sequences, std::vector<std::vector<StateDescriptor>> machinesGiven, std::vector<int> *scoresToGive, QObject *parent = nullptr);
+    explicit MegaMachineManager(std::multimap<std::string, bool> *sequences, std::vector<std::vector<StateDescriptor>> machinesGiven, std::vector<int> *scoresToGive,unsigned int maxAlerts, QObject *parent = nullptr);
 
 signals:
     ///

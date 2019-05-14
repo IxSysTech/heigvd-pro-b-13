@@ -13,6 +13,7 @@ union converter {
     uint32_t converted;
 };
 
+
 class Dispatcher : public QObject
 {
     Q_OBJECT
@@ -29,7 +30,7 @@ private:
     static void initSequences();
 
     double crossOverRate, mutationRate, selectivePressureRate, toleranceRate;
-    unsigned int stateNb,popsize,maxAlert, genNb;
+    unsigned int stateNb, popsize, genNb;
     int crossMode, selectMode, mutMode;
 };
 

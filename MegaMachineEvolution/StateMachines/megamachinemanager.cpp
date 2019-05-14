@@ -1,11 +1,11 @@
 #include "megamachinemanager.h"
 
-MegaMachineManager::MegaMachineManager(std::multimap<std::string, bool> *sequences, std::vector<std::vector<StateDescriptor>> machinesGiven, std::vector<int> *scoresToGive, QObject *parent) : QObject(parent)
+MegaMachineManager::MegaMachineManager(std::multimap<std::string, bool> *sequences, std::vector<std::vector<StateDescriptor>> machinesGiven, std::vector<int> *scoresToGive,unsigned int maxAlerts, QObject *parent) : QObject(parent)
 {
     this->sequences = sequences;
     int nbMachines = machinesGiven.size();
     for(int i = 0; i < nbMachines; ++i) {
-        machines.push_back(new MegaMachine(machinesGiven.at(i), 7, i, this));
+        machines.push_back(new MegaMachine(machinesGiven.at(i), maxAlerts, i, this));
     }
     scores = scoresToGive;
 }
