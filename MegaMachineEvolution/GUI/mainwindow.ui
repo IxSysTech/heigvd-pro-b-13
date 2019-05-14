@@ -7,23 +7,23 @@
     <x>0</x>
     <y>0</y>
     <width>460</width>
-    <height>370</height>
+    <height>410</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>460</width>
-    <height>370</height>
+    <height>410</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>460</width>
-    <height>370</height>
+    <height>410</height>
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Mega Machine Evolution - Connection</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QLineEdit" name="txtDBHost">
@@ -97,7 +97,7 @@
      <rect>
       <x>20</x>
       <y>84</y>
-      <width>121</width>
+      <width>191</width>
       <height>18</height>
      </rect>
     </property>
@@ -115,7 +115,7 @@
      <rect>
       <x>21</x>
       <y>114</y>
-      <width>121</width>
+      <width>191</width>
       <height>18</height>
      </rect>
     </property>
@@ -293,6 +293,38 @@
     </property>
     <property name="text">
      <string>SSH connection information</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblInfo">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>334</y>
+      <width>441</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QProgressBar" name="pgbDownload">
+    <property name="geometry">
+     <rect>
+      <x>11</x>
+      <y>302</y>
+      <width>441</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="value">
+     <number>0</number>
     </property>
    </widget>
   </widget>

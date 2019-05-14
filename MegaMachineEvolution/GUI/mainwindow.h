@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QApplication>
 #include <string>
 #include <libssh/libssh.h>
 #include <libssh/sftp.h>
@@ -11,7 +12,8 @@
 #include <fcntl.h>
 #include "parameterwindow.h"
 
-#define MAX_XFER_BUF_SIZE 16384
+#define MAX_XFER_BUF_SIZE 32768
+#define ERROR_MESSAGE "FATAL"
 
 namespace Ui {
 class MainWindow;
@@ -30,11 +32,12 @@ private slots:
 
 private:
     ParameterWindow p;
-    ssh_session sshConnect();
-    void scpRead(ssh_session session);
-    ssh_channel channelConnect(ssh_session session);
-    void sshWrite(ssh_channel channel, char* command);
-    void sshRead(ssh_channel channel);
+    int sshConnect(ssh_session *session);
+    int scpRead(ssh_session session);
+    int channelConnect(ssh_session session, ssh_channel &channel);
+    int sshWrite(ssh_channel channel, char* command);
+    int sshRead(ssh_channel channel, std::string &result);
+    void setGUIEnabled(bool value);
     Ui::MainWindow *ui;
 };
 
