@@ -2,6 +2,7 @@
 import xml.etree.ElementTree as ET
 
 path = "minimouse.xml"
+#path = "../../LOCATE_mouse_v6_20081121.xml"
 
 # map1 : prot : transcript
 # map2 : goid loc
@@ -12,14 +13,15 @@ root = ET.parse(path)
 searchParents = ["protein", "transcript", "scl_prediction"]
 searchedChildren = ["protein_sequence", "transcript_sequence", "organism"]
 searchedGChildren = ["location", "goid"]
-temp= [];
+temp = [[]]
 
 for element in root.iter():
     if element is not None:
         try:
             for element_child in element:
+                newTab = []
+
                 for element_grandchild in element_child: # on regarde si on trouve un parent
-                    newTab = []
 
                     for element_ggChild in element_grandchild:  #pour organism, proteinSeq, transcript_S,
                         for i in searchParents:
@@ -35,13 +37,16 @@ for element in root.iter():
                                         for k in searchedGChildren:  # on verifie qu'il y a bien une des sequences qu'on cherche
                                             if k in element_gggChild.tag and element_gggChild.text != "No prediction":
                                                 if element_gggChild.tag == "goid" :
-                                                    tabGo.append((element_gggChild.text, temp))
+                                                    tabGo.append((element_gggChild.text, tempo))
                                                     newTab.append(tabGo)
-                                                else : temp = element_gggChild.text
+                                                else : tempo = element_gggChild.text
                                                 #print element_gggChild.tag, element_gggChild.text
-                temp.append(newTab)
+                if temp == [[]] :
+                    temp[0]=(newTab)
+                elif newTab != [] : temp.append(newTab)
 
         except:
             continue
 
-print temp
+for i in temp :
+    print i
