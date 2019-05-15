@@ -33,8 +33,10 @@ ParameterWindow::ParameterWindow(QWidget *parent) :
     ui->dsbMutationRate->setValue(0.05);
     ui->dsbToleranceRate->setValue(0.0);
     ui->pgbGeneration->setVisible(false);
+    ui->sbGenerationNumber->setValue(100);
+    ui->sbPopulationSize->setValue(100);
 
-    connect(this, SIGNAL(incrementPercent(double)), this, SLOT(incrementProgressBar(double)));
+    // connect(this, SIGNAL(incrementPercent(double)), this, SLOT(incrementProgressBar(double)));
 }
 
 ParameterWindow::~ParameterWindow()
@@ -73,6 +75,8 @@ void ParameterWindow::on_btnRun_clicked()
 }
 
 void ParameterWindow::incrementProgressBar(double percent){
+    QTextStream out(stdout);
+    out << "Signal received " << percent << endl;
     progress += percent;
     ui->pgbGeneration->setValue(progress);
     qApp->processEvents();

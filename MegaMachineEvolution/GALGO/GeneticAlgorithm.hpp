@@ -48,12 +48,12 @@ public:
    // constraint(s)                               
    std::vector<T> (*Constraint)(const std::vector<T>&) = nullptr; 
 
-   T covrate = .7;   // cross-over rate
+   T covrate;   // cross-over rate
    T mutrate;   // mutation rate
-   T SP = 1.2;        // selective pressure for RSP selection method
+   T SP;        // selective pressure for RSP selection method
    T tolerance = 0.0; // terminal condition (inactive if equal to zero)
                  
-   int elitpop = 1;   // elit population size
+   int elitpop = 5;   // elit population size
    int matsize;       // mating pool size, set to popsize by default
    int tntsize = 10;  // tournament size
    int genstep = 1;  // generation step for outputting results
@@ -236,7 +236,7 @@ void GeneticAlgorithm<T>::run()
          }
          prevBestResult = bestResult;
       }
-      emit this->test->incrementProgress(100 / nbgen);
+      emit this->test->incrementProgress(100. / nbgen);
    } 
 
    // outputting contraint value

@@ -42,6 +42,4 @@ public slots:
     void relay(double);
 };
 
-
-
 #endif // DISPATCHER_H

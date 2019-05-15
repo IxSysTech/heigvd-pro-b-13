@@ -129,5 +129,7 @@ std::vector<T> Dispatcher::objective(const std::vector<T>& x){
 }
 
 void Dispatcher::relay(double percent) {
+    QTextStream out(stdout);
+    out << "Signal emitted from dispacther, percent : " << percent << endl;
     emit incrementProgress(percent);
 }
