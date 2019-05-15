@@ -39,6 +39,7 @@ void MainWindow::on_btnConnect_clicked()
     this->setGUIEnabled(false);
     rc = sshConnect(&session);
     if(rc != SSH_OK){
+        setGUIEnabled(true);
         ui->lblInfo->setText("Connection to host via SSH failed");
         qApp->processEvents();
     } else {
