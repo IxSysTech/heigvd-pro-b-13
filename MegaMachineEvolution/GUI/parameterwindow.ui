@@ -7,19 +7,19 @@
     <x>0</x>
     <y>0</y>
     <width>700</width>
-    <height>510</height>
+    <height>550</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>700</width>
-    <height>510</height>
+    <height>550</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>700</width>
-    <height>510</height>
+    <height>550</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -221,7 +221,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>320</y>
+      <y>359</y>
       <width>351</width>
       <height>31</height>
      </rect>
@@ -239,7 +239,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>360</y>
+      <y>399</y>
       <width>191</width>
       <height>18</height>
      </rect>
@@ -252,7 +252,7 @@
     <property name="geometry">
      <rect>
       <x>220</x>
-      <y>355</y>
+      <y>394</y>
       <width>121</width>
       <height>27</height>
      </rect>
@@ -268,7 +268,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>430</y>
+      <y>469</y>
       <width>661</width>
       <height>26</height>
      </rect>
@@ -293,7 +293,7 @@
      <number>1000</number>
     </property>
     <property name="value">
-     <number>1</number>
+     <number>100</number>
     </property>
    </widget>
    <widget class="QLabel" name="label_11">
@@ -338,14 +338,14 @@
      <number>1000</number>
     </property>
     <property name="value">
-     <number>1</number>
+     <number>100</number>
     </property>
    </widget>
    <widget class="QLabel" name="label_12">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>390</y>
+      <y>429</y>
       <width>191</width>
       <height>18</height>
      </rect>
@@ -358,7 +358,7 @@
     <property name="geometry">
      <rect>
       <x>220</x>
-      <y>385</y>
+      <y>424</y>
       <width>121</width>
       <height>27</height>
      </rect>
@@ -377,13 +377,58 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>431</y>
+      <y>470</y>
       <width>661</width>
       <height>23</height>
      </rect>
     </property>
     <property name="value">
      <number>0</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_14">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>194</y>
+      <width>331</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Enable only for RSP selection mode</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="sbElitePopulationSize">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>310</y>
+      <width>121</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="minimum">
+     <number>1</number>
+    </property>
+    <property name="maximum">
+     <number>1000</number>
+    </property>
+    <property name="value">
+     <number>5</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_15">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>314</y>
+      <width>191</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Elite population size</string>
     </property>
    </widget>
   </widget>

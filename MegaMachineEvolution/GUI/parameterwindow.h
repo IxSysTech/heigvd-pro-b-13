@@ -22,6 +22,8 @@ public:
 private slots:
     void on_btnRun_clicked();
 
+    void on_cmbSelectionMode_currentIndexChanged(int index);
+
 public slots:
     void incrementProgressBar(double percent);
 

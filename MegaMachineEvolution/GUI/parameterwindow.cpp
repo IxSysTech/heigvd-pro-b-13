@@ -81,3 +81,12 @@ void ParameterWindow::incrementProgressBar(double percent){
     ui->pgbGeneration->setValue(progress);
     qApp->processEvents();
 }
+
+void ParameterWindow::on_cmbSelectionMode_currentIndexChanged(int index)
+{
+    if(index == 3){
+        ui->dsbSpRate->setEnabled(true);
+    } else {
+        ui->dsbSpRate->setEnabled(false);
+    }
+}

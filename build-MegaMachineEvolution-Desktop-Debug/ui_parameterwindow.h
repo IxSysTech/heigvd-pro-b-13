@@ -54,6 +54,9 @@ public:
     QLabel *label_12;
     QSpinBox *sbMaxAlert;
     QProgressBar *pgbGeneration;
+    QLabel *label_14;
+    QSpinBox *sbElitePopulationSize;
+    QLabel *label_15;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -61,9 +64,9 @@ public:
     {
         if (ParameterWindow->objectName().isEmpty())
             ParameterWindow->setObjectName(QString::fromUtf8("ParameterWindow"));
-        ParameterWindow->resize(700, 510);
-        ParameterWindow->setMinimumSize(QSize(700, 510));
-        ParameterWindow->setMaximumSize(QSize(700, 510));
+        ParameterWindow->resize(700, 550);
+        ParameterWindow->setMinimumSize(QSize(700, 550));
+        ParameterWindow->setMaximumSize(QSize(700, 550));
         centralwidget = new QWidget(ParameterWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         label = new QLabel(centralwidget);
@@ -120,25 +123,25 @@ public:
         dsbToleranceRate->setGeometry(QRect(220, 220, 121, 27));
         label_5 = new QLabel(centralwidget);
         label_5->setObjectName(QString::fromUtf8("label_5"));
-        label_5->setGeometry(QRect(20, 320, 351, 31));
+        label_5->setGeometry(QRect(20, 359, 351, 31));
         label_5->setFont(font);
         label_10 = new QLabel(centralwidget);
         label_10->setObjectName(QString::fromUtf8("label_10"));
-        label_10->setGeometry(QRect(20, 360, 191, 18));
+        label_10->setGeometry(QRect(20, 399, 191, 18));
         sbStateNumbers = new QSpinBox(centralwidget);
         sbStateNumbers->setObjectName(QString::fromUtf8("sbStateNumbers"));
-        sbStateNumbers->setGeometry(QRect(220, 355, 121, 27));
+        sbStateNumbers->setGeometry(QRect(220, 394, 121, 27));
         sbStateNumbers->setMinimum(1);
         sbStateNumbers->setValue(4);
         btnRun = new QPushButton(centralwidget);
         btnRun->setObjectName(QString::fromUtf8("btnRun"));
-        btnRun->setGeometry(QRect(20, 430, 661, 26));
+        btnRun->setGeometry(QRect(20, 469, 661, 26));
         sbGenerationNumber = new QSpinBox(centralwidget);
         sbGenerationNumber->setObjectName(QString::fromUtf8("sbGenerationNumber"));
         sbGenerationNumber->setGeometry(QRect(220, 250, 121, 27));
         sbGenerationNumber->setMinimum(1);
         sbGenerationNumber->setMaximum(1000);
-        sbGenerationNumber->setValue(1);
+        sbGenerationNumber->setValue(100);
         label_11 = new QLabel(centralwidget);
         label_11->setObjectName(QString::fromUtf8("label_11"));
         label_11->setGeometry(QRect(20, 254, 191, 18));
@@ -150,20 +153,32 @@ public:
         sbPopulationSize->setGeometry(QRect(220, 281, 121, 27));
         sbPopulationSize->setMinimum(1);
         sbPopulationSize->setMaximum(1000);
-        sbPopulationSize->setValue(1);
+        sbPopulationSize->setValue(100);
         label_12 = new QLabel(centralwidget);
         label_12->setObjectName(QString::fromUtf8("label_12"));
-        label_12->setGeometry(QRect(20, 390, 191, 18));
+        label_12->setGeometry(QRect(20, 429, 191, 18));
         sbMaxAlert = new QSpinBox(centralwidget);
         sbMaxAlert->setObjectName(QString::fromUtf8("sbMaxAlert"));
-        sbMaxAlert->setGeometry(QRect(220, 385, 121, 27));
+        sbMaxAlert->setGeometry(QRect(220, 424, 121, 27));
         sbMaxAlert->setMinimum(1);
         sbMaxAlert->setMaximum(1000);
         sbMaxAlert->setValue(1);
         pgbGeneration = new QProgressBar(centralwidget);
         pgbGeneration->setObjectName(QString::fromUtf8("pgbGeneration"));
-        pgbGeneration->setGeometry(QRect(20, 431, 661, 23));
+        pgbGeneration->setGeometry(QRect(20, 470, 661, 23));
         pgbGeneration->setValue(0);
+        label_14 = new QLabel(centralwidget);
+        label_14->setObjectName(QString::fromUtf8("label_14"));
+        label_14->setGeometry(QRect(350, 194, 331, 18));
+        sbElitePopulationSize = new QSpinBox(centralwidget);
+        sbElitePopulationSize->setObjectName(QString::fromUtf8("sbElitePopulationSize"));
+        sbElitePopulationSize->setGeometry(QRect(220, 310, 121, 27));
+        sbElitePopulationSize->setMinimum(1);
+        sbElitePopulationSize->setMaximum(1000);
+        sbElitePopulationSize->setValue(5);
+        label_15 = new QLabel(centralwidget);
+        label_15->setObjectName(QString::fromUtf8("label_15"));
+        label_15->setGeometry(QRect(20, 314, 191, 18));
         ParameterWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(ParameterWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -195,6 +210,8 @@ public:
         label_11->setText(QApplication::translate("ParameterWindow", "Number of generation", nullptr));
         label_13->setText(QApplication::translate("ParameterWindow", "Population size", nullptr));
         label_12->setText(QApplication::translate("ParameterWindow", "Max alert", nullptr));
+        label_14->setText(QApplication::translate("ParameterWindow", "Enable only for RSP selection mode", nullptr));
+        label_15->setText(QApplication::translate("ParameterWindow", "Elite population size", nullptr));
     } // retranslateUi
 
 };
