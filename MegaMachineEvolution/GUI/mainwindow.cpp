@@ -68,75 +68,40 @@ void MainWindow::on_btnConnect_clicked()
                 setGUIEnabled(true);
                 qApp->processEvents();
             } else {
-                sleep(5);
-                //std::string resultCmd;
-                //TODO gérer l'erreur de connection à la base de données (SSH_ERROR)
-                //rc = sshRead(channel, resultCmd);
-                    if(false /*rc != SSH_OK || strstr(resultCmd.c_str(), ERROR_MESSAGE)*/){
-                        ui->lblInfo->setText("Connection to database failed");
-                        setGUIEnabled(true);
-                        qApp->processEvents();
-                    } else {
-                        //Lecture du fichier de résultat de la requete
-                        ui->lblInfo->setText("Getting data from database ...");
-                        qApp->processEvents();
+                //Lecture du fichier de résultat de la requete
+                ui->lblInfo->setText("Getting data from database ...");
+                qApp->processEvents();
 
-                        rc = scpRead(session);
-                        if(rc != SSH_OK){
-                            ui->lblInfo->setText("Error during the download of data");
-                            qApp->processEvents();
-                            setGUIEnabled(true);
-                        } else {
-                            this->hide();
-                            this->p.show();
-                        }
-                    }
+                rc = scpRead(session);
+                if(rc != SSH_OK){
+                    ui->lblInfo->setText("Error during the download of data");
+                    qApp->processEvents();
+                    setGUIEnabled(true);
+                } else {
+                    this->hide();
+                    this->p.show();
                 }
             }
+        }
 
-            //Fermeture de toutes les connexions ssh
-            ssh_channel_close(channel);
-            ssh_disconnect(session);
-            ssh_free(session);
-    }
-}
-
-int MainWindow::sshRead(ssh_channel channel, std::string &result){
-    char buffer[256];
-    int nbytes;
-    int rc;
-
-    rc = ssh_channel_open_session(channel);
-    if (rc != SSH_OK){
-        ssh_channel_free(channel);
-        return rc;
-    }
-
-    nbytes = ssh_channel_read(channel, buffer, sizeof(buffer), 0);
-    while (nbytes > 0)
-    {
-      if (fwrite(buffer, 1, nbytes, stdout) != nbytes)
-      {
+        //Fermeture de toutes les connexions ssh
         ssh_channel_close(channel);
-        ssh_channel_free(channel);
-        return SSH_ERROR;
-      }
-      nbytes = ssh_channel_read(channel, buffer, sizeof(buffer), 0);
+        ssh_disconnect(session);
+        ssh_free(session);
     }
-    if (nbytes < 0)
-    {
-      ssh_channel_close(channel);
-      ssh_channel_free(channel);
-      return SSH_ERROR;
-    }
-
-    result = buffer;
-
-    return SSH_OK;
 }
 
 int MainWindow::sshWrite(ssh_channel channel, char* command){
     int rc = 0;
+    //char buffer[256];
+    //int nbytes;
+
+    rc = ssh_channel_open_session(channel);
+    if (rc != SSH_OK)
+    {
+        ssh_channel_free(channel);
+        return SSH_ERROR;
+    }
 
     rc = ssh_channel_request_exec(channel, command);
     if (rc != SSH_OK)
@@ -145,7 +110,16 @@ int MainWindow::sshWrite(ssh_channel channel, char* command){
         ssh_channel_free(channel);
         return SSH_ERROR;
     }
+/*
 
+    nbytes = ssh_channel_read(channel, buffer, sizeof(buffer), 0);
+    while (nbytes > 0) {
+        fwrite(buffer, 1, nbytes, stdout);
+        nbytes = ssh_channel_read(channel, buffer, sizeof(buffer), 0);
+    }
+
+    std::cout << buffer << std::endl;
+*/
     return SSH_OK;
 }
 
@@ -173,7 +147,7 @@ int MainWindow::sshConnect(ssh_session *session){
     rc = ssh_userauth_password(*session, ui->txtSSHUsername->text().toLocal8Bit().data(), ui->txtSSHPassword->text().toLocal8Bit().data());
     if (rc != SSH_AUTH_SUCCESS){
         fprintf(stderr, "Error authenticating with password: %s\n",
-            ssh_get_error(*session));
+                ssh_get_error(*session));
         ssh_disconnect(*session);
         ssh_free(*session);
         return SSH_ERROR;
@@ -197,90 +171,93 @@ int MainWindow::scpRead(ssh_session session){
 
     if (scp == NULL)
     {
-      fprintf(stderr, "Error allocating scp session: %s\n", ssh_get_error(session));
+        fprintf(stderr, "Error allocating scp session: %s\n", ssh_get_error(session));
         return SSH_ERROR;
     }
     rc = ssh_scp_init(scp);
     if (rc != SSH_OK)
     {
-      fprintf(stderr, "Error initializing scp session: %s\n", ssh_get_error(session));
-      ssh_scp_free(scp);
-      return SSH_ERROR;
+        fprintf(stderr, "Error initializing scp session: %s\n", ssh_get_error(session));
+        ssh_scp_free(scp);
+        return SSH_ERROR;
     }
 
     rc = ssh_scp_pull_request(scp);
     if (rc != SSH_SCP_REQUEST_NEWFILE)
     {
-       fprintf(stderr, "Error receiving information about file: %s\n", ssh_get_error(session));
-       return SSH_ERROR;
+        fprintf(stderr, "Error receiving information about file: %s\n", ssh_get_error(session));
+        return SSH_ERROR;
     }
-     size = ssh_scp_request_get_size(scp);
-     filename = strdup(ssh_scp_request_get_filename(scp));
-     mode = ssh_scp_request_get_permissions(scp);
-     printf("Receiving file %s, size %d, permissions 0%o\n",
-             filename, size, mode);
-     free(filename);
-     buffer = (char*)malloc(size);
-     if (buffer == NULL)
-     {
-       fprintf(stderr, "Memory allocation error\n");
-       return SSH_ERROR;
-     }
-     ssh_scp_accept_request(scp);
 
-     //Le fichier et lu par bloque
-     //La boucler permet de lire tout le fichier
-     ui->pgbDownload->setVisible(true);
-     ui->btnConnect->setVisible(false);
-     ui->pgbDownload->setMaximum(size);
-     int r = 0;
-     while (r < size) {
-         int st = ssh_scp_read(scp, buffer+r, size-r);
-         r += st;
-         ui->pgbDownload->setValue(r);
-         qApp->processEvents();
-     }
+    size = ssh_scp_request_get_size(scp);
+    if(size == 0){
+        return SSH_ERROR;
+    }
 
-     if (rc == SSH_ERROR)
-     {
-       fprintf(stderr, "Error receiving file data: %s\n",
-               ssh_get_error(session));
-       free(buffer);
-       return SSH_ERROR;
-     }
-     printf("Done\n");
-     write(fd, buffer, size);
-     free(buffer);
-     rc = ssh_scp_pull_request(scp);
-     if (rc != SSH_SCP_REQUEST_EOF)
-     {
-         ui->pgbDownload->setVisible(false);
-         ui->btnConnect->setVisible(true);
-       fprintf(stderr, "Unexpected request: %s\n", ssh_get_error(session));
-       return SSH_ERROR;
-     }
+    filename = strdup(ssh_scp_request_get_filename(scp));
+    mode = ssh_scp_request_get_permissions(scp);
+    printf("Receiving file %s, size %d, permissions 0%o\n",
+           filename, size, mode);
+    free(filename);
+    buffer = (char*)malloc(size);
+    if (buffer == NULL)
+    {
+        fprintf(stderr, "Memory allocation error\n");
+        return SSH_ERROR;
+    }
+    ssh_scp_accept_request(scp);
 
-     ssh_scp_close(scp);
-     ssh_scp_free(scp);
-     return SSH_OK;
+    //Le fichier et lu par bloque
+    //La boucler permet de lire tout le fichier
+    ui->pgbDownload->setVisible(true);
+    ui->btnConnect->setVisible(false);
+    ui->pgbDownload->setMaximum(size);
+    int r = 0;
+    while (r < size) {
+        int st = ssh_scp_read(scp, buffer+r, size-r);
+        r += st;
+        ui->pgbDownload->setValue(r);
+        qApp->processEvents();
+    }
+
+    if (rc == SSH_ERROR)
+    {
+        fprintf(stderr, "Error receiving file data: %s\n",
+                ssh_get_error(session));
+        free(buffer);
+        return SSH_ERROR;
+    }
+    printf("Done\n");
+    write(fd, buffer, size);
+    free(buffer);
+    rc = ssh_scp_pull_request(scp);
+    if (rc != SSH_SCP_REQUEST_EOF)
+    {
+        ui->pgbDownload->setVisible(false);
+        ui->btnConnect->setVisible(true);
+        fprintf(stderr, "Unexpected request: %s\n", ssh_get_error(session));
+        return SSH_ERROR;
+    }
+
+    ssh_scp_close(scp);
+    ssh_scp_free(scp);
+    return SSH_OK;
 }
 
-int MainWindow::channelConnect(ssh_session session, ssh_channel &channel){
+int MainWindow::channelConnect(ssh_session session, ssh_channel &channel){ 
     channel = ssh_channel_new(session);
-
-    int rc;
     if (channel == NULL){
         return SSH_ERROR;
     }
 
-    //Ouverture du channel
+    /*//Ouverture du channel
     rc = ssh_channel_open_session(channel);
     if (rc != SSH_OK)
     {
         ssh_channel_free(channel);
         return SSH_ERROR;
     }
-
+*/
     return SSH_OK;
 }
 

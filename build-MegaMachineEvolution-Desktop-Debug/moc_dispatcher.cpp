@@ -190,7 +190,7 @@ void Dispatcher::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         switch (_id) {
         case 0: _t->finished(); break;
         case 1: _t->incrementProgress((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 2: _t->relay((*reinterpret_cast< double(*)>(_a[1]))); break;
+        //case 2: _t->relay((*reinterpret_cast< double(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {

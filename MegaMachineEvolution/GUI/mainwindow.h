@@ -36,7 +36,6 @@ private:
     int scpRead(ssh_session session);
     int channelConnect(ssh_session session, ssh_channel &channel);
     int sshWrite(ssh_channel channel, char* command);
-    int sshRead(ssh_channel channel, std::string &result);
     void setGUIEnabled(bool value);
     Ui::MainWindow *ui;
 };
