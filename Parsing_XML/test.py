@@ -48,5 +48,50 @@ for element in root.iter():
         except:
             continue
 
+organism = {}
+prot = {}
+loc = {}
+idOrg = idProt = idLoc = 0
+protLoc = {}
+protType = {}
+
 for i in temp :
-    print i
+    if i[0] not in organism :   #table organisme
+        organism[i[0]] = {idOrg, i[0]}
+        idOrg += 1
+    if i[2] not in prot :   #table prot
+        prot[i[2]] = {idProt, i[1]}
+        idProt += 1
+    if i[3] !=  [] :    #table loc
+        for j in i[3] :
+            if list(j)[0][3:10] not in loc :
+                loc[list(j)[0][3:10]] = (idLoc, list(j)[1])
+                idLoc += 1
+    if prot[i[2]][0] not in protType:  #si la prot n'a pas de organisme affilie - Table ProtType
+        protType[prot[i[2][0]]] = organism[i[0]][0]
+    else :
+        temp = protType[prot[i[2][0]]].values()
+        if organism[i[0]][0] not in temp :
+            temp.append(organism[i[0]][0])
+        protType[prot[i[2][0]]] = temp
+    if prot[i[2]][0] not in protLoc:
+        temp = []
+        for j in i[3] :
+            if j[0][3:10] not in temp :
+                temp.append(j[0][3:10])
+        protLoc[prot[i[2][0]]] = temp
+    else :
+        temp = protLoc[prot[i[2][0]]].values()
+        for j in i[3] :
+            if j[0][3:10] not in temp :
+                temp.append(loc[j[0][3:10]][0])
+        protLoc[prot[i[2][0]]] = temp
+
+
+
+#temp 0 : mouse
+#temp 1 : S prot
+#temp 2 : S adn
+#temp 3 : pair go name
+
+
