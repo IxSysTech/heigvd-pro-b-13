@@ -45,7 +45,7 @@ ParameterWindow::~ParameterWindow()
 void ParameterWindow::on_btnRun_clicked()
 {
     FILE* myfile;
-    myfile = std::fopen("test.txt", "w");
+    myfile = std::fopen("log.txt", "w");
     int myfileFD = fileno(myfile);
 
     dup2(myfileFD, 1);
@@ -54,19 +54,13 @@ void ParameterWindow::on_btnRun_clicked()
 
     // Task parented to the application so that it
     // will be deleted by the application.
-    //Task *task = new Task(&a);
     Dispatcher *DISPATCHER = new Dispatcher(ui->cmbCrossOverMode->currentIndex(), ui->cmbSelectionMode->currentIndex(), ui->cmbMutationMode->currentIndex(), ui->dsbCrossOverRate->value(), ui->dsbMutationRate->value(), ui->dsbSpRate->value(), ui->dsbToleranceRate->value(), ui->sbStateNumbers->value(), ui->sbPopulationSize->value(), ui->sbMaxAlert->value(), ui->sbGenerationNumber->value(), &loop);
-
+    QObject::connect(DISPATCHER, SIGNAL(incrementProgress(double)), this, SLOT(incrementProgressBar(double)));
     // This will cause the application to exit when
     // the task signals finished.
-     //QObject::connect(task, SIGNAL(finished()), &a, SLOT(quit()));
-     QObject::connect(DISPATCHER, SIGNAL(finished()), &loop, SLOT(quit()));
+    QObject::connect(DISPATCHER, SIGNAL(finished()), &loop, SLOT(quit()));
 
     // This will run the task from the application event loop.
-    //QTimer::singleShot(0, task, SLOT(run()));
-
-    //QObject::connect(task, &Task::finished, &a, &QCoreApplication::quit, Qt::QueuedConnection);
-    //QTimer::singleShot(0, task, &Task::run);
     QTimer::singleShot(0, DISPATCHER, &Dispatcher::run);
 
     // Setup progress bar

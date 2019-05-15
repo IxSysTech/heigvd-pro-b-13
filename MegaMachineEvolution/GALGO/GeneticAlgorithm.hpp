@@ -4,13 +4,14 @@
 
 #ifndef GENETICALGORITHM_HPP
 #define GENETICALGORITHM_HPP
+#include "dispatcher.h"
 
 namespace galgo {
 
 //=================================================================================================
 
 template <typename T>
-class GeneticAlgorithm
+class GeneticAlgorithm : public QObject
 {
    static_assert(std::is_same<float,T>::value || std::is_same<double,T>::value, "variable type can only be float or double, please amend.");
 
@@ -32,7 +33,7 @@ private:
    std::vector<void (*)(Population<T>&)> selectionModes = {RWS, SUS, RNK, RSP, TNT, TRS};
    std::vector<void (*)(const Population<T>&, CHR<T>&, CHR<T>&)> crossOverModes = {P1XO, P2XO, UXO};
    std::vector<void (*)(CHR<T>&)> mutationModes = {BDM, SPM, UNM};
-
+   Emitter *test;
 public: 
    // objective function pointer
    Func<T> Objective; 
@@ -60,7 +61,7 @@ public:
 
    // constructor
    template <int...N>
-   GeneticAlgorithm(int indexMutaionMode, int insexCrossOverMode, int indexSelectionMode,T covrate, T mutrate, T SP, Func<T> objective, int popsize, int nbgen, bool output, const Parameter<T,N>&...args);
+   GeneticAlgorithm(Emitter *test, int indexMutaionMode, int insexCrossOverMode, int indexSelectionMode,T covrate, T mutrate, T SP, Func<T> objective, int popsize, int nbgen, bool output, const Parameter<T,N>&...args);
 
    // run genetic algorithm
    void run();
@@ -92,8 +93,9 @@ private:
    
 // constructor
 template <typename T> template <int...N>
-GeneticAlgorithm<T>::GeneticAlgorithm(int indexMutationMode, int indexCrossOverMode, int indexSelectionMode, T covrate, T mutrate, T SP,Func<T> objective, int popsize, int nbgen, bool output, const Parameter<T,N>&...args)
+GeneticAlgorithm<T>::GeneticAlgorithm(Emitter *test, int indexMutationMode, int indexCrossOverMode, int indexSelectionMode, T covrate, T mutrate, T SP,Func<T> objective, int popsize, int nbgen, bool output, const Parameter<T,N>&...args)
 {
+   this->test = test;
    this->Mutation = this->mutationModes.at(indexMutationMode);
    this->CrossOver = this->crossOverModes.at(indexCrossOverMode);
    this->Selection = this->selectionModes.at(indexSelectionMode);
@@ -234,6 +236,7 @@ void GeneticAlgorithm<T>::run()
          }
          prevBestResult = bestResult;
       }
+      emit this->test->incrementProgress(100 / nbgen);
    } 
 
    // outputting contraint value

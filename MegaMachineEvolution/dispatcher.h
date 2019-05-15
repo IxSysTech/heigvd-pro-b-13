@@ -14,6 +14,12 @@ union converter {
 };
 
 
+class Emitter : public QObject {
+    Q_OBJECT
+signals:
+    void incrementProgress(double);
+};
+
 class Dispatcher : public QObject
 {
     Q_OBJECT
@@ -24,14 +30,18 @@ public:
     static std::vector<T> objective(const std::vector<T>& x);
 signals:
     void finished();
+    void incrementProgress(double);
 private:
     static std::vector<std::string> split(const std::string& s, char delimiter);
     static std::multimap<std::string, bool> *sequences;
     static void initSequences();
-
     double crossOverRate, mutationRate, selectivePressureRate, toleranceRate;
     unsigned int stateNb, popsize, genNb;
     int crossMode, selectMode, mutMode;
+public slots:
+    void relay(double);
 };
+
+
 
 #endif // DISPATCHER_H

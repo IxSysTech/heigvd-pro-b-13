@@ -71,11 +71,11 @@ void Dispatcher::run() {
     }
     */
 
-
+    Emitter *test = new Emitter();
     // initiliazing genetic algorithm
-    galgo::GeneticAlgorithm<float> ga(this->mutMode,this->crossMode,this->selectMode,this->crossOverRate,this->mutationRate,this->selectivePressureRate,Dispatcher::objective<float>,this->popsize,this->genNb,true,par1,par2,par3,par4,par5,par6,par7,par8,par9,par10,par11,par12,par13,par14,par15,par16);
+    galgo::GeneticAlgorithm<float> ga(test, this->mutMode,this->crossMode,this->selectMode,this->crossOverRate,this->mutationRate,this->selectivePressureRate,Dispatcher::objective<float>,this->popsize,this->genNb,true,par1,par2,par3,par4,par5,par6,par7,par8,par9,par10,par11,par12,par13,par14,par15,par16);
     //galgo::GeneticAlgorithm<float> ga(this->mutMode, this->crossMode, this->selectMode, this->crossOverRate, this->mutationRate, this->selectivePressureRate, Dispatcher::objective<float>, this->popsize, this->genNb, true, params);
-
+    QObject::connect(test, SIGNAL(incrementProgress(double)), this, SLOT(relay(double)));
     // running genetic algorithm
     ga.run();
     // TODO: recup best fit :
@@ -126,4 +126,8 @@ std::vector<T> Dispatcher::objective(const std::vector<T>& x){
     loop.exec();
 
     return {static_cast<float>(scores->at(0))};
+}
+
+void Dispatcher::relay(double percent) {
+    emit incrementProgress(percent);
 }
