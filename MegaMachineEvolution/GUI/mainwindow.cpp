@@ -63,6 +63,7 @@ void MainWindow::on_btnConnect_clicked()
 
             //Envoie de la commande pour la requete au serveur distant
             rc = sshWrite(channel, command);
+            sleep(5);
             if (rc != SSH_OK){
                 ui->lblInfo->setText("Connection to database failed");
                 setGUIEnabled(true);
