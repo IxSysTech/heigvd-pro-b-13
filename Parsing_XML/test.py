@@ -50,8 +50,8 @@ idOrg = idProt = idLoc = 0
 protLoc = {}
 protType = {}
 
-if os.path.isfile("exportedValue.txt") :
-    with open("exportedValue.txt", 'rb') as f:
+if os.path.isfile("exportedValue") :
+    with open("exportedValue", 'rb') as f:
         organism, prot, loc, protLoc, protType = pickle.load(f)
 
 
@@ -70,7 +70,7 @@ for i in temp :
     if prot[i[2]][0] not in protType:  #si la prot n'a pas de organisme affilie - Table ProtType
         protType[prot[i[2]][0]] = organism[i[0]][0]
     else :
-        temp = protType[prot[i[2][0]]].values()
+        temp = [protType[prot[i[2]][0]]]
         if organism[i[0]][0] not in temp :
             temp.append(organism[i[0]][0])
         protType[prot[i[2]][0]] = temp
@@ -83,10 +83,11 @@ for i in temp :
                 temp.append(loc[id][0]) #on met l'id de la loc dans temp
         protLoc[prot[i[2]][0]] = temp
     else :
-        temp = protLoc[prot[i[2]][0]].values()
-        for j in i[3] :
-            if j[0][3:10] not in temp :
-                temp.append(loc[j[0][3:10]][0])
+        temp = protLoc[prot[i[2]][0]]
+        for x in range(3, len(i)):  # table loc
+            id = i[x][0][0][3:10]
+            if loc[id][0] not in temp:
+                temp.append(loc[id][0])  # on met l'id de la loc dans temp
         protLoc[prot[i[2]][0]] = temp
 
 with open("exportedValue", 'wb') as f:
