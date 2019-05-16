@@ -64,5 +64,7 @@ win32:CONFIG(release, debug|release): LIBS += -L$$PWD/GUI/libssh/build/lib/relea
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/GUI/libssh/build/lib/debug/ -lssh
 else:unix: LIBS += -L$$PWD/GUI/libssh/build/lib/ -lssh
 
-INCLUDEPATH += $$PWD/GUI/libssh/build/include
-DEPENDPATH += $$PWD/GUI/libssh/build/include
+INCLUDEPATH += $$PWD/GUI/libssh/include
+DEPENDPATH += $$PWD/GUI/libssh/include
+
+macx: LIBS += -L$$PWD/../../../../../../../../usr/local/Cellar/libssh/0.8.7/lib/ -lssh.4.7.4
