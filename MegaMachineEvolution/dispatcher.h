@@ -13,6 +13,19 @@ union converter {
     uint32_t converted;
 };
 
+struct gaParameters {
+    int mutMode;
+    int crossMode;
+    int selectMode;
+    float crossOverRate;
+    float mutationRate;
+    float selectivePressureRate;
+    int popsize;
+    int genNb;
+    int elitpop;
+    float tolRate;
+};
+
 class Emitter : public QObject {
     Q_OBJECT
 signals:
@@ -23,7 +36,7 @@ class Dispatcher : public QObject
 {
     Q_OBJECT
 public:
-    explicit Dispatcher(int crossMode, int selectMode, int mutMode, double crossOverRate, double mutationRate, double selectivePressureRate, double toleranceRate, unsigned int stateNb, unsigned int popsize, unsigned int maxAlert, unsigned int genNb, unsigned int elitpop, QObject *parent = nullptr);
+    explicit Dispatcher(unsigned int stateNb, unsigned int maxAlert, const gaParameters& gaParam, QObject *parent = nullptr);
     void run();
     template <typename T>
     static std::vector<T> objective(const std::vector<T>& x);
@@ -35,10 +48,9 @@ private:
     static std::multimap<std::string, bool> *sequences;
     static void initSequences();
 
-    const double crossOverRate, mutationRate, selectivePressureRate, toleranceRate;
-    const unsigned int stateNb, popsize, genNb, elitpop;
-    const int crossMode, selectMode, mutMode;
-    static unsigned int maxAlert, nbBitState, MASK_TRANSITIONS;
+    const unsigned int stateNb;
+    gaParameters gaParam;
+    static unsigned int maxAlert;
 public slots:
     void relay(double);
 };

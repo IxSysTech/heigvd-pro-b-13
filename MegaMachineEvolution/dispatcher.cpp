@@ -5,15 +5,13 @@
 #define MASK_STATE_ACTION 0x3
 
 std::multimap<std::string, bool>* Dispatcher::sequences;
-unsigned int Dispatcher::maxAlert, Dispatcher::nbBitState, Dispatcher::MASK_TRANSITIONS;
+unsigned int Dispatcher::maxAlert;
 
-Dispatcher::Dispatcher(int crossMode, int selectMode, int mutMode, double crossOverRate, double mutationRate, double selectivePressureRate, double toleranceRate, unsigned int stateNb, unsigned int popsize, unsigned int maxAlert, unsigned int genNb, unsigned int elitpop, QObject *parent) :
-   QObject(parent), crossOverRate(crossOverRate), mutationRate(mutationRate), selectivePressureRate(selectivePressureRate), toleranceRate(toleranceRate),  stateNb(stateNb), popsize(popsize), genNb(genNb), elitpop(elitpop),crossMode(crossMode), selectMode(selectMode), mutMode(mutMode)
+Dispatcher::Dispatcher(unsigned int stateNb, unsigned int maxAlert, const gaParameters& gaParam, QObject *parent) :
+    QObject(parent), stateNb(stateNb), gaParam(gaParam)
 {
     this->maxAlert = maxAlert;
-
-    nbBitState = static_cast<unsigned int>(ceil(log2(stateNb)));
-    MASK_TRANSITIONS = static_cast<unsigned int>(pow(2, nbBitState) -1);
+    this->initSequences();
     //TODO: Receive all the configs necessary to the statemachines and the genetical algorithm
 }
 
@@ -41,35 +39,19 @@ void Dispatcher::initSequences(){
     }
 }
 
+
 void Dispatcher::run() {
-
-    this->initSequences();
-
     std::vector<galgo::Parameter<float,32>> parameters(
                 this->stateNb,
                 galgo::Parameter<float,32>({0.0, std::numeric_limits<float>::max()})
     );
 
-    Emitter *test = new Emitter();
+    Emitter *gaEmitter = new Emitter();
 
     // initiliazing genetic algorithm
-    galgo::GeneticAlgorithm<float> ga(
-                test,
-                this->mutMode,
-                this->crossMode,
-                this->selectMode,
-                static_cast<float>(this->crossOverRate),
-                static_cast<float>(this->mutationRate),
-                static_cast<float>(this->selectivePressureRate),
-                Dispatcher::objective<float>,
-                static_cast<int>(this->popsize),
-                static_cast<int>(this->genNb),
-                static_cast<int>(this->elitpop),
-                true,
-                parameters
-    );
+    galgo::GeneticAlgorithm<float> ga(gaEmitter, gaParam, Dispatcher::objective<float>, true, parameters);
 
-    QObject::connect(test, SIGNAL(incrementProgress(double)), this, SLOT(relay(double)));
+    QObject::connect(gaEmitter, SIGNAL(incrementProgress(double)), this, SLOT(relay(double)));
 
     // running genetic algorithm
     ga.run();
@@ -85,7 +67,11 @@ std::vector<T> Dispatcher::objective(const std::vector<T>& x){
     QTextStream out(stdout);
 
     // Construction d'une machine de test
+    size_t stateNb = x.size();
+
     std::vector<StateDescriptor> *theTestMachine = new std::vector<StateDescriptor>();
+    unsigned int nbBitState = static_cast<unsigned int>(ceil(log2(stateNb))),
+                 MASK_TRANSITIONS = static_cast<unsigned int>(pow(2, nbBitState) -1);
     converter c;
 
     for(size_t i = 0; i < x.size(); ++i){
@@ -98,12 +84,12 @@ std::vector<T> Dispatcher::objective(const std::vector<T>& x){
         currentState->transitions = std::vector<StateDescriptor::Transition>();
 
         for(int i = 0; i < StateDescriptor::Transition::signalType::Count; i++){
-            out << i << " -> " << (binRepresentation & MASK_TRANSITIONS) << endl;
+            out << i << " -> " << ((binRepresentation & MASK_TRANSITIONS) % stateNb) << endl;
 
             currentState->transitions.push_back(
                         StateDescriptor::Transition(
                             static_cast<StateDescriptor::Transition::signalType>(i),
-                            binRepresentation & MASK_TRANSITIONS
+                            (binRepresentation & MASK_TRANSITIONS) % stateNb
                         )
             );
 
@@ -123,7 +109,7 @@ std::vector<T> Dispatcher::objective(const std::vector<T>& x){
     std::vector<int> *scores = new std::vector<int>(1, 0);
     theMachines->push_back(*theTestMachine);
 
-    MegaMachineManager *manager = new MegaMachineManager(sequences,*theMachines, scores, maxAlert);
+    MegaMachineManager *manager = new MegaMachineManager(sequences, *theMachines, scores, maxAlert);
 
     QEventLoop loop;
     QObject::connect(manager, SIGNAL (finished()), &loop, SLOT (quit()));

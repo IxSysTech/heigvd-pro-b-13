@@ -56,19 +56,24 @@ void ParameterWindow::on_btnRun_clicked()
 
     // Task parented to the application so that it
     // will be deleted by the application.
+    struct gaParameters gaParam = {
+        ui->cmbMutationMode->currentIndex(),
+        ui->cmbCrossOverMode->currentIndex(),
+        ui->cmbSelectionMode->currentIndex(),
+        static_cast<float>(ui->dsbCrossOverRate->value()),
+        static_cast<float>(ui->dsbMutationRate->value()),
+        static_cast<float>(ui->dsbSpRate->value()),
+        ui->sbPopulationSize->value(),
+        ui->sbGenerationNumber->value(),
+        ui->sbElitePopulationSize->value(),
+        static_cast<float>(ui->dsbToleranceRate->value())
+    };
+
+
     Dispatcher *DISPATCHER = new Dispatcher(
-                ui->cmbCrossOverMode->currentIndex(),
-                ui->cmbSelectionMode->currentIndex(),
-                ui->cmbMutationMode->currentIndex(),
-                ui->dsbCrossOverRate->value(),
-                ui->dsbMutationRate->value(),
-                ui->dsbSpRate->value(),
-                ui->dsbToleranceRate->value(),
                 ui->sbStateNumbers->value(),
-                ui->sbPopulationSize->value(),
                 ui->sbMaxAlert->value(),
-                ui->sbGenerationNumber->value(),
-                ui->sbElitePopulationSize->value(),
+                gaParam,
                 &loop
     );
     QObject::connect(DISPATCHER, SIGNAL(incrementProgress(double)), this, SLOT(incrementProgressBar(double)));

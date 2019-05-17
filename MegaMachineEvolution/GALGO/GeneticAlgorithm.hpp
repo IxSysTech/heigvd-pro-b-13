@@ -33,7 +33,7 @@ private:
    std::vector<void (*)(Population<T>&)> selectionModes = {RWS, SUS, RNK, RSP, TNT, TRS};
    std::vector<void (*)(const Population<T>&, CHR<T>&, CHR<T>&)> crossOverModes = {P1XO, P2XO, UXO};
    std::vector<void (*)(CHR<T>&)> mutationModes = {BDM, SPM, UNM};
-   Emitter *test;
+   Emitter *gaEmitter;
 public: 
    // objective function pointer
    Func<T> Objective; 
@@ -61,10 +61,10 @@ public:
 
    // constructor
    template <int...N>
-   GeneticAlgorithm(Emitter *test, int indexMutaionMode, int insexCrossOverMode, int indexSelectionMode,T covrate, T mutrate, T SP, Func<T> objective, int popsize, int nbgen, int elitpop, bool output, const Parameter<T,N>&...args);
+   GeneticAlgorithm(Emitter *gaEmitter, int indexMutaionMode, int insexCrossOverMode, int indexSelectionMode,T covrate, T mutrate, T SP, Func<T> objective, int popsize, int nbgen, int elitpop, bool output, const Parameter<T,N>&...args);
 
    template<int N>
-   GeneticAlgorithm(Emitter *test, int indexMutationMode, int indexCrossOverMode, int indexSelectionMode, T covrate, T mutrate, T SP,Func<T> objective, int popsize, int nbgen, int elitpop, bool output, const std::vector<Parameter<T, N>>& parameters);
+   GeneticAlgorithm(Emitter *gaEmitter, const gaParameters& p, Func<T> objective, bool output, const std::vector<Parameter<T, N>>& parameters);
 
    // run genetic algorithm
    void run();
@@ -96,9 +96,9 @@ private:
    
 // constructor
 template <typename T> template <int...N>
-GeneticAlgorithm<T>::GeneticAlgorithm(Emitter *test, int indexMutationMode, int indexCrossOverMode, int indexSelectionMode, T covrate, T mutrate, T SP,Func<T> objective, int popsize, int nbgen, int elitpop, bool output, const Parameter<T,N>&...args)
+GeneticAlgorithm<T>::GeneticAlgorithm(Emitter *gaEmitter, int indexMutationMode, int indexCrossOverMode, int indexSelectionMode, T covrate, T mutrate, T SP,Func<T> objective, int popsize, int nbgen, int elitpop, bool output, const Parameter<T,N>&...args)
 {
-   this->test = test;
+   this->gaEmitter = gaEmitter;
    this->Mutation = this->mutationModes.at(indexMutationMode);
    this->CrossOver = this->crossOverModes.at(indexCrossOverMode);
    this->Selection = this->selectionModes.at(indexSelectionMode);
@@ -123,25 +123,25 @@ GeneticAlgorithm<T>::GeneticAlgorithm(Emitter *test, int indexMutationMode, int 
 }
 
 template <typename T> template<int N>
-GeneticAlgorithm<T>::GeneticAlgorithm(Emitter *test, int indexMutationMode, int indexCrossOverMode, int indexSelectionMode, T covrate, T mutrate, T SP,Func<T> objective, int popsize, int nbgen, int elitpop, bool output, const std::vector<Parameter<T, N>>& parameters)
+GeneticAlgorithm<T>::GeneticAlgorithm(Emitter *gaEmitter, const gaParameters& p, Func<T> objective,  bool output, const std::vector<Parameter<T, N>>& parameters)
 {
-   this->test = test;
-   this->Mutation = this->mutationModes.at(indexMutationMode);
-   this->CrossOver = this->crossOverModes.at(indexCrossOverMode);
-   this->Selection = this->selectionModes.at(indexSelectionMode);
+   this->gaEmitter = gaEmitter;
+   this->Mutation = this->mutationModes.at(p.mutMode);
+   this->CrossOver = this->crossOverModes.at(p.crossMode);
+   this->Selection = this->selectionModes.at(p.selectMode);
 
-   this->covrate = covrate;   // cross-over rate
-   this->mutrate = mutrate;   // mutation rate
-   this->SP = SP;        // selective pressure for RSP selection method
+   this->covrate = p.crossOverRate;   // cross-over rate
+   this->mutrate = p.mutationRate;   // mutation rate
+   this->SP = p.selectivePressureRate;        // selective pressure for RSP selection method
    this->Objective = objective;
    // getting total number of bits per chromosome
    this->nbbit = N * parameters.size();
    this->nbgen = nbgen;
    // getting number of parameters in the pack
    this->nbparam = parameters.size();
-   this->popsize = popsize;
-   this->matsize = popsize;
-   this->elitpop = elitpop;
+   this->popsize = p.popsize;
+   this->matsize = p.popsize;
+   this->elitpop = p.elitpop;
    this->output = output;
 
    // initializing parameter(s) data
@@ -283,7 +283,7 @@ void GeneticAlgorithm<T>::run()
          }
          prevBestResult = bestResult;
       }
-      emit this->test->incrementProgress(100. / nbgen);
+      emit this->gaEmitter->incrementProgress(100. / nbgen);
    } 
 
    // outputting contraint value
