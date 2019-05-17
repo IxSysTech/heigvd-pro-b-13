@@ -20,9 +20,9 @@ struct StateDescriptor {
             A, C, G, T, X, Count = 5
         } signalType;
         signalType signal;
-        int destinationState;
+        unsigned int destinationState;
 
-        Transition(signalType signal, int destinationState) : signal(signal), destinationState(destinationState) {}
+        Transition(signalType signal, unsigned int destinationState) : signal(signal), destinationState(destinationState) {}
     };
 
     std::vector<Transition> transitions;

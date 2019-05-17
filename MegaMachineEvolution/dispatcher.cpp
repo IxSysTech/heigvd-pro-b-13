@@ -97,13 +97,13 @@ std::vector<T> Dispatcher::objective(const std::vector<T>& x){
         StateDescriptor *currentState = new StateDescriptor;
         currentState->transitions = std::vector<StateDescriptor::Transition>();
 
-        for(int begin = 0; begin < StateDescriptor::Transition::signalType::Count; begin++){
-            out << begin << " -> " << (binRepresentation & MASK_TRANSITIONS) << endl;
+        for(int i = 0; i < StateDescriptor::Transition::signalType::Count; i++){
+            out << i << " -> " << (binRepresentation & MASK_TRANSITIONS) << endl;
 
             currentState->transitions.push_back(
                         StateDescriptor::Transition(
-                            static_cast<StateDescriptor::Transition::signalType>(begin),
-                            static_cast<int>(binRepresentation & MASK_TRANSITIONS)
+                            static_cast<StateDescriptor::Transition::signalType>(i),
+                            binRepresentation & MASK_TRANSITIONS
                         )
             );
 

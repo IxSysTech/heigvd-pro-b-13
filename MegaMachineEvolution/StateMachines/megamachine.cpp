@@ -6,7 +6,7 @@ void MegaMachine::buildStateMachine(std::vector<StateDescriptor> statesDescripti
         states.push_back(new QState(&machine));
     }
 
-    int stateNumber = 0;
+    unsigned int stateNumber = 0;
     QState *finalState = new QState(&machine);
 
     for(StateDescriptor state : statesDescriptions){
@@ -50,6 +50,9 @@ void MegaMachine::buildStateMachine(std::vector<StateDescriptor> statesDescripti
                                 SIGNAL(X()),
                                 states.at(currentTransition.destinationState)
                               );
+                    break;
+
+                default:
                     break;
             }
         }
@@ -98,7 +101,7 @@ void MegaMachine::buildStateMachine(int nbStates)
     for(int i = 0; i < nbStates; ++i){
         states.push_back(new QState(&machine));
     }
-    srand(time(NULL));
+    srand(time(nullptr));
     int stateNumber = 0;
     size_t transition = 0;
     QState *finalState = new QState(&machine);
