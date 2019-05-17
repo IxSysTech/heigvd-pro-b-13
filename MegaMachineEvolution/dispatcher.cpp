@@ -107,7 +107,7 @@ std::vector<T> Dispatcher::objective(const std::vector<T>& x){
                         )
             );
 
-            // shift du nombre de bits par transition (nb nécessaire pour encoder une transition)
+            // shift du nombre de bits nécessaire pour encoder un état pour passer à la prochaine transition
             binRepresentation >>= nbBitState;
         }
 
