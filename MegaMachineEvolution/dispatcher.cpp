@@ -8,7 +8,7 @@ std::multimap<std::string, bool>* Dispatcher::sequences;
 unsigned int Dispatcher::maxAlert, Dispatcher::nbBitState, Dispatcher::MASK_TRANSITIONS;
 
 Dispatcher::Dispatcher(int crossMode, int selectMode, int mutMode, double crossOverRate, double mutationRate, double selectivePressureRate, double toleranceRate, unsigned int stateNb, unsigned int popsize, unsigned int maxAlert, unsigned int genNb, unsigned int elitpop, QObject *parent) :
-    crossMode(crossMode), selectMode(selectMode), mutMode(mutMode), crossOverRate(crossOverRate), mutationRate(mutationRate), selectivePressureRate(selectivePressureRate), toleranceRate(toleranceRate), stateNb(stateNb), genNb(genNb), popsize(popsize), elitpop(elitpop), QObject(parent)
+   QObject(parent), crossOverRate(crossOverRate), mutationRate(mutationRate), selectivePressureRate(selectivePressureRate), toleranceRate(toleranceRate),  stateNb(stateNb), popsize(popsize), genNb(genNb), elitpop(elitpop),crossMode(crossMode), selectMode(selectMode), mutMode(mutMode)
 {
     this->maxAlert = maxAlert;
 
