@@ -136,7 +136,7 @@ GeneticAlgorithm<T>::GeneticAlgorithm(Emitter *gaEmitter, const gaParameters& p,
    this->Objective = objective;
    // getting total number of bits per chromosome
    this->nbbit = N * parameters.size();
-   this->nbgen = nbgen;
+   this->nbgen = p.genNb;
    // getting number of parameters in the pack
    this->nbparam = parameters.size();
    this->popsize = p.popsize;
