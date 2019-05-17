@@ -61,7 +61,10 @@ public:
 
    // constructor
    template <int...N>
-   GeneticAlgorithm(Emitter *test, int indexMutaionMode, int insexCrossOverMode, int indexSelectionMode,T covrate, T mutrate, T SP, Func<T> objective, int popsize, int nbgen, bool output, const Parameter<T,N>&...args);
+   GeneticAlgorithm(Emitter *test, int indexMutaionMode, int insexCrossOverMode, int indexSelectionMode,T covrate, T mutrate, T SP, Func<T> objective, int popsize, int nbgen, int elitpop, bool output, const Parameter<T,N>&...args);
+
+   template<int N>
+   GeneticAlgorithm(Emitter *test, int indexMutationMode, int indexCrossOverMode, int indexSelectionMode, T covrate, T mutrate, T SP,Func<T> objective, int popsize, int nbgen, int elitpop, bool output, const std::vector<Parameter<T, N>>& parameters);
 
    // run genetic algorithm
    void run();
@@ -93,7 +96,7 @@ private:
    
 // constructor
 template <typename T> template <int...N>
-GeneticAlgorithm<T>::GeneticAlgorithm(Emitter *test, int indexMutationMode, int indexCrossOverMode, int indexSelectionMode, T covrate, T mutrate, T SP,Func<T> objective, int popsize, int nbgen, bool output, const Parameter<T,N>&...args)
+GeneticAlgorithm<T>::GeneticAlgorithm(Emitter *test, int indexMutationMode, int indexCrossOverMode, int indexSelectionMode, T covrate, T mutrate, T SP,Func<T> objective, int popsize, int nbgen, int elitpop, bool output, const Parameter<T,N>&...args)
 {
    this->test = test;
    this->Mutation = this->mutationModes.at(indexMutationMode);
@@ -111,11 +114,55 @@ GeneticAlgorithm<T>::GeneticAlgorithm(Emitter *test, int indexMutationMode, int 
    this->nbparam = sizeof...(N);
    this->popsize = popsize;
    this->matsize = popsize;
+   this->elitpop = elitpop;
    this->output = output;
    // unpacking parameter pack in tuple
    TUP<T,N...> tp(args...);
    // initializing parameter(s) data
    this->init(tp);
+}
+
+template <typename T> template<int N>
+GeneticAlgorithm<T>::GeneticAlgorithm(Emitter *test, int indexMutationMode, int indexCrossOverMode, int indexSelectionMode, T covrate, T mutrate, T SP,Func<T> objective, int popsize, int nbgen, int elitpop, bool output, const std::vector<Parameter<T, N>>& parameters)
+{
+   this->test = test;
+   this->Mutation = this->mutationModes.at(indexMutationMode);
+   this->CrossOver = this->crossOverModes.at(indexCrossOverMode);
+   this->Selection = this->selectionModes.at(indexSelectionMode);
+
+   this->covrate = covrate;   // cross-over rate
+   this->mutrate = mutrate;   // mutation rate
+   this->SP = SP;        // selective pressure for RSP selection method
+   this->Objective = objective;
+   // getting total number of bits per chromosome
+   this->nbbit = N * parameters.size();
+   this->nbgen = nbgen;
+   // getting number of parameters in the pack
+   this->nbparam = parameters.size();
+   this->popsize = popsize;
+   this->matsize = popsize;
+   this->elitpop = elitpop;
+   this->output = output;
+
+   // initializing parameter(s) data
+    for(auto par : parameters) {
+        // getting Ith parameter initial data
+        const std::vector<T>& data = par.getData();
+        // copying parameter data
+        param.emplace_back(new decltype(par)(par));
+        lowerBound.push_back(data[0]);
+        upperBound.push_back(data[1]);
+        // if parameter has initial value
+        if (data.size() > 2) {
+           initialSet.push_back(data[2]);
+        }
+
+        if(idx.size()) {
+            idx.push_back(idx.back() + par.size());
+        } else {
+            idx.push_back(0);
+        }
+    }
 }
 
 /*-------------------------------------------------------------------------------------------------*/

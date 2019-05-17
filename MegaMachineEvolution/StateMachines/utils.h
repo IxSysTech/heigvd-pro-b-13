@@ -17,10 +17,12 @@ struct StateDescriptor {
 
     struct Transition {
         typedef enum {
-            A, C, G, T, X
+            A, C, G, T, X, Count = 5
         } signalType;
         signalType signal;
         int destinationState;
+
+        Transition(signalType signal, int destinationState) : signal(signal), destinationState(destinationState) {}
     };
 
     std::vector<Transition> transitions;

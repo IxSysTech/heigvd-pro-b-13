@@ -1,20 +1,19 @@
 #include "dispatcher.h"
 #include "GALGO/Galgo.hpp"
 
-// Get the appropriate number of bits for each transition
-#define MASK_TRANSITIONS 0x000000000000000F
 // Get only the last 2 bits 0 for NOTHING, 1 for YES and 2 for NO
 #define MASK_STATE_ACTION 0x3
 
 std::multimap<std::string, bool>* Dispatcher::sequences;
+unsigned int Dispatcher::maxAlert, Dispatcher::nbBitState, Dispatcher::MASK_TRANSITIONS;
 
-//TODO: Changer ça
-unsigned int GLOBAL_MAX_ALERTS = 1;
-
-Dispatcher::Dispatcher(int crossMode, int selectMode, int mutMode, double crossOverRate, double mutationRate, double selectivePressureRate, double toleranceRate, unsigned int stateNb, unsigned int popsize, unsigned int maxAlert, unsigned int genNb, QObject *parent) :
-    crossMode(crossMode), selectMode(selectMode), mutMode(mutMode), crossOverRate(crossOverRate), mutationRate(mutationRate), selectivePressureRate(selectivePressureRate), toleranceRate(toleranceRate), stateNb(stateNb), genNb(genNb), popsize(popsize), QObject(parent)
+Dispatcher::Dispatcher(int crossMode, int selectMode, int mutMode, double crossOverRate, double mutationRate, double selectivePressureRate, double toleranceRate, unsigned int stateNb, unsigned int popsize, unsigned int maxAlert, unsigned int genNb, unsigned int elitpop, QObject *parent) :
+    crossMode(crossMode), selectMode(selectMode), mutMode(mutMode), crossOverRate(crossOverRate), mutationRate(mutationRate), selectivePressureRate(selectivePressureRate), toleranceRate(toleranceRate), stateNb(stateNb), genNb(genNb), popsize(popsize), elitpop(elitpop), QObject(parent)
 {
-    GLOBAL_MAX_ALERTS = maxAlert;
+    this->maxAlert = maxAlert;
+
+    nbBitState = static_cast<unsigned int>(ceil(log2(stateNb)));
+    MASK_TRANSITIONS = static_cast<unsigned int>(pow(2, nbBitState) -1);
     //TODO: Receive all the configs necessary to the statemachines and the genetical algorithm
 }
 
@@ -45,39 +44,36 @@ void Dispatcher::initSequences(){
 void Dispatcher::run() {
 
     this->initSequences();
-    //Test with hardcoded params
-    galgo::Parameter<float,32> par1({0.0, std::numeric_limits<float>::max()});
-    galgo::Parameter<float,32> par2({0.0, std::numeric_limits<float>::max()});
-    galgo::Parameter<float,32> par3({0.0, std::numeric_limits<float>::max()});
-    galgo::Parameter<float,32> par4({0.0, std::numeric_limits<float>::max()});
-    galgo::Parameter<float,32> par5({0.0, std::numeric_limits<float>::max()});
-    galgo::Parameter<float,32> par6({0.0, std::numeric_limits<float>::max()});
-    galgo::Parameter<float,32> par7({0.0, std::numeric_limits<float>::max()});
-    galgo::Parameter<float,32> par8({0.0, std::numeric_limits<float>::max()});
-    galgo::Parameter<float,32> par9({0.0, std::numeric_limits<float>::max()});
-    galgo::Parameter<float,32> par10({0.0, std::numeric_limits<float>::max()});
-    galgo::Parameter<float,32> par11({0.0, std::numeric_limits<float>::max()});
-    galgo::Parameter<float,32> par12({0.0, std::numeric_limits<float>::max()});
-    galgo::Parameter<float,32> par13({0.0, std::numeric_limits<float>::max()});
-    galgo::Parameter<float,32> par14({0.0, std::numeric_limits<float>::max()});
-    galgo::Parameter<float,32> par15({0.0, std::numeric_limits<float>::max()});
-    galgo::Parameter<float,32> par16({0.0, std::numeric_limits<float>::max()});
 
-    /*
-    galgo::Parameter<float,32> params[this->stateNb];
-
-    for(int i = 0; i < this->stateNb; ++i) {
-        params[i] = galgo::Parameter<float,32>({0.0, std::numeric_limits<float>::max()});
-    }
-    */
+    std::vector<galgo::Parameter<float,32>> parameters(
+                this->stateNb,
+                galgo::Parameter<float,32>({0.0, std::numeric_limits<float>::max()})
+    );
 
     Emitter *test = new Emitter();
+
     // initiliazing genetic algorithm
-    galgo::GeneticAlgorithm<float> ga(test, this->mutMode,this->crossMode,this->selectMode,this->crossOverRate,this->mutationRate,this->selectivePressureRate,Dispatcher::objective<float>,this->popsize,this->genNb,true,par1,par2,par3,par4,par5,par6,par7,par8,par9,par10,par11,par12,par13,par14,par15,par16);
-    //galgo::GeneticAlgorithm<float> ga(this->mutMode, this->crossMode, this->selectMode, this->crossOverRate, this->mutationRate, this->selectivePressureRate, Dispatcher::objective<float>, this->popsize, this->genNb, true, params);
+    galgo::GeneticAlgorithm<float> ga(
+                test,
+                this->mutMode,
+                this->crossMode,
+                this->selectMode,
+                static_cast<float>(this->crossOverRate),
+                static_cast<float>(this->mutationRate),
+                static_cast<float>(this->selectivePressureRate),
+                Dispatcher::objective<float>,
+                static_cast<int>(this->popsize),
+                static_cast<int>(this->genNb),
+                static_cast<int>(this->elitpop),
+                true,
+                parameters
+    );
+
     QObject::connect(test, SIGNAL(incrementProgress(double)), this, SLOT(relay(double)));
+
     // running genetic algorithm
     ga.run();
+
     // TODO: recup best fit :
     // ga.result();
 
@@ -90,35 +86,44 @@ std::vector<T> Dispatcher::objective(const std::vector<T>& x){
 
     // Construction d'une machine de test
     std::vector<StateDescriptor> *theTestMachine = new std::vector<StateDescriptor>();
+    converter c;
 
-    size_t nbStates = x.size();
-    for(size_t i = 0; i < nbStates; ++i){
-        converter test;
-        test.value = x.at(i);
-        uint32_t binRepresentation = test.converted;
+    for(size_t i = 0; i < x.size(); ++i){
+        c.value = x.at(i);
+        uint32_t binRepresentation = c.converted;
+
         out << "State : " << i << " : " << endl;
+
         StateDescriptor *currentState = new StateDescriptor;
         currentState->transitions = std::vector<StateDescriptor::Transition>();
-        for(int begin = 0; begin != 5; begin++){
+
+        for(int begin = 0; begin < StateDescriptor::Transition::signalType::Count; begin++){
             out << begin << " -> " << (binRepresentation & MASK_TRANSITIONS) << endl;
-            StateDescriptor::Transition currentTrans = {
-                .signal = static_cast<StateDescriptor::Transition::signalType>(begin),
-                .destinationState = (int)(binRepresentation & MASK_TRANSITIONS)
-            };
-            currentState->transitions.push_back(currentTrans);
-            // on bouge de 3bits (nécessaire pour encoder les états)
-            binRepresentation >>= 4;
+
+            currentState->transitions.push_back(
+                        StateDescriptor::Transition(
+                            static_cast<StateDescriptor::Transition::signalType>(begin),
+                            static_cast<int>(binRepresentation & MASK_TRANSITIONS)
+                        )
+            );
+
+            // shift du nombre de bits par transition (nb nécessaire pour encoder une transition)
+            binRepresentation >>= nbBitState;
         }
+
         currentState->stateAction = static_cast<StateDescriptor::stateActionType>((binRepresentation & MASK_STATE_ACTION) % 3);
-        out << "State action ID is : " << (binRepresentation & MASK_STATE_ACTION)% 3 << endl;
-        theTestMachine->push_back(*currentState);
+
+        out << "State action ID is : " << (binRepresentation & MASK_STATE_ACTION) % 3 << endl;
         out << "---------------------------------------" << endl;
+
+        theTestMachine->push_back(*currentState);
     }
 
     std::vector<std::vector<StateDescriptor>> *theMachines = new std::vector<std::vector<StateDescriptor>>();
     std::vector<int> *scores = new std::vector<int>(1, 0);
     theMachines->push_back(*theTestMachine);
-    MegaMachineManager *manager = new MegaMachineManager(sequences,*theMachines, scores, GLOBAL_MAX_ALERTS);
+
+    MegaMachineManager *manager = new MegaMachineManager(sequences,*theMachines, scores, maxAlert);
 
     QEventLoop loop;
     QObject::connect(manager, SIGNAL (finished()), &loop, SLOT (quit()));

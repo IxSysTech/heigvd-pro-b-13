@@ -56,7 +56,21 @@ void ParameterWindow::on_btnRun_clicked()
 
     // Task parented to the application so that it
     // will be deleted by the application.
-    Dispatcher *DISPATCHER = new Dispatcher(ui->cmbCrossOverMode->currentIndex(), ui->cmbSelectionMode->currentIndex(), ui->cmbMutationMode->currentIndex(), ui->dsbCrossOverRate->value(), ui->dsbMutationRate->value(), ui->dsbSpRate->value(), ui->dsbToleranceRate->value(), ui->sbStateNumbers->value(), ui->sbPopulationSize->value(), ui->sbMaxAlert->value(), ui->sbGenerationNumber->value(), &loop);
+    Dispatcher *DISPATCHER = new Dispatcher(
+                ui->cmbCrossOverMode->currentIndex(),
+                ui->cmbSelectionMode->currentIndex(),
+                ui->cmbMutationMode->currentIndex(),
+                ui->dsbCrossOverRate->value(),
+                ui->dsbMutationRate->value(),
+                ui->dsbSpRate->value(),
+                ui->dsbToleranceRate->value(),
+                ui->sbStateNumbers->value(),
+                ui->sbPopulationSize->value(),
+                ui->sbMaxAlert->value(),
+                ui->sbGenerationNumber->value(),
+                ui->sbElitePopulationSize->value(),
+                &loop
+    );
     QObject::connect(DISPATCHER, SIGNAL(incrementProgress(double)), this, SLOT(incrementProgressBar(double)));
     // This will cause the application to exit when
     // the task signals finished.
