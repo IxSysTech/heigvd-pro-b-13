@@ -159,8 +159,8 @@
    <widget class="QPushButton" name="btnConnect">
     <property name="geometry">
      <rect>
-      <x>12</x>
-      <y>300</y>
+      <x>11</x>
+      <y>318</y>
       <width>441</width>
       <height>26</height>
      </rect>
@@ -175,8 +175,8 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>22</x>
-      <y>243</y>
+      <x>21</x>
+      <y>261</y>
       <width>121</width>
       <height>18</height>
      </rect>
@@ -196,8 +196,8 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>22</x>
-      <y>272</y>
+      <x>21</x>
+      <y>290</y>
       <width>161</width>
       <height>18</height>
      </rect>
@@ -217,8 +217,8 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>22</x>
-      <y>215</y>
+      <x>21</x>
+      <y>233</y>
       <width>101</width>
       <height>18</height>
      </rect>
@@ -238,8 +238,8 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>270</y>
+      <x>219</x>
+      <y>288</y>
       <width>231</width>
       <height>26</height>
      </rect>
@@ -251,8 +251,8 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>240</y>
+      <x>219</x>
+      <y>258</y>
       <width>231</width>
       <height>26</height>
      </rect>
@@ -264,8 +264,8 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>209</y>
+      <x>219</x>
+      <y>227</y>
       <width>231</width>
       <height>26</height>
      </rect>
@@ -280,8 +280,8 @@
    <widget class="QLabel" name="label_9">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>179</y>
+      <x>19</x>
+      <y>197</y>
       <width>441</width>
       <height>20</height>
      </rect>
@@ -298,8 +298,8 @@
    <widget class="QLabel" name="lblInfo">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>334</y>
+      <x>9</x>
+      <y>352</y>
       <width>441</width>
       <height>20</height>
      </rect>
@@ -317,8 +317,8 @@
    <widget class="QProgressBar" name="pgbDownload">
     <property name="geometry">
      <rect>
-      <x>11</x>
-      <y>302</y>
+      <x>10</x>
+      <y>320</y>
       <width>441</width>
       <height>21</height>
      </rect>

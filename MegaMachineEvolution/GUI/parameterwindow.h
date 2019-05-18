@@ -21,7 +21,7 @@ public:
 
 private slots:
     void on_btnRun_clicked();
-
+    void setGUIEnabled(bool value);
     void on_cmbSelectionMode_currentIndexChanged(int index);
 
 public slots:
@@ -30,6 +30,7 @@ public slots:
 private:
     Ui::ParameterWindow *ui;
     double progress = 0.0;
+
 
 signals:
     void incrementPercent(double);
