@@ -29,7 +29,7 @@ std::vector<std::string> Dispatcher::split(const std::string& s, char delimiter)
 
 void Dispatcher::initSequences(){
     sequences = new std::multimap<std::string, bool>();
-    std::ifstream test("gattacaTest");
+    std::ifstream test("testTTT");
     std::string line;
     std::vector<std::string> tokens;
     char delimiter = ';';
@@ -109,13 +109,14 @@ std::vector<T> Dispatcher::objective(const std::vector<T>& x){
     std::vector<int> *scores = new std::vector<int>(1, 0);
     theMachines->push_back(*theTestMachine);
 
-    MegaMachineManager *manager = new MegaMachineManager(sequences, *theMachines, scores, maxAlert);
+    MegaMachineManager *manager = new MegaMachineManager(sequences, *theMachines, scores, maxAlert, false);
 
     QEventLoop loop;
     QObject::connect(manager, SIGNAL (finished()), &loop, SLOT (quit()));
     QTimer::singleShot(0, manager, &MegaMachineManager::runMachines);
     loop.exec();
 
+    out << "Score : " << static_cast<float>(scores->at(0)) << endl;
     return {static_cast<float>(scores->at(0))};
 }
 

@@ -1,7 +1,6 @@
 #include "megamachine.h"
 
 void MegaMachine::buildStateMachine(std::vector<StateDescriptor> statesDescriptions) {
-    QTextStream out(stdout);
     for(size_t i = 0; i < statesDescriptions.size(); ++i){
         states.push_back(new QState(&machine));
     }
@@ -75,14 +74,16 @@ void MegaMachine::buildStateMachine(std::vector<StateDescriptor> statesDescripti
     finalState->addTransition(this, SIGNAL(resetMachine()), states.at(0));
 
     // Logging
-    int i = 0;
-    int idMachine = this->id;
-    for(QState *state : states){
-        connect(state, &QState::entered, [i, idMachine] () {
-            QTextStream out(stdout);
-            out << "Entered state : " << i << " for machine " << idMachine << endl;
-        });
-        ++i;
+    if(hasDebug) {
+        int i = 0;
+        int idMachine = this->id;
+        for(QState *state : states){
+            connect(state, &QState::entered, [i, idMachine] () {
+                QTextStream debug(stdout);
+                debug << "Entered state : " << i << " for machine " << idMachine << endl;
+            });
+            ++i;
+        }
     }
 
     // If nothing was detected
@@ -91,74 +92,10 @@ void MegaMachine::buildStateMachine(std::vector<StateDescriptor> statesDescripti
     // For conveniance
     machine.setInitialState(states.at(0));
 
-    // connect(&machine, &QStateMachine::stopped, this, &MegaMachine::stop);
     machine.start();
 }
 
-void MegaMachine::buildStateMachine(int nbStates)
-{
-    QTextStream out(stdout);
-    for(int i = 0; i < nbStates; ++i){
-        states.push_back(new QState(&machine));
-    }
-    srand(time(nullptr));
-    int stateNumber = 0;
-    size_t transition = 0;
-    QState *finalState = new QState(&machine);
-
-    for(QState *state : states){
-        out << "From State : " << stateNumber << endl;
-        transition = rand() % nbStates;
-        state->addTransition(this, SIGNAL(A()), states.at(transition));
-        out << "A -> " << transition << endl;
-        transition = rand() % nbStates;
-        state->addTransition(this, SIGNAL(C()), states.at(transition));
-        out << "C -> " << transition << endl;
-        transition = rand() % nbStates;
-        state->addTransition(this, SIGNAL(G()), states.at(transition));
-        out << "G -> " << transition << endl;
-        transition = rand() % nbStates;
-        state->addTransition(this, SIGNAL(T()), states.at(transition));
-        out << "T -> " << transition << endl;
-        transition = rand() % nbStates;
-        state->addTransition(this, SIGNAL(X()), states.at(transition));
-        out << "X -> " << transition << endl;
-        out << "-----------------------------------------" << endl;
-        state->addTransition(this, SIGNAL(stopMachine()), finalState);
-
-        stateNumber++;
-    }
-    finalState->addTransition(this, SIGNAL(resetMachine()), states.at(0));
-
-    // Logging
-    int i = 0;
-    int idMachine = this->id;
-    for(QState *state : states){
-        connect(state, &QState::entered, [i, idMachine] () {
-            QTextStream out(stdout);
-            out << "Entered state : " << i << " for machine " << idMachine << endl;
-        });
-        ++i;
-    }
-
-    // connect(states.at(0), &QState::entered, this, &MegaMachine::yes);
-    // connect(states.at(1), &QState::entered, this, &MegaMachine::no);
-    connect(states.at(2), &QState::entered, this, &MegaMachine::yes);
-
-    // If nothing was detected
-    connect(finalState, &QState::entered, this, &MegaMachine::machineEnd);
-    machine.setInitialState(states.at(0));
-
-    // connect(&machine, &QStateMachine::stopped, this, &MegaMachine::stop);
-    machine.start();
-}
-
-MegaMachine::MegaMachine(int nbStates, int maxAlerts, int id, QObject *parent) : QObject(parent), ctrYes(0), ctrNo(0), maxAlerts(maxAlerts), id(id)
-{
-    buildStateMachine(nbStates);
-}
-
-MegaMachine::MegaMachine(std::vector<StateDescriptor> statesDescriptions, int maxAlerts, int id, QObject *parent) : QObject(parent), ctrYes(0), ctrNo(0), maxAlerts(maxAlerts), id(id)
+MegaMachine::MegaMachine(std::vector<StateDescriptor> statesDescriptions, int maxAlerts, int id, bool hasDebug, QObject *parent) : QObject(parent), ctrYes(0), ctrNo(0), maxAlerts(maxAlerts), id(id), hasDebug(hasDebug), debug(stdout)
 {
     buildStateMachine(statesDescriptions);
 }
@@ -176,15 +113,11 @@ void MegaMachine::no(){
 }
 
 void MegaMachine::machineEnd(){
-    QTextStream out(stdout);
-    out << "A Machine has stop ! Result is : yes -> " << ctrYes << " and no -> " << ctrNo << endl;
+    if(hasDebug)
+        debug << "A Machine has stop ! Result is : yes -> " << ctrYes << " and no -> " << ctrNo << endl;
+
     // Emit which machine has stop
     emit stopped(id, ctrYes, ctrNo);
-}
-
-void MegaMachine::debugSlot()
-{
-    std::cout << "debug slot was triggered!" << std::endl;
 }
 
 void MegaMachine::readA(){
@@ -199,7 +132,6 @@ void MegaMachine::readG(){
 void MegaMachine::readT(){
     emit T();
 }
-
 void MegaMachine::readX(){
     emit X();
 }
@@ -208,9 +140,11 @@ void MegaMachine::finishedSequence(){
 }
 
 void MegaMachine::reset(){
-    QTextStream out(stdout);
     this->ctrNo = this->ctrYes = 0;
-    out << "Machine is running : " << this->machine.isRunning() << endl;
+
+    if(hasDebug)
+        debug << "Machine is running : " << this->machine.isRunning() << endl;
+
     emit resetMachine();
 }
 

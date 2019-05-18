@@ -18,7 +18,7 @@ public:
     /// \param maxAlerts
     /// \param parent
     ///
-    explicit MegaMachineManager(std::multimap<std::string, bool> *sequences, std::vector<std::vector<StateDescriptor>> machinesGiven, std::vector<int> *scoresToGive,unsigned int maxAlerts, QObject *parent = nullptr);
+    explicit MegaMachineManager(std::multimap<std::string, bool> *sequences, std::vector<std::vector<StateDescriptor>> machinesGiven, std::vector<int> *scoresToGive,unsigned int maxAlerts, bool hasDebug, QObject *parent = nullptr);
 
 signals:
     ///
@@ -56,6 +56,10 @@ private:
     std::vector<int> *scores;
 
     std::multimap<std::string, bool> *sequences;
+
+    bool hasDebug;
+
+    QTextStream debug;
 };
 
 #endif // MEGAMACHINEMANAGER_H

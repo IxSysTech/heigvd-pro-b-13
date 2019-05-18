@@ -16,17 +16,15 @@ class MegaMachine : public QObject
 public:
     ///
     /// \brief MegaMachine - Machine to analyze sequences with the emitter from MegamMachineManager
-    /// \param nbStates - Number of states for the construction of the machine
+    /// \param states - All machine states
     /// \param maxAlerts - When a counter (Yes or No) atteign maxAlerts it stop and announce it to MegaMachineManager
     /// \param id - The ID of the constructed machine
     /// \param parent - parent QObject
     ///
-    explicit MegaMachine(int nbStates, int maxAlerts, int id, QObject *parent = nullptr);
-    explicit MegaMachine(std::vector<StateDescriptor> states, int maxAlerts, int id, QObject *parent = nullptr);
+    explicit MegaMachine(std::vector<StateDescriptor> states, int maxAlerts, int id, bool hasDebug, QObject *parent = nullptr);
 public slots:
     void yes();
     void no();
-    void debugSlot();
     void readA();
     void readC();
     void readG();
@@ -57,7 +55,6 @@ signals:
     ///
     void stopped(int stoppedMachine, int ctrYes, int ctrNo);
 private:
-    void buildStateMachine(int nbStates);
     ///
     /// \brief buildStateMachine - build a state machine withe the given parameters
     /// \param states - construct machine of the size of vector and the states with the StateDescriptor
@@ -71,6 +68,10 @@ private:
     std::vector<QState*> states;
     // The actual State Machine
     QStateMachine machine;
+
+    bool hasDebug;
+
+    QTextStream debug;
 };
 
 #endif // MEGAMACHINE_H
