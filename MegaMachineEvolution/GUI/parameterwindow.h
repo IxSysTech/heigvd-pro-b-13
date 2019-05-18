@@ -19,6 +19,8 @@ public:
     explicit ParameterWindow(QWidget *parent = nullptr);
     ~ParameterWindow();
 
+    void setDataSource(QString fileNameDataSource);
+
 private slots:
     void on_btnRun_clicked();
     void setGUIEnabled(bool value);
@@ -30,6 +32,7 @@ public slots:
 private:
     Ui::ParameterWindow *ui;
     double progress = 0.0;
+    QString fileNameDataSource;
 
 
 signals:

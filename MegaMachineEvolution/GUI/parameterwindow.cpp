@@ -90,15 +90,19 @@ void ParameterWindow::on_btnRun_clicked()
     ui->pgbGeneration->setVisible(true);
     ui->btnRun->setVisible(false);
     ui->pgbGeneration->setMaximum(ui->sbGenerationNumber->value());
+    setGUIEnabled(false);
     qApp->processEvents();
 
     loop.exec();
+
+    setGUIEnabled(true);
+    qApp->processEvents();
 }
 
 void ParameterWindow::incrementProgressBar(double percent){
     QTextStream out(stdout);
     out << "Signal received " << percent << endl;
-    progress += percent;&
+    progress += percent;
     ui->pgbGeneration->setValue(progress);
     qApp->processEvents();
 }
@@ -126,5 +130,9 @@ void ParameterWindow::setGUIEnabled(bool value){
     ui->dsbSpRate->setEnabled(value);
     ui->dsbToleranceRate->setEnabled(value);
 
+}
+
+void ParameterWindow::setDataSource(QString fileNameDataSource){
+    this->fileNameDataSource = fileNameDataSource;
 }
 
