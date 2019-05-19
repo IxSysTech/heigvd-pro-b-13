@@ -46,6 +46,7 @@ ParameterWindow::~ParameterWindow()
 
 void ParameterWindow::on_btnRun_clicked()
 {
+    this->setGUIEnabled(false);
     FILE* myfile;
     myfile = std::fopen("log.txt", "w");
     int myfileFD = fileno(myfile);
@@ -69,7 +70,6 @@ void ParameterWindow::on_btnRun_clicked()
         static_cast<float>(ui->dsbToleranceRate->value())
     };
 
-
     Dispatcher *DISPATCHER = new Dispatcher(
                 ui->sbStateNumbers->value(),
                 ui->sbMaxAlert->value(),
@@ -80,6 +80,8 @@ void ParameterWindow::on_btnRun_clicked()
     // This will cause the application to exit when
     // the task signals finished.
     QObject::connect(DISPATCHER, SIGNAL(finished()), &loop, SLOT(quit()));
+    this->setGUIEnabled(true);
+
 
     // This will run the task from the application event loop.
     QTimer::singleShot(0, DISPATCHER, &Dispatcher::run);
@@ -88,9 +90,13 @@ void ParameterWindow::on_btnRun_clicked()
     ui->pgbGeneration->setVisible(true);
     ui->btnRun->setVisible(false);
     ui->pgbGeneration->setMaximum(ui->sbGenerationNumber->value());
+    setGUIEnabled(false);
     qApp->processEvents();
 
     loop.exec();
+
+    setGUIEnabled(true);
+    qApp->processEvents();
 }
 
 void ParameterWindow::incrementProgressBar(double percent){
@@ -109,3 +115,24 @@ void ParameterWindow::on_cmbSelectionMode_currentIndexChanged(int index)
         ui->dsbSpRate->setEnabled(false);
     }
 }
+
+void ParameterWindow::setGUIEnabled(bool value){
+    ui->cmbCrossOverMode->setEnabled(value);
+    ui->cmbMutationMode->setEnabled(value);
+    ui->cmbSelectionMode->setEnabled(value);
+    ui->sbElitePopulationSize->setEnabled(value);
+    ui->sbGenerationNumber->setEnabled(value);
+    ui->sbMaxAlert->setEnabled(value);
+    ui->sbPopulationSize->setEnabled(value);
+    ui->sbStateNumbers->setEnabled(value);
+    ui->dsbCrossOverRate->setEnabled(value);
+    ui->dsbMutationRate->setEnabled(value);
+    ui->dsbSpRate->setEnabled(value);
+    ui->dsbToleranceRate->setEnabled(value);
+
+}
+
+void ParameterWindow::setDataSource(QString fileNameDataSource){
+    this->fileNameDataSource = fileNameDataSource;
+}
+

@@ -10,6 +10,9 @@
 #include <stdio.h>
 #include <iostream>
 #include <fcntl.h>
+#include <QFileDialog>
+#include <QFile>
+#include <QFileInfo>
 #include "parameterwindow.h"
 
 #define MAX_XFER_BUF_SIZE 32768
@@ -30,6 +33,10 @@ public:
 private slots:
     void on_btnConnect_clicked();
 
+    void on_btnBrowse_clicked();
+
+    void on_btnContinue_clicked();
+
 private:
     ParameterWindow p;
     int sshConnect(ssh_session *session);
@@ -38,6 +45,9 @@ private:
     int sshWrite(ssh_channel channel, char* command);
     void setGUIEnabled(bool value);
     Ui::MainWindow *ui;
+
+    bool fileSelected = false;
+    QString fileDataSource = "result";
 };
 
 #endif // MAINWINDOW_H

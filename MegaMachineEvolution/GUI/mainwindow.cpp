@@ -23,6 +23,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->txtSSHHost->setText("trex.lan.iict.ch");
     ui->txtSSHUsername->setText("samuel.mettler");
     ui->txtSSHPassword->setText("samuel.b13");
+
+    ui->lblFileInfo->setWordWrap(true);
 }
 
 MainWindow::~MainWindow()
@@ -35,6 +37,7 @@ void MainWindow::on_btnConnect_clicked()
     int rc = 0;
     ssh_session session = nullptr;
     ssh_channel channel = nullptr;
+    fileDataSource = "result";
 
     this->setGUIEnabled(false);
     rc = sshConnect(&session);
@@ -80,6 +83,7 @@ void MainWindow::on_btnConnect_clicked()
                     setGUIEnabled(true);
                 } else {
                     this->hide();
+                    this->p.setDataSource(fileDataSource);
                     this->p.show();
                 }
             }
@@ -94,15 +98,6 @@ void MainWindow::on_btnConnect_clicked()
 
 int MainWindow::sshWrite(ssh_channel channel, char* command){
     int rc = 0;
-    //char buffer[256];
-    //int nbytes;
-
-    rc = ssh_channel_open_session(channel);
-    if (rc != SSH_OK)
-    {
-        ssh_channel_free(channel);
-        return SSH_ERROR;
-    }
 
     rc = ssh_channel_request_exec(channel, command);
     if (rc != SSH_OK)
@@ -111,16 +106,7 @@ int MainWindow::sshWrite(ssh_channel channel, char* command){
         ssh_channel_free(channel);
         return SSH_ERROR;
     }
-/*
 
-    nbytes = ssh_channel_read(channel, buffer, sizeof(buffer), 0);
-    while (nbytes > 0) {
-        fwrite(buffer, 1, nbytes, stdout);
-        nbytes = ssh_channel_read(channel, buffer, sizeof(buffer), 0);
-    }
-
-    std::cout << buffer << std::endl;
-*/
     return SSH_OK;
 }
 
@@ -246,19 +232,21 @@ int MainWindow::scpRead(ssh_session session){
 }
 
 int MainWindow::channelConnect(ssh_session session, ssh_channel &channel){ 
+    int rc;
+
     channel = ssh_channel_new(session);
     if (channel == NULL){
         return SSH_ERROR;
     }
 
-    /*//Ouverture du channel
+    //Ouverture du channel
     rc = ssh_channel_open_session(channel);
     if (rc != SSH_OK)
     {
         ssh_channel_free(channel);
         return SSH_ERROR;
     }
-*/
+
     return SSH_OK;
 }
 
@@ -270,4 +258,40 @@ void MainWindow::setGUIEnabled(bool value){
     ui->txtSSHHost->setEnabled(value);
     ui->txtSSHUsername->setEnabled(value);
     ui->txtSSHPassword->setEnabled(value);
+}
+
+void MainWindow::on_btnBrowse_clicked()
+{
+    QString path = QFileDialog::getOpenFileName(
+                this,
+                tr("Browse file data"),
+                "/home",
+                "All files (*.*)"
+                );
+
+    fileDataSource = path;
+    QFile f(path);
+    QFileInfo fileInfo(f);
+
+    QString filename = fileInfo.fileName();
+    long long int fileSize = fileInfo.size();
+
+    char fileInfoContent[500];
+
+    sprintf(fileInfoContent, "Date file information : \nFilename : %s \nSize : %d Bytes \nPath : %s",
+            filename.toLocal8Bit().data(),
+            fileSize,
+            path.toLocal8Bit().data());
+
+    fileSelected = true;
+    ui->lblFileInfo->setText(fileInfoContent);
+}
+
+void MainWindow::on_btnContinue_clicked()
+{
+    if(fileSelected){
+        this->hide();
+        this->p.setDataSource(fileDataSource);
+        this->p.show();
+    }
 }
