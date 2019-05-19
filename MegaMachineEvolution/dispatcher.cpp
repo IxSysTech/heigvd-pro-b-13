@@ -8,6 +8,7 @@ unsigned int Dispatcher::maxAlert;
 bool Dispatcher::debugMachines;
 union Dispatcher::converter Dispatcher::c;
 std::multimap<std::string, bool> * Dispatcher::currentSequences;
+//std::vector<std::vector<StateDescriptor>> * Dispatcher::getMachine(const std::vector<float> &machine);
 
 Dispatcher::Dispatcher(unsigned int stateNb, unsigned int maxAlert, const gaParameters& gaParam, const QString& filePath, bool debugMachines, QObject *parent) :
     QObject(parent), stateNb(stateNb), gaParam(gaParam)
@@ -95,30 +96,27 @@ void Dispatcher::run() {
 
         // running genetic algorithm
         ga.run();
+        std::vector<float> bestMachine = ga.result()->getParam();
+        std::vector<std::vector<StateDescriptor>> * theBestMachine = getMachine(bestMachine);
+        // TODO JSON Stringify this vector to log bestMachine
         delete currentSequences;
     }
-
-    // TODO: recup best fit :
-    // ga.result();
-
-    //TODO: passer à l'analyse suivant et lancer un sendAnalysis(uint, uint)
 
     emit finished();
 }
 
-template <typename T>
-std::vector<T> Dispatcher::objective(const std::vector<T>& x){
+std::vector<std::vector<StateDescriptor>> * Dispatcher::getMachine(const std::vector<float> &machine) {
     QTextStream debug(stdout);
 
     // Construction d'une machine de test
-    size_t stateNb = x.size();
+    size_t stateNb = machine.size();
 
     std::vector<StateDescriptor> *theTestMachine = new std::vector<StateDescriptor>();
     unsigned int nbBitState = static_cast<unsigned int>(ceil(log2(stateNb))),
                  MASK_TRANSITIONS = static_cast<unsigned int>(pow(2, nbBitState) -1);
 
-    for(size_t i = 0; i < x.size(); ++i){
-        c.value = x.at(i);
+    for(size_t i = 0; i < machine.size(); ++i){
+        c.value = machine.at(i);
         uint32_t binRepresentation = c.converted;
 
         if(debugMachines)
@@ -142,8 +140,7 @@ std::vector<T> Dispatcher::objective(const std::vector<T>& x){
             binRepresentation >>= nbBitState;
         }
 
-        currentState->stateAction = static_cast<StateDescriptor::stateActionType>((binRepresentation & MASK_STATE_ACTION) % 3);
-
+        currentState->stateAction = static_cast<StateDescriptor::stateActionType>((binRepresentation & 0x3) % 3);
         if(debugMachines) {
             debug << "State action ID is : " << (binRepresentation & MASK_STATE_ACTION) % 3 << endl;
             debug << "---------------------------------------" << endl;
@@ -153,8 +150,16 @@ std::vector<T> Dispatcher::objective(const std::vector<T>& x){
     }
 
     std::vector<std::vector<StateDescriptor>> *theMachines = new std::vector<std::vector<StateDescriptor>>();
-    std::vector<int> *scores = new std::vector<int>(1, 0);
     theMachines->push_back(*theTestMachine);
+    return theMachines;
+}
+
+template <typename T>
+std::vector<T> Dispatcher::objective(const std::vector<T>& x){
+    QTextStream debug(stdout);
+
+    std::vector<std::vector<StateDescriptor>> * theMachines = getMachine(x);
+    std::vector<int> *scores = new std::vector<int>(1, 0);
 
     MegaMachineManager *manager = new MegaMachineManager(currentSequences, *theMachines, scores, maxAlert, debugMachines);
 
@@ -166,6 +171,7 @@ std::vector<T> Dispatcher::objective(const std::vector<T>& x){
     //TODO: Uncomment
     //if(debugMachines)
         debug << "Score : " << static_cast<float>(scores->at(0)) << endl;
+    delete theMachines;
 
     return {static_cast<float>(scores->at(0))};
 }

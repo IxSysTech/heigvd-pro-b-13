@@ -43,7 +43,9 @@ signals:
     void sendState(unsigned int, double, double);
     void sendAnalysis(unsigned int, unsigned int);
 
+
 private:
+    static std::vector<std::vector<StateDescriptor>> *getMachine(const std::vector<float>& machine);
     static std::vector<std::string> split(const std::string& s, char delimiter);
 
     std::multimap<int, std::string> *sequences;
