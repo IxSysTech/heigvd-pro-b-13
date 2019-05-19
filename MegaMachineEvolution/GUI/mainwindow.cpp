@@ -25,6 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->txtSSHPassword->setText("samuel.b13");
 
     ui->lblFileInfo->setWordWrap(true);
+    ui->sqlRequest->setText("SELECT protein.sadn, location.id FROM \"PRO19\".protein INNER JOIN \"PRO19\".prot_to_loc ON protein.id = prot_to_loc.fk_prot INNER JOIN \"PRO19\".location on prot_to_loc.fk_loc = location.id WHERE location.id = 1 LIMIT 5000;");
 }
 
 MainWindow::~MainWindow()
@@ -56,7 +57,7 @@ void MainWindow::on_btnConnect_clicked()
             qApp->processEvents();
 
             //Formatage de la requete
-            std::string sqlResquest = "SELECT protein.sadn, location.id FROM \"PRO19\".protein INNER JOIN \"PRO19\".prot_to_loc ON protein.id = prot_to_loc.fk_prot INNER JOIN \"PRO19\".location on prot_to_loc.fk_loc = location.id WHERE location.id != 7 LIMIT 5000;";
+            std::string sqlResquest = ui->sqlRequest->toPlainText().toStdString();
             char command[500];
             sprintf(command, "PGPASSWORD=%s psql -U %s %s -c '%s' > result.txt;",
                     ui->txtDBPassword->text().toLocal8Bit().data(),
@@ -258,6 +259,7 @@ void MainWindow::setGUIEnabled(bool value){
     ui->txtSSHHost->setEnabled(value);
     ui->txtSSHUsername->setEnabled(value);
     ui->txtSSHPassword->setEnabled(value);
+    ui->sqlRequest->setEnabled(value);
 }
 
 void MainWindow::on_btnBrowse_clicked()

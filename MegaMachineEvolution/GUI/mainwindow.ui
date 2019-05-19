@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>460</width>
-    <height>450</height>
+    <height>550</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -19,7 +19,7 @@
   <property name="maximumSize">
    <size>
     <width>460</width>
-    <height>450</height>
+    <height>600</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -32,7 +32,7 @@
       <x>0</x>
       <y>10</y>
       <width>461</width>
-      <height>441</height>
+      <height>541</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -48,8 +48,8 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>19</x>
-        <y>290</y>
+        <x>12</x>
+        <y>348</y>
         <width>161</width>
         <height>18</height>
        </rect>
@@ -69,8 +69,8 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>19</x>
-        <y>261</y>
+        <x>12</x>
+        <y>319</y>
         <width>121</width>
         <height>18</height>
        </rect>
@@ -90,8 +90,8 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>19</x>
-        <y>233</y>
+        <x>12</x>
+        <y>291</y>
         <width>101</width>
         <height>18</height>
        </rect>
@@ -108,8 +108,8 @@
      <widget class="QProgressBar" name="pgbDownload">
       <property name="geometry">
        <rect>
-        <x>8</x>
-        <y>320</y>
+        <x>0</x>
+        <y>380</y>
         <width>441</width>
         <height>21</height>
        </rect>
@@ -157,8 +157,8 @@
      <widget class="QLabel" name="lblInfo">
       <property name="geometry">
        <rect>
-        <x>7</x>
-        <y>352</y>
+        <x>0</x>
+        <y>410</y>
         <width>441</width>
         <height>20</height>
        </rect>
@@ -186,8 +186,8 @@
      <widget class="QLabel" name="label_9">
       <property name="geometry">
        <rect>
-        <x>17</x>
-        <y>197</y>
+        <x>10</x>
+        <y>255</y>
         <width>441</width>
         <height>20</height>
        </rect>
@@ -225,8 +225,8 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>217</x>
-        <y>227</y>
+        <x>210</x>
+        <y>285</y>
         <width>231</width>
         <height>26</height>
        </rect>
@@ -282,8 +282,8 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>217</x>
-        <y>258</y>
+        <x>210</x>
+        <y>316</y>
         <width>231</width>
         <height>26</height>
        </rect>
@@ -305,8 +305,8 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>217</x>
-        <y>288</y>
+        <x>210</x>
+        <y>346</y>
         <width>231</width>
         <height>26</height>
        </rect>
@@ -315,8 +315,8 @@
      <widget class="QPushButton" name="btnConnect">
       <property name="geometry">
        <rect>
-        <x>9</x>
-        <y>318</y>
+        <x>2</x>
+        <y>376</y>
         <width>441</width>
         <height>26</height>
        </rect>
@@ -341,6 +341,50 @@
       </property>
       <property name="text">
        <string>Database connection information</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_11">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>180</y>
+        <width>161</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>SQL Request</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="sqlRequest">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>180</y>
+        <width>221</width>
+        <height>71</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_12">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>200</y>
+        <width>161</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string notr="true">Note : The request shall return both ADN seq and localisation id</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>
