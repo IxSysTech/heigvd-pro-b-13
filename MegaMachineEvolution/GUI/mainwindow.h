@@ -35,8 +35,6 @@ private slots:
 
     void on_btnBrowse_clicked();
 
-    void on_btnConnectLocal_clicked();
-
     void on_btnContinue_clicked();
 
 private:
