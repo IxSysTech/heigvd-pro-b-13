@@ -20,8 +20,27 @@ Development team:
 
 ## Dependencies
 
+Ce logiciel est compatible sur un environnement Linux et Mac OS. Notre application peut se connecter en SSH à un serveur afin de récupérer des données contenant des séquences ACGT. Il est également possible de fournir un fichier.
+
 ## Build and install
+
+Vous trouverez dans les différents dossiers des exécutables qui correspondent aux OS cités précédemment.
 
 ## Run
 
+Notre interface se présente sous cette forme :
+
+<--Insérer image-->
+
+Dans un premier temps l'application a besoin de récupérer des séquences, vous avez le choix entre deux onglets, un pour se connecter en SSH sur un serveur et un autre pour upload un fichier.
+
+Une fois cette étape franchie vous arriverez sur cette deuxième fenêtre
+
+<--Insérer image-->
+
+Elle vous permet de sélectionner vos méthodes d'évolution,de croisement, etc. Vous pouvez également décider d'enregistrer dans un fichier de log tous les résultats générés par l'application. Lancez les simulations en appuyant sur "Run simulation" <expliquer où sera stocké le résultat de la machine finale>
+
 ## Documentation
+
+Vous trouverez dans /documentations nos différents documents concernant les outils utilisés dans notre projet ainsi que notamment un manuel d'utilisateur
+
