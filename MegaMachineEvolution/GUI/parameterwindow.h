@@ -26,6 +26,8 @@ private slots:
     void setGUIParametersEnabled(bool value);
     void on_cmbSelectionMode_currentIndexChanged(int index);
 
+    void on_actionLog_file_location_triggered();
+
 public slots:
     void incrementProgressBar(double percent);
     void currentState(unsigned int gen, double maxFit, double currentMean);
@@ -35,6 +37,7 @@ private:
     Ui::ParameterWindow *ui;
     double progress = 0.0;
     QString fileNameDataSource;
+    QString logFileLocation = "";
 
 signals:
     void incrementPercent(double);
