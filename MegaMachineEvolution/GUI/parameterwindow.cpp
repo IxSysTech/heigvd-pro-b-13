@@ -1,6 +1,8 @@
 #include "parameterwindow.h"
 #include "ui_parameterwindow.h"
 
+#include <qfiledialog.h>
+
 ParameterWindow::ParameterWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::ParameterWindow)
@@ -33,6 +35,7 @@ ParameterWindow::ParameterWindow(QWidget *parent) :
     ui->dsbMutationRate->setValue(0.05);
     ui->dsbToleranceRate->setValue(0.0);
     ui->pgbGeneration->setVisible(false);
+    ui->lblLogFile->setWordWrap(true);
     ui->sbGenerationNumber->setValue(100);
     ui->sbPopulationSize->setValue(100);
     ui->cbLogMachines->setCheckState(Qt::CheckState::Unchecked);
@@ -59,7 +62,9 @@ void ParameterWindow::on_btnRun_clicked()
 
     // Redirect stdout to logfile
     FILE* myfile;
-    myfile = std::fopen("log.txt", "w");
+    logFileLocation += "log.txt";
+    std::cout << logFileLocation.toStdString() << std::endl;
+    myfile = std::fopen(logFileLocation.toLocal8Bit().data(), "w+");
     int myfileFD = fileno(myfile);
 
     dup2(myfileFD, 1);
@@ -70,15 +75,15 @@ void ParameterWindow::on_btnRun_clicked()
     // will be deleted by the application.
     struct gaParameters gaParam = {
         ui->cmbMutationMode->currentIndex(),
-        ui->cmbCrossOverMode->currentIndex(),
-        ui->cmbSelectionMode->currentIndex(),
-        static_cast<float>(ui->dsbCrossOverRate->value()),
-        static_cast<float>(ui->dsbMutationRate->value()),
-        static_cast<float>(ui->dsbSpRate->value()),
-        ui->sbPopulationSize->value(),
-        ui->sbGenerationNumber->value(),
-        ui->sbElitePopulationSize->value(),
-        static_cast<float>(ui->dsbToleranceRate->value())
+                ui->cmbCrossOverMode->currentIndex(),
+                ui->cmbSelectionMode->currentIndex(),
+                static_cast<float>(ui->dsbCrossOverRate->value()),
+                static_cast<float>(ui->dsbMutationRate->value()),
+                static_cast<float>(ui->dsbSpRate->value()),
+                ui->sbPopulationSize->value(),
+                ui->sbGenerationNumber->value(),
+                ui->sbElitePopulationSize->value(),
+                static_cast<float>(ui->dsbToleranceRate->value())
     };
 
     Dispatcher *DISPATCHER = new Dispatcher(
@@ -88,7 +93,7 @@ void ParameterWindow::on_btnRun_clicked()
                 fileNameDataSource,
                 ui->cbLogMachines->checkState() == Qt::Checked ? true : false,
                 &loop
-    );
+                );
     QObject::connect(DISPATCHER, SIGNAL(incrementProgress(double)), this, SLOT(incrementProgressBar(double)));
     QObject::connect(DISPATCHER, SIGNAL(sendState(uint,double,double)), this, SLOT(currentState(uint,double,double)));
     QObject::connect(DISPATCHER, SIGNAL(sendAnalysis(uint,uint)), this, SLOT(nextAnalysis(uint,uint)));
@@ -158,5 +163,21 @@ void ParameterWindow::currentState(unsigned int gen, double maxFit, double curre
 void ParameterWindow::nextAnalysis(unsigned int current, unsigned int total){
     ui->pgbGeneration->setValue(0);
     ui->CurrentAnalysis->setText(QString("Analysis %1 of %2").arg(current, total));
+}
+
+
+void ParameterWindow::on_actionLog_file_location_triggered()
+{
+    logFileLocation = QFileDialog::getExistingDirectory(this, tr("Open Directory"),
+                                                        "/home",
+                                                        QFileDialog::ShowDirsOnly
+                                                        | QFileDialog::DontResolveSymlinks
+                                                        );
+    if(logFileLocation != ""){
+        logFileLocation += "/";
+    }
+
+    ui->lblLogFile->setText("Current log file locataion : \n" + logFileLocation + "log.txt");
+    qApp->processEvents();
 }
 
