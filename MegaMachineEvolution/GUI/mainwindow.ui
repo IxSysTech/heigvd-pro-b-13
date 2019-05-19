@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>460</width>
-    <height>473</height>
+    <height>500</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -32,7 +32,7 @@
       <x>0</x>
       <y>10</y>
       <width>461</width>
-      <height>471</height>
+      <height>491</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -48,8 +48,8 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>22</x>
-        <y>348</y>
+        <x>12</x>
+        <y>368</y>
         <width>161</width>
         <height>18</height>
        </rect>
@@ -69,8 +69,8 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>22</x>
-        <y>319</y>
+        <x>12</x>
+        <y>339</y>
         <width>121</width>
         <height>18</height>
        </rect>
@@ -90,8 +90,8 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>22</x>
-        <y>291</y>
+        <x>12</x>
+        <y>311</y>
         <width>101</width>
         <height>18</height>
        </rect>
@@ -108,9 +108,9 @@
      <widget class="QProgressBar" name="pgbDownload">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>380</y>
-        <width>441</width>
+        <x>15</x>
+        <y>400</y>
+        <width>420</width>
         <height>21</height>
        </rect>
       </property>
@@ -121,7 +121,7 @@
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>10</x>
         <y>55</y>
         <width>101</width>
         <height>18</height>
@@ -139,7 +139,7 @@
      <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>18</x>
+        <x>8</x>
         <y>84</y>
         <width>191</width>
         <height>18</height>
@@ -157,8 +157,8 @@
      <widget class="QLabel" name="lblInfo">
       <property name="geometry">
        <rect>
-        <x>0</x>
-        <y>410</y>
+        <x>10</x>
+        <y>430</y>
         <width>441</width>
         <height>20</height>
        </rect>
@@ -176,9 +176,9 @@
      <widget class="QLineEdit" name="txtDBUsername">
       <property name="geometry">
        <rect>
-        <x>219</x>
+        <x>208</x>
         <y>111</y>
-        <width>231</width>
+        <width>230</width>
         <height>26</height>
        </rect>
       </property>
@@ -186,8 +186,8 @@
      <widget class="QLabel" name="label_9">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>255</y>
+        <x>10</x>
+        <y>270</y>
         <width>441</width>
         <height>20</height>
        </rect>
@@ -204,7 +204,7 @@
      <widget class="QLabel" name="label_5">
       <property name="geometry">
        <rect>
-        <x>19</x>
+        <x>9</x>
         <y>143</y>
         <width>161</width>
         <height>18</height>
@@ -225,9 +225,9 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>220</x>
-        <y>285</y>
-        <width>231</width>
+        <x>208</x>
+        <y>305</y>
+        <width>230</width>
         <height>26</height>
        </rect>
       </property>
@@ -241,9 +241,9 @@
      <widget class="QLineEdit" name="txtDBName">
       <property name="geometry">
        <rect>
-        <x>219</x>
+        <x>208</x>
         <y>80</y>
-        <width>231</width>
+        <width>230</width>
         <height>26</height>
        </rect>
       </property>
@@ -251,7 +251,7 @@
      <widget class="QLabel" name="label_4">
       <property name="geometry">
        <rect>
-        <x>19</x>
+        <x>9</x>
         <y>114</y>
         <width>191</width>
         <height>18</height>
@@ -269,9 +269,9 @@
      <widget class="QLineEdit" name="txtDBPassword">
       <property name="geometry">
        <rect>
-        <x>218</x>
+        <x>208</x>
         <y>141</y>
-        <width>231</width>
+        <width>230</width>
         <height>26</height>
        </rect>
       </property>
@@ -282,9 +282,9 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>220</x>
-        <y>316</y>
-        <width>231</width>
+        <x>208</x>
+        <y>336</y>
+        <width>230</width>
         <height>26</height>
        </rect>
       </property>
@@ -292,9 +292,9 @@
      <widget class="QLineEdit" name="txtDBHost">
       <property name="geometry">
        <rect>
-        <x>218</x>
+        <x>208</x>
         <y>49</y>
-        <width>231</width>
+        <width>230</width>
         <height>26</height>
        </rect>
       </property>
@@ -305,9 +305,9 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>220</x>
-        <y>346</y>
-        <width>231</width>
+        <x>208</x>
+        <y>366</y>
+        <width>230</width>
         <height>26</height>
        </rect>
       </property>
@@ -315,9 +315,9 @@
      <widget class="QPushButton" name="btnConnect">
       <property name="geometry">
        <rect>
-        <x>12</x>
-        <y>376</y>
-        <width>441</width>
+        <x>15</x>
+        <y>400</y>
+        <width>420</width>
         <height>26</height>
        </rect>
       </property>
@@ -328,7 +328,7 @@
      <widget class="QLabel" name="label_2">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>10</x>
         <y>10</y>
         <width>431</width>
         <height>20</height>
@@ -346,7 +346,7 @@
      <widget class="QLabel" name="label_11">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>10</x>
         <y>180</y>
         <width>161</width>
         <height>18</height>
@@ -364,9 +364,9 @@
      <widget class="QTextEdit" name="sqlRequest">
       <property name="geometry">
        <rect>
-        <x>220</x>
+        <x>208</x>
         <y>180</y>
-        <width>231</width>
+        <width>230</width>
         <height>71</height>
        </rect>
       </property>
@@ -402,7 +402,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>Important, the file content most be formed like this : 
+       <string>Important, the file's content must be formed like this : 
  sequence;result 
  sequence;result 
  sequence;result 
@@ -412,9 +412,9 @@
      <widget class="QPushButton" name="btnBrowse">
       <property name="geometry">
        <rect>
-        <x>130</x>
+        <x>10</x>
         <y>117</y>
-        <width>201</width>
+        <width>441</width>
         <height>26</height>
        </rect>
       </property>
@@ -425,14 +425,14 @@
      <widget class="QLabel" name="lblFileInfo">
       <property name="geometry">
        <rect>
-        <x>6</x>
+        <x>10</x>
         <y>150</y>
         <width>441</width>
         <height>91</height>
        </rect>
       </property>
       <property name="text">
-       <string>Date file information : 
+       <string>Data file information : 
  Filename : - 
  Size : - 
  Path : -</string>
@@ -444,10 +444,10 @@
      <widget class="QPushButton" name="btnContinue">
       <property name="geometry">
        <rect>
-        <x>130</x>
-        <y>260</y>
-        <width>201</width>
-        <height>26</height>
+        <x>10</x>
+        <y>250</y>
+        <width>441</width>
+        <height>201</height>
        </rect>
       </property>
       <property name="text">
