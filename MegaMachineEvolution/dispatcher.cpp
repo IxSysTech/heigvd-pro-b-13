@@ -4,10 +4,10 @@
 // Get only the last 2 bits 0 for NOTHING, 1 for YES and 2 for NO
 #define MASK_STATE_ACTION 0x3
 
-std::multimap<std::string, bool>* Dispatcher::sequences;
 unsigned int Dispatcher::maxAlert;
 bool Dispatcher::debugMachines;
 union Dispatcher::converter Dispatcher::c;
+std::multimap<std::string, bool> * Dispatcher::currentSequences;
 
 Dispatcher::Dispatcher(unsigned int stateNb, unsigned int maxAlert, const gaParameters& gaParam, const QString& filePath, bool debugMachines, QObject *parent) :
     QObject(parent), stateNb(stateNb), gaParam(gaParam)
@@ -30,10 +30,8 @@ std::vector<std::string> Dispatcher::split(const std::string& s, char delimiter)
 }
 
 void Dispatcher::initSequences(const QString& filePath){
-    if(sequences != NULL)
-        delete sequences;
+    sequences = new std::multimap<int, std::string>();
 
-    sequences = new std::multimap<std::string, bool>();
     // Because of filePath being a QString we need to convert it for ifstream
     std::ifstream test(filePath.toStdString());
     std::string line;
@@ -41,27 +39,64 @@ void Dispatcher::initSequences(const QString& filePath){
     char delimiter = ';';
     while(std::getline(test, line)){
         tokens = split(line, delimiter);
-        sequences->insert(std::pair<std::string, bool>(tokens[0], tokens[1] == "0" ? true : false));
+        sequences->insert(std::pair<int, std::string>(std::atoi(tokens[1].c_str()), tokens[0]));
     }
 }
 
 
 void Dispatcher::run() {
-    std::vector<galgo::Parameter<float,32>> parameters(
-                this->stateNb,
-                galgo::Parameter<float,32>({0.0, std::numeric_limits<float>::max()})
-    );
+    int nbKey = 0;
+    for(auto it = sequences->begin(); it != sequences->end(); it = sequences->upper_bound(it->first))
+        nbKey++;
 
-    Emitter *gaEmitter = new Emitter();
+    for(int i = 0; i < nbKey; ++i) {
+        // Announce the current Analysis
+        emit sendAnalysis(i + 1, nbKey);
+        currentSequences = new std::multimap<std::string, bool>();
+        auto range = sequences->equal_range(i);
 
-    // initiliazing genetic algorithm
-    galgo::GeneticAlgorithm<float> ga(gaEmitter, gaParam, Dispatcher::objective<float>, true, parameters);
+        int k = 0;
+        for(auto it = range.first; it != range.second && k++ < 100; ++it) {
+            currentSequences->insert(std::pair<std::string, bool>(it->second, true));
+        }
 
-    QObject::connect(gaEmitter, SIGNAL(incrementProgress(double)), this, SLOT(relay(double)));
-    QObject::connect(gaEmitter, SIGNAL(stateInfo(uint,double,double)), this, SLOT(relayState(uint,double,double)));
+        // Getting sequences of other IDs to perform analysis
 
-    // running genetic algorithm
-    ga.run();
+        int nbSeq = currentSequences->size();
+        int randomKey = 0;
+        for(int j = 0; j < nbSeq; ++j) {
+            if(randomKey % nbKey == i) randomKey++;
+
+            auto randomElement = sequences->find(randomKey % nbKey);
+
+            std::advance(randomElement, std::rand() % sequences->count(randomKey % nbKey));
+            currentSequences->insert(
+                        std::pair<std::string, bool>(
+                            randomElement->second,
+                            false
+                        )
+            );
+
+            randomKey++;
+        }
+
+        std::vector<galgo::Parameter<float,32>> parameters(
+                    this->stateNb,
+                    galgo::Parameter<float,32>({0.0, std::numeric_limits<float>::max()})
+        );
+
+        Emitter *gaEmitter = new Emitter();
+
+        // initiliazing genetic algorithm
+        galgo::GeneticAlgorithm<float> ga(gaEmitter, gaParam, Dispatcher::objective<float>, true, parameters);
+
+        QObject::connect(gaEmitter, SIGNAL(incrementProgress(double)), this, SLOT(relay(double)));
+        QObject::connect(gaEmitter, SIGNAL(stateInfo(uint,double,double)), this, SLOT(relayState(uint,double,double)));
+
+        // running genetic algorithm
+        ga.run();
+        delete currentSequences;
+    }
 
     // TODO: recup best fit :
     // ga.result();
@@ -117,7 +152,7 @@ std::vector<T> Dispatcher::objective(const std::vector<T>& x){
     std::vector<int> *scores = new std::vector<int>(1, 0);
     theMachines->push_back(*theTestMachine);
 
-    MegaMachineManager *manager = new MegaMachineManager(sequences, *theMachines, scores, maxAlert, debugMachines);
+    MegaMachineManager *manager = new MegaMachineManager(currentSequences, *theMachines, scores, maxAlert, debugMachines);
 
     QEventLoop loop;
     QObject::connect(manager, SIGNAL (finished()), &loop, SLOT (quit()));
@@ -134,4 +169,8 @@ void Dispatcher::relay(double percent) {
 
 void Dispatcher::relayState(unsigned int genNb, double maxFit, double meanFit ) {
     emit sendState(genNb, maxFit, meanFit);
+}
+
+Dispatcher::~Dispatcher() {
+    delete sequences;
 }

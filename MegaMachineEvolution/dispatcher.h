@@ -36,6 +36,7 @@ public:
     void run();
     template <typename T>
     static std::vector<T> objective(const std::vector<T>& x);
+    ~Dispatcher();
 signals:
     void finished();
     void incrementProgress(double);
@@ -44,13 +45,17 @@ signals:
 
 private:
     static std::vector<std::string> split(const std::string& s, char delimiter);
-    static std::multimap<std::string, bool> *sequences;
-    static void initSequences(const QString& filePath);
+
+    std::multimap<int, std::string> *sequences;
+    void initSequences(const QString& filePath);
 
     const unsigned int stateNb;
     gaParameters gaParam;
+
     static unsigned int maxAlert;
     static bool debugMachines;
+
+    static std::multimap<std::string, bool> *currentSequences;
 
     static union converter {
         float value;
