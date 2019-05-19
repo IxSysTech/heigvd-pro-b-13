@@ -108,7 +108,7 @@ void Dispatcher::run() {
 
 template <typename T>
 std::vector<T> Dispatcher::objective(const std::vector<T>& x){
-    QTextStream out(stdout);
+    QTextStream debug(stdout);
 
     // Construction d'une machine de test
     size_t stateNb = x.size();
@@ -121,13 +121,15 @@ std::vector<T> Dispatcher::objective(const std::vector<T>& x){
         c.value = x.at(i);
         uint32_t binRepresentation = c.converted;
 
-        out << "State : " << i << " : " << endl;
+        if(debugMachines)
+            debug << "State : " << i << " : " << endl;
 
         StateDescriptor *currentState = new StateDescriptor;
         currentState->transitions = std::vector<StateDescriptor::Transition>();
 
         for(int i = 0; i < StateDescriptor::Transition::signalType::Count; i++){
-            out << i << " -> " << ((binRepresentation & MASK_TRANSITIONS) % stateNb) << endl;
+            if(debugMachines)
+                debug << i << " -> " << ((binRepresentation & MASK_TRANSITIONS) % stateNb) << endl;
 
             currentState->transitions.push_back(
                         StateDescriptor::Transition(
@@ -142,8 +144,10 @@ std::vector<T> Dispatcher::objective(const std::vector<T>& x){
 
         currentState->stateAction = static_cast<StateDescriptor::stateActionType>((binRepresentation & MASK_STATE_ACTION) % 3);
 
-        out << "State action ID is : " << (binRepresentation & MASK_STATE_ACTION) % 3 << endl;
-        out << "---------------------------------------" << endl;
+        if(debugMachines) {
+            debug << "State action ID is : " << (binRepresentation & MASK_STATE_ACTION) % 3 << endl;
+            debug << "---------------------------------------" << endl;
+        }
 
         theTestMachine->push_back(*currentState);
     }
@@ -159,7 +163,10 @@ std::vector<T> Dispatcher::objective(const std::vector<T>& x){
     QTimer::singleShot(0, manager, &MegaMachineManager::runMachines);
     loop.exec();
 
-    out << "Score : " << static_cast<float>(scores->at(0)) << endl;
+    //TODO: Uncomment
+    //if(debugMachines)
+        debug << "Score : " << static_cast<float>(scores->at(0)) << endl;
+
     return {static_cast<float>(scores->at(0))};
 }
 

@@ -28,11 +28,13 @@ ParameterWindow::ParameterWindow(QWidget *parent) :
     };
 
     ui->cmbMutationMode->addItems(mutationModes);
+    ui->cmbMutationMode->setCurrentIndex(1);
     ui->cmbSelectionMode->addItems(selectionModes);
+    ui->cmbSelectionMode->setCurrentIndex(2);
     ui->cmbCrossOverMode->addItems(crossoverModes);
     ui->dsbSpRate->setValue(1.5);
-    ui->dsbCrossOverRate->setValue(0.5);
-    ui->dsbMutationRate->setValue(0.05);
+    ui->dsbCrossOverRate->setValue(0.9);
+    ui->dsbMutationRate->setValue(0.02);
     ui->dsbToleranceRate->setValue(0.0);
     ui->pgbGeneration->setVisible(false);
     ui->lblLogFile->setWordWrap(true);
@@ -148,6 +150,7 @@ void ParameterWindow::setGUIParametersEnabled(bool value){
     ui->dsbSpRate->setEnabled(value);
     ui->dsbToleranceRate->setEnabled(value);
     ui->cbLogMachines->setEnabled(value);
+    ui->browseLog->setEnabled(value);
 }
 
 void ParameterWindow::setDataSource(QString fileNameDataSource){
