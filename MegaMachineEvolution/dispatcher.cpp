@@ -7,11 +7,11 @@
 std::multimap<std::string, bool>* Dispatcher::sequences;
 unsigned int Dispatcher::maxAlert;
 
-Dispatcher::Dispatcher(unsigned int stateNb, unsigned int maxAlert, const gaParameters& gaParam, QObject *parent) :
+Dispatcher::Dispatcher(unsigned int stateNb, unsigned int maxAlert, const gaParameters& gaParam, const QString& filePath, QObject *parent) :
     QObject(parent), stateNb(stateNb), gaParam(gaParam)
 {
     this->maxAlert = maxAlert;
-    this->initSequences();
+    this->initSequences(filePath);
     //TODO: Receive all the configs necessary to the statemachines and the genetical algorithm
 }
 
@@ -27,9 +27,13 @@ std::vector<std::string> Dispatcher::split(const std::string& s, char delimiter)
    return tokens;
 }
 
-void Dispatcher::initSequences(){
+void Dispatcher::initSequences(const QString& filePath){
+    if(sequences != NULL)
+        delete sequences;
+
     sequences = new std::multimap<std::string, bool>();
-    std::ifstream test("testTTT");
+    // Because of filePath being a QString we need to convert it for ifstream
+    std::ifstream test(filePath.toStdString());
     std::string line;
     std::vector<std::string> tokens;
     char delimiter = ';';
@@ -72,7 +76,6 @@ std::vector<T> Dispatcher::objective(const std::vector<T>& x){
     std::vector<StateDescriptor> *theTestMachine = new std::vector<StateDescriptor>();
     unsigned int nbBitState = static_cast<unsigned int>(ceil(log2(stateNb))),
                  MASK_TRANSITIONS = static_cast<unsigned int>(pow(2, nbBitState) -1);
-    converter c;
 
     for(size_t i = 0; i < x.size(); ++i){
         c.value = x.at(i);

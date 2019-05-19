@@ -8,11 +8,6 @@
 #include "StateMachines/utils.h"
 #include "StateMachines/megamachinemanager.h"
 
-union converter {
-    float value;
-    uint32_t converted;
-};
-
 struct gaParameters {
     int mutMode;
     int crossMode;
@@ -36,7 +31,7 @@ class Dispatcher : public QObject
 {
     Q_OBJECT
 public:
-    explicit Dispatcher(unsigned int stateNb, unsigned int maxAlert, const gaParameters& gaParam, QObject *parent = nullptr);
+    explicit Dispatcher(unsigned int stateNb, unsigned int maxAlert, const gaParameters& gaParam, const QString& filePath, QObject *parent = nullptr);
     void run();
     template <typename T>
     static std::vector<T> objective(const std::vector<T>& x);
@@ -46,11 +41,16 @@ signals:
 private:
     static std::vector<std::string> split(const std::string& s, char delimiter);
     static std::multimap<std::string, bool> *sequences;
-    static void initSequences();
+    static void initSequences(const QString& filePath);
 
     const unsigned int stateNb;
     gaParameters gaParam;
     static unsigned int maxAlert;
+
+    static union converter {
+        float value;
+        uint32_t converted;
+    } c;
 public slots:
     void relay(double);
 };

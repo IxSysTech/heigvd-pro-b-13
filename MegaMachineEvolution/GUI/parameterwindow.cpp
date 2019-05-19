@@ -74,6 +74,7 @@ void ParameterWindow::on_btnRun_clicked()
                 ui->sbStateNumbers->value(),
                 ui->sbMaxAlert->value(),
                 gaParam,
+                fileNameDataSource,
                 &loop
     );
     QObject::connect(DISPATCHER, SIGNAL(incrementProgress(double)), this, SLOT(incrementProgressBar(double)));
