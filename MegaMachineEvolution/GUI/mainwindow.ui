@@ -359,9 +359,9 @@
       </property>
       <property name="text">
        <string>Important, the file content most be formed like this : 
- sequence:result 
- sequence:result 
- sequence:result 
+ sequence;result 
+ sequence;result 
+ sequence;result 
  ...</string>
       </property>
      </widget>
