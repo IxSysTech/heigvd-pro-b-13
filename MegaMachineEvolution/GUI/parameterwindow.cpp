@@ -105,7 +105,6 @@ void ParameterWindow::on_btnRun_clicked()
     // Setup progress bar
     ui->pgbGeneration->setVisible(true);
     ui->btnRun->setVisible(false);
-    ui->pgbGeneration->setMaximum(ui->sbGenerationNumber->value());
     setGUIParametersEnabled(false);
     qApp->processEvents();
 
