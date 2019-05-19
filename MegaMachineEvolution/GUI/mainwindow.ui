@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>460</width>
-    <height>550</height>
+    <height>473</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -32,7 +32,7 @@
       <x>0</x>
       <y>10</y>
       <width>461</width>
-      <height>541</height>
+      <height>471</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -48,7 +48,7 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>12</x>
+        <x>22</x>
         <y>348</y>
         <width>161</width>
         <height>18</height>
@@ -69,7 +69,7 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>12</x>
+        <x>22</x>
         <y>319</y>
         <width>121</width>
         <height>18</height>
@@ -90,7 +90,7 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>12</x>
+        <x>22</x>
         <y>291</y>
         <width>101</width>
         <height>18</height>
@@ -108,7 +108,7 @@
      <widget class="QProgressBar" name="pgbDownload">
       <property name="geometry">
        <rect>
-        <x>0</x>
+        <x>10</x>
         <y>380</y>
         <width>441</width>
         <height>21</height>
@@ -186,7 +186,7 @@
      <widget class="QLabel" name="label_9">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>20</x>
         <y>255</y>
         <width>441</width>
         <height>20</height>
@@ -225,7 +225,7 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>210</x>
+        <x>220</x>
         <y>285</y>
         <width>231</width>
         <height>26</height>
@@ -282,7 +282,7 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>210</x>
+        <x>220</x>
         <y>316</y>
         <width>231</width>
         <height>26</height>
@@ -305,7 +305,7 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>210</x>
+        <x>220</x>
         <y>346</y>
         <width>231</width>
         <height>26</height>
@@ -315,7 +315,7 @@
      <widget class="QPushButton" name="btnConnect">
       <property name="geometry">
        <rect>
-        <x>2</x>
+        <x>12</x>
         <y>376</y>
         <width>441</width>
         <height>26</height>
@@ -366,7 +366,7 @@
        <rect>
         <x>220</x>
         <y>180</y>
-        <width>221</width>
+        <width>231</width>
         <height>71</height>
        </rect>
       </property>
