@@ -31,7 +31,7 @@ class Dispatcher : public QObject
 {
     Q_OBJECT
 public:
-    explicit Dispatcher(unsigned int stateNb, unsigned int maxAlert, const gaParameters& gaParam, const QString& filePath, QObject *parent = nullptr);
+    explicit Dispatcher(unsigned int stateNb, unsigned int maxAlert, const gaParameters& gaParam, const QString& filePath, bool debugMachines, QObject *parent = nullptr);
     void run();
     template <typename T>
     static std::vector<T> objective(const std::vector<T>& x);
@@ -46,11 +46,15 @@ private:
     const unsigned int stateNb;
     gaParameters gaParam;
     static unsigned int maxAlert;
+    static bool debugMachines;
+
+
 
     static union converter {
         float value;
         uint32_t converted;
     } c;
+
 public slots:
     void relay(double);
 };

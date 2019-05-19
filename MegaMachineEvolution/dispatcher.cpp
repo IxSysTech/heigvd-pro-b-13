@@ -6,13 +6,15 @@
 
 std::multimap<std::string, bool>* Dispatcher::sequences;
 unsigned int Dispatcher::maxAlert;
+bool Dispatcher::debugMachines;
+union Dispatcher::converter Dispatcher::c;
 
-Dispatcher::Dispatcher(unsigned int stateNb, unsigned int maxAlert, const gaParameters& gaParam, const QString& filePath, QObject *parent) :
+Dispatcher::Dispatcher(unsigned int stateNb, unsigned int maxAlert, const gaParameters& gaParam, const QString& filePath, bool debugMachines, QObject *parent) :
     QObject(parent), stateNb(stateNb), gaParam(gaParam)
 {
     this->maxAlert = maxAlert;
+    this->debugMachines = debugMachines;
     this->initSequences(filePath);
-    //TODO: Receive all the configs necessary to the statemachines and the genetical algorithm
 }
 
 std::vector<std::string> Dispatcher::split(const std::string& s, char delimiter)
@@ -112,7 +114,7 @@ std::vector<T> Dispatcher::objective(const std::vector<T>& x){
     std::vector<int> *scores = new std::vector<int>(1, 0);
     theMachines->push_back(*theTestMachine);
 
-    MegaMachineManager *manager = new MegaMachineManager(sequences, *theMachines, scores, maxAlert, false);
+    MegaMachineManager *manager = new MegaMachineManager(sequences, *theMachines, scores, maxAlert, debugMachines);
 
     QEventLoop loop;
     QObject::connect(manager, SIGNAL (finished()), &loop, SLOT (quit()));

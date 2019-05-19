@@ -274,7 +274,7 @@ void MainWindow::on_btnBrowse_clicked()
     QFileInfo fileInfo(f);
 
     QString filename = fileInfo.fileName();
-    long long int fileSize = fileInfo.size();
+    int fileSize = fileInfo.size();
 
     char fileInfoContent[500];
 

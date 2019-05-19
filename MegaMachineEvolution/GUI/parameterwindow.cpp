@@ -35,6 +35,7 @@ ParameterWindow::ParameterWindow(QWidget *parent) :
     ui->pgbGeneration->setVisible(false);
     ui->sbGenerationNumber->setValue(100);
     ui->sbPopulationSize->setValue(100);
+    ui->cbLogMachines->setCheckState(Qt::CheckState::Unchecked);
 
     // connect(this, SIGNAL(incrementPercent(double)), this, SLOT(incrementProgressBar(double)));
 }
@@ -75,6 +76,7 @@ void ParameterWindow::on_btnRun_clicked()
                 ui->sbMaxAlert->value(),
                 gaParam,
                 fileNameDataSource,
+                ui->cbLogMachines->checkState() == Qt::Checked ? true : false,
                 &loop
     );
     QObject::connect(DISPATCHER, SIGNAL(incrementProgress(double)), this, SLOT(incrementProgressBar(double)));
@@ -130,7 +132,7 @@ void ParameterWindow::setGUIEnabled(bool value){
     ui->dsbMutationRate->setEnabled(value);
     ui->dsbSpRate->setEnabled(value);
     ui->dsbToleranceRate->setEnabled(value);
-
+    ui->cbLogMachines->setEnabled(value);
 }
 
 void ParameterWindow::setDataSource(QString fileNameDataSource){
