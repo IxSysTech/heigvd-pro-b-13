@@ -162,7 +162,8 @@ void ParameterWindow::currentState(unsigned int gen, double maxFit, double curre
 
 void ParameterWindow::nextAnalysis(unsigned int current, unsigned int total){
     ui->pgbGeneration->setValue(0);
-    ui->CurrentAnalysis->setText(QString("Analysis %1 of %2").arg(current, total));
+    progress = 0.;
+    ui->CurrentAnalysis->setText(QString("Analysis %1 of %2").arg(QString::number(current), QString::number(total)));
 }
 
 
