@@ -26,7 +26,7 @@ private slots:
     void setGUIParametersEnabled(bool value);
     void on_cmbSelectionMode_currentIndexChanged(int index);
 
-    void on_actionLog_file_location_triggered();
+    void on_browseLog_clicked();
 
 public slots:
     void incrementProgressBar(double percent);

@@ -167,7 +167,7 @@ void ParameterWindow::nextAnalysis(unsigned int current, unsigned int total){
 }
 
 
-void ParameterWindow::on_actionLog_file_location_triggered()
+void ParameterWindow::on_browseLog_clicked()
 {
     logFileLocation = QFileDialog::getExistingDirectory(this, tr("Open Directory"),
                                                         "/home",
