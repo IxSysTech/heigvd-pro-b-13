@@ -41,7 +41,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Genetic algorithme parameters</string>
+     <string>Genetic algorithm parameters</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
@@ -464,17 +464,17 @@
     </property>
    </widget>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>700</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionParameters">
+   <property name="text">
+    <string>Parameters</string>
+   </property>
+  </action>
+  <action name="actionMeanwhile">
+   <property name="text">
+    <string>Meanwhile</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
