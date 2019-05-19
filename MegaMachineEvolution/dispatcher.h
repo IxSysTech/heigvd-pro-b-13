@@ -25,6 +25,7 @@ class Emitter : public QObject {
     Q_OBJECT
 signals:
     void incrementProgress(double);
+    void stateInfo(unsigned int, double, double);
 };
 
 class Dispatcher : public QObject
@@ -38,6 +39,9 @@ public:
 signals:
     void finished();
     void incrementProgress(double);
+    void sendState(unsigned int, double, double);
+    void sendAnalysis(unsigned int, unsigned int);
+
 private:
     static std::vector<std::string> split(const std::string& s, char delimiter);
     static std::multimap<std::string, bool> *sequences;
@@ -48,8 +52,6 @@ private:
     static unsigned int maxAlert;
     static bool debugMachines;
 
-
-
     static union converter {
         float value;
         uint32_t converted;
@@ -57,6 +59,7 @@ private:
 
 public slots:
     void relay(double);
+    void relayState(unsigned int, double, double);
 };
 
 #endif // DISPATCHER_H

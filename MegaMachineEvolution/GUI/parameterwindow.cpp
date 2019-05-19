@@ -37,6 +37,12 @@ ParameterWindow::ParameterWindow(QWidget *parent) :
     ui->sbPopulationSize->setValue(100);
     ui->cbLogMachines->setCheckState(Qt::CheckState::Unchecked);
 
+    ui->LiveState->hide();
+    ui->CurrentAnalysis->setText("Analysis 1 of 1");
+    ui->CurrentGen->setText("Gen : 0");
+    ui->MaxFitness->setText("Max Fitness : 0.0");
+    ui->MeanFitness->setText("Mean current Gen : 0.0");
+
     // connect(this, SIGNAL(incrementPercent(double)), this, SLOT(incrementProgressBar(double)));
 }
 
@@ -47,7 +53,11 @@ ParameterWindow::~ParameterWindow()
 
 void ParameterWindow::on_btnRun_clicked()
 {
-    this->setGUIEnabled(false);
+    this->setGUIParametersEnabled(false);
+    // Showing current state og GA
+    ui->LiveState->show();
+
+    // Redirect stdout to logfile
     FILE* myfile;
     myfile = std::fopen("log.txt", "w");
     int myfileFD = fileno(myfile);
@@ -80,10 +90,13 @@ void ParameterWindow::on_btnRun_clicked()
                 &loop
     );
     QObject::connect(DISPATCHER, SIGNAL(incrementProgress(double)), this, SLOT(incrementProgressBar(double)));
+    QObject::connect(DISPATCHER, SIGNAL(sendState(uint,double,double)), this, SLOT(currentState(uint,double,double)));
+    QObject::connect(DISPATCHER, SIGNAL(sendAnalysis(uint,uint)), this, SLOT(nextAnalysis(uint,uint)));
+
     // This will cause the application to exit when
     // the task signals finished.
     QObject::connect(DISPATCHER, SIGNAL(finished()), &loop, SLOT(quit()));
-    this->setGUIEnabled(true);
+    this->setGUIParametersEnabled(true);
 
 
     // This will run the task from the application event loop.
@@ -93,18 +106,16 @@ void ParameterWindow::on_btnRun_clicked()
     ui->pgbGeneration->setVisible(true);
     ui->btnRun->setVisible(false);
     ui->pgbGeneration->setMaximum(ui->sbGenerationNumber->value());
-    setGUIEnabled(false);
+    setGUIParametersEnabled(false);
     qApp->processEvents();
 
     loop.exec();
 
-    setGUIEnabled(true);
+    setGUIParametersEnabled(true);
     qApp->processEvents();
 }
 
 void ParameterWindow::incrementProgressBar(double percent){
-    QTextStream out(stdout);
-    out << "Signal received " << percent << endl;
     progress += percent;
     ui->pgbGeneration->setValue(progress);
     qApp->processEvents();
@@ -112,14 +123,14 @@ void ParameterWindow::incrementProgressBar(double percent){
 
 void ParameterWindow::on_cmbSelectionMode_currentIndexChanged(int index)
 {
-    if(index == 3){
+    if(index == 3) {
         ui->dsbSpRate->setEnabled(true);
     } else {
         ui->dsbSpRate->setEnabled(false);
     }
 }
 
-void ParameterWindow::setGUIEnabled(bool value){
+void ParameterWindow::setGUIParametersEnabled(bool value){
     ui->cmbCrossOverMode->setEnabled(value);
     ui->cmbMutationMode->setEnabled(value);
     ui->cmbSelectionMode->setEnabled(value);
@@ -137,5 +148,16 @@ void ParameterWindow::setGUIEnabled(bool value){
 
 void ParameterWindow::setDataSource(QString fileNameDataSource){
     this->fileNameDataSource = fileNameDataSource;
+}
+
+void ParameterWindow::currentState(unsigned int gen, double maxFit, double currentMean) {
+    ui->CurrentGen->setText(QString("Gen : %1").arg(gen));
+    ui->MaxFitness->setText(QString("Max Fitness : %1").arg(maxFit));
+    ui->MeanFitness->setText(QString("Mean current Gen : %1").arg(currentMean));
+}
+
+void ParameterWindow::nextAnalysis(unsigned int current, unsigned int total){
+    ui->pgbGeneration->setValue(0);
+    ui->CurrentAnalysis->setText(QString("Analysis %1 of %2").arg(current, total));
 }
 

@@ -23,17 +23,18 @@ public:
 
 private slots:
     void on_btnRun_clicked();
-    void setGUIEnabled(bool value);
+    void setGUIParametersEnabled(bool value);
     void on_cmbSelectionMode_currentIndexChanged(int index);
 
 public slots:
     void incrementProgressBar(double percent);
+    void currentState(unsigned int gen, double maxFit, double currentMean);
+    void nextAnalysis(unsigned int current, unsigned int total);
 
 private:
     Ui::ParameterWindow *ui;
     double progress = 0.0;
     QString fileNameDataSource;
-
 
 signals:
     void incrementPercent(double);

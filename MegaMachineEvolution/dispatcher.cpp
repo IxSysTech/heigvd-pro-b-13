@@ -58,12 +58,15 @@ void Dispatcher::run() {
     galgo::GeneticAlgorithm<float> ga(gaEmitter, gaParam, Dispatcher::objective<float>, true, parameters);
 
     QObject::connect(gaEmitter, SIGNAL(incrementProgress(double)), this, SLOT(relay(double)));
+    QObject::connect(gaEmitter, SIGNAL(stateInfo(uint,double,double)), this, SLOT(relayState(uint,double,double)));
 
     // running genetic algorithm
     ga.run();
 
     // TODO: recup best fit :
     // ga.result();
+
+    //TODO: passer à l'analyse suivant et lancer un sendAnalysis(uint, uint)
 
     emit finished();
 }
@@ -126,7 +129,9 @@ std::vector<T> Dispatcher::objective(const std::vector<T>& x){
 }
 
 void Dispatcher::relay(double percent) {
-    QTextStream out(stdout);
-    out << "Signal emitted from dispacther, percent : " << percent << endl;
     emit incrementProgress(percent);
+}
+
+void Dispatcher::relayState(unsigned int genNb, double maxFit, double meanFit ) {
+    emit sendState(genNb, maxFit, meanFit);
 }

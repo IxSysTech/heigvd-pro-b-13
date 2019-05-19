@@ -265,11 +265,13 @@ void GeneticAlgorithm<T>::run()
       pop.evolution();
 
       //We store the new parameters in our vector
+      /*
       for(int j = 0 ; j < 2; j++){
           for(int i = 0 ; i < 8 ; i ++){
               galgo::param[i+j*8] = GetBinary(pop(j)->getParam()[i]);
           }
       }
+      */
 
       // getting best current result
       bestResult = pop(0)->getTotal();
@@ -284,6 +286,7 @@ void GeneticAlgorithm<T>::run()
          prevBestResult = bestResult;
       }
       emit this->gaEmitter->incrementProgress(100. / nbgen);
+      emit this->gaEmitter->stateInfo(nogen, bestResult, pop.getSumFitness() / pop.popsize());
    } 
 
    // outputting contraint value

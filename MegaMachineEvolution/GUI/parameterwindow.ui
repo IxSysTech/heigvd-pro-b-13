@@ -7,19 +7,19 @@
     <x>0</x>
     <y>0</y>
     <width>700</width>
-    <height>550</height>
+    <height>600</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>700</width>
-    <height>550</height>
+    <height>600</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>700</width>
-    <height>550</height>
+    <height>600</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -463,18 +463,73 @@
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QGroupBox" name="LiveState">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>510</y>
+      <width>661</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Processing</string>
+    </property>
+    <widget class="QLabel" name="CurrentGen">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>111</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="MaxFitness">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>30</y>
+       <width>171</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="MeanFitness">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>30</y>
+       <width>161</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="CurrentAnalysis">
+     <property name="geometry">
+      <rect>
+       <x>530</x>
+       <y>30</y>
+       <width>121</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+    </widget>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionParameters">
-   <property name="text">
-    <string>Parameters</string>
-   </property>
-  </action>
-  <action name="actionMeanwhile">
-   <property name="text">
-    <string>Meanwhile</string>
-   </property>
-  </action>
  </widget>
  <resources/>
  <connections/>
