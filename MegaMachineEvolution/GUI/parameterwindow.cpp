@@ -28,11 +28,13 @@ ParameterWindow::ParameterWindow(QWidget *parent) :
     };
 
     ui->cmbMutationMode->addItems(mutationModes);
+    ui->cmbMutationMode->setCurrentIndex(1);
     ui->cmbSelectionMode->addItems(selectionModes);
+    ui->cmbSelectionMode->setCurrentIndex(2);
     ui->cmbCrossOverMode->addItems(crossoverModes);
     ui->dsbSpRate->setValue(1.5);
-    ui->dsbCrossOverRate->setValue(0.5);
-    ui->dsbMutationRate->setValue(0.05);
+    ui->dsbCrossOverRate->setValue(0.9);
+    ui->dsbMutationRate->setValue(0.02);
     ui->dsbToleranceRate->setValue(0.0);
     ui->pgbGeneration->setVisible(false);
     ui->lblLogFile->setWordWrap(true);
@@ -148,6 +150,7 @@ void ParameterWindow::setGUIParametersEnabled(bool value){
     ui->dsbSpRate->setEnabled(value);
     ui->dsbToleranceRate->setEnabled(value);
     ui->cbLogMachines->setEnabled(value);
+    ui->browseLog->setEnabled(value);
 }
 
 void ParameterWindow::setDataSource(QString fileNameDataSource){
@@ -162,11 +165,12 @@ void ParameterWindow::currentState(unsigned int gen, double maxFit, double curre
 
 void ParameterWindow::nextAnalysis(unsigned int current, unsigned int total){
     ui->pgbGeneration->setValue(0);
-    ui->CurrentAnalysis->setText(QString("Analysis %1 of %2").arg(current, total));
+    progress = 0.;
+    ui->CurrentAnalysis->setText(QString("Analysis %1 of %2").arg(QString::number(current), QString::number(total)));
 }
 
 
-void ParameterWindow::on_actionLog_file_location_triggered()
+void ParameterWindow::on_browseLog_clicked()
 {
     logFileLocation = QFileDialog::getExistingDirectory(this, tr("Open Directory"),
                                                         "/home",
