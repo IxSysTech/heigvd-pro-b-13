@@ -46,7 +46,7 @@ signals:
 
 private:
     template<typename T>
-    static std::vector<std::vector<StateDescriptor>> *getMachine(const std::vector<T>& machine);
+    static std::vector<StateDescriptor> *getMachine(const std::vector<T>& machine);
     static std::vector<std::string> split(const std::string& s, char delimiter);
 
     std::multimap<int, std::string> *sequences;

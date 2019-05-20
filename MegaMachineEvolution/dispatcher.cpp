@@ -95,7 +95,7 @@ void Dispatcher::run() {
         // running genetic algorithm
         ga.run();
         std::vector<float> bestMachine = ga.result()->getParam();
-        std::vector<std::vector<StateDescriptor>> * theBestMachine = getMachine(bestMachine);
+        std::vector<StateDescriptor> * theBestMachine = getMachine(bestMachine);
         // TODO JSON Stringify this vector to log bestMachine
         delete currentSequences;
     }
@@ -124,13 +124,13 @@ uint64_t Dispatcher::convert(double from) {
 }
 
 template <typename T>
-std::vector<std::vector<StateDescriptor>> * Dispatcher::getMachine(const std::vector<T> &machine) {
+std::vector<StateDescriptor> * Dispatcher::getMachine(const std::vector<T> &machine) {
     QTextStream debug(stdout);
 
     // Construction d'une machine de test
     size_t stateNb = machine.size();
 
-    std::vector<StateDescriptor> *theTestMachine = new std::vector<StateDescriptor>();
+    std::vector<StateDescriptor> *theMachine = new std::vector<StateDescriptor>();
     unsigned int nbBitState = static_cast<unsigned int>(ceil(log2(stateNb))),
                  MASK_TRANSITIONS = static_cast<unsigned int>(pow(2, nbBitState) -1);
 
@@ -164,19 +164,17 @@ std::vector<std::vector<StateDescriptor>> * Dispatcher::getMachine(const std::ve
             debug << "---------------------------------------" << endl;
         }
 
-        theTestMachine->push_back(*currentState);
+        theMachine->push_back(*currentState);
     }
 
-    std::vector<std::vector<StateDescriptor>> *theMachines = new std::vector<std::vector<StateDescriptor>>();
-    theMachines->push_back(*theTestMachine);
-    return theMachines;
+    return theMachine;
 }
 
 template <typename T>
 std::vector<T> Dispatcher::objective(const std::vector<T>& x){
     QTextStream debug(stdout);
 
-    std::vector<std::vector<StateDescriptor>> * theMachines = getMachine(x);
+    std::vector<std::vector<StateDescriptor>> * theMachines = new std::vector<std::vector<StateDescriptor>>({*getMachine(x)});
     std::vector<int> *scores = new std::vector<int>(1, 0);
 
     MegaMachineManager *manager = new MegaMachineManager(currentSequences, *theMachines, scores, maxAlert, debugMachines);
@@ -186,9 +184,7 @@ std::vector<T> Dispatcher::objective(const std::vector<T>& x){
     QTimer::singleShot(0, manager, &MegaMachineManager::runMachines);
     loop.exec();
 
-    //TODO: Uncomment
-    //if(debugMachines)
-        debug << "Score : " << static_cast<float>(scores->at(0)) << endl;
+    debug << "Score : " << static_cast<float>(scores->at(0)) << endl;
     delete theMachines;
 
     return {static_cast<float>(scores->at(0))};
