@@ -64,9 +64,16 @@ private:
     /**
      * @brief scpRead : Allow to copie a remote file to the local machine
      * @param session : The session established beetween the local and remot machine
+     * @param remoteFilePath : Path of the remote file to copie
      * @return int : SSH_OK if there is no error or SSH_ERROR if there is an error
      */
-    int scpRead(ssh_session session);
+    int scpRead(ssh_session session, QString remoteFilePath);
+
+    /**
+     * @brief scpRead
+     * @param session
+     * @return int
+     */
 
     /**
      * @brief channelConnect : Connect a channel to the remote host to get a shell bash

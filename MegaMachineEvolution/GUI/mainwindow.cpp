@@ -62,14 +62,20 @@ void MainWindow::on_btnConnect_clicked()
             ui->lblInfo->setText("Connecting to the database...");
             qApp->processEvents();
 
+            //Set the remote file path
+            QString remoteFileLocation = "/home/" + ui->txtSSHUsername->text() + "/result.csv";
+
+            std::cout << remoteFileLocation.toStdString() << std::endl;
+
             //Formatting the request
             std::string sqlResquest = ui->sqlRequest->toPlainText().toStdString();
             char command[500];
-            sprintf(command, "PGPASSWORD=%s psql -U %s %s -c \"Copy (%s) To stdout With CSV DELIMITER ';';\" > /home/samuel.mettler/result.csv",
+            sprintf(command, "PGPASSWORD=%s psql -U %s %s -c \"Copy (%s) To stdout With CSV DELIMITER ';';\" > %s",
                     ui->txtDBPassword->text().toLocal8Bit().data(),
                     ui->txtDBUsername->text().toLocal8Bit().data(),
                     ui->txtDBName->text().toLocal8Bit().data(),
-                    sqlResquest.data());
+                    sqlResquest.data(),
+                    remoteFileLocation.toLocal8Bit().data());
 
             //Send the request to the remote host
             rc = sshWrite(channel, command);
@@ -83,7 +89,7 @@ void MainWindow::on_btnConnect_clicked()
                 qApp->processEvents();
 
                 //Copying the result file from the remote host to the local machine
-                rc = scpRead(session);
+                rc = scpRead(session, remoteFileLocation);
                 if(rc != SSH_OK){
                     ui->lblInfo->setText("Error during the download of data");
                     qApp->processEvents();
@@ -152,14 +158,14 @@ int MainWindow::sshConnect(ssh_session *session){
     return SSH_OK;
 }
 
-int MainWindow::scpRead(ssh_session session){
+int MainWindow::scpRead(ssh_session session, QString remoteFilePath){
     ssh_scp scp;
     int rc;
     int size, mode;
     char *filename, *buffer;
 
     //Set the remote location file
-    scp = ssh_scp_new(session, SSH_SCP_READ, "/home/samuel.mettler/result.csv");
+    scp = ssh_scp_new(session, SSH_SCP_READ, remoteFilePath.toLocal8Bit().data());
 
     //Openig the local file
     FILE* file = fopen(fileDataSource.toLocal8Bit().data(), "w+");
