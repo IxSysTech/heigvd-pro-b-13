@@ -56,13 +56,17 @@ void MainWindow::on_btnConnect_clicked()
             qApp->processEvents();
 
             //Formatage de la requete
-            std::string sqlResquest = "SELECT protein.sadn, location.id FROM \"PRO19\".protein INNER JOIN \"PRO19\".prot_to_loc ON protein.id = prot_to_loc.fk_prot INNER JOIN \"PRO19\".location on prot_to_loc.fk_loc = location.id WHERE location.id != 7 LIMIT 5000;";
+            std::string sqlResquest = "SELECT * FROM \"PRO19\".protein LIMIT 5000";
             char command[500];
-            sprintf(command, "PGPASSWORD=%s psql -U %s %s -c '%s' > result.txt;",
+            sprintf(command, "PGPASSWORD=%s psql -U %s %s -c \"Copy (%s) To stdout With CSV DELIMITER ';';\" >> /home/samuel.mettler/result.csv",
                     ui->txtDBPassword->text().toLocal8Bit().data(),
                     ui->txtDBUsername->text().toLocal8Bit().data(),
                     ui->txtDBName->text().toLocal8Bit().data(),
                     sqlResquest.data());
+
+            std::cout << command << std::endl;
+
+
 
             //Envoie de la commande pour la requete au serveur distant
             rc = sshWrite(channel, command);
@@ -148,7 +152,7 @@ int MainWindow::scpRead(ssh_session session){
     int rc;
     int size, mode;
     char *filename, *buffer;
-    scp = ssh_scp_new(session, SSH_SCP_READ, "/home/samuel.mettler/result.txt");
+    scp = ssh_scp_new(session, SSH_SCP_READ, "/home/samuel.mettler/result.csv");
     FILE* file = fopen("result", "w+");
     int fd = fileno(file);
 
@@ -194,7 +198,7 @@ int MainWindow::scpRead(ssh_session session){
     }
     ssh_scp_accept_request(scp);
 
-    //Le fichier et lu par bloque
+    //Le fichier est lu par bloque
     //La boucler permet de lire tout le fichier
     ui->pgbDownload->setVisible(true);
     ui->btnConnect->setVisible(false);

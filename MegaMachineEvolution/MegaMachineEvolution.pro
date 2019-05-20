@@ -29,7 +29,6 @@ SOURCES += \
     StateMachines/megamachine.cpp \
     StateMachines/megamachinemanager.cpp \
     dispatcher.cpp \
-    GUI/oldmain.cpp \
     GUI/main.cpp \
     GUI/mainwindow.cpp \
     GUI/parameterwindow.cpp
