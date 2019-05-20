@@ -19,6 +19,7 @@ struct gaParameters {
     int genNb;
     int elitpop;
     float tolRate;
+    int tntsize;
 };
 
 class Emitter : public QObject {

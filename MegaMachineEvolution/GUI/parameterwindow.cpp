@@ -82,7 +82,8 @@ void ParameterWindow::on_btnRun_clicked()
                 ui->sbPopulationSize->value(),
                 ui->sbGenerationNumber->value(),
                 ui->sbElitePopulationSize->value(),
-                static_cast<float>(ui->dsbToleranceRate->value())
+                static_cast<float>(ui->dsbToleranceRate->value()),
+                ui->sbTournamentSize->value()
     };
 
     Dispatcher *DISPATCHER = new Dispatcher(
@@ -92,7 +93,7 @@ void ParameterWindow::on_btnRun_clicked()
                 fileNameDataSource,
                 ui->cbLogMachines->checkState() == Qt::Checked ? true : false,
                 &loop
-    );
+                );
     QObject::connect(DISPATCHER, SIGNAL(incrementProgress(double)), this, SLOT(incrementProgressBar(double)));
     QObject::connect(DISPATCHER, SIGNAL(sendState(uint,double,double)), this, SLOT(currentState(uint,double,double)));
     QObject::connect(DISPATCHER, SIGNAL(sendAnalysis(uint,uint)), this, SLOT(nextAnalysis(uint,uint)));
@@ -128,8 +129,13 @@ void ParameterWindow::on_cmbSelectionMode_currentIndexChanged(int index)
 {
     if(index == 3) {
         ui->dsbSpRate->setEnabled(true);
-    } else {
+        ui->sbTournamentSize->setEnabled(false);
+    } else if (index == 4){
         ui->dsbSpRate->setEnabled(false);
+        ui->sbTournamentSize->setEnabled(true);
+    }else {
+        ui->dsbSpRate->setEnabled(false);
+        ui->sbTournamentSize->setEnabled(false);
     }
 }
 
