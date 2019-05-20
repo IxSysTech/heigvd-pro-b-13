@@ -33,7 +33,7 @@ class Dispatcher : public QObject
 {
     Q_OBJECT
 public:
-    explicit Dispatcher(unsigned int stateNb, unsigned int maxAlert, const gaParameters& gaParam, const QString& filePath, bool debugMachines, QObject *parent = nullptr);
+    explicit Dispatcher(unsigned int stateNb, unsigned int maxAlert, const gaParameters& gaParam, const QString& filePath, bool debugMachines, const QString& logFileLocation, QObject *parent = nullptr);
     void run();
     template <typename T>
     static std::vector<T> objective(const std::vector<T>& x);
@@ -54,6 +54,7 @@ private:
     void initSequences(const QString& filePath);
 
     const unsigned int stateNb;
+    QString logFileLocation;
     gaParameters gaParam;
 
     static unsigned int maxAlert;

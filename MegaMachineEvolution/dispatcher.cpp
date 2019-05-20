@@ -10,8 +10,8 @@ unsigned int Dispatcher::maxAlert;
 bool Dispatcher::debugMachines;
 std::multimap<std::string, bool> * Dispatcher::currentSequences;
 
-Dispatcher::Dispatcher(unsigned int stateNb, unsigned int maxAlert, const gaParameters& gaParam, const QString& filePath, bool debugMachines, QObject *parent) :
-    QObject(parent), stateNb(stateNb), gaParam(gaParam)
+Dispatcher::Dispatcher(unsigned int stateNb, unsigned int maxAlert, const gaParameters& gaParam, const QString& filePath, bool debugMachines, const QString& logFileLocation, QObject *parent) :
+    QObject(parent), stateNb(stateNb), gaParam(gaParam), logFileLocation(logFileLocation)
 {
     this->maxAlert = maxAlert;
     this->debugMachines = debugMachines;
@@ -46,15 +46,15 @@ void Dispatcher::initSequences(const QString& filePath){
 
 
 void Dispatcher::run() {
-    int nbKey = 0;
+    std::vector<int> keys;
     for(auto it = sequences->begin(); it != sequences->end(); it = sequences->upper_bound(it->first))
-        nbKey++;
+        keys.push_back(it->first);
 
-    for(int i = 0; i < nbKey; ++i) {
+    for(int i = 0; i < keys.size(); ++i) {
         // Announce the current Analysis
-        emit sendAnalysis(static_cast<unsigned int>(i + 1), static_cast<unsigned int>(nbKey));
+        emit sendAnalysis(static_cast<unsigned int>(i + 1), static_cast<unsigned int>(keys.size()));
         currentSequences = new std::multimap<std::string, bool>();
-        auto range = sequences->equal_range(i);
+        auto range = sequences->equal_range(keys[i]);
 
         int k = 0;
         for(auto it = range.first; it != range.second && k++ < 100; ++it) {
@@ -66,11 +66,12 @@ void Dispatcher::run() {
         size_t nbSeq = currentSequences->size();
         int randomKey = 0;
         for(size_t j = 0; j < nbSeq; ++j) {
-            if(randomKey % nbKey == i) randomKey++;
+            int currentKey = randomKey % keys.size();
+            if(keys[currentKey] == keys[i]) randomKey++;
 
-            auto randomElement = sequences->find(randomKey % nbKey);
+            auto randomElement = sequences->find(keys[currentKey]);
 
-            std::advance(randomElement, static_cast<unsigned int>(std::rand()) % sequences->count(randomKey % nbKey));
+            std::advance(randomElement, std::rand() % sequences->count(keys[currentKey]));
             currentSequences->insert(
                         std::pair<std::string, bool>(
                             randomElement->second,
@@ -105,7 +106,8 @@ void Dispatcher::run() {
             jsonMachine.push_back(sd.toJson());
         }
 
-        QTextStream(stdout) << QJsonDocument(jsonMachine).toJson();
+        FILE* machine = std::fopen(strcat(logFileLocation.toLocal8Bit().data(), QString("bestmachineAnalysis%1.machine").arg(i).toLocal8Bit().data()), "w+");
+        QTextStream(machine) << QJsonDocument(jsonMachine).toJson();
 
         delete currentSequences;
     }

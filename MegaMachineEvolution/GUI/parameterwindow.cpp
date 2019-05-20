@@ -62,11 +62,8 @@ void ParameterWindow::on_btnRun_clicked()
     ui->LiveState->show();
 
     // Redirect stdout to logfile
-    FILE* myfile;
-    myfile = std::fopen(logFileLocation.toLocal8Bit().data(), "w+");
-    int myfileFD = fileno(myfile);
-
-    dup2(myfileFD, 1);
+    FILE* log = std::fopen(strcat(logFileLocation.toLocal8Bit().data(), "/log.txt"), "w+");
+    dup2(fileno(log), STDOUT_FILENO);
 
     QEventLoop loop;
 
@@ -92,6 +89,7 @@ void ParameterWindow::on_btnRun_clicked()
                 gaParam,
                 fileNameDataSource,
                 ui->cbLogMachines->checkState() == Qt::Checked ? true : false,
+                logFileLocation,
                 &loop
                 );
     QObject::connect(DISPATCHER, SIGNAL(incrementProgress(double)), this, SLOT(incrementProgressBar(double)));
@@ -182,7 +180,7 @@ void ParameterWindow::on_browseLog_clicked()
                                                         | QFileDialog::DontResolveSymlinks
                                                         );
     if(logFileLocation != ""){
-        logFileLocation += "/log.txt";
+        logFileLocation += "/";
     }
 
     //Display the path to the user

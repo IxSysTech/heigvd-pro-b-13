@@ -80,7 +80,7 @@ private:
     Ui::ParameterWindow *ui;
     double progress = 0.0;                                                                                              //Value of the progress bar
     QString fileNameDataSource;                                                                                         //File where the application will get datas
-    QString logFileLocation = QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation) + "/log.txt";      //Log file location
+    QString logFileLocation = QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation);      //Log file location
 
 signals:
     /**
