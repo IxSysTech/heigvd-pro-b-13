@@ -52,7 +52,7 @@ void Dispatcher::run() {
 
     for(int i = 0; i < nbKey; ++i) {
         // Announce the current Analysis
-        emit sendAnalysis(i + 1, nbKey);
+        emit sendAnalysis(static_cast<unsigned int>(i + 1), static_cast<unsigned int>(nbKey));
         currentSequences = new std::multimap<std::string, bool>();
         auto range = sequences->equal_range(i);
 
@@ -63,14 +63,14 @@ void Dispatcher::run() {
 
         // Getting sequences of other IDs to perform analysis
 
-        int nbSeq = currentSequences->size();
+        size_t nbSeq = currentSequences->size();
         int randomKey = 0;
-        for(int j = 0; j < nbSeq; ++j) {
+        for(size_t j = 0; j < nbSeq; ++j) {
             if(randomKey % nbKey == i) randomKey++;
 
             auto randomElement = sequences->find(randomKey % nbKey);
 
-            std::advance(randomElement, std::rand() % sequences->count(randomKey % nbKey));
+            std::advance(randomElement, static_cast<unsigned int>(std::rand()) % sequences->count(randomKey % nbKey));
             currentSequences->insert(
                         std::pair<std::string, bool>(
                             randomElement->second,
