@@ -172,6 +172,7 @@ void ParameterWindow::nextAnalysis(unsigned int current, unsigned int total){
 
 void ParameterWindow::on_browseLog_clicked()
 {
+    //Open a file manager that allow the user to choose where to save the log file
     logFileLocation = QFileDialog::getExistingDirectory(this, tr("Open Directory"),
                                                         "/home",
                                                         QFileDialog::ShowDirsOnly
@@ -181,6 +182,7 @@ void ParameterWindow::on_browseLog_clicked()
         logFileLocation += "/";
     }
 
+    //Display the path to the user
     ui->lblLogFile->setText("Current log file locataion : \n" + logFileLocation + "log.txt");
     qApp->processEvents();
 }
