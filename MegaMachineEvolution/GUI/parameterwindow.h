@@ -6,6 +6,7 @@
 #include "../dispatcher.h"
 #include <unistd.h>
 #include <QTimer>
+#include <QStandardPaths>
 
 namespace Ui {
 class ParameterWindow;
@@ -77,9 +78,9 @@ private:
     void setGUIParametersEnabled(bool value);
 
     Ui::ParameterWindow *ui;
-    double progress = 0.0;          //Value of the progress bar
-    QString fileNameDataSource;     //File where the application will get datas
-    QString logFileLocation = "";   //Log file location
+    double progress = 0.0;                                                                                              //Value of the progress bar
+    QString fileNameDataSource;                                                                                         //File where the application will get datas
+    QString logFileLocation = QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation) + "/log.txt";      //Log file location
 
 signals:
     /**

@@ -36,9 +36,9 @@ MainWindow::~MainWindow()
 void MainWindow::on_btnConnect_clicked()
 {
     int rc = 0;
-    ssh_session session = nullptr;  //Session established beetween the local and remot machine
-    ssh_channel channel = nullptr;  //Channel connected to the remote host
-    fileDataSource = "result";
+    ssh_session session = nullptr;                                                                                  //Session established beetween the local and remot machine
+    ssh_channel channel = nullptr;                                                                                  //Channel connected to the remote host
+    fileDataSource = QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation) + "/remoteSequences";   //Local data file location
 
     //Disable the GUI so that the user can't change the values
     this->setGUIEnabled(false);
@@ -162,7 +162,8 @@ int MainWindow::scpRead(ssh_session session){
     scp = ssh_scp_new(session, SSH_SCP_READ, "/home/samuel.mettler/result.csv");
 
     //Openig the local file
-    FILE* file = fopen("result", "w+");
+    FILE* file = fopen(fileDataSource.toLocal8Bit().data(), "w+");
+
     int fd = fileno(file);
     if(fd == -1) return -1;
 
