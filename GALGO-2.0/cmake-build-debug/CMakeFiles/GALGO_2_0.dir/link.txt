@@ -1,1 +1,0 @@
-/usr/bin/gcc  -g   CMakeFiles/GALGO_2_0.dir/src/example.cpp.o  -o GALGO_2_0 
