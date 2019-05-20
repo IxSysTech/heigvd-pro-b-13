@@ -96,10 +96,10 @@ void Dispatcher::run() {
         // Getting sequences of other IDs to perform analysis
 
         size_t nbSeq = currentSequences->size();
-        size_t randomKey = 0;
         for(size_t j = 0; j < nbSeq; ++j) {
-            size_t currentKey = randomKey % keys.size();
-            if(keys[currentKey] == keys[i]) randomKey++;
+            size_t currentKey = std::rand() % keys.size();
+            if(keys[currentKey] == keys[i])
+                currentKey = (currentKey + 1) % keys.size();
 
             auto randomElement = sequences->find(keys[currentKey]);
 
@@ -110,8 +110,6 @@ void Dispatcher::run() {
                             false
                         )
             );
-
-            randomKey++;
         }
 
         std::vector<galgo::Parameter<float,32>> parameters(
