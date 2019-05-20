@@ -25,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->txtSSHPassword->setText("samuel.b13");
 
     ui->lblFileInfo->setWordWrap(true);
-    ui->sqlRequest->setText("SELECT protein.sadn, location.id FROM \"PRO19\".protein INNER JOIN \"PRO19\".prot_to_loc ON protein.id = prot_to_loc.fk_prot INNER JOIN \"PRO19\".location on prot_to_loc.fk_loc = location.id WHERE location.id = 1 LIMIT 5000;");
+    ui->sqlRequest->setText("SELECT protein.sadn, location.id FROM \\\"PRO19\\\".protein INNER JOIN \\\"PRO19\\\".prot_to_loc ON protein.id = prot_to_loc.fk_prot INNER JOIN \\\"PRO19\\\".location on prot_to_loc.fk_loc = location.id WHERE location.id = 1 LIMIT 5000");
 }
 
 MainWindow::~MainWindow()
@@ -60,7 +60,7 @@ void MainWindow::on_btnConnect_clicked()
 
             std::string sqlResquest = ui->sqlRequest->toPlainText().toStdString();
             char command[500];
-            sprintf(command, "PGPASSWORD=%s psql -U %s %s -c \"Copy (%s) To stdout With CSV DELIMITER ';';\" >> /home/samuel.mettler/result.csv",
+            sprintf(command, "PGPASSWORD=%s psql -U %s %s -c \"Copy (%s) To stdout With CSV DELIMITER ';';\" > /home/samuel.mettler/result.csv",
                     ui->txtDBPassword->text().toLocal8Bit().data(),
                     ui->txtDBUsername->text().toLocal8Bit().data(),
                     ui->txtDBName->text().toLocal8Bit().data(),
