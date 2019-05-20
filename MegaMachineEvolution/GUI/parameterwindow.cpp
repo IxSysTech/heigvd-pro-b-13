@@ -152,6 +152,7 @@ void ParameterWindow::setGUIParametersEnabled(bool value){
     ui->dsbToleranceRate->setEnabled(value);
     ui->cbLogMachines->setEnabled(value);
     ui->browseLog->setEnabled(value);
+    ui->sbTournamentSize->setEnabled(value);
 }
 
 void ParameterWindow::setDataSource(QString fileNameDataSource){
