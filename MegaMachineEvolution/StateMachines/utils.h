@@ -1,6 +1,8 @@
 #ifndef UTILS_H
 #define UTILS_H
 #include <vector>
+#include <QJsonObject>
+#include <QJsonArray>
 
 ///
 /// \brief The StateDescriptor struct - defines a structure for describing States in a megamachine
@@ -23,8 +25,26 @@ struct StateDescriptor {
         unsigned int destinationState;
 
         Transition(signalType signal, unsigned int destinationState) : signal(signal), destinationState(destinationState) {}
+        QJsonObject toJson() {
+            return {
+                {"signal", signal},
+                {"destinationState", static_cast<int>(destinationState)}
+            };
+        }
     };
 
     std::vector<Transition> transitions;
+
+    QJsonObject toJson() {
+        QJsonArray jsontr;
+
+        for(Transition t : transitions)
+            jsontr.push_back(t.toJson());
+
+        return {
+            {"stateAction", stateAction},
+            {"transitions", jsontr}
+        };
+    }
 };
 #endif // UTILS_H

@@ -1,6 +1,8 @@
 #include "dispatcher.h"
 #include "GALGO/Galgo.hpp"
 
+#include <QJsonDocument>
+
 // Get only the last 2 bits 0 for NOTHING, 1 for YES and 2 for NO
 #define MASK_STATE_ACTION 0x3
 
@@ -96,7 +98,15 @@ void Dispatcher::run() {
         ga.run();
         std::vector<float> bestMachine = ga.result()->getParam();
         std::vector<StateDescriptor> * theBestMachine = getMachine(bestMachine);
+
         // TODO JSON Stringify this vector to log bestMachine
+        QJsonArray jsonMachine;
+        for(StateDescriptor sd : *theBestMachine) {
+            jsonMachine.push_back(sd.toJson());
+        }
+
+        QTextStream(stdout) << QJsonDocument(jsonMachine).toJson();
+
         delete currentSequences;
     }
 
