@@ -142,6 +142,7 @@ GeneticAlgorithm<T>::GeneticAlgorithm(Emitter *gaEmitter, const gaParameters& p,
    this->popsize = p.popsize;
    this->matsize = p.popsize;
    this->elitpop = p.elitpop;
+   this->tntsize = p.tntsize;
    this->output = output;
 
    // initializing parameter(s) data

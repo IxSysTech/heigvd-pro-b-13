@@ -65,8 +65,6 @@ void MainWindow::on_btnConnect_clicked()
             //Set the remote file path
             QString remoteFileLocation = "/home/" + ui->txtSSHUsername->text() + "/result.csv";
 
-            std::cout << remoteFileLocation.toStdString() << std::endl;
-
             //Formatting the request
             std::string sqlResquest = ui->sqlRequest->toPlainText().toStdString();
             char command[500];
