@@ -6,9 +6,7 @@
 
 unsigned int Dispatcher::maxAlert;
 bool Dispatcher::debugMachines;
-union Dispatcher::converter Dispatcher::c;
 std::multimap<std::string, bool> * Dispatcher::currentSequences;
-//std::vector<std::vector<StateDescriptor>> * Dispatcher::getMachine(const std::vector<float> &machine);
 
 Dispatcher::Dispatcher(unsigned int stateNb, unsigned int maxAlert, const gaParameters& gaParam, const QString& filePath, bool debugMachines, QObject *parent) :
     QObject(parent), stateNb(stateNb), gaParam(gaParam)
@@ -105,7 +103,28 @@ void Dispatcher::run() {
     emit finished();
 }
 
-std::vector<std::vector<StateDescriptor>> * Dispatcher::getMachine(const std::vector<float> &machine) {
+uint32_t Dispatcher::convert(float from) {
+    union {
+        float value;
+        uint32_t converted;
+    } c32;
+
+    c32.value = from;
+    return c32.converted;
+}
+
+uint64_t Dispatcher::convert(double from) {
+    union {
+        double value;
+        uint64_t converted;
+    } c64;
+
+    c64.value = from;
+    return c64.converted;
+}
+
+template <typename T>
+std::vector<std::vector<StateDescriptor>> * Dispatcher::getMachine(const std::vector<T> &machine) {
     QTextStream debug(stdout);
 
     // Construction d'une machine de test
@@ -116,8 +135,7 @@ std::vector<std::vector<StateDescriptor>> * Dispatcher::getMachine(const std::ve
                  MASK_TRANSITIONS = static_cast<unsigned int>(pow(2, nbBitState) -1);
 
     for(size_t i = 0; i < machine.size(); ++i){
-        c.value = machine.at(i);
-        uint32_t binRepresentation = c.converted;
+        auto binRepresentation = convert(machine.at(i));
 
         if(debugMachines)
             debug << "State : " << i << " : " << endl;

@@ -45,7 +45,8 @@ signals:
 
 
 private:
-    static std::vector<std::vector<StateDescriptor>> *getMachine(const std::vector<float>& machine);
+    template<typename T>
+    static std::vector<std::vector<StateDescriptor>> *getMachine(const std::vector<T>& machine);
     static std::vector<std::string> split(const std::string& s, char delimiter);
 
     std::multimap<int, std::string> *sequences;
@@ -59,10 +60,8 @@ private:
 
     static std::multimap<std::string, bool> *currentSequences;
 
-    static union converter {
-        float value;
-        uint32_t converted;
-    } c;
+    static uint32_t convert(float);
+    static uint64_t convert(double);
 
 public slots:
     void relay(double);
