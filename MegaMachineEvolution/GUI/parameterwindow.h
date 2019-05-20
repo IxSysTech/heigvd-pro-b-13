@@ -6,6 +6,7 @@
 #include "../dispatcher.h"
 #include <unistd.h>
 #include <QTimer>
+#include <QStandardPaths>
 
 namespace Ui {
 class ParameterWindow;
@@ -37,7 +38,7 @@ private:
     Ui::ParameterWindow *ui;
     double progress = 0.0;
     QString fileNameDataSource;
-    QString logFileLocation = "";
+    QString logFileLocation = QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation) + "/log.txt";
 
 signals:
     void incrementPercent(double);

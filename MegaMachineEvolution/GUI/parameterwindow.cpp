@@ -47,8 +47,7 @@ ParameterWindow::ParameterWindow(QWidget *parent) :
     ui->CurrentGen->setText("Gen : 0");
     ui->MaxFitness->setText("Max Fitness : 0.0");
     ui->MeanFitness->setText("Mean current Gen : 0.0");
-
-    // connect(this, SIGNAL(incrementPercent(double)), this, SLOT(incrementProgressBar(double)));
+    ui->lblLogFile->setText("Current log file locataion : \n" + logFileLocation);
 }
 
 ParameterWindow::~ParameterWindow()
@@ -64,8 +63,6 @@ void ParameterWindow::on_btnRun_clicked()
 
     // Redirect stdout to logfile
     FILE* myfile;
-    logFileLocation += "log.txt";
-    std::cout << logFileLocation.toStdString() << std::endl;
     myfile = std::fopen(logFileLocation.toLocal8Bit().data(), "w+");
     int myfileFD = fileno(myfile);
 
@@ -95,7 +92,7 @@ void ParameterWindow::on_btnRun_clicked()
                 fileNameDataSource,
                 ui->cbLogMachines->checkState() == Qt::Checked ? true : false,
                 &loop
-                );
+    );
     QObject::connect(DISPATCHER, SIGNAL(incrementProgress(double)), this, SLOT(incrementProgressBar(double)));
     QObject::connect(DISPATCHER, SIGNAL(sendState(uint,double,double)), this, SLOT(currentState(uint,double,double)));
     QObject::connect(DISPATCHER, SIGNAL(sendAnalysis(uint,uint)), this, SLOT(nextAnalysis(uint,uint)));
@@ -178,10 +175,10 @@ void ParameterWindow::on_browseLog_clicked()
                                                         | QFileDialog::DontResolveSymlinks
                                                         );
     if(logFileLocation != ""){
-        logFileLocation += "/";
+        logFileLocation += "/log.txt";
     }
 
-    ui->lblLogFile->setText("Current log file locataion : \n" + logFileLocation + "log.txt");
+    ui->lblLogFile->setText("Current log file locataion : \n" + logFileLocation);
     qApp->processEvents();
 }
 

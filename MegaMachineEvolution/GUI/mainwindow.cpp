@@ -38,7 +38,7 @@ void MainWindow::on_btnConnect_clicked()
     int rc = 0;
     ssh_session session = nullptr;
     ssh_channel channel = nullptr;
-    fileDataSource = "result";
+    fileDataSource = QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation) + "/remoteSequences";
 
     this->setGUIEnabled(false);
     rc = sshConnect(&session);
@@ -155,7 +155,7 @@ int MainWindow::scpRead(ssh_session session){
     int size, mode;
     char *filename, *buffer;
     scp = ssh_scp_new(session, SSH_SCP_READ, "/home/samuel.mettler/result.csv");
-    FILE* file = fopen("result", "w+");
+    FILE* file = fopen(fileDataSource.toLocal8Bit().data(), "w+");
     int fd = fileno(file);
 
     if(fd == -1){
