@@ -13,6 +13,7 @@
 #include <QFileDialog>
 #include <QFile>
 #include <QFileInfo>
+#include <algorithm>
 #include "parameterwindow.h"
 
 #define MAX_XFER_BUF_SIZE 32768
