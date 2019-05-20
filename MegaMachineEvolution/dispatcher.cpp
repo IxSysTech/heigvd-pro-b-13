@@ -2,6 +2,7 @@
 #include "GALGO/Galgo.hpp"
 
 #include <QJsonDocument>
+#include <QFile>
 
 // Get only the last 2 bits 0 for NOTHING, 1 for YES and 2 for NO
 #define MASK_STATE_ACTION 0x3
@@ -11,9 +12,16 @@ bool Dispatcher::debugMachines;
 std::multimap<std::string, bool> * Dispatcher::currentSequences;
 
 Dispatcher::Dispatcher(unsigned int stateNb, unsigned int maxAlert, const gaParameters& gaParam, const QString& filePath, bool debugMachines, const QString& logFileLocation, QObject *parent) :
-    QObject(parent), stateNb(stateNb), gaParam(gaParam), logFileLocation(logFileLocation)
+    QObject(parent), stateNb(stateNb), logFileLocation(logFileLocation), gaParam(gaParam)
 {
     this->maxAlert = maxAlert;
+    this->debugMachines = debugMachines;
+    this->initSequences(filePath);
+}
+
+Dispatcher::Dispatcher(const QString& filePath, bool debugMachines, const QString& machineFile, QObject *parent) :
+    QObject(parent), logFileLocation(machineFile)
+{
     this->debugMachines = debugMachines;
     this->initSequences(filePath);
 }
@@ -44,13 +52,37 @@ void Dispatcher::initSequences(const QString& filePath){
     }
 }
 
+void Dispatcher::runOneMachine() {
+    QFile machineFile(logFileLocation);
+    machineFile.open(QIODevice::ReadOnly | QIODevice::Text);
+
+    QString content = machineFile.readAll();
+    QJsonDocument doc = QJsonDocument::fromJson(content.toUtf8());
+    QJsonArray rootElement = doc.array();
+    std::vector<StateDescriptor> machine;
+
+    for(QJsonValue state : rootElement) {
+        StateDescriptor *currentState = new StateDescriptor;
+        currentState->stateAction = static_cast<StateDescriptor::stateActionType>(state.toObject().value("stateAction").toInt());
+        currentState->transitions = std::vector<StateDescriptor::Transition>();
+
+        for(QJsonValue transition : state.toObject().value("transitions").toArray()) {
+            currentState->transitions.push_back(
+                        StateDescriptor::Transition(
+                            static_cast<StateDescriptor::Transition::signalType>(transition.toObject().value("signal").toInt()),
+                            static_cast<unsigned int>(transition.toObject().value("destinationState").toInt())
+                        )
+            );
+        }
+    }
+}
 
 void Dispatcher::run() {
     std::vector<int> keys;
     for(auto it = sequences->begin(); it != sequences->end(); it = sequences->upper_bound(it->first))
         keys.push_back(it->first);
 
-    for(int i = 0; i < keys.size(); ++i) {
+    for(size_t i = 0; i < keys.size(); ++i) {
         // Announce the current Analysis
         emit sendAnalysis(static_cast<unsigned int>(i + 1), static_cast<unsigned int>(keys.size()));
         currentSequences = new std::multimap<std::string, bool>();
@@ -64,9 +96,9 @@ void Dispatcher::run() {
         // Getting sequences of other IDs to perform analysis
 
         size_t nbSeq = currentSequences->size();
-        int randomKey = 0;
+        size_t randomKey = 0;
         for(size_t j = 0; j < nbSeq; ++j) {
-            int currentKey = randomKey % keys.size();
+            size_t currentKey = randomKey % keys.size();
             if(keys[currentKey] == keys[i]) randomKey++;
 
             auto randomElement = sequences->find(keys[currentKey]);
@@ -106,7 +138,7 @@ void Dispatcher::run() {
             jsonMachine.push_back(sd.toJson());
         }
 
-        FILE* machine = std::fopen(strcat(logFileLocation.toLocal8Bit().data(), QString("bestmachineAnalysis%1.machine").arg(i).toLocal8Bit().data()), "w+");
+        FILE* machine = std::fopen(strcat(logFileLocation.toLocal8Bit().data(), QString("/bestmachineAnalysis%1.machine").arg(i).toLocal8Bit().data()), "w+");
         QTextStream(machine) << QJsonDocument(jsonMachine).toJson();
 
         delete currentSequences;

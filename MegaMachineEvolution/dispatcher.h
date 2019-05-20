@@ -34,7 +34,10 @@ class Dispatcher : public QObject
     Q_OBJECT
 public:
     explicit Dispatcher(unsigned int stateNb, unsigned int maxAlert, const gaParameters& gaParam, const QString& filePath, bool debugMachines, const QString& logFileLocation, QObject *parent = nullptr);
+    explicit Dispatcher(const QString& filePath, bool debugMachines, const QString& machineFile, QObject *parent = nullptr);
+
     void run();
+    void runOneMachine();
     template <typename T>
     static std::vector<T> objective(const std::vector<T>& x);
     ~Dispatcher();
@@ -53,7 +56,7 @@ private:
     std::multimap<int, std::string> *sequences;
     void initSequences(const QString& filePath);
 
-    const unsigned int stateNb;
+    unsigned int stateNb;
     QString logFileLocation;
     gaParameters gaParam;
 
