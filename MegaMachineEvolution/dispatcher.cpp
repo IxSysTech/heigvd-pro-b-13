@@ -11,19 +11,19 @@ unsigned int Dispatcher::maxAlert;
 bool Dispatcher::debugMachines;
 std::multimap<std::string, bool> * Dispatcher::currentSequences;
 
-Dispatcher::Dispatcher(unsigned int stateNb, unsigned int maxAlert, const gaParameters& gaParam, const QString& filePath, bool debugMachines, const QString& logFileLocation, QObject *parent) :
+Dispatcher::Dispatcher(unsigned int stateNb, unsigned int maxAlert, const gaParameters& gaParam, const QString& sequencesFile, bool debugMachines, const QString& logFileLocation, QObject *parent) :
     QObject(parent), stateNb(stateNb), logFileLocation(logFileLocation), gaParam(gaParam)
 {
     this->maxAlert = maxAlert;
     this->debugMachines = debugMachines;
-    this->initSequences(filePath);
+    this->initSequences(sequencesFile);
 }
 
-Dispatcher::Dispatcher(const QString& filePath, bool debugMachines, const QString& machineFile, QObject *parent) :
+Dispatcher::Dispatcher(const QString& sequencesFile, bool debugMachines, const QString& machineFile, QObject *parent) :
     QObject(parent), logFileLocation(machineFile)
 {
     this->debugMachines = debugMachines;
-    this->initSequences(filePath);
+    this->initSequences(sequencesFile);
 }
 
 std::vector<std::string> Dispatcher::split(const std::string& s, char delimiter)
@@ -38,11 +38,11 @@ std::vector<std::string> Dispatcher::split(const std::string& s, char delimiter)
    return tokens;
 }
 
-void Dispatcher::initSequences(const QString& filePath){
+void Dispatcher::initSequences(const QString& sequencesFile){
     sequences = new std::multimap<int, std::string>();
 
-    // Because of filePath being a QString we need to convert it for ifstream
-    std::ifstream test(filePath.toStdString());
+    // Because of sequencesFile being a QString we need to convert it for ifstream
+    std::ifstream test(sequencesFile.toStdString());
     std::string line;
     std::vector<std::string> tokens;
     char delimiter = ';';
@@ -130,12 +130,14 @@ void Dispatcher::run() {
         std::vector<float> bestMachine = ga.result()->getParam();
         std::vector<StateDescriptor> * theBestMachine = getMachine(bestMachine);
 
-        // TODO JSON Stringify this vector to log bestMachine
+        // JSON Stringify this vector to log bestMachine
         QJsonArray jsonMachine;
         for(StateDescriptor sd : *theBestMachine) {
             jsonMachine.push_back(sd.toJson());
         }
 
+        // We put the JSON representation of the machine to a file
+        // TODO: We need to pot his best result and the ID for which it's OK to use
         FILE* machine = std::fopen(strcat(logFileLocation.toLocal8Bit().data(), QString("/bestmachineAnalysis%1.machine").arg(i).toLocal8Bit().data()), "w+");
         QTextStream(machine) << QJsonDocument(jsonMachine).toJson();
 

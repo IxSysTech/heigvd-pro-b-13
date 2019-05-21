@@ -11,12 +11,13 @@ class MegaMachineManager : public QObject
     Q_OBJECT
 public:
     ///
-    /// \brief MegaMachineManager
-    /// \param sequences
-    /// \param machinesGiven
-    /// \param scoresToGive
-    /// \param maxAlerts
-    /// \param parent
+    /// \brief MegaMachineManager Manager for the MegaMachine, in fact this serve to analyze sequences and can manage more machines than one for optimisation.
+    ///                           This manager permit to create MegaMachines and serve sequences to them.
+    /// \param sequences multimap of the sequences to analyze, this will create an emitterACGT for it
+    /// \param machinesGiven The machines that the manager need to create to analyze the sequences
+    /// \param scoresToGive The vector of scores that we will use to store the score of each machine (in order)
+    /// \param maxAlerts The maxAlerts for ctrYes, ctrNo (see MegaMachine)
+    /// \param parent Parent QObject
     ///
     explicit MegaMachineManager(std::multimap<std::string, bool> *sequences, std::vector<std::vector<StateDescriptor>> machinesGiven, std::vector<int> *scoresToGive,unsigned int maxAlerts, bool hasDebug, QObject *parent = nullptr);
 
