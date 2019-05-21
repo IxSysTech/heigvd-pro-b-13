@@ -58,7 +58,7 @@ signals:
     ///
     void finishedSequence();
     ///
-    /// \brief finished - signal annuncing a finished analysis
+    /// \brief finished - signal announcing a finished analysis
     ///
     void finished();
 };
