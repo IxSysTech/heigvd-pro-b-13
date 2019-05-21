@@ -81,6 +81,19 @@ public:
     /// \return vector of fitnesses
     ///
     static std::vector<T> objective(const std::vector<T>& x);
+    ///
+    /// \brief parseJsonMachine
+    /// \param jsonMap
+    /// \return
+    ///
+    static std::vector<StateDescriptor>* parseJsonMachine(const QVariantMap& jsonMap);
+    ///
+    /// \brief parseJson
+    /// \param filepath
+    /// \return
+    ///
+    static QVariantMap parseJson(const QString& filepath);
+
     ~Dispatcher();
 signals:
     void finished();
@@ -88,7 +101,6 @@ signals:
     void incrementProgress(double);
     void sendState(unsigned int, double, double);
     void sendAnalysis(unsigned int, unsigned int);
-
 
 private:
     template<typename T>

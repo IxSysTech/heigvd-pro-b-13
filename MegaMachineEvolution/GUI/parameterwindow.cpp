@@ -48,8 +48,8 @@ ParameterWindow::ParameterWindow(QWidget *parent) :
     ui->CurrentGen->setText("Gen : 0");
     ui->MaxFitness->setText("Max Fitness : 0.0");
     ui->MeanFitness->setText("Mean current Gen : 0.0");
-    ui->lblLogFile->setText("Current log file locataion : \n" + logFileLocation);
-    ui->lblLogFile_2->setText("Current log file locataion : \n" + logFileLocation);
+    ui->lblLogFile->setText("Current log file location : \n" + logFileLocation);
+    ui->lblLogFile_2->setText("Current log file location : \n" + logFileLocation);
 }
 
 ParameterWindow::~ParameterWindow()
@@ -261,5 +261,21 @@ void ParameterWindow::on_btnSelectMachine_clicked()
 
     //Display the path to the user
     ui->lblMachineFile->setText("Current machine file locataion : \n" + machineFile);
+
+    // Display info about the Machine
+    QVariantMap testParse = Dispatcher::parseJson(machineFile);
+
+    if(testParse.isEmpty()){
+        ui->lblStateImportInfo->setText("Failed to create JSON doc.");
+        exit(2);
+    }
+
+    //TODO: add string representation of the machine
+    ui->lblStateImportInfo->setText(QString("The machine loaded gave us these infos :\n"
+                                            "Best score on GA : %1\n"
+                                            "Max Alert : %2\n"
+                                            "ID for which it says true : %3\n"
+                                            "Machine :").arg(testParse["bestScore"].toString(),QString::number(testParse["maxAlertSet"].toInt()),QString::number(testParse["localisationTreated"].toInt())));
+
     qApp->processEvents();
 }

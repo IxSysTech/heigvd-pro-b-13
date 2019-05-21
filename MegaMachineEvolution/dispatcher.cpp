@@ -55,16 +55,23 @@ void Dispatcher::initSequences(const QString& sequencesFile){
     }
 }
 
-void Dispatcher::runOneMachine() {
-    QFile machineFile(logFileLocation);
+QVariantMap Dispatcher::parseJson(const QString& filepath){
+    QFile machineFile(filepath);
     machineFile.open(QIODevice::ReadOnly | QIODevice::Text);
 
     QString content = machineFile.readAll();
     QJsonDocument doc = QJsonDocument::fromJson(content.toUtf8());
-    QJsonArray rootElement = doc.array();
-    std::vector<StateDescriptor> machine;
+    QJsonObject rootElement = doc.object();
+    QVariantMap jsonMap = rootElement.toVariantMap();
+    return jsonMap;
+}
 
-    for(QJsonValue state : rootElement) {
+std::vector<StateDescriptor>* Dispatcher::parseJsonMachine(const QVariantMap& jsonMap) {
+    QVariantList value = jsonMap["machine"].toList();
+    QJsonArray machineJSON = QJsonArray::fromVariantList(value);
+    std::vector<StateDescriptor> *machine = new std::vector<StateDescriptor>();
+
+    for(QJsonValue state : machineJSON) {
         StateDescriptor *currentState = new StateDescriptor;
         currentState->stateAction = static_cast<StateDescriptor::stateActionType>(state.toObject().value("stateAction").toInt());
         currentState->transitions = std::vector<StateDescriptor::Transition>();
@@ -78,36 +85,42 @@ void Dispatcher::runOneMachine() {
             );
         }
 
-        machine.push_back(*currentState);
+        machine->push_back(*currentState);
     }
+    return machine;
+}
 
+void Dispatcher::runOneMachine() {
+    QVariantMap jsonMap = parseJson(logFileLocation);
+    std::vector<StateDescriptor>* machine = parseJsonMachine(jsonMap);
+    this->maxAlert = jsonMap["maxAlertSet"].toInt();
     std::vector<int> keys;
     for(auto it = sequences->begin(); it != sequences->end(); it = sequences->upper_bound(it->first))
         keys.push_back(it->first);
 
     currentSequences = new std::multimap<std::string, bool>();
     // TODO: Retrieve which ID the machine is designed to detect
-    auto range = sequences->equal_range(1);
+    auto range = sequences->equal_range(jsonMap["localisationTreated"].toInt());
 
     for(auto it = range.first; it != range.second; ++it) {
         currentSequences->insert(std::pair<std::string, bool>(it->second, true));
     }
-    /*
+
     for (int key : keys) {
         //TODO : change 1 by ID that machine can detect
-        if(key == 1)
+        if(key == jsonMap["localisationTreated"].toInt())
             continue;
-        range = sequences->equal_range(0);
+        range = sequences->equal_range(key);
 
         for(auto it = range.first; it != range.second; ++it) {
             currentSequences->insert(std::pair<std::string, bool>(it->second, false));
         }
     }
-    */
+
 
     QTextStream debug(stdout);
 
-    std::vector<std::vector<StateDescriptor>> * theMachines = new std::vector<std::vector<StateDescriptor>>({machine});
+    std::vector<std::vector<StateDescriptor>> * theMachines = new std::vector<std::vector<StateDescriptor>>({*machine});
     std::vector<int> *scores = new std::vector<int>(1, 0);
 
     MegaMachineManager *manager = new MegaMachineManager(currentSequences, *theMachines, scores, maxAlert, debugMachines);
@@ -186,10 +199,22 @@ void Dispatcher::run() {
             jsonMachine.push_back(sd.toJson());
         }
 
+        QJsonArray jsonGAParams;
+        for(float bm : bestMachine) {
+            jsonGAParams.push_back(bm);
+        }
+
+        QJsonObject machineToSave;
+        machineToSave["bestScore"] = ga.result()->getResult().at(0);
+        machineToSave["localisationTreated"] = keys[i];
+        machineToSave["GARepresentation"] = jsonGAParams;
+        machineToSave["maxAlertSet"] = (int) this->maxAlert;
+        machineToSave["machine"] = jsonMachine;
+
         // We put the JSON representation of the machine to a file
         // TODO: We need to pot his best result and the ID for which it's OK to use
-        FILE* machine = std::fopen(strcat(logFileLocation.toLocal8Bit().data(), QString("/bestmachineAnalysis%1.machine").arg(i).toLocal8Bit().data()), "w+");
-        QTextStream(machine) << QJsonDocument(jsonMachine).toJson();
+        FILE* machine = std::fopen(strcat(logFileLocation.toLocal8Bit().data(), QString("/bestmachineAnalysis%1.machine").arg(keys[i]).toLocal8Bit().data()), "w+");
+        QTextStream(machine) << QJsonDocument(machineToSave).toJson();
 
         delete currentSequences;
     }
