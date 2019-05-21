@@ -277,15 +277,15 @@ void P2XO(const galgo::Population<T>& x, galgo::CHR<T>& chr1, galgo::CHR<T>& chr
    int pos1 = galgo::uniform<int>(0, chr1->size());
    int pos2 = galgo::uniform<int>(0, chr1->size());
    // ordering these 2 random positions
-   int m = std::min(pos1,pos2);
-   int M = std::max(pos1,pos2);
+   std::pair<T,T> minmax = std::minmax(pos1,pos2);
+
    // transmitting portion of bits new chromosomes
-   chr1->setPortion(*x[idx1], 0, m);   
-   chr2->setPortion(*x[idx2], 0, m);
-   chr1->setPortion(*x[idx2], m + 1, M);
-   chr2->setPortion(*x[idx1], m + 1, M);
-   chr1->setPortion(*x[idx1], M + 1);
-   chr2->setPortion(*x[idx2], M + 1);
+   chr1->setPortion(*x[idx1], 0, minmax.first);
+   chr2->setPortion(*x[idx2], 0, minmax.first);
+   chr1->setPortion(*x[idx2], minmax.first + 1, minmax.second);
+   chr2->setPortion(*x[idx1], minmax.first + 1, minmax.second);
+   chr1->setPortion(*x[idx1], minmax.second + 1);
+   chr2->setPortion(*x[idx2], minmax.second + 1);
 }
 
 /*-------------------------------------------------------------------------------------------------*/
