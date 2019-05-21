@@ -10,7 +10,11 @@ namespace galgo {
 
 //=================================================================================================
 
-// convert unsigned long long integer to binary string
+/**
+ * @brief GetBinary convert unsigned long long integer to binary string
+ * @param value the value to convert
+ * @return Representation of the binary string
+ */
 std::string GetBinary(uint64_t value)
 {
    std::bitset<sizeof(uint64_t)*CHAR_BIT> bits(value);
@@ -21,6 +25,11 @@ std::string GetBinary(uint64_t value)
 /*-------------------------------------------------------------------------------------------------*/
 
 // convert binary string to unsigned long long integer
+/**
+ * @brief GetValue convert binary string to unsigned long long integer
+ * @param s String s to convert
+ * @return The int value
+ */
 uint64_t GetValue(const std::string& s)
 {
    uint64_t value, x = 0;
