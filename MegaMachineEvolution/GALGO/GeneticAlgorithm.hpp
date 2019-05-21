@@ -37,7 +37,7 @@ private:
 public: 
    // objective function pointer
    Func<T> Objective; 
-   //WE SELECT HERE THE METHOD OF EVOLUTION!!!!!!!!!!!!!!!!!!!!!
+   // selection method initialized to roulette wheel selection
    void (*Selection)(Population<T>&);
    // cross-over method initialized to 1-point cross-over                                
    void (*CrossOver)(const Population<T>&, CHR<T>&, CHR<T>&);
@@ -59,9 +59,8 @@ public:
    int genstep = 1;  // generation step for outputting results
    int precision = 5; // precision for outputting results
 
-   // constructor
    template <int...N>
-   GeneticAlgorithm(Emitter *gaEmitter, int indexMutaionMode, int insexCrossOverMode, int indexSelectionMode,T covrate, T mutrate, T SP, Func<T> objective, int popsize, int nbgen, int elitpop, bool output, const Parameter<T,N>&...args);
+   GeneticAlgorithm(Emitter *gaEmitter, int indexMutationMode, int indexCrossOverMode, int indexSelectionMode,T covrate, T mutrate, T SP, Func<T> objective, int popsize, int nbgen, int elitpop, bool output, const Parameter<T,N>&...args);
 
    template<int N>
    GeneticAlgorithm(Emitter *gaEmitter, const gaParameters& p, Func<T> objective, bool output, const std::vector<Parameter<T, N>>& parameters);
@@ -94,7 +93,22 @@ private:
 
 /*-------------------------------------------------------------------------------------------------*/
    
-// constructor
+/**
+ * @brief GeneticAlgorithm Constructor of GeneticalAlgorithm
+ * @param gaEmitter Emitter for the GeneticalAlgorithm
+ * @param indexMutationMode index of selected mutation method in parameterwindow
+ * @param indexCrossOverMode index of selected cross-over method in parameterwindow
+ * @param indexSelectionMode index of selected selection method in parameterwindow
+ * @param covrate cross-over rate
+ * @param mutrate mutation rate
+ * @param SP selective pressure
+ * @param objective Func objective function
+ * @param popsize population size
+ * @param nbgen number of generation
+ * @param elitpop number of best chromosome choosed during evolution
+ * @param output true to display the output false to don't display
+ * @param args Parameters set in an elipse
+ */
 template <typename T> template <int...N>
 GeneticAlgorithm<T>::GeneticAlgorithm(Emitter *gaEmitter, int indexMutationMode, int indexCrossOverMode, int indexSelectionMode, T covrate, T mutrate, T SP,Func<T> objective, int popsize, int nbgen, int elitpop, bool output, const Parameter<T,N>&...args)
 {
@@ -122,6 +136,14 @@ GeneticAlgorithm<T>::GeneticAlgorithm(Emitter *gaEmitter, int indexMutationMode,
    this->init(tp);
 }
 
+/**
+ * @brief GeneticAlgorithm Constructor of GeneticalAlgorithm
+ * @param gaEmitter Emitter for the GeneticalAlgorithm
+ * @param p reference to a struct of parameters
+ * @param objective objective function
+ * @param output true to display the output false to don't display
+ * @param parameters Parameters set in a vector
+ */
 template <typename T> template<int N>
 GeneticAlgorithm<T>::GeneticAlgorithm(Emitter *gaEmitter, const gaParameters& p, Func<T> objective,  bool output, const std::vector<Parameter<T, N>>& parameters)
 {
@@ -168,12 +190,17 @@ GeneticAlgorithm<T>::GeneticAlgorithm(Emitter *gaEmitter, const gaParameters& p,
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// end of recursion for initializing parameter(s) data
+
 template <typename T> template <int I, int...N>
 inline typename std::enable_if<I == sizeof...(N), void>::type 
 GeneticAlgorithm<T>::init(const TUP<T,N...>& tp) {}
 
-// recursion for initializing parameter(s) data
+//
+/**
+ * @brief recursion for initializing parameter(s) data
+ * @param tp reference to the tuple of parameters
+ * @return parameters
+ */
 template <typename T> template <int I, int...N>
 inline typename std::enable_if<I < sizeof...(N), void>::type 
 GeneticAlgorithm<T>::init(const TUP<T,N...>& tp) 
@@ -202,7 +229,9 @@ GeneticAlgorithm<T>::init(const TUP<T,N...>& tp)
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// check inputs validity
+/**
+ * @brief GeneticAlgorithm<T>::check check inputs validity
+ */
 template <typename T>
 void GeneticAlgorithm<T>::check() const
 {
@@ -232,8 +261,10 @@ void GeneticAlgorithm<T>::check() const
 
 /*-------------------------------------------------------------------------------------------------*/
    
-// run genetic algorithm
 template <typename T>
+/**
+ * @brief GeneticAlgorithm<T>::run run genetic algorithm
+ */
 void GeneticAlgorithm<T>::run()
 {
    // checking inputs validity
@@ -264,16 +295,6 @@ void GeneticAlgorithm<T>::run()
    for (nogen = 1; nogen <= nbgen; ++nogen) {
       // evolving population
       pop.evolution();
-
-      //We store the new parameters in our vector
-      /*
-      for(int j = 0 ; j < 2; j++){
-          for(int i = 0 ; i < 8 ; i ++){
-              galgo::param[i+j*8] = GetBinary(pop(j)->getParam()[i]);
-          }
-      }
-      */
-
       // getting best current result
       bestResult = pop(0)->getTotal();
       // outputting results
@@ -311,7 +332,10 @@ void GeneticAlgorithm<T>::run()
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// return best chromosome
+/**
+ * @brief GeneticAlgorithm<T>::result return best chromosome
+ * @return a reference to the best chromosome
+ */
 template <typename T>
 inline const CHR<T>& GeneticAlgorithm<T>::result() const
 {
@@ -320,7 +344,9 @@ inline const CHR<T>& GeneticAlgorithm<T>::result() const
 
 /*-------------------------------------------------------------------------------------------------*/
    
-// print results for each new generation
+/**
+ * @brief GeneticAlgorithm<T>::print print results for each new generation
+ */
 template <typename T>
 void GeneticAlgorithm<T>::print() const
 {
