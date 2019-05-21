@@ -74,7 +74,48 @@ void Dispatcher::runOneMachine() {
                         )
             );
         }
+
+        machine.push_back(*currentState);
     }
+
+    std::vector<int> keys;
+    for(auto it = sequences->begin(); it != sequences->end(); it = sequences->upper_bound(it->first))
+        keys.push_back(it->first);
+
+    currentSequences = new std::multimap<std::string, bool>();
+    // TODO: Retrieve which ID the machine is designed to detect
+    auto range = sequences->equal_range(1);
+
+    for(auto it = range.first; it != range.second; ++it) {
+        currentSequences->insert(std::pair<std::string, bool>(it->second, true));
+    }
+    /*
+    for (int key : keys) {
+        //TODO : change 1 by ID that machine can detect
+        if(key == 1)
+            continue;
+        range = sequences->equal_range(0);
+
+        for(auto it = range.first; it != range.second; ++it) {
+            currentSequences->insert(std::pair<std::string, bool>(it->second, false));
+        }
+    }
+    */
+
+    QTextStream debug(stdout);
+
+    std::vector<std::vector<StateDescriptor>> * theMachines = new std::vector<std::vector<StateDescriptor>>({machine});
+    std::vector<int> *scores = new std::vector<int>(1, 0);
+
+    MegaMachineManager *manager = new MegaMachineManager(currentSequences, *theMachines, scores, maxAlert, debugMachines);
+
+    QEventLoop loop;
+    QObject::connect(manager, SIGNAL (finished()), &loop, SLOT (quit()));
+    QTimer::singleShot(0, manager, &MegaMachineManager::runMachines);
+    loop.exec();
+
+    debug << "Score : " << static_cast<float>(scores->at(0)) << endl;
+    delete theMachines;
 }
 
 void Dispatcher::run() {
@@ -88,13 +129,13 @@ void Dispatcher::run() {
         currentSequences = new std::multimap<std::string, bool>();
         auto range = sequences->equal_range(keys[i]);
 
+        //TODO: user option for k limit
         int k = 0;
         for(auto it = range.first; it != range.second && k++ < 100; ++it) {
             currentSequences->insert(std::pair<std::string, bool>(it->second, true));
         }
 
         // Getting sequences of other IDs to perform analysis
-
         size_t nbSeq = currentSequences->size();
         for(size_t j = 0; j < nbSeq; ++j) {
             size_t currentKey = std::rand() % keys.size();

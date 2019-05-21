@@ -304,7 +304,7 @@ void MainWindow::on_btnBrowse_clicked()
     QString path = QFileDialog::getOpenFileName(
                 this,
                 tr("Browse file data"),
-                "/home",
+                QStandardPaths::writableLocation(QStandardPaths::DownloadLocation),
                 "All files (*.*)"
                 );
 
