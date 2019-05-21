@@ -7,6 +7,7 @@
 // Get only the last 2 bits 0 for NOTHING, 1 for YES and 2 for NO
 #define MASK_STATE_ACTION 0x3
 
+// static initialisations
 unsigned int Dispatcher::maxAlert;
 bool Dispatcher::debugMachines;
 std::multimap<std::string, bool> * Dispatcher::currentSequences;
@@ -26,6 +27,7 @@ Dispatcher::Dispatcher(const QString& sequencesFile, bool debugMachines, const Q
     this->initSequences(sequencesFile);
 }
 
+//TODO: Add source
 std::vector<std::string> Dispatcher::split(const std::string& s, char delimiter)
 {
    std::vector<std::string> tokens;
@@ -48,6 +50,7 @@ void Dispatcher::initSequences(const QString& sequencesFile){
     char delimiter = ';';
     while(std::getline(test, line)){
         tokens = split(line, delimiter);
+        // We add the sequences to a multimap ordering by IDs
         sequences->insert(std::pair<int, std::string>(std::atoi(tokens[1].c_str()), tokens[0]));
     }
 }
@@ -78,23 +81,26 @@ void Dispatcher::runOneMachine() {
 }
 
 void Dispatcher::run() {
+    // Vector to keep all the keys given on the sequences file (It's IDs it can be chaotic)
     std::vector<int> keys;
+    // Add each key
     for(auto it = sequences->begin(); it != sequences->end(); it = sequences->upper_bound(it->first))
         keys.push_back(it->first);
 
     for(size_t i = 0; i < keys.size(); ++i) {
         // Announce the current Analysis
         emit sendAnalysis(static_cast<unsigned int>(i + 1), static_cast<unsigned int>(keys.size()));
+
         currentSequences = new std::multimap<std::string, bool>();
         auto range = sequences->equal_range(keys[i]);
 
         int k = 0;
+        // We first get the current analyzed ID, 100 first sequences at most
         for(auto it = range.first; it != range.second && k++ < 100; ++it) {
             currentSequences->insert(std::pair<std::string, bool>(it->second, true));
         }
 
-        // Getting sequences of other IDs to perform analysis
-
+        // Getting same number of sequences of other IDs to perform analysis
         size_t nbSeq = currentSequences->size();
         for(size_t j = 0; j < nbSeq; ++j) {
             size_t currentKey = std::rand() % keys.size();
@@ -112,11 +118,13 @@ void Dispatcher::run() {
             );
         }
 
+        // We create a Parameter for each state of the StateMachines (see Doc)
         std::vector<galgo::Parameter<float,32>> parameters(
                     this->stateNb,
                     galgo::Parameter<float,32>({0.0, std::numeric_limits<float>::max()})
         );
 
+        // This emitter is just a way for the GA to perform signals
         Emitter *gaEmitter = new Emitter();
 
         // initiliazing genetic algorithm
@@ -223,6 +231,7 @@ std::vector<T> Dispatcher::objective(const std::vector<T>& x){
 
     MegaMachineManager *manager = new MegaMachineManager(currentSequences, *theMachines, scores, maxAlert, debugMachines);
 
+    // We start MegaMachineManager inside Event loops because QStateMachines needs them to execute correctly
     QEventLoop loop;
     QObject::connect(manager, SIGNAL (finished()), &loop, SLOT (quit()));
     QTimer::singleShot(0, manager, &MegaMachineManager::runMachines);
@@ -243,5 +252,6 @@ void Dispatcher::relayState(unsigned int genNb, double maxFit, double meanFit ) 
 }
 
 Dispatcher::~Dispatcher() {
+    // We avoid a memory leak
     delete sequences;
 }
