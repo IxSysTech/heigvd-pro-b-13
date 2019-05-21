@@ -14,7 +14,10 @@
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// proportional roulette wheel selection
+/**
+ * @brief RWS Proportional roulette wheel selection
+ * @param x Reference to population
+ */
 template <typename T>
 void RWS(galgo::Population<T>& x)
 {
@@ -46,7 +49,10 @@ void RWS(galgo::Population<T>& x)
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// stochastic universal sampling selection
+/**
+ * @brief SUS stochastic universal sampling selection
+ * @param x reference to a population
+ */
 template <typename T>
 void SUS(galgo::Population<T>& x)
 {
@@ -86,7 +92,10 @@ void SUS(galgo::Population<T>& x)
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// classic linear rank-based selection
+/**
+ * @brief RNK classic linear rank-based selection
+ * @param x reference to a population
+ */
 template <typename T>
 void RNK(galgo::Population<T>& x)
 {
@@ -125,7 +134,10 @@ void RNK(galgo::Population<T>& x)
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// linear rank-based selection with selective pressure
+/**
+ * @brief RSP linear rank-based selection with selective pressure
+ * @param x reference to a population
+ */
 template <typename T>
 void RSP(galgo::Population<T>& x)
 {
@@ -166,7 +178,10 @@ void RSP(galgo::Population<T>& x)
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// tournament selection
+/**
+ * @brief TNT tournament selection
+ * @param x reference to a population
+ */
 template <typename T>
 void TNT(galgo::Population<T>& x)
 {
@@ -197,7 +212,10 @@ void TNT(galgo::Population<T>& x)
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// transform ranking selection
+/**
+ * @brief TRS transform ranking selection
+ * @param x reference to a population
+ */
 template <typename T>
 void TRS(galgo::Population<T>& x)
 {
@@ -248,7 +266,12 @@ void TRS(galgo::Population<T>& x)
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// one-point random cross-over of 2 chromosomes
+/**
+ * @brief P1XO one-point random cross-over of 2 chromosomes
+ * @param x reference to a population
+ * @param chr1 reference to a chromosome
+ * @param chr2 reference to a chromosome
+ */
 template <typename T>
 void P1XO(const galgo::Population<T>& x, galgo::CHR<T>& chr1, galgo::CHR<T>& chr2)
 {
@@ -266,7 +289,12 @@ void P1XO(const galgo::Population<T>& x, galgo::CHR<T>& chr1, galgo::CHR<T>& chr
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// two-point random cross-over of 2 chromosomes
+/**
+ * @brief P2XO two-point random cross-over of 2 chromosomes
+ * @param x reference to a population
+ * @param chr1 reference to a chromosome
+ * @param chr2 reference to a chromosome
+ */
 template <typename T, int...N>
 void P2XO(const galgo::Population<T>& x, galgo::CHR<T>& chr1, galgo::CHR<T>& chr2)
 {
@@ -290,7 +318,12 @@ void P2XO(const galgo::Population<T>& x, galgo::CHR<T>& chr1, galgo::CHR<T>& chr
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// uniform random cross-over of 2 chromosomes
+/**
+ * @brief UXO uniform random cross-over of 2 chromosomes
+ * @param x reference to a population
+ * @param chr1 reference to a chromosome
+ * @param chr2 reference to a chromosome
+ */
 template <typename T>
 void UXO(const galgo::Population<T>& x, galgo::CHR<T>& chr1, galgo::CHR<T>& chr2)
 {
@@ -318,7 +351,10 @@ void UXO(const galgo::Population<T>& x, galgo::CHR<T>& chr1, galgo::CHR<T>& chr2
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// boundary mutation: replacing a chromosome gene by its lower or upper bound
+/**
+ * @brief BDM boundary mutation: replacing a chromosome gene by its lower or upper bound
+ * @param chr reference to a chromosome
+ */
 template <typename T>
 void BDM(galgo::CHR<T>& chr)
 { 
@@ -349,7 +385,10 @@ void BDM(galgo::CHR<T>& chr)
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// single point mutation: flipping a chromosome bit
+/**
+ * @brief SPM single point mutation: flipping a chromosome bit
+ * @param chr reference to a chromosome
+ */
 template <typename T>
 void SPM(galgo::CHR<T>& chr)
 { 
@@ -369,7 +408,10 @@ void SPM(galgo::CHR<T>& chr)
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// uniform mutation: replacing a chromosome gene by a new one
+/**
+ * @brief UNM uniform mutation: replacing a chromosome gene by a new one
+ * @param chr reference to a chromosome
+ */
 template <typename T>
 void UNM(galgo::CHR<T>& chr)
 { 
@@ -393,7 +435,10 @@ void UNM(galgo::CHR<T>& chr)
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// adapt population to genetic algorithm constraint(s)
+/**
+ * @brief DAC adapt population to genetic algorithm constraint(s)
+ * @param x reference to a population
+ */
 template <typename T>
 void DAC(galgo::Population<T>& x)
 {
