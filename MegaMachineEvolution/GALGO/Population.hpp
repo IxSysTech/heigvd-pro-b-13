@@ -78,7 +78,10 @@ private:
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// constructor
+/**
+* @brief Population<T>::Population constructor
+* @param ga reference to the genetical algorithm
+*/
 template <typename T>
 Population<T>::Population(const GeneticAlgorithm<T>& ga)
 {
@@ -95,7 +98,9 @@ Population<T>::Population(const GeneticAlgorithm<T>& ga)
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// create a population of chromosomes
+/**
+ * @brief Population<T>::creation create a population of chromosomes
+ */
 template <typename T>
 void Population<T>::creation()
 {
@@ -123,7 +128,9 @@ void Population<T>::creation()
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// population evolution (selection, recombination, completion, mutation), get next generation
+/**
+ * @brief Population<T>::evolution population evolution (selection, recombination, completion, mutation), get next generation
+ */
 template <typename T>
 void Population<T>::evolution()
 {   
@@ -149,7 +156,9 @@ void Population<T>::evolution()
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// elitism => saving best chromosomes in new population, making a copy of each elit chromosome
+/**
+ * @brief Population<T>::elitism saving best chromosomes in new population, making a copy of each elit chromosome
+ */
 template <typename T>
 void Population<T>::elitism()
 {
@@ -164,7 +173,9 @@ void Population<T>::elitism()
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// create new population from recombination of the old one
+/**
+ * @brief Population<T>::recombination create new population from recombination of the old one
+ */
 template <typename T>
 void Population<T>::recombination()
 {
@@ -190,7 +201,9 @@ void Population<T>::recombination()
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// complete new population
+/**
+ * @brief Population<T>::completion complete new population
+ */
 template <typename T>
 void Population<T>::completion()
 {
@@ -209,7 +222,9 @@ void Population<T>::completion()
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// update population (adapting, sorting)
+/**
+ * @brief Population<T>::updating update population (adapting, sorting)
+ */
 template <typename T>
 void Population<T>::updating()
 {
@@ -223,7 +238,11 @@ void Population<T>::updating()
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// access element in current population at position pos
+/**
+ * @brief Population<T>::operator () access element in current population at position pos
+ * @param pos position of the chromosome
+ * @return reference to a chromosome
+ */
 template <typename T>
 const CHR<T>& Population<T>::operator()(int pos) const
 {
@@ -238,7 +257,11 @@ const CHR<T>& Population<T>::operator()(int pos) const
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// access element in mating population at position pos
+/**
+ * @brief Population<T>::operator [] access element in mating population at position pos
+ * @param pos the position of the chromosome
+ * @return reference to the chromosome
+ */
 template <typename T>
 const CHR<T>& Population<T>::operator[](int pos) const
 {
@@ -253,7 +276,10 @@ const CHR<T>& Population<T>::operator[](int pos) const
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// return iterator to current population beginning 
+/**
+ * @brief Population<T>::begin get current population beginning
+ * @return iterator to current population beginning
+ */
 template <typename T>
 inline typename std::vector<CHR<T>>::iterator Population<T>::begin()
 {
@@ -262,7 +288,10 @@ inline typename std::vector<CHR<T>>::iterator Population<T>::begin()
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// return const iterator to current population beginning 
+/**
+ * @brief Population<T>::cbegin get current population beginning
+ * @return const iterator to current population beginning
+ */
 template <typename T>
 inline typename std::vector<CHR<T>>::const_iterator Population<T>::cbegin() const
 {
@@ -271,7 +300,10 @@ inline typename std::vector<CHR<T>>::const_iterator Population<T>::cbegin() cons
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// return iterator to current population ending
+/**
+ * @brief Population<T>::end get current population ending
+ * @return iterator to current population ending
+ */
 template <typename T>
 inline typename std::vector<CHR<T>>::iterator Population<T>::end()
 { 
@@ -280,7 +312,10 @@ inline typename std::vector<CHR<T>>::iterator Population<T>::end()
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// return const iterator to current population ending
+/**
+ * @brief Population<T>::cend get current population ending
+ * @return const iterator to current population ending
+ */
 template <typename T>
 inline typename std::vector<CHR<T>>::const_iterator Population<T>::cend() const
 { 
@@ -289,7 +324,10 @@ inline typename std::vector<CHR<T>>::const_iterator Population<T>::cend() const
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// select element at position pos in current population and copy it into mating population
+/**
+ * @brief Population<T>::select element at position pos in current population and copy it into mating population
+ * @param pos position to select
+ */
 template <typename T>
 inline void Population<T>::select(int pos)
 {
@@ -308,7 +346,9 @@ inline void Population<T>::select(int pos)
 
 /*-------------------------------------------------------------------------------------------------*/
     
-// set all fitness to positive values (used in RWS and SUS selection methods)
+/**
+ * @brief Population<T>::adjustFitness set all fitness to positive values (used in RWS and SUS selection methods)
+ */
 template <typename T>
 void Population<T>::adjustFitness()
 {
@@ -329,7 +369,10 @@ void Population<T>::adjustFitness()
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// compute population fitness sum (used in TRS, RWS and SUS selection methods)
+/**
+ * @brief Population<T>::getSumFitness compute population fitness sum (used in TRS, RWS and SUS selection methods)
+ * @return sum of fitness
+ */
 template <typename T>
 inline T Population<T>::getSumFitness() const
 {
@@ -338,7 +381,10 @@ inline T Population<T>::getSumFitness() const
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// get worst objective function total result from current population (used in constraint(s) adaptation)
+/**
+ * @brief Population<T>::getWorstTotal get worst objective function total result from current population (used in constraint(s) adaptation)
+ * @return
+ */
 template <typename T>
 inline T Population<T>::getWorstTotal() const
 {
@@ -349,7 +395,10 @@ inline T Population<T>::getWorstTotal() const
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// return population size
+/**
+ * @brief Population<T>::popsize get popultation size
+ * @return population size
+ */
 template <typename T>
 inline int Population<T>::popsize() const
 {
@@ -358,7 +407,10 @@ inline int Population<T>::popsize() const
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// return mating population size
+/**
+ * @brief Population<T>::matsize
+ * @return mating population size
+ */
 template <typename T>
 inline int Population<T>::matsize() const
 {
@@ -367,7 +419,10 @@ inline int Population<T>::matsize() const
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// return tournament size
+/**
+ * @brief Population<T>::tntsize get tournament size
+ * @return tournament size
+ */
 template <typename T>
 inline int Population<T>::tntsize() const
 {
@@ -376,7 +431,10 @@ inline int Population<T>::tntsize() const
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// return numero of generation
+/**
+ * @brief Population<T>::nogen get numero of generation
+ * @return numero of generation
+ */
 template <typename T>
 inline int Population<T>::nogen() const
 {
@@ -385,7 +443,10 @@ inline int Population<T>::nogen() const
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// return number of generations
+/**
+ * @brief Population<T>::nbgen get number of generations
+ * @return number of generations
+ */
 template <typename T>
 inline int Population<T>::nbgen() const
 {
@@ -394,7 +455,10 @@ inline int Population<T>::nbgen() const
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// return selection pressure
+/**
+ * @brief Population<T>::SP get selection pressure
+ * @return selection pressure
+ */
 template <typename T>
 inline T Population<T>::SP() const
 {
