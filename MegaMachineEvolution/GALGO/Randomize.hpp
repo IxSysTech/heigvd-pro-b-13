@@ -34,7 +34,12 @@ std::uniform_real_distribution<> proba(0, 1);
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// generate a uniform random number within the interval [min,max)
+/**
+ * @brief uniform generate a uniform random number within the interval [min,max)
+ * @param min minimal range
+ * @param max maximal range
+ * @return random number between min and max
+ */
 template <typename T>
 inline T uniform(T min, T max)
 {   
@@ -59,7 +64,10 @@ public:
    // computation only done once for each different N
    static constexpr uint64_t MAXVAL = MAXVALUE<N>::value - 1;
 
-   // generating random unsigned long long integer on [0,MAXVAL]
+   /**
+    * @brief generate generating random unsigned long long integer on [0,MAXVAL]
+    * @return a random number bewtween 0 and MAXVAL
+    */
    static uint64_t generate() {
       // class constructor only called once for each different N
       static std::uniform_int_distribution<uint64_t> udistrib(0,MAXVAL);
