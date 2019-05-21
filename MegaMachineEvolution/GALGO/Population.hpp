@@ -131,8 +131,11 @@ void Population<T>::evolution()
    matidx = 0;
    // selecting mating population
    ptr->Selection(*this);
+
    // applying elitism if required
-   this->elitism(); 
+   this->elitism();
+
+
    // crossing-over mating population
    this->recombination();
    // completing new population
@@ -175,6 +178,7 @@ void Population<T>::recombination()
       newpop[i+1] = std::make_shared<Chromosome<T>>(*ptr);
       // crossing-over mating population to create 2 new chromosomes
       ptr->CrossOver(*this, newpop[i], newpop[i+1]);
+
       // mutating new chromosomes
       ptr->Mutation(newpop[i]);   
       ptr->Mutation(newpop[i+1]);   

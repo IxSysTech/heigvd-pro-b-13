@@ -300,7 +300,7 @@ void UXO(const galgo::Population<T>& x, galgo::CHR<T>& chr1, galgo::CHR<T>& chr2
 
    for (int j = 0; j < chr1->size(); ++j) {
       // choosing 1 of the 2 chromosomes randomly
-      if (galgo::proba(galgo::rng) < 0.50) {
+      if (galgo::proba(galgo::rng) <= 0.50) {
          // adding its jth bit to new chromosome
          chr1->addBit(x[idx1]->getBit(j));
          chr2->addBit(x[idx2]->getBit(j));
@@ -336,7 +336,7 @@ void BDM(galgo::CHR<T>& chr)
       // generating a random probability
       if (galgo::proba(galgo::rng) <= mutrate) {
          // generating a random probability
-         if (galgo::proba(galgo::rng) < .5) {
+         if (galgo::proba(galgo::rng) <= .5) {
             // replacing ith gene by lower bound
             chr->initGene(i, lowerBound[i]);
          } else {  
