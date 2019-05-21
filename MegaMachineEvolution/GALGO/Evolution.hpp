@@ -305,7 +305,12 @@ void P2XO(const galgo::Population<T>& x, galgo::CHR<T>& chr1, galgo::CHR<T>& chr
    int pos1 = galgo::uniform<int>(0, chr1->size());
    int pos2 = galgo::uniform<int>(0, chr1->size());
    // ordering these 2 random positions
+   //UPDATED
+   //INITIAL CODE
+   /*int m = std::min(pos1,pos2);
+   int M = std::max(pos1,pos2);*/
    std::pair<T,T> minmax = std::minmax(pos1,pos2);
+
 
    // transmitting portion of bits new chromosomes
    chr1->setPortion(*x[idx1], 0, minmax.first);
@@ -333,7 +338,7 @@ void UXO(const galgo::Population<T>& x, galgo::CHR<T>& chr1, galgo::CHR<T>& chr2
 
    for (int j = 0; j < chr1->size(); ++j) {
       // choosing 1 of the 2 chromosomes randomly
-      if (galgo::proba(galgo::rng) <= 0.50) {
+      if (galgo::proba(galgo::rng) < 0.5) {
          // adding its jth bit to new chromosome
          chr1->addBit(x[idx1]->getBit(j));
          chr2->addBit(x[idx2]->getBit(j));
@@ -372,7 +377,7 @@ void BDM(galgo::CHR<T>& chr)
       // generating a random probability
       if (galgo::proba(galgo::rng) <= mutrate) {
          // generating a random probability
-         if (galgo::proba(galgo::rng) <= .5) {
+         if (galgo::proba(galgo::rng) < .5) {
             // replacing ith gene by lower bound
             chr->initGene(i, lowerBound[i]);
          } else {  
