@@ -10,14 +10,19 @@ namespace galgo {
 //=================================================================================================
 
 // end of recursion for computing the sum of a parameter pack of integral numbers
-int sum(int first) 
+int sum(int first)
 {
    return first;
 }
 
-// recursion for computing the sum of a parameter pack of integral numbers
 template <typename...Args>
-int sum(int first, Args...args) 
+/**
+ * @brief sum recursion for computing the sum of a parameter pack of integral numbers
+ * @param first beginning of param
+ * @param args group of params
+ * @return the sum of parameters
+ */
+int sum(int first, Args...args)
 {
    return first + sum(args...);
 }
@@ -49,9 +54,15 @@ private:
    std::vector<T> data; // contains lower bound, upper bound and initial value (optional)
 
 public:
-   // nullary constructor
+   /**
+    * @brief Parameter empty constructor
+    */
    Parameter() {}
-   // constructor
+
+   /**
+    * @brief Parameter constructor
+    * @param data content and information
+    */
    Parameter(const std::vector<T>& data) 
    {
       if (data.size() < 2) {
@@ -62,27 +73,49 @@ public:
       }
       this->data = data;
    }
-   // return encoded parameter size in number of bits
+
+   /**
+    * @brief size get number of bits
+    * @return encoded parameter size in number of bits
+    */
    int size() const override {
       return N;
    }
-   // return parameter initial data
+
+   /**
+    * @brief getData get initial data
+    * @return parameter initial data
+    */
    const std::vector<T>& getData() const override {
       return data;
    }
 private:
-   // encoding random unsigned integer
+
+   /**
+    * @brief encode integer in string
+    * @return the string created
+    */
    std::string encode() const override {
       std::string str = GetBinary(galgo::Randomize<N>::generate());
       return str.substr(str.size() - N, N);
    }
-   // encoding known unsigned integer
+
+   /**
+    * @brief encode encoding known unsigned integer
+    * @param z number z to encode
+    * @return the string of number created
+    */
    std::string encode(T z) const override {
       uint64_t value = Randomize<N>::MAXVAL * (z - data[0]) / (data[1] - data[0]);
       std::string str = GetBinary(value);
       return str.substr(str.size() - N, N);
    }
-   // decoding string to real value
+
+   /**
+    * @brief decode decoding string to real value
+    * @param str String to decode
+    * @return value T of the string
+    */
    T decode(const std::string& str) const override {
       return data[0] + (GetValue(str) / static_cast<double>(Randomize<N>::MAXVAL)) * (data[1] - data[0]);
    }
