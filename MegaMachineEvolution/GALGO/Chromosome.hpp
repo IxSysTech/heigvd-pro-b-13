@@ -79,7 +79,10 @@ private:
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// constructor
+/**
+ * @brief Constructor of Chromosome
+ * @param ga instance of current GeneticAlgorithm
+ */
 template <typename T>
 Chromosome<T>::Chromosome(const GeneticAlgorithm<T>& ga) 
 {
@@ -91,7 +94,10 @@ Chromosome<T>::Chromosome(const GeneticAlgorithm<T>& ga)
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// copy constructor
+/**
+ * @brief Constructor of copy
+ * @param rhs chromosome to copy
+ */
 template <typename T>
 Chromosome<T>::Chromosome(const Chromosome<T>& rhs) 
 {
@@ -108,7 +114,9 @@ Chromosome<T>::Chromosome(const Chromosome<T>& rhs)
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// create new chromosome
+/**
+ * @brief Method which create a chromosome
+ */
 template <typename T>
 inline void Chromosome<T>::create()
 {
@@ -124,7 +132,9 @@ inline void Chromosome<T>::create()
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// initialize chromosome (from known parameter values)
+/**
+ * @brief Initialize chromosome from known parameter values
+ */
 template <typename T>
 inline void Chromosome<T>::initialize()
 {
@@ -140,7 +150,9 @@ inline void Chromosome<T>::initialize()
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// evaluate chromosome fitness
+/**
+ * @brief Evaluate chromosome fitness
+ */
 template <typename T>
 inline void Chromosome<T>::evaluate() 
 {
@@ -160,7 +172,9 @@ inline void Chromosome<T>::evaluate()
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// reset chromosome
+/**
+ * @brief set chromosome's value at 0 (result,total,fitness)
+ */
 template <typename T>
 inline void Chromosome<T>::reset()
 {
@@ -172,7 +186,10 @@ inline void Chromosome<T>::reset()
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// set or replace kth gene by a new one
+/**
+ * @brief Set or replace kth gene by a new one
+ * @param k Kth position to set or replace
+ */
 template <typename T>
 inline void Chromosome<T>::setGene(int k)
 {
@@ -190,7 +207,11 @@ inline void Chromosome<T>::setGene(int k)
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// initialize or replace kth gene by a know value
+/**
+ * @brief Initialize or replace kth gene by a know value
+ * @param k Kth position to initialize or replace
+ * @tparam x Value to encode
+ */
 template <typename T>
 inline void Chromosome<T>::initGene(int k, T x)
 {
@@ -208,7 +229,10 @@ inline void Chromosome<T>::initGene(int k, T x)
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// add chromosome bit to chromosome (when constructing a new one)
+/**
+ * @brief Add chromosome bit to chromosome when we constructe a new one
+ * @param bit New bit to add
+ */
 template <typename T>
 inline void Chromosome<T>::addBit(char bit)
 {
@@ -223,7 +247,11 @@ inline void Chromosome<T>::addBit(char bit)
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// initialize or replace an existing chromosome bit   
+/**
+ * @brief Initialize or replace an existing chromosome bit
+ * @param bit New bit to add
+ * @param pos Position of the bit to replace
+ */
 template <typename T>
 inline void Chromosome<T>::setBit(char bit, int pos)
 {  
@@ -242,8 +270,11 @@ inline void Chromosome<T>::setBit(char bit, int pos)
 }
 
 /*-------------------------------------------------------------------------------------------------*/
-      
-// flip an existing chromosome bit
+
+/**
+ * @brief Flip an existing chromosome bit, change 0 by 1 and 1 by 0
+ * @param pos Bit position to flip
+ */
 template <typename T>
 inline void Chromosome<T>::flipBit(int pos)
 {
@@ -262,7 +293,10 @@ inline void Chromosome<T>::flipBit(int pos)
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// get a chromosome bit
+/**
+ * @brief Get a chromosome bit
+ * @param pos Pos of the wanted bit
+ */
 template <typename T>
 inline char Chromosome<T>::getBit(int pos) const
 {
@@ -277,7 +311,12 @@ inline char Chromosome<T>::getBit(int pos) const
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// initialize or replace a portion of bits with a portion of another chromosome (from position start to position end included)
+/**
+ * @brief Initialize or replace a portion of bits with a portion of another chromosome
+ * @param x const reference to a chromosome
+ * @param start Start position to copy in chr
+ * @param end end position to copy in chr
+ */
 template <typename T>
 inline void Chromosome<T>::setPortion(const Chromosome<T>& x, int start, int end)
 {
@@ -292,7 +331,11 @@ inline void Chromosome<T>::setPortion(const Chromosome<T>& x, int start, int end
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// initialize or replace a portion of bits with a portion of another chromosome (from position start to the end of he chromosome)
+/**
+ * @brief Initialize or replace a portion of bits with a portions of another chromosome
+ * @param x Const reference to a Chromosome
+ * @param start Copy from start to end
+ */
 template <typename T>
 inline void Chromosome<T>::setPortion(const Chromosome<T>& x, int start)
 {
@@ -307,7 +350,10 @@ inline void Chromosome<T>::setPortion(const Chromosome<T>& x, int start)
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// get parameter value(s) from chromosome
+/**
+ * @brief Get parameter values from chromosome, const method
+ * @return a reference to a vector
+ */
 template <typename T>
 inline const std::vector<T>& Chromosome<T>::getParam() const
 {
@@ -316,7 +362,10 @@ inline const std::vector<T>& Chromosome<T>::getParam() const
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// get objective function result
+/**
+ * @brief Get objective function result, const method
+ * @return a reference to a vector
+ */
 template <typename T>
 inline const std::vector<T>& Chromosome<T>::getResult() const
 {
@@ -325,7 +374,10 @@ inline const std::vector<T>& Chromosome<T>::getResult() const
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// get the total sum of all objective function(s) result
+/**
+ * @brief Get the total sum of all objective function(s) result , const method
+ * @return double or float total
+ */
 template <typename T>
 inline T Chromosome<T>::getTotal() const
 {
@@ -334,7 +386,10 @@ inline T Chromosome<T>::getTotal() const
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// get constraint value(s) for this chromosome
+/**
+ * @brief Get constraint values for this chromosome , const method
+ * @return the constraint stored in GeneticAlgorithm
+ */
 template <typename T>
 inline const std::vector<T> Chromosome<T>::getConstraint() const
 {
@@ -343,7 +398,10 @@ inline const std::vector<T> Chromosome<T>::getConstraint() const
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// return chromosome size in number of bits
+/**
+ * @brief return chromosome size in number of bits
+ * @return the chromosome size
+ */
 template <typename T>
 inline int Chromosome<T>::size() const
 {
@@ -352,7 +410,10 @@ inline int Chromosome<T>::size() const
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// return mutation rate 
+/**
+ * @brief return mutation rate
+ * @return mutrate stored in GeneticAlgorithm
+ */
 template <typename T>
 inline T Chromosome<T>::mutrate() const
 {
@@ -361,7 +422,10 @@ inline T Chromosome<T>::mutrate() const
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// return number of genes in chromosome
+/**
+ * @brief return number of genes in chromosome
+ * @return nbparam stored in GeneticAlgorithm
+ */
 template <typename T>
 inline int Chromosome<T>::nbgene() const
 {
@@ -370,7 +434,10 @@ inline int Chromosome<T>::nbgene() const
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// return numero of generation this chromosome belongs to
+/**
+ * @brief return the index value of this chromosome
+ * @return int value of index
+ */
 template <typename T>
 inline int Chromosome<T>::nogen() const
 {
@@ -379,7 +446,10 @@ inline int Chromosome<T>::nogen() const
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// return lower bound(s)
+/**
+ * @brief return lower bound
+ * @return lowerBound stored in GeneticAlgorithm
+ */
 template <typename T>
 inline const std::vector<T>& Chromosome<T>::lowerBound() const
 {
@@ -388,8 +458,11 @@ inline const std::vector<T>& Chromosome<T>::lowerBound() const
 
 /*-------------------------------------------------------------------------------------------------*/
 
-// return upper bound(s)
-template <typename T>
+
+/**
+ * @brief return uper bound
+ * @return upperBound stored in GeneticAlgorithm
+ */template <typename T>
 inline const std::vector<T>& Chromosome<T>::upperBound() const
 {
    return ptr->upperBound;
