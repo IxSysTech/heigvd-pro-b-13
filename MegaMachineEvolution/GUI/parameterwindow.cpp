@@ -88,6 +88,7 @@ void ParameterWindow::on_btnRunMachine_clicked()
     loop.exec();
 
     setGUIParametersEnabled(true);
+
     qApp->processEvents();
 }
 
@@ -151,6 +152,9 @@ void ParameterWindow::on_btnRun_clicked()
     loop.exec();
 
     setGUIParametersEnabled(true);
+    // Setup button
+    ui->pgbGeneration->setVisible(false);
+    ui->btnRun->setVisible(true);
     qApp->processEvents();
 }
 

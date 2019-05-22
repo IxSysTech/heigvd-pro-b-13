@@ -22,6 +22,7 @@ public:
     /// \param parent - parent QObject
     ///
     explicit MegaMachine(std::vector<StateDescriptor> states, int maxAlerts, int id, bool hasDebug, QObject *parent = nullptr);
+    ~MegaMachine();
 public slots:
     ///
     /// \brief yes Increment ctrYes when stateAction yes triggered

@@ -53,3 +53,22 @@ void MegaMachineManager::nextSequence() {
         machine->reset();
     }
 }
+
+// TODO : destructor for disconnecting and deleting machines
+MegaMachineManager::~MegaMachineManager() {
+    disconnect(theEmitter, SIGNAL(nextSequence()), this, SLOT(nextSequence()));
+
+    for(MegaMachine *machine : machines) {
+        disconnect(theEmitter, SIGNAL(readA()),machine,SLOT(readA()));
+        disconnect(theEmitter, SIGNAL(readC()),machine,SLOT(readC()));
+        disconnect(theEmitter, SIGNAL(readG()),machine,SLOT(readG()));
+        disconnect(theEmitter, SIGNAL(readT()),machine,SLOT(readT()));
+        disconnect(theEmitter, SIGNAL(readX()),machine,SLOT(readX()));
+
+        disconnect(theEmitter, SIGNAL(finishedSequence()), machine, SLOT(finishedSequence()));
+
+        disconnect(machine, SIGNAL(stopped(int,int,int)), this, SLOT(stop(int,int,int)));
+        delete machine;
+    }
+    delete theEmitter;
+}

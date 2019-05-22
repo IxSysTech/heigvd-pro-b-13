@@ -86,6 +86,7 @@ std::vector<StateDescriptor>* Dispatcher::parseJsonMachine(const QVariantMap& js
         }
 
         machine->push_back(*currentState);
+        delete currentState;
     }
     return machine;
 }
@@ -107,7 +108,6 @@ void Dispatcher::runOneMachine() {
     }
 
     for (int key : keys) {
-        //TODO : change 1 by ID that machine can detect
         if(key == jsonMap["localisationTreated"].toInt())
             continue;
         range = sequences->equal_range(key);
@@ -131,6 +131,7 @@ void Dispatcher::runOneMachine() {
     loop.exec();
 
     debug << "Score : " << static_cast<float>(scores->at(0)) << endl;
+    delete machine;
     delete theMachines;
 
     emit finished();
@@ -146,6 +147,8 @@ void Dispatcher::run() {
     for(size_t i = 0; i < keys.size(); ++i) {
         // Announce the current Analysis
         emit sendAnalysis(static_cast<unsigned int>(i + 1), static_cast<unsigned int>(keys.size()));
+        if (currentSequences != nullptr)
+            delete currentSequences;
 
         currentSequences = new std::multimap<std::string, bool>();
         auto range = sequences->equal_range(keys[i]);
@@ -217,8 +220,15 @@ void Dispatcher::run() {
         // TODO: We need to pot his best result and the ID for which it's OK to use
         FILE* machine = std::fopen(strcat(logFileLocation.toLocal8Bit().data(), QString("/bestmachineAnalysis%1.machine").arg(keys[i]).toLocal8Bit().data()), "w+");
         QTextStream(machine) << QJsonDocument(machineToSave).toJson();
-
+        // Close the ressource and clean memory
+        std::fclose(machine);
+        machine = nullptr;
+        delete theBestMachine;
+        theBestMachine =nullptr;
+        delete gaEmitter;
+        gaEmitter = nullptr;
         delete currentSequences;
+        currentSequences = nullptr;
     }
 
     emit finished();
@@ -286,6 +296,7 @@ std::vector<StateDescriptor> * Dispatcher::getMachine(const std::vector<T> &mach
         }
 
         theMachine->push_back(*currentState);
+        delete currentState;
     }
 
     return theMachine;
@@ -294,8 +305,8 @@ std::vector<StateDescriptor> * Dispatcher::getMachine(const std::vector<T> &mach
 template <typename T>
 std::vector<T> Dispatcher::objective(const std::vector<T>& x){
     QTextStream debug(stdout);
-
-    std::vector<std::vector<StateDescriptor>> * theMachines = new std::vector<std::vector<StateDescriptor>>({*getMachine(x)});
+    std::vector<StateDescriptor> * machineFromParam = getMachine(x);
+    std::vector<std::vector<StateDescriptor>> * theMachines = new std::vector<std::vector<StateDescriptor>>({*machineFromParam});
     std::vector<int> *scores = new std::vector<int>(1, 0);
 
     MegaMachineManager *manager = new MegaMachineManager(currentSequences, *theMachines, scores, maxAlert, debugMachines);
@@ -306,10 +317,15 @@ std::vector<T> Dispatcher::objective(const std::vector<T>& x){
     QTimer::singleShot(0, manager, &MegaMachineManager::runMachines);
     loop.exec();
 
-    debug << "Score : " << static_cast<float>(scores->at(0)) << endl;
-    delete theMachines;
+    float fitness = static_cast<float>(scores->at(0));
+    debug << "Score : " << fitness << endl;
 
-    return {static_cast<float>(scores->at(0))};
+    // Cleaning memory
+    delete theMachines;
+    delete manager;
+    delete scores;
+    delete machineFromParam;
+    return {fitness};
 }
 
 void Dispatcher::relay(double percent) {

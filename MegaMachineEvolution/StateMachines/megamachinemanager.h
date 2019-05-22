@@ -20,7 +20,7 @@ public:
     /// \param parent Parent QObject
     ///
     explicit MegaMachineManager(std::multimap<std::string, bool> *sequences, std::vector<std::vector<StateDescriptor>> machinesGiven, std::vector<int> *scoresToGive,unsigned int maxAlerts, bool hasDebug, QObject *parent = nullptr);
-
+    ~MegaMachineManager();
 signals:
     ///
     /// \brief finished - announce finished treatment, exit the event loop

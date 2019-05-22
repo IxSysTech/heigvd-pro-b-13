@@ -22,6 +22,7 @@ public:
     /// \return The expected result of the sequence treated
     ///
     bool getCurrentResult();
+    ~emitterACGT(){}
 private:
     ///
     /// \brief sequences - multimap storing the sequences and the corresponding result of each sequence
