@@ -83,7 +83,7 @@ void ParameterWindow::on_btnRunMachine_clicked()
     QTimer::singleShot(0, DISPATCHER, &Dispatcher::runOneMachine);
 
     setGUIParametersEnabled(false);
-    qApp->processEvents();
+    // qApp->processEvents();
 
     loop.exec();
 
@@ -146,7 +146,7 @@ void ParameterWindow::on_btnRun_clicked()
     ui->pgbGeneration->setVisible(true);
     ui->btnRun->setVisible(false);
     setGUIParametersEnabled(false);
-    qApp->processEvents();
+    //qApp->processEvents();
 
     loop.exec();
 
@@ -262,20 +262,21 @@ void ParameterWindow::on_btnSelectMachine_clicked()
     //Display the path to the user
     ui->lblMachineFile->setText("Current machine file locataion : \n" + machineFile);
 
-    // Display info about the Machine
-    QVariantMap testParse = Dispatcher::parseJson(machineFile);
+    if(machineFile != "") {
+        // Display info about the Machine
+        QVariantMap testParse = Dispatcher::parseJson(machineFile);
 
-    if(testParse.isEmpty()){
-        ui->lblStateImportInfo->setText("Failed to create JSON doc.");
-        exit(2);
+        if(testParse.isEmpty()){
+            ui->lblStateImportInfo->setText("Failed to create JSON doc.");
+            exit(2);
+        }
+
+        //TODO: add string representation of the machine
+        ui->lblStateImportInfo->setText(QString("The machine loaded gave us these infos :\n"
+                                                "Best score on GA : %1\n"
+                                                "Max Alert : %2\n"
+                                                "ID for which it says true : %3\n"
+                                                "Machine :").arg(testParse["bestScore"].toString(),QString::number(testParse["maxAlertSet"].toInt()),QString::number(testParse["localisationTreated"].toInt())));
     }
-
-    //TODO: add string representation of the machine
-    ui->lblStateImportInfo->setText(QString("The machine loaded gave us these infos :\n"
-                                            "Best score on GA : %1\n"
-                                            "Max Alert : %2\n"
-                                            "ID for which it says true : %3\n"
-                                            "Machine :").arg(testParse["bestScore"].toString(),QString::number(testParse["maxAlertSet"].toInt()),QString::number(testParse["localisationTreated"].toInt())));
-
     qApp->processEvents();
 }

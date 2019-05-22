@@ -132,6 +132,8 @@ void Dispatcher::runOneMachine() {
 
     debug << "Score : " << static_cast<float>(scores->at(0)) << endl;
     delete theMachines;
+
+    emit finished();
 }
 
 void Dispatcher::run() {
