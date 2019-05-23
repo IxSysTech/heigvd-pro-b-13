@@ -73,7 +73,9 @@ void ParameterWindow::on_btnRunMachine_clicked()
     );
 
     setGUIParametersEnabled(false);
-    DISPATCHER->runOneMachine();
+    ui->lblScore->setText(QString("Score : %1").arg(
+                              DISPATCHER->runOneMachine()
+    ));
     setGUIParametersEnabled(true);
 
     qApp->processEvents();

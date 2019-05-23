@@ -36,7 +36,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="Evolution">
      <attribute name="title">
@@ -741,9 +741,9 @@
       <widget class="QLabel" name="lblStateImportInfo">
        <property name="geometry">
         <rect>
-         <x>0</x>
+         <x>20</x>
          <y>20</y>
-         <width>661</width>
+         <width>631</width>
          <height>291</height>
         </rect>
        </property>
@@ -751,6 +751,19 @@
         <string>No machine loaded</string>
        </property>
       </widget>
+     </widget>
+     <widget class="QLabel" name="lblScore">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>610</y>
+        <width>131</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Score: </string>
+      </property>
      </widget>
     </widget>
    </widget>

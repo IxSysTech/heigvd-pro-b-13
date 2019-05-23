@@ -83,7 +83,7 @@ std::vector<StateDescriptor>* Dispatcher::parseJsonMachine(const QVariantMap& js
     return machine;
 }
 
-void Dispatcher::runOneMachine() {
+float Dispatcher::runOneMachine() {
     QVariantMap jsonMap = parseJson(logFileLocation);
     std::vector<StateDescriptor>* machine = parseJsonMachine(jsonMap);
 
@@ -130,7 +130,7 @@ void Dispatcher::runOneMachine() {
     delete machine;
     delete theMachines;
 
-    emit finished();
+    return static_cast<float>(scores->at(0));
 }
 
 void Dispatcher::run(unsigned int stateNb, unsigned int maxAlert, const gaParameters& gaParam) {
@@ -150,10 +150,8 @@ void Dispatcher::run(unsigned int stateNb, unsigned int maxAlert, const gaParame
         currentSequences = new std::multimap<std::string, bool>();
         auto range = sequences->equal_range(keys[i]);
 
-        //TODO: user option for k limit
-        int k = 0;
         // We first get the current analyzed ID, 100 first sequences at most
-        for(auto it = range.first; it != range.second && k++ < 100; ++it) {
+        for(auto it = range.first; it != range.second; ++it) {
             currentSequences->insert(std::pair<std::string, bool>(it->second, true));
         }
 

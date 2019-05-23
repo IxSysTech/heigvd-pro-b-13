@@ -61,7 +61,7 @@ public:
     ///
     /// \brief runOneMachine Run the dispatcher as a Machine analyzer
     ///
-    void runOneMachine();
+    float runOneMachine();
     ///
     /// \brief parseJsonMachine
     /// \param jsonMap
