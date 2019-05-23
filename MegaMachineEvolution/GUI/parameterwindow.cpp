@@ -65,28 +65,15 @@ void ParameterWindow::on_btnRunMachine_clicked()
     FILE* log = std::fopen(strcat(logFileLocation.toLocal8Bit().data(), "/log.txt"), "w+");
     dup2(fileno(log), STDOUT_FILENO);
 
-    QEventLoop loop;
-
     Dispatcher *DISPATCHER = new Dispatcher(
                 fileNameDataSource,
                 ui->cbLogMachines_2->checkState() == Qt::Checked ? true : false,
                 machineFile,
-                &loop
+                this
     );
 
-    // This will cause the application to exit when
-    // the task signals finished.
-    QObject::connect(DISPATCHER, SIGNAL(finished()), &loop, SLOT(quit()));
-    this->setGUIParametersEnabled(true);
-
-    // This will run the task from the application event loop.
-    QTimer::singleShot(0, DISPATCHER, &Dispatcher::runOneMachine);
-
     setGUIParametersEnabled(false);
-    // qApp->processEvents();
-
-    loop.exec();
-
+    DISPATCHER->runOneMachine();
     setGUIParametersEnabled(true);
 
     qApp->processEvents();
@@ -101,8 +88,6 @@ void ParameterWindow::on_btnRun_clicked()
     // Redirect stdout to logfile
     FILE* log = std::fopen(strcat(logFileLocation.toLocal8Bit().data(), "/log.txt"), "w+");
     dup2(fileno(log), STDOUT_FILENO);
-
-    QEventLoop loop;
 
     // Task parented to the application so that it
     // will be deleted by the application.
@@ -121,35 +106,22 @@ void ParameterWindow::on_btnRun_clicked()
     };
 
     Dispatcher *DISPATCHER = new Dispatcher(
-                ui->sbStateNumbers->value(),
-                ui->sbMaxAlert->value(),
-                gaParam,
                 fileNameDataSource,
                 ui->cbLogMachines->checkState() == Qt::Checked ? true : false,
                 logFileLocation,
-                &loop
+                this
     );
 
     QObject::connect(DISPATCHER, SIGNAL(incrementProgress(double)), this, SLOT(incrementProgressBar(double)));
     QObject::connect(DISPATCHER, SIGNAL(sendState(uint,double,double)), this, SLOT(currentState(uint,double,double)));
     QObject::connect(DISPATCHER, SIGNAL(sendAnalysis(uint,uint)), this, SLOT(nextAnalysis(uint,uint)));
 
-    // This will cause the application to exit when
-    // the task signals finished.
-    QObject::connect(DISPATCHER, SIGNAL(finished()), &loop, SLOT(quit()));
-    this->setGUIParametersEnabled(true);
-
-
-    // This will run the task from the application event loop.
-    QTimer::singleShot(0, DISPATCHER, &Dispatcher::run);
-
     // Setup progress bar
     ui->pgbGeneration->setVisible(true);
     ui->btnRun->setVisible(false);
     setGUIParametersEnabled(false);
-    //qApp->processEvents();
 
-    loop.exec();
+    DISPATCHER->run(ui->sbStateNumbers->value(), ui->sbMaxAlert->value(), gaParam);
 
     setGUIParametersEnabled(true);
     // Setup button

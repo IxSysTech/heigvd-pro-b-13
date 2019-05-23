@@ -46,41 +46,22 @@ class Dispatcher : public QObject
     Q_OBJECT
 public:
     ///
-    /// \brief Dispatcher create a Dispatcher who will a GA for each ID given in the sequeces file to get a bestmachine for each ID. Will retrieve it to log folder.
-    /// \param stateNb Number of states of the machines created
-    /// \param maxAlert MaxAlert of MegaMachine created
-    /// \param gaParam a struct that contains all the necessary information to run the GA correctly
-    /// \param sequencesFile the file containing the sequences to be analyzed
-    /// \param debugMachines boolean containing info wether we need to debug or not
-    /// \param logFileLocation path to log folder where we'll write bestMachine and the big log file
-    /// \param parent Parent QObject
-    ///
-    explicit Dispatcher(unsigned int stateNb, unsigned int maxAlert, const gaParameters& gaParam, const QString& sequencesFile, bool debugMachines, const QString& logFileLocation, QObject *parent = nullptr);
-    ///
     /// \brief Dispatcher create a Dispatcher who will create a machine and use it to analyze given sequences
     /// \param sequencesFile the filepath of sequences
     /// \param debugMachines boolean containing info wether we need to debug or not
     /// \param machineFile filepath to the machine JSON to be parsed and get a machine
     /// \param parent Parent QObject
     ///
-    explicit Dispatcher(const QString& sequencesFile, bool debugMachines, const QString& machineFile, QObject *parent = nullptr);
+    explicit Dispatcher(const QString& sequencesFile, bool debugMachines, const QString& logFileLocation, QObject *parent = nullptr);
 
     ///
     /// \brief run Run the dispatcher with the GA
     ///
-    void run();
+    void run(unsigned int stateNb, unsigned int maxAlert, const gaParameters& gaParam);
     ///
     /// \brief runOneMachine Run the dispatcher as a Machine analyzer
     ///
     void runOneMachine();
-    template <typename T>
-    ///
-    /// \brief objective Objective function needed by the GA, used to calculate fitness.
-    ///                  This method create a machine for the given parameters and get the score of the machine as the fitness.
-    /// \param x The vector of params by the GA to be tested and calculate the fitness
-    /// \return vector of fitnesses
-    ///
-    static std::vector<T> objective(const std::vector<T>& x);
     ///
     /// \brief parseJsonMachine
     /// \param jsonMap
@@ -103,6 +84,15 @@ signals:
     void sendAnalysis(unsigned int, unsigned int);
 
 private:
+    template <typename T>
+    ///
+    /// \brief objective Objective function needed by the GA, used to calculate fitness.
+    ///                  This method create a machine for the given parameters and get the score of the machine as the fitness.
+    /// \param x The vector of params by the GA to be tested and calculate the fitness
+    /// \return vector of fitnesses
+    ///
+    static std::vector<T> objective(const std::vector<T>& x);
+
     template<typename T>
     ///
     /// \brief getMachine method to retrieve machine from GA parameters
@@ -128,9 +118,7 @@ private:
     void initSequences(const QString& sequencesFile);
 
     QString logFileLocation;
-    gaParameters gaParam;
 
-    unsigned int stateNb;
     static unsigned int maxAlert;
     // Info on debugging stateMachines (useful on log of StateMachines)
     static bool debugMachines;

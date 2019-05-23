@@ -12,16 +12,8 @@ unsigned int Dispatcher::maxAlert;
 bool Dispatcher::debugMachines;
 std::multimap<std::string, bool> * Dispatcher::currentSequences;
 
-Dispatcher::Dispatcher(unsigned int stateNb, unsigned int maxAlert, const gaParameters& gaParam, const QString& sequencesFile, bool debugMachines, const QString& logFileLocation, QObject *parent) :
-    QObject(parent), stateNb(stateNb), logFileLocation(logFileLocation), gaParam(gaParam)
-{
-    this->maxAlert = maxAlert;
-    this->debugMachines = debugMachines;
-    this->initSequences(sequencesFile);
-}
-
-Dispatcher::Dispatcher(const QString& sequencesFile, bool debugMachines, const QString& machineFile, QObject *parent) :
-    QObject(parent), logFileLocation(machineFile)
+Dispatcher::Dispatcher(const QString& sequencesFile, bool debugMachines, const QString& logFileLocation, QObject *parent) :
+    QObject(parent), logFileLocation(logFileLocation)
 {
     this->debugMachines = debugMachines;
     this->initSequences(sequencesFile);
@@ -93,15 +85,8 @@ std::vector<StateDescriptor>* Dispatcher::parseJsonMachine(const QVariantMap& js
 
 void Dispatcher::runOneMachine() {
     QVariantMap jsonMap = parseJson(logFileLocation);
-    //std::vector<StateDescriptor>* machine = parseJsonMachine(jsonMap);
-    QJsonArray j = jsonMap["GARepresentation"].toJsonArray();
-    std::vector<float> t;
+    std::vector<StateDescriptor>* machine = parseJsonMachine(jsonMap);
 
-    for(QJsonValue a : j) {
-        t.push_back(a.toDouble());
-    }
-
-    std::vector<StateDescriptor>* machine = getMachine(t);
     this->maxAlert = jsonMap["maxAlertSet"].toInt();
     std::vector<int> keys;
     for(auto it = sequences->begin(); it != sequences->end(); it = sequences->upper_bound(it->first))
@@ -148,7 +133,8 @@ void Dispatcher::runOneMachine() {
     emit finished();
 }
 
-void Dispatcher::run() {
+void Dispatcher::run(unsigned int stateNb, unsigned int maxAlert, const gaParameters& gaParam) {
+    this->maxAlert = maxAlert;
     // Vector to keep all the keys given on the sequences file (It's IDs it can be chaotic)
     std::vector<int> keys;
     // Add each key
@@ -188,7 +174,7 @@ void Dispatcher::run() {
 
         // We create a Parameter for each state of the StateMachines (see Doc)
         std::vector<galgo::Parameter<float,32>> parameters(
-                    this->stateNb,
+                    stateNb,
                     galgo::Parameter<float,32>({0.0, std::numeric_limits<float>::max()})
         );
 
