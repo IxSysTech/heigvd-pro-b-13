@@ -93,7 +93,15 @@ std::vector<StateDescriptor>* Dispatcher::parseJsonMachine(const QVariantMap& js
 
 void Dispatcher::runOneMachine() {
     QVariantMap jsonMap = parseJson(logFileLocation);
-    std::vector<StateDescriptor>* machine = parseJsonMachine(jsonMap);
+    //std::vector<StateDescriptor>* machine = parseJsonMachine(jsonMap);
+    QJsonArray j = jsonMap["GARepresentation"].toJsonArray();
+    std::vector<float> t;
+
+    for(QJsonValue a : j) {
+        t.push_back(a.toDouble());
+    }
+
+    std::vector<StateDescriptor>* machine = getMachine(t);
     this->maxAlert = jsonMap["maxAlertSet"].toInt();
     std::vector<int> keys;
     for(auto it = sequences->begin(); it != sequences->end(); it = sequences->upper_bound(it->first))
@@ -107,16 +115,19 @@ void Dispatcher::runOneMachine() {
         currentSequences->insert(std::pair<std::string, bool>(it->second, true));
     }
 
+    size_t nb_sequence = currentSequences->size();
     for (int key : keys) {
         if(key == jsonMap["localisationTreated"].toInt())
             continue;
-        range = sequences->equal_range(key);
 
-        for(auto it = range.first; it != range.second; ++it) {
+        if(!nb_sequence)
+            break;
+
+        range = sequences->equal_range(key);
+        for(auto it = range.first; it != range.second && nb_sequence-- > 0; ++it) {
             currentSequences->insert(std::pair<std::string, bool>(it->second, false));
         }
     }
-
 
     QTextStream debug(stdout);
 
@@ -161,21 +172,18 @@ void Dispatcher::run() {
         }
 
         // Getting sequences of other IDs to perform analysis
-        size_t nbSeq = currentSequences->size();
-        for(size_t j = 0; j < nbSeq; ++j) {
-            size_t currentKey = std::rand() % keys.size();
-            if(keys[currentKey] == keys[i])
-                currentKey = (currentKey + 1) % keys.size();
+        size_t nb_sequence = currentSequences->size();
+        for (int key : keys) {
+            if(key == keys[i])
+                continue;
 
-            auto randomElement = sequences->find(keys[currentKey]);
+            if(!nb_sequence)
+                break;
 
-            std::advance(randomElement, std::rand() % sequences->count(keys[currentKey]));
-            currentSequences->insert(
-                        std::pair<std::string, bool>(
-                            randomElement->second,
-                            false
-                        )
-            );
+            range = sequences->equal_range(key);
+            for(auto it = range.first; it != range.second && nb_sequence-- > 0; ++it) {
+                currentSequences->insert(std::pair<std::string, bool>(it->second, false));
+            }
         }
 
         // We create a Parameter for each state of the StateMachines (see Doc)
