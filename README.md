@@ -32,8 +32,11 @@ Pour que l'application puisse compiler, vous devez d'abord installer le paquet s
 
 Voir sur [libssh](https://www.libssh.org) pour l'installation.
 On sait que sur linux mint :
+
 > sudo apt install libssh-dev
+
 Pour mac :
+
 > brew install libssh
 
 Configuration QT Creator (à installer au préalable) :
@@ -53,7 +56,9 @@ Il y dossier release qui contient les différents exécutables selon les OS :
     <li>Mac OS : *.dmg</li>
 </ul>
 Linux : Avant de pouvoir l'exécuter on devra faire :
+
 > sudo chmod u+x MegaMachineEvolution-x86_64.AppImage
+
 > ./MegaMachineEvolution-x86_64.AppImage
 
 ## Documentation
