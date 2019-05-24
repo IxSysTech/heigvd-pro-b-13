@@ -148,3 +148,9 @@ void MegaMachine::reset(){
     emit resetMachine();
 }
 
+MegaMachine::~MegaMachine() {
+    for(QState* state : states) {
+        delete state;
+    }
+}
+

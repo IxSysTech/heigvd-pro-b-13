@@ -7,25 +7,19 @@
 // Get only the last 2 bits 0 for NOTHING, 1 for YES and 2 for NO
 #define MASK_STATE_ACTION 0x3
 
+// static initialisations
 unsigned int Dispatcher::maxAlert;
 bool Dispatcher::debugMachines;
 std::multimap<std::string, bool> * Dispatcher::currentSequences;
 
-Dispatcher::Dispatcher(unsigned int stateNb, unsigned int maxAlert, const gaParameters& gaParam, const QString& filePath, bool debugMachines, const QString& logFileLocation, QObject *parent) :
-    QObject(parent), stateNb(stateNb), logFileLocation(logFileLocation), gaParam(gaParam)
-{
-    this->maxAlert = maxAlert;
-    this->debugMachines = debugMachines;
-    this->initSequences(filePath);
-}
-
-Dispatcher::Dispatcher(const QString& filePath, bool debugMachines, const QString& machineFile, QObject *parent) :
-    QObject(parent), logFileLocation(machineFile)
+Dispatcher::Dispatcher(const QString& sequencesFile, bool debugMachines, const QString& logFileLocation, QObject *parent) :
+    QObject(parent), logFileLocation(logFileLocation)
 {
     this->debugMachines = debugMachines;
-    this->initSequences(filePath);
+    this->initSequences(sequencesFile);
 }
 
+//TODO: Add source
 std::vector<std::string> Dispatcher::split(const std::string& s, char delimiter)
 {
    std::vector<std::string> tokens;
@@ -38,30 +32,38 @@ std::vector<std::string> Dispatcher::split(const std::string& s, char delimiter)
    return tokens;
 }
 
-void Dispatcher::initSequences(const QString& filePath){
+void Dispatcher::initSequences(const QString& sequencesFile){
     sequences = new std::multimap<int, std::string>();
 
-    // Because of filePath being a QString we need to convert it for ifstream
-    std::ifstream test(filePath.toStdString());
+    // Because of sequencesFile being a QString we need to convert it for ifstream
+    std::ifstream test(sequencesFile.toStdString());
     std::string line;
     std::vector<std::string> tokens;
     char delimiter = ';';
     while(std::getline(test, line)){
         tokens = split(line, delimiter);
+        // We add the sequences to a multimap ordering by IDs
         sequences->insert(std::pair<int, std::string>(std::atoi(tokens[1].c_str()), tokens[0]));
     }
 }
 
-void Dispatcher::runOneMachine() {
-    QFile machineFile(logFileLocation);
+QVariantMap Dispatcher::parseJson(const QString& filepath){
+    QFile machineFile(filepath);
     machineFile.open(QIODevice::ReadOnly | QIODevice::Text);
 
     QString content = machineFile.readAll();
     QJsonDocument doc = QJsonDocument::fromJson(content.toUtf8());
-    QJsonArray rootElement = doc.array();
-    std::vector<StateDescriptor> machine;
+    QJsonObject rootElement = doc.object();
+    QVariantMap jsonMap = rootElement.toVariantMap();
+    return jsonMap;
+}
 
-    for(QJsonValue state : rootElement) {
+std::vector<StateDescriptor>* Dispatcher::parseJsonMachine(const QVariantMap& jsonMap) {
+    QVariantList value = jsonMap["machine"].toList();
+    QJsonArray machineJSON = QJsonArray::fromVariantList(value);
+    std::vector<StateDescriptor> *machine = new std::vector<StateDescriptor>();
+
+    for(QJsonValue state : machineJSON) {
         StateDescriptor *currentState = new StateDescriptor;
         currentState->stateAction = static_cast<StateDescriptor::stateActionType>(state.toObject().value("stateAction").toInt());
         currentState->transitions = std::vector<StateDescriptor::Transition>();
@@ -74,49 +76,107 @@ void Dispatcher::runOneMachine() {
                         )
             );
         }
+
+        machine->push_back(*currentState);
+        delete currentState;
     }
+    return machine;
 }
 
-void Dispatcher::run() {
+float Dispatcher::runOneMachine() {
+    QVariantMap jsonMap = parseJson(logFileLocation);
+    std::vector<StateDescriptor>* machine = parseJsonMachine(jsonMap);
+
+    this->maxAlert = jsonMap["maxAlertSet"].toInt();
     std::vector<int> keys;
+    for(auto it = sequences->begin(); it != sequences->end(); it = sequences->upper_bound(it->first))
+        keys.push_back(it->first);
+
+    currentSequences = new std::multimap<std::string, bool>();
+    // TODO: Retrieve which ID the machine is designed to detect
+    auto range = sequences->equal_range(jsonMap["idTreated"].toInt());
+
+    for(auto it = range.first; it != range.second; ++it) {
+        currentSequences->insert(std::pair<std::string, bool>(it->second, true));
+    }
+
+    size_t nb_sequence = currentSequences->size();
+    for (int key : keys) {
+        if(key == jsonMap["idTreated"].toInt())
+            continue;
+
+        if(!nb_sequence)
+            break;
+
+        range = sequences->equal_range(key);
+        for(auto it = range.first; it != range.second && nb_sequence-- > 0; ++it) {
+            currentSequences->insert(std::pair<std::string, bool>(it->second, false));
+        }
+    }
+
+    QTextStream debug(stdout);
+
+    std::vector<std::vector<StateDescriptor>> * theMachines = new std::vector<std::vector<StateDescriptor>>({*machine});
+    std::vector<int> *scores = new std::vector<int>(1, 0);
+
+    MegaMachineManager *manager = new MegaMachineManager(currentSequences, *theMachines, scores, maxAlert, debugMachines);
+
+    QEventLoop loop;
+    QObject::connect(manager, SIGNAL (finished()), &loop, SLOT (quit()));
+    QTimer::singleShot(0, manager, &MegaMachineManager::runMachines);
+    loop.exec();
+
+    debug << "Score : " << static_cast<float>(scores->at(0)) << endl;
+    delete machine;
+    delete theMachines;
+
+    return static_cast<float>(scores->at(0));
+}
+
+void Dispatcher::run(unsigned int stateNb, unsigned int maxAlert, const gaParameters& gaParam) {
+    this->maxAlert = maxAlert;
+    // Vector to keep all the keys given on the sequences file (It's IDs it can be chaotic)
+    std::vector<int> keys;
+    // Add each key
     for(auto it = sequences->begin(); it != sequences->end(); it = sequences->upper_bound(it->first))
         keys.push_back(it->first);
 
     for(size_t i = 0; i < keys.size(); ++i) {
         // Announce the current Analysis
         emit sendAnalysis(static_cast<unsigned int>(i + 1), static_cast<unsigned int>(keys.size()));
+        if (currentSequences != nullptr)
+            delete currentSequences;
+
         currentSequences = new std::multimap<std::string, bool>();
         auto range = sequences->equal_range(keys[i]);
 
-        int k = 0;
-        for(auto it = range.first; it != range.second && k++ < 100; ++it) {
+        // We first get the current analyzed ID, 100 first sequences at most
+        for(auto it = range.first; it != range.second; ++it) {
             currentSequences->insert(std::pair<std::string, bool>(it->second, true));
         }
 
         // Getting sequences of other IDs to perform analysis
+        size_t nb_sequence = currentSequences->size();
+        for (int key : keys) {
+            if(key == keys[i])
+                continue;
 
-        size_t nbSeq = currentSequences->size();
-        for(size_t j = 0; j < nbSeq; ++j) {
-            size_t currentKey = std::rand() % keys.size();
-            if(keys[currentKey] == keys[i])
-                currentKey = (currentKey + 1) % keys.size();
+            if(!nb_sequence)
+                break;
 
-            auto randomElement = sequences->find(keys[currentKey]);
-
-            std::advance(randomElement, std::rand() % sequences->count(keys[currentKey]));
-            currentSequences->insert(
-                        std::pair<std::string, bool>(
-                            randomElement->second,
-                            false
-                        )
-            );
+            range = sequences->equal_range(key);
+            for(auto it = range.first; it != range.second && nb_sequence-- > 0; ++it) {
+                currentSequences->insert(std::pair<std::string, bool>(it->second, false));
+            }
         }
 
+        // We create a Parameter for each state of the StateMachines (see Doc)
         std::vector<galgo::Parameter<float,32>> parameters(
-                    this->stateNb,
+                    stateNb,
                     galgo::Parameter<float,32>({0.0, std::numeric_limits<float>::max()})
         );
 
+        // This emitter is just a way for the GA to perform signals
         Emitter *gaEmitter = new Emitter();
 
         // initiliazing genetic algorithm
@@ -130,16 +190,37 @@ void Dispatcher::run() {
         std::vector<float> bestMachine = ga.result()->getParam();
         std::vector<StateDescriptor> * theBestMachine = getMachine(bestMachine);
 
-        // TODO JSON Stringify this vector to log bestMachine
+        // JSON Stringify this vector to log bestMachine
         QJsonArray jsonMachine;
         for(StateDescriptor sd : *theBestMachine) {
             jsonMachine.push_back(sd.toJson());
         }
 
-        FILE* machine = std::fopen(strcat(logFileLocation.toLocal8Bit().data(), QString("/bestmachineAnalysis%1.machine").arg(i).toLocal8Bit().data()), "w+");
-        QTextStream(machine) << QJsonDocument(jsonMachine).toJson();
+        QJsonArray jsonGAParams;
+        for(float bm : bestMachine) {
+            jsonGAParams.push_back(bm);
+        }
 
+        QJsonObject machineToSave;
+        machineToSave["bestScore"] = ga.result()->getResult().at(0);
+        machineToSave["idTreated"] = keys[i];
+        machineToSave["GARepresentation"] = jsonGAParams;
+        machineToSave["maxAlertSet"] = (int) this->maxAlert;
+        machineToSave["machine"] = jsonMachine;
+
+        // We put the JSON representation of the machine to a file
+        // TODO: We need to pot his best result and the ID for which it's OK to use
+        FILE* machine = std::fopen(strcat(logFileLocation.toLocal8Bit().data(), QString("/bestmachineAnalysis%1.machine").arg(keys[i]).toLocal8Bit().data()), "w+");
+        QTextStream(machine) << QJsonDocument(machineToSave).toJson();
+        // Close the ressource and clean memory
+        std::fclose(machine);
+        machine = nullptr;
+        delete theBestMachine;
+        theBestMachine =nullptr;
+        delete gaEmitter;
+        gaEmitter = nullptr;
         delete currentSequences;
+        currentSequences = nullptr;
     }
 
     emit finished();
@@ -207,6 +288,7 @@ std::vector<StateDescriptor> * Dispatcher::getMachine(const std::vector<T> &mach
         }
 
         theMachine->push_back(*currentState);
+        delete currentState;
     }
 
     return theMachine;
@@ -215,21 +297,27 @@ std::vector<StateDescriptor> * Dispatcher::getMachine(const std::vector<T> &mach
 template <typename T>
 std::vector<T> Dispatcher::objective(const std::vector<T>& x){
     QTextStream debug(stdout);
-
-    std::vector<std::vector<StateDescriptor>> * theMachines = new std::vector<std::vector<StateDescriptor>>({*getMachine(x)});
+    std::vector<StateDescriptor> * machineFromParam = getMachine(x);
+    std::vector<std::vector<StateDescriptor>> * theMachines = new std::vector<std::vector<StateDescriptor>>({*machineFromParam});
     std::vector<int> *scores = new std::vector<int>(1, 0);
 
     MegaMachineManager *manager = new MegaMachineManager(currentSequences, *theMachines, scores, maxAlert, debugMachines);
 
+    // We start MegaMachineManager inside Event loops because QStateMachines needs them to execute correctly
     QEventLoop loop;
     QObject::connect(manager, SIGNAL (finished()), &loop, SLOT (quit()));
     QTimer::singleShot(0, manager, &MegaMachineManager::runMachines);
     loop.exec();
 
-    debug << "Score : " << static_cast<float>(scores->at(0)) << endl;
-    delete theMachines;
+    float fitness = static_cast<float>(scores->at(0));
+    debug << "Score : " << fitness << endl;
 
-    return {static_cast<float>(scores->at(0))};
+    // Cleaning memory
+    delete theMachines;
+    delete manager;
+    delete scores;
+    delete machineFromParam;
+    return {fitness};
 }
 
 void Dispatcher::relay(double percent) {
@@ -241,5 +329,6 @@ void Dispatcher::relayState(unsigned int genNb, double maxFit, double meanFit ) 
 }
 
 Dispatcher::~Dispatcher() {
+    // We avoid a memory leak
     delete sequences;
 }

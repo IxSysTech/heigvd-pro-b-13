@@ -48,6 +48,12 @@ private slots:
      */
     void on_browseLog_clicked();
 
+    void on_browseLog_2_clicked();
+
+    void on_btnSelectMachine_clicked();
+
+    void on_btnRunMachine_clicked();
+
 public slots:
     /**
      * @brief incrementProgressBar : Allow to increment the progress bar
@@ -80,6 +86,7 @@ private:
     Ui::ParameterWindow *ui;
     double progress = 0.0;                                                                                              //Value of the progress bar
     QString fileNameDataSource;                                                                                         //File where the application will get datas
+    QString machineFile;
     QString logFileLocation = QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation);      //Log file location
 
 signals:

@@ -59,11 +59,10 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/GUI/libssh/build/lib/release/ -lssh
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/GUI/libssh/build/lib/debug/ -lssh
-else:unix: LIBS += -L$$PWD/GUI/libssh/build/lib/ -lssh
 
 INCLUDEPATH += $$PWD/GUI/libssh/include
 DEPENDPATH += $$PWD/GUI/libssh/include
 
 macx: LIBS += -L$$PWD/../../../../../../../../usr/local/Cellar/libssh/0.8.7/lib/ -lssh.4.7.4
+
+unix:!macx: LIBS += -L$$PWD/../../../../../../../../usr/lib/x86_64-linux-gnu/ -lssh

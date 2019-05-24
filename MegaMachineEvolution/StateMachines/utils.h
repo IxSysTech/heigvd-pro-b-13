@@ -25,6 +25,10 @@ struct StateDescriptor {
         unsigned int destinationState;
 
         Transition(signalType signal, unsigned int destinationState) : signal(signal), destinationState(destinationState) {}
+        ///
+        /// \brief toJson method to retrieve a JSON representation of a Transition struct
+        /// \return a QJsonObject of Transition
+        ///
         QJsonObject toJson() {
             return {
                 {"signal", signal},
@@ -35,6 +39,10 @@ struct StateDescriptor {
 
     std::vector<Transition> transitions;
 
+    ///
+    /// \brief toJson method to retrieve a JSON representation of a StateDescriptor struct
+    /// \return a QJsonObject of StateDescriptor
+    ///
     QJsonObject toJson() {
         QJsonArray jsontr;
 

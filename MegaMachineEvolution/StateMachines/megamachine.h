@@ -22,15 +22,28 @@ public:
     /// \param parent - parent QObject
     ///
     explicit MegaMachine(std::vector<StateDescriptor> states, int maxAlerts, int id, bool hasDebug, QObject *parent = nullptr);
+    ~MegaMachine();
 public slots:
+    ///
+    /// \brief yes Increment ctrYes when stateAction yes triggered
+    ///
     void yes();
+    ///
+    /// \brief no Increment ctrNo when stateAction no triggered
+    ///
     void no();
     void readA();
     void readC();
     void readG();
     void readT();
     void readX();
+    ///
+    /// \brief When MegaMachineManager announce an end of the sequence we need to go to finishedState
+    ///
     void finishedSequence();
+    ///
+    /// \brief reset When theEmitter send a reset we need to go to our initialState
+    ///
     void reset();
     void machineEnd();
 signals:
