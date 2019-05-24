@@ -30,7 +30,18 @@ Pour que l'application puisse compiler, vous devez d'abord installer le paquet s
     <li>libssh-devel</li>   
 </ul>
 
-Une fois cela fait, il vous faut ouvrir le projet avec QT. Il faut faire un clic droit sur le projet > Add Library > External Library > Il faut choisir la librairie que vous avez compilé qui se trouve dans libssh/build/lib/libssh.so > Next > Finish.
+Voir sur [libssh](https://www.libssh.org) pour l'installation.
+On sait que sur linux mint :
+> sudo apt install libssh-dev
+Pour mac :
+> brew install libssh
+
+Configuration QT Creator (à installer au préalable) :
+
+Une fois cela fait, il vous faut ouvrir le projet avec QT. Il faut faire un clic droit sur le projet > Add Library > External Library > 
+Platform : La plateforme correspondante
+Library file : Le fichier de l'installation faite à l'étape précédente (p.ex. /usr/lib/x86_64-linux-gnu/libssh.so -> ${whereis libssh}) 
+Include : à partir de notre projet -> GUI/libssh/include > Next > Finish.
 
 Une fois cela fait, l'application est prête à compiler.
 
@@ -41,5 +52,9 @@ Il y dossier release qui contient les différents exécutables selon les OS :
     <li>Linux : *.appimage</li>   
     <li>Mac OS : *.dmg</li>
 </ul>
+Linux : Avant de pouvoir l'exécuter on devra faire :
+> sudo chmod u+x MegaMachineEvolution-x86_64.AppImage
+> ./MegaMachineEvolution-x86_64.AppImage
 
 ## Documentation
+La documentation est inclue à la racine, sous forme d'un fichier PDF regroupant 3 fichiers : Rapport de projet, Manuel Utilisateur et Documentation Développeur. 
