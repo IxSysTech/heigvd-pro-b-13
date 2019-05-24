@@ -94,7 +94,7 @@ float Dispatcher::runOneMachine() {
 
     currentSequences = new std::multimap<std::string, bool>();
     // TODO: Retrieve which ID the machine is designed to detect
-    auto range = sequences->equal_range(jsonMap["localisationTreated"].toInt());
+    auto range = sequences->equal_range(jsonMap["idTreated"].toInt());
 
     for(auto it = range.first; it != range.second; ++it) {
         currentSequences->insert(std::pair<std::string, bool>(it->second, true));
@@ -102,7 +102,7 @@ float Dispatcher::runOneMachine() {
 
     size_t nb_sequence = currentSequences->size();
     for (int key : keys) {
-        if(key == jsonMap["localisationTreated"].toInt())
+        if(key == jsonMap["idTreated"].toInt())
             continue;
 
         if(!nb_sequence)
@@ -203,7 +203,7 @@ void Dispatcher::run(unsigned int stateNb, unsigned int maxAlert, const gaParame
 
         QJsonObject machineToSave;
         machineToSave["bestScore"] = ga.result()->getResult().at(0);
-        machineToSave["localisationTreated"] = keys[i];
+        machineToSave["idTreated"] = keys[i];
         machineToSave["GARepresentation"] = jsonGAParams;
         machineToSave["maxAlertSet"] = (int) this->maxAlert;
         machineToSave["machine"] = jsonMachine;

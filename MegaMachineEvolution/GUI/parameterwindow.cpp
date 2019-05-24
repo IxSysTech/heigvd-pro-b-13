@@ -254,7 +254,7 @@ void ParameterWindow::on_btnSelectMachine_clicked()
                                                 "Best score on GA : %1\n"
                                                 "Max Alert : %2\n"
                                                 "ID for which it says true : %3\n"
-                                                "Machine :").arg(testParse["bestScore"].toString(),QString::number(testParse["maxAlertSet"].toInt()),QString::number(testParse["localisationTreated"].toInt())));
+                                                "Machine :").arg(testParse["bestScore"].toString(),QString::number(testParse["maxAlertSet"].toInt()),QString::number(testParse["idTreated"].toInt())));
     }
     qApp->processEvents();
 }
