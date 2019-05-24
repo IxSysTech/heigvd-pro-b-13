@@ -19,9 +19,27 @@ Development team:
 | Simeonovic David                     | david.simeonovic@heig-vd.ch  | IxSysTech         |
 
 ## Dependencies
+<ul>
+    <li>LibSSH</li>   
+    <li>QT 5</li>
+</ul>
 
 ## Build and install
+Pour que l'application puisse compiler, vous devez d'abord installer le paquet suivant :
+<ul>
+    <li>libssh-devel</li>   
+</ul>
+
+Une fois cela fait, il vous faut ouvrir le projet avec QT. Il faut faire un clic droit sur le projet > Add Library > External Library > Il faut choisir la librairie que vous avez compilé qui se trouve dans libssh/build/lib/libssh.so > Next > Finish.
+
+Une fois cela fait, l'application est prête à compiler.
 
 ## Run
+
+Il y dossier release qui contient les différents exécutables selon les OS :
+<ul>
+    <li>Linux : *.appimage</li>   
+    <li>Mac OS : *.dmg</li>
+</ul>
 
 ## Documentation
